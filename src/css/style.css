@@ -1542,17 +1542,37 @@ img {
 }
 
 /* ==========================================================================
+/* ==========================================================================
    Interactive Revenue & ROAS Growth Calculator
    ========================================================================== */
+.calc-card,
 .calculator-wrap {
   background: var(--bg-card);
   border: 1px solid var(--border-glow);
   border-radius: var(--radius-xl);
-  padding: 48px;
+  padding: 44px;
   box-shadow: var(--shadow-glow);
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+@media (max-width: 991px) {
+  .calc-card,
+  .calculator-wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px;
+  }
+}
+
+.calc-controls-col,
+.calc-inputs-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .calc-inputs-col h3 {
@@ -1565,28 +1585,33 @@ img {
   margin-bottom: 32px;
 }
 
+.calc-control-group,
 .input-group {
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
+.calc-label-row,
 .input-label-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
 }
 
 .input-label {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-heading);
 }
 
+.input-val,
 .input-display-val {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--neon-mint);
   font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 .custom-range {
@@ -1616,29 +1641,41 @@ img {
 }
 
 .channels-select-group {
-  margin-top: 24px;
+  margin-top: 8px;
 }
 
 .channel-checkboxes {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+@media (max-width: 580px) {
+  .channel-checkboxes {
+    grid-template-columns: 1fr;
+  }
 }
 
 .channel-check-btn {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
+  padding: 10px 12px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--text-secondary);
   cursor: pointer;
   transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.channel-check-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-pure);
 }
 
 .channel-check-btn.checked {
@@ -1652,11 +1689,12 @@ img {
   background: linear-gradient(135deg, rgba(14, 22, 38, 0.95) 0%, rgba(9, 14, 25, 0.95) 100%);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 36px 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  height: 100%;
 }
 
 .res-header {
@@ -1669,48 +1707,53 @@ img {
 }
 
 .projected-rev-big {
-  font-size: 2.8rem;
+  font-size: clamp(2.2rem, 3vw, 2.75rem);
   font-weight: 800;
   color: var(--text-pure);
   letter-spacing: -0.03em;
   margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
 }
 
 .growth-increment-tag {
   color: var(--neon-mint);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .res-metrics-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 30px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
 .res-metric-item {
   background: rgba(255, 255, 255, 0.03);
-  padding: 14px;
+  padding: 14px 12px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .res-metric-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   text-transform: uppercase;
   font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
 }
 
 .res-metric-val {
-  font-size: 1.3rem;
+  font-size: 1.18rem;
   font-weight: 700;
   color: var(--text-heading);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ==========================================================================
