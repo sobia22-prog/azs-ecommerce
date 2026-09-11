@@ -1,0 +1,36 @@
+{
+  "name": "azs-ecommerce-mern",
+  "version": "1.0.0",
+  "description": "AZS Solutions - High-Converting Ecommerce & Performance Marketing Platform (MERN Stack)",
+  "main": "server/index.js",
+  "scripts": {
+    "server": "node server/index.js",
+    "client": "vite --port 3000 --host",
+    "dev": "concurrently \"node server/index.js\" \"vite --port 3000 --host\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "mern",
+    "ecommerce",
+    "amazon",
+    "noon",
+    "shopify",
+    "performance-marketing"
+  ],
+  "author": "AZS Solutions",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7"
+  }
+}
