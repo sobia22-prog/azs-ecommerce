@@ -6,8 +6,14 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <a href="#" className="brand-logo-link">
-              <img src="/assets/azs_logo.png" alt="AZS Solutions Logo" style={{ height: '38px' }} />
+            <a href="#" className="brand-logo-link" aria-label="AZS Solutions Home">
+              <div className="brand-logo-frame">
+                <img src="/assets/azs_logo.png" alt="AZS Solutions Logo" className="brand-logo-img" />
+              </div>
+              <div className="brand-text-col">
+                <span className="brand-name">AZS SOLUTIONS</span>
+                <span className="brand-sub">ECOMMERCE GROWTH</span>
+              </div>
             </a>
             <p className="footer-brand-p">
               Your dedicated growth partner for e-commerce marketplace operations, bespoke storefronts, and performance marketing across the GCC and internationally.
