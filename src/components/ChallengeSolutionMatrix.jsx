@@ -196,38 +196,7 @@ export default function ChallengeSolutionMatrix({ onOpenModal }) {
           ))}
         </div>
 
-        {/* Visual Graphic Banner (Transforms text-heavy section with high-res pictures) */}
-        <div className="matrix-visual-banner">
-          <div
-            className="matrix-visual-media"
-            onClick={() => onOpenModal && onOpenModal('/assets/slide_3_matrix_graphic.png', 'Slide 3: Challenges vs Solutions Framework')}
-            title="Click to view pitch deck system framework"
-          >
-            <img src="/assets/slide_3_matrix_graphic.png" alt="AZS Challenges vs Solutions Architecture" />
-            <span className="mkt-media-overlay-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              Deck Framework
-            </span>
-          </div>
 
-          <div
-            className="matrix-visual-media"
-            onClick={() => onOpenModal && onOpenModal('/assets/ecommerce_growth_shield.jpg', 'Institutional Account Health & Scale Protection')}
-            title="Click to view Account Protection & Growth Chart"
-          >
-            <img src="/assets/ecommerce_growth_shield.jpg" alt="Account Health Protection & Scaled Growth" />
-            <span className="mkt-media-overlay-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              Verified Shield (+520%)
-            </span>
-          </div>
-        </div>
 
         {/* Deck Slide Footer Tagline */}
         <div className="deck-slide-footer">
