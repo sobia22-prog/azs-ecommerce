@@ -1571,8 +1571,8 @@ img {
 .calc-inputs-col {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .calc-inputs-col h3 {
@@ -1582,14 +1582,14 @@ img {
 
 .calc-inputs-col p {
   color: var(--text-secondary);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .calc-control-group,
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .calc-label-row,
@@ -1607,11 +1607,27 @@ img {
 
 .input-val,
 .input-display-val {
-  font-size: 1.25rem;
+  font-size: 1.22rem;
   font-weight: 800;
   color: var(--neon-mint);
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
+}
+
+.calc-synergy-hint {
+  padding: 12px 16px;
+  background: rgba(0, 245, 155, 0.05);
+  border: 1px solid rgba(0, 245, 155, 0.18);
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+.calc-synergy-hint strong {
+  color: var(--neon-mint);
+  font-weight: 700;
 }
 
 .custom-range {

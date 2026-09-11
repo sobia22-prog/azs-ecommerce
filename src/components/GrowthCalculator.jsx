@@ -117,6 +117,10 @@ export default function GrowthCalculator({ currency = 'USD' }) {
                 ))}
               </div>
             </div>
+
+            <div className="calc-synergy-hint">
+              ⚡ <strong>Cross-Market Synergy:</strong> Expanding across KSA, USA, and UK unlocks blended ad efficiency and reduces customer acquisition cost by up to 38%.
+            </div>
           </div>
 
           {/* Projected Results Column */}
