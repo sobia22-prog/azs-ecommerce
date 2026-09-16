@@ -5315,10 +5315,10 @@ img {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  padding: 18px 0 22px;
+  padding: 16px 0 10px;
   background: transparent;
   border: none;
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .cert-ticker-header {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PlatformTicker({ activePlatform, onSelectPlatform }) {
+export default function PlatformTicker({ activePlatform, onSelectPlatform, showPills = false }) {
   const credentials = [
     {
       id: 'amazon-spn',
@@ -155,17 +155,19 @@ export default function PlatformTicker({ activePlatform, onSelectPlatform }) {
           </div>
         </div>
 
-        <div className="platform-pill-list">
-          {platforms.map(p => (
-            <button
-              key={p.id}
-              className={`platform-badge-pill ${activePlatform === p.id ? 'active' : ''}`}
-              onClick={() => onSelectPlatform(p.id)}
-            >
-              {p.label}
-            </button>
-          ))}
-        </div>
+        {showPills && (
+          <div className="platform-pill-list">
+            {platforms.map(p => (
+              <button
+                key={p.id}
+                className={`platform-badge-pill ${activePlatform === p.id ? 'active' : ''}`}
+                onClick={() => onSelectPlatform && onSelectPlatform(p.id)}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
