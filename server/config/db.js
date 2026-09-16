@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const dns = require('dns');
 
 let isConnected = false;
 let fallbackMemoryStore = {
@@ -9,16 +10,24 @@ let fallbackMemoryStore = {
 const connectDB = async () => {
   const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/azs_ecommerce';
 
+  // Configure public DNS resolvers for Atlas SRV lookups on Windows
+  if (mongoURI.includes('+srv')) {
+    try {
+      dns.setServers(['8.8.8.8', '1.1.1.1']);
+    } catch (e) {
+      console.warn('[MongoDB DNS Notice] Could not set custom DNS servers:', e.message);
+    }
+  }
+
   try {
-    // Set 2 second timeout for connection attempt
     const conn = await mongoose.connect(mongoURI, {
-      serverSelectionTimeoutMS: 2500,
+      serverSelectionTimeoutMS: 10000,
     });
     isConnected = true;
-    console.log(`[MongoDB] Connected successfully: ${conn.connection.host}`);
+    console.log(`[MongoDB Atlas] Connected successfully to host: ${conn.connection.host} (DB: ${conn.connection.name})`);
   } catch (err) {
     isConnected = false;
-    console.warn(`[MongoDB Notice] Live MongoDB instance not active locally (${err.message}). Activating built-in resilient In-Memory Collection Engine for lead capture and API state.`);
+    console.warn(`[MongoDB Notice] Live MongoDB connection could not be established (${err.message}). Activating built-in resilient In-Memory Collection Engine for lead capture and API state.`);
   }
 };
 
