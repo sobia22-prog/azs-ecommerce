@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '../Router';
 
 export default function Hero({ onOpenModal, currency = 'USD' }) {
   const isGCC = currency === 'GCC';
@@ -30,45 +31,69 @@ export default function Hero({ onOpenModal, currency = 'USD' }) {
   return (
     <section className="section hero-section">
       <div className="container">
-        <div className="hero-grid">
-          {/* Left Column: Value Proposition */}
-          <div className="hero-content">
-            <div className="badge-pill">
-              <span className="pulse-dot"></span>
-              <span>🇸🇦 KSA • 🇺🇸 USA • 🇬🇧 UK Marketplace & D2C Partner</span>
-            </div>
+        {/* Single Unified Eyebrow Badge */}
+        <div className="hero-eyebrow-row">
+          <div className="hero-single-eyebrow">
+            <span className="punchy-tag-dot"></span>
+            <span className="eyebrow-lead">GCC & GLOBAL COMMERCE:</span>
+            <span className="eyebrow-channels">🇸🇦 KSA (Amazon & Noon) • 🇺🇸 Amazon US • 🇬🇧 Amazon UK • 🛍️ Shopify DTC</span>
+          </div>
+        </div>
 
+        <div className="hero-grid">
+          {/* Left Column: Value Proposition (50%) */}
+          <div className="hero-content">
             <h1>
               Scaling Commerce <br />
               <span className="gradient-text">Beyond Borders.</span>
             </h1>
 
+            {/* Named Partner Credential Subhead */}
             <p className="hero-subtitle">
-              We scale enterprise brands across Amazon, Noon, and Shopify in KSA, USA, and the UK with full-funnel performance marketing, Buy Box defense, and localized fulfillment.
+              As an <strong>Amazon SPN Verified Partner</strong>, <strong>Noon Certified Growth Partner</strong>, and <strong>Shopify Plus Partner</strong>, we scale enterprise brands across Saudi Arabia, UAE, USA, and the UK with full-funnel performance marketing, Buy Box governance, and localized fulfillment.
             </p>
 
             <div className="hero-cta-group">
-              <a href="#book-audit" className="btn btn-primary">
+              <Link to="/book-audit" className="btn btn-primary">
                 Scale Your Brand
                 <svg className="btn-icon" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
-              </a>
+              </Link>
 
-              <a href="#case-studies" className="btn btn-secondary">
+              <Link to="/case-studies" className="btn btn-secondary">
                 Explore Case Studies
-              </a>
+              </Link>
             </div>
 
-            <div className="hero-trust-badges">
-              <div className="hero-trust-avatars">
-                <div className="avatar-chip" style={{ backgroundColor: '#00F59B', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 11 }}>KSA</div>
-                <div className="avatar-chip" style={{ backgroundColor: '#00D2FF', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 11 }}>USA</div>
-                <div className="avatar-chip" style={{ backgroundColor: '#A855F7', color: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 11 }}>UK</div>
+            {/* Unified High-Trust Social Proof Bar */}
+            <div className="hero-unified-proof">
+              <div className="proof-trustpilot-block">
+                <div className="tp-stars-row">
+                  <span className="tp-star-box">★</span>
+                  <span className="tp-star-box">★</span>
+                  <span className="tp-star-box">★</span>
+                  <span className="tp-star-box">★</span>
+                  <span className="tp-star-box">★</span>
+                </div>
+                <div className="proof-tp-text">
+                  <strong>4.9 / 5.0</strong> on <span className="tp-brand-name">Trustpilot</span>
+                  <span className="tp-sub-count">(45+ Reviews)</span>
+                </div>
               </div>
-              <p className="hero-trust-text">
-                Trusted by <strong>35+ enterprise brands</strong> dominating KSA, USA & UK.
-              </p>
+
+              <div className="proof-v-divider"></div>
+
+              <div className="hero-trust-avatars-wrap">
+                <div className="hero-trust-avatars">
+                  <div className="avatar-chip" style={{ backgroundColor: '#00F59B', color: '#000', fontWeight: 800, fontSize: 10 }}>KSA</div>
+                  <div className="avatar-chip" style={{ backgroundColor: '#00D2FF', color: '#000', fontWeight: 800, fontSize: 10 }}>USA</div>
+                  <div className="avatar-chip" style={{ backgroundColor: '#A855F7', color: '#000', fontWeight: 800, fontSize: 10 }}>UK</div>
+                </div>
+                <div className="proof-avatars-text">
+                  Trusted by <strong>35+ enterprise brands</strong>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -143,23 +168,29 @@ export default function Hero({ onOpenModal, currency = 'USD' }) {
                 </svg>
               </div>
 
-              {/* Verified KPI Grid */}
-              <div className="hero-kpis">
+              {/* Real Client Proof Chips Strip */}
+              <div className="hero-products-proof-strip">
+                <span className="proof-strip-label">Managed Brands:</span>
+                <div className="proof-chips-row">
+                  <span className="product-proof-chip">HomeMaster Air Fryer</span>
+                  <span className="product-proof-chip">LIVORA French Linen</span>
+                  <span className="product-proof-chip">Creative Things Audio</span>
+                </div>
+              </div>
+
+              {/* Verified KPI Grid: 3 Clean, Well-Spaced Metrics */}
+              <div className="hero-kpis hero-kpis-3col">
                 <div className="kpi-chip">
-                  <div className="kpi-label">Ad Sales</div>
-                  <div className="kpi-val">{isGCC ? 'SAR 183.4K' : '$48.9K'}</div>
+                  <div className="kpi-label">Blended ROAS</div>
+                  <div className="kpi-val">8.40x</div>
                 </div>
                 <div className="kpi-chip">
-                  <div className="kpi-label">Top ROAS</div>
-                  <div className="kpi-val">14.43x</div>
+                  <div className="kpi-label">Avg ACOS</div>
+                  <div className="kpi-val">11.8%</div>
                 </div>
                 <div className="kpi-chip">
-                  <div className="kpi-label">ACOS</div>
-                  <div className="kpi-val">6.93%</div>
-                </div>
-                <div className="kpi-chip">
-                  <div className="kpi-label">Orders Lift</div>
-                  <div className="kpi-val">+311%</div>
+                  <div className="kpi-label">Buy Box Win Rate</div>
+                  <div className="kpi-val">93.4%</div>
                 </div>
               </div>
             </div>

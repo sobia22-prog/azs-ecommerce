@@ -769,55 +769,38 @@ img {
   width: 100%;
 }
 
-.hero-option-pill {
+.hero-single-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 5px 13px;
+  gap: 10px;
+  padding: 6px 16px;
+  background: rgba(12, 19, 32, 0.85);
+  border: 1px solid rgba(0, 245, 155, 0.28);
   border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  flex-shrink: 0;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
   transition: all var(--transition-fast);
 }
 
-.hero-option-punchy {
-  background: rgba(0, 245, 155, 0.08);
-  border: 1px solid rgba(0, 245, 155, 0.3);
-  color: var(--neon-mint);
-  text-transform: uppercase;
-}
-
-.hero-option-punchy:hover {
-  background: rgba(0, 245, 155, 0.16);
+.hero-single-eyebrow:hover {
   border-color: var(--neon-mint);
-  transform: translateY(-1px);
+  background: rgba(16, 25, 42, 0.95);
+  box-shadow: 0 6px 24px rgba(0, 245, 155, 0.15);
 }
 
-.hero-option-marketplace {
-  background: rgba(0, 210, 255, 0.08);
-  border: 1px solid rgba(0, 210, 255, 0.3);
-  color: var(--neon-cyan);
+.eyebrow-lead {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: var(--neon-mint);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
 }
 
-.hero-option-marketplace:hover {
-  background: rgba(0, 210, 255, 0.16);
-  border-color: var(--neon-cyan);
-  transform: translateY(-1px);
-}
-
-.hero-option-dtc {
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.35);
-  color: #c4b5fd;
-}
-
-.hero-option-dtc:hover {
-  background: rgba(139, 92, 246, 0.18);
-  border-color: #a78bfa;
-  transform: translateY(-1px);
+.eyebrow-channels {
+  color: var(--text-heading);
+  font-weight: 600;
 }
 
 .punchy-tag-dot {
@@ -914,6 +897,9 @@ img {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 245, 155, 0.1);
   position: relative;
   transition: transform var(--transition-normal), border-color var(--transition-normal);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: 20px;
 }
 
 .live-revenue-card:hover {
@@ -3596,14 +3582,16 @@ img {
    ========================================================================== */
 .robot-container.robot-floating {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 16px;
+  right: 16px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 8px;
   pointer-events: none;
+  transform: scale(0.85);
+  transform-origin: bottom right;
 }
 
 .robot-container.robot-floating > * {
@@ -4830,21 +4818,25 @@ img {
   animation: pulseDot 2s infinite;
 }
 
-/* SalesDuo-Style Live Third-Party Review Trust Widget (Directly Under Hero CTAs) */
-.hero-trustpilot-widget {
+/* Unified High-Trust Social Proof Bar (Clean & Professional) */
+.hero-unified-proof {
   display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 4px 12px;
-  background: rgba(11, 17, 29, 0.85);
-  border: 1px solid rgba(0, 245, 155, 0.28);
-  border-radius: 9999px;
-  margin-top: 0;
-  margin-bottom: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  gap: 16px;
+  padding: 8px 16px;
+  background: rgba(12, 19, 32, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  margin-top: 6px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(12px);
-  font-size: 0.76rem;
+  flex-wrap: wrap;
+}
+
+.proof-trustpilot-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .tp-stars-row {
@@ -4865,12 +4857,13 @@ img {
   line-height: 1;
 }
 
-.tp-score-text {
+.proof-tp-text {
+  font-size: 0.76rem;
   color: var(--text-pure);
-  font-weight: 600;
+  white-space: nowrap;
 }
 
-.tp-score-text strong {
+.proof-tp-text strong {
   color: var(--neon-mint);
 }
 
@@ -4879,102 +4872,106 @@ img {
   font-weight: 800;
 }
 
-.tp-dot-sep {
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 0.70rem;
-}
-
-.tp-reviews-count {
-  color: var(--text-secondary);
-  font-size: 0.74rem;
-}
-
-.tp-badge-verified {
-  color: var(--neon-cyan);
-  font-size: 0.72rem;
-  font-weight: 700;
-  background: rgba(0, 210, 255, 0.1);
-  padding: 1px 6px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 210, 255, 0.25);
-}
-
-/* Pattern-Style 1-Click Sub-Service Quick Jump Pills */
-.hero-jump-pills-container {
-  margin-bottom: 10px;
-}
-
-.jump-pills-label {
-  display: block;
-  font-size: 0.64rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.tp-sub-count {
   color: var(--text-muted);
-  margin-bottom: 4px;
+  font-size: 0.72rem;
+  margin-left: 4px;
 }
 
-.hero-jump-pills-track {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
+.proof-v-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.hero-jump-chip {
+.hero-trust-avatars-wrap {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 9px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-heading);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
-  text-decoration: none;
-  transition: all var(--transition-fast);
+  gap: 8px;
 }
 
-.hero-jump-chip .chip-ico {
-  font-size: 0.78rem;
+.proof-avatars-text {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
 }
 
-.hero-jump-chip:hover {
-  background: rgba(0, 245, 155, 0.12);
+.proof-avatars-text strong {
+  color: var(--text-pure);
+}
+
+/* 3-Column Clean KPI Grid in Hero Live Revenue Card */
+.hero-kpis.hero-kpis-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-kpis.hero-kpis-3col .kpi-chip {
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.hero-kpis.hero-kpis-3col .kpi-chip:hover {
   border-color: rgba(0, 245, 155, 0.35);
-  color: var(--neon-mint);
-  transform: translateY(-1px);
+  background: rgba(0, 245, 155, 0.05);
 }
 
-/* Envision Horizons Real Client Product Proof Strip */
+.hero-kpis.hero-kpis-3col .kpi-label {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+}
+
+.hero-kpis.hero-kpis-3col .kpi-val {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--neon-mint);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Managed Brands Proof Strip */
 .hero-products-proof-strip {
-  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .proof-strip-label {
-  display: block;
-  font-size: 0.64rem;
+  font-size: 0.66rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
-  margin-bottom: 4px;
+  white-space: nowrap;
 }
 
 .proof-chips-row {
   display: flex;
+  align-items: center;
+  gap: 6px;
   flex-wrap: wrap;
-  gap: 5px;
 }
 
 .product-proof-chip {
-  font-size: 0.68rem;
-  padding: 2px 7px;
-  background: rgba(0, 210, 255, 0.06);
-  border: 1px solid rgba(0, 210, 255, 0.2);
+  font-size: 0.70rem;
+  padding: 2px 8px;
+  background: rgba(0, 210, 255, 0.07);
+  border: 1px solid rgba(0, 210, 255, 0.22);
   border-radius: 4px;
   color: var(--neon-cyan);
   font-weight: 600;
