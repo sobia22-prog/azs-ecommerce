@@ -731,9 +731,9 @@ img {
    Hero Section
    ========================================================================== */
 .hero-section {
-  padding-top: 88px;
-  padding-bottom: 24px;
-  min-height: calc(100vh - 10px);
+  padding-top: 84px;
+  padding-bottom: 20px;
+  min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1207,7 +1207,14 @@ img {
 .track-switcher-wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+#marketplaces.section,
+#shopify-d2c.section {
+  padding-top: 20px;
+  scroll-margin-top: 80px;
 }
 
 .track-tabs-container {
