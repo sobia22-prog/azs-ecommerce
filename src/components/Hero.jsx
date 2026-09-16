@@ -66,9 +66,9 @@ export default function Hero({ onOpenModal, currency = 'USD' }) {
               </Link>
             </div>
 
-            {/* Unified High-Trust Social Proof Bar */}
-            <div className="hero-unified-proof">
-              <div className="proof-trustpilot-block">
+            {/* Symmetrical High-Trust Social Proof Card */}
+            <div className="hero-social-proof-strip">
+              <div className="proof-col-item">
                 <div className="tp-stars-row">
                   <span className="tp-star-box">★</span>
                   <span className="tp-star-box">★</span>
@@ -76,22 +76,31 @@ export default function Hero({ onOpenModal, currency = 'USD' }) {
                   <span className="tp-star-box">★</span>
                   <span className="tp-star-box">★</span>
                 </div>
-                <div className="proof-tp-text">
-                  <strong>4.9 / 5.0</strong> on <span className="tp-brand-name">Trustpilot</span>
-                  <span className="tp-sub-count">(45+ Reviews)</span>
+                <div className="proof-text-group">
+                  <div className="proof-main-line">
+                    <strong>4.9 / 5.0</strong> on <span className="tp-brand-name">Trustpilot</span>
+                  </div>
+                  <div className="proof-sub-line">
+                    45+ Verified Client Reviews
+                  </div>
                 </div>
               </div>
 
-              <div className="proof-v-divider"></div>
+              <div className="proof-col-divider"></div>
 
-              <div className="hero-trust-avatars-wrap">
+              <div className="proof-col-item">
                 <div className="hero-trust-avatars">
                   <div className="avatar-chip" style={{ backgroundColor: '#00F59B', color: '#000', fontWeight: 800, fontSize: 10 }}>KSA</div>
                   <div className="avatar-chip" style={{ backgroundColor: '#00D2FF', color: '#000', fontWeight: 800, fontSize: 10 }}>USA</div>
                   <div className="avatar-chip" style={{ backgroundColor: '#A855F7', color: '#000', fontWeight: 800, fontSize: 10 }}>UK</div>
                 </div>
-                <div className="proof-avatars-text">
-                  Trusted by <strong>35+ enterprise brands</strong>
+                <div className="proof-text-group">
+                  <div className="proof-main-line">
+                    <strong>35+ Enterprise Brands</strong>
+                  </div>
+                  <div className="proof-sub-line">
+                    Dominating Amazon, Noon & Shopify
+                  </div>
                 </div>
               </div>
             </div>

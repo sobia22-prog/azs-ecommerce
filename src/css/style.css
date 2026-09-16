@@ -812,25 +812,27 @@ img {
 }
 
 .hero-content h1 {
-  font-size: clamp(2.15rem, 2.8vw, 2.85rem);
-  font-weight: 800;
-  line-height: 1.12;
-  margin-bottom: 12px;
+  font-size: clamp(2.85rem, 4.2vw, 4.1rem);
+  font-weight: 850;
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
 .hero-subtitle {
-  font-size: 0.93rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 16px;
-  max-width: 530px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 540px;
 }
 
 .hero-cta-group {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 14px;
+  margin-bottom: 22px;
   flex-wrap: wrap;
 }
 
@@ -4818,86 +4820,112 @@ img {
   animation: pulseDot 2s infinite;
 }
 
-/* Unified High-Trust Social Proof Bar (Clean & Professional) */
-.hero-unified-proof {
-  display: inline-flex;
+/* Symmetrical High-Trust Social Proof Card (Pixel-Perfect Alignment) */
+.hero-social-proof-strip {
+  display: grid;
+  grid-template-columns: auto 1px auto;
   align-items: center;
   gap: 16px;
-  padding: 8px 16px;
-  background: rgba(12, 19, 32, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-full);
-  margin-top: 6px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  flex-wrap: wrap;
+  padding: 12px 18px;
+  background: rgba(12, 19, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  width: fit-content;
+  max-width: 100%;
 }
 
-.proof-trustpilot-block {
-  display: inline-flex;
+.proof-col-item {
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .tp-stars-row {
   display: flex;
   gap: 2px;
+  flex-shrink: 0;
 }
 
 .tp-star-box {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   background: #00b67a;
   color: #fff;
-  font-size: 0.68rem;
+  font-size: 0.70rem;
   border-radius: 2px;
   line-height: 1;
 }
 
-.proof-tp-text {
-  font-size: 0.76rem;
+.hero-trust-avatars {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 6px;
+}
+
+.avatar-chip {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-primary);
+  margin-left: -6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.proof-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.proof-main-line {
+  font-size: 0.82rem;
   color: var(--text-pure);
+  line-height: 1.25;
   white-space: nowrap;
 }
 
-.proof-tp-text strong {
-  color: var(--neon-mint);
+.proof-main-line strong {
+  color: var(--text-pure);
+  font-weight: 800;
 }
 
-.tp-brand-name {
+.proof-main-line .tp-brand-name {
   color: #00b67a;
   font-weight: 800;
 }
 
-.tp-sub-count {
-  color: var(--text-muted);
+.proof-sub-line {
   font-size: 0.72rem;
-  margin-left: 4px;
-}
-
-.proof-v-divider {
-  width: 1px;
-  height: 20px;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.hero-trust-avatars-wrap {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.proof-avatars-text {
-  font-size: 0.76rem;
-  color: var(--text-secondary);
+  color: var(--text-muted);
+  line-height: 1.2;
   white-space: nowrap;
 }
 
-.proof-avatars-text strong {
-  color: var(--text-pure);
+.proof-col-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 640px) {
+  .hero-social-proof-strip {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  .proof-col-divider {
+    display: none;
+  }
 }
 
 /* 3-Column Clean KPI Grid in Hero Live Revenue Card */
