@@ -89,9 +89,9 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'center' }}>
               <div 
                 style={{ cursor: 'pointer', position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(0, 245, 155, 0.2)' }}
-                onClick={() => onOpenModal('/assets/noon_trendyol_dashboard.png', 'Trendyol GCC Multi-Channel Expansion Console — 7.80x ROAS')}
+                onClick={() => onOpenModal('/assets/trendyol_light_dashboard.svg', 'Trendyol GCC Multi-Channel Expansion Console — 7.80x ROAS')}
               >
-                <img src="/assets/noon_trendyol_dashboard.png" alt="Trendyol Performance Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                <img src="/assets/trendyol_light_dashboard.svg" alt="Trendyol Performance Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
                 <div className="zoom-badge">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8"></circle>

@@ -18,7 +18,7 @@ const DASHBOARDS = {
   trendyol: {
     title: 'Trendyol GCC Cross-Border Expansion Gateway',
     desc: 'Automated product attribute translation, localized pricing, flash sale marketing, and high-margin GCC volume on Trendyol.',
-    img: '/assets/noon_trendyol_dashboard.png',
+    img: '/assets/trendyol_light_dashboard.svg',
     stat1Label: 'GCC Run-Rate',
     stat1Val: 'SAR 145,000',
     stat2Label: 'Orders Lift',
@@ -31,7 +31,7 @@ const DASHBOARDS = {
   usa: {
     title: 'USA Marketplace Advertising Engine (Amazon.com)',
     desc: 'Verified Sponsored Products (SP), Sponsored Brands (SB), and Sponsored Display (SD) campaign scaling in the United States.',
-    img: '/assets/amazon_ad_dashboard.png',
+    img: '/assets/usa_amazon_light_dashboard.svg',
     stat1Label: 'Total Ad Sales',
     stat1Val: '$48,900.00',
     stat2Label: 'Verified ROAS',
@@ -44,7 +44,7 @@ const DASHBOARDS = {
   uk: {
     title: 'UK Marketplace Cross-Border Gateway (Amazon.co.uk)',
     desc: 'High-margin British expansion, localized SEO, VAT compliance, Prime fulfillment, and consumer acquisition.',
-    img: '/assets/amz_deck_graphic.png',
+    img: '/assets/uk_amazon_light_dashboard.svg',
     stat1Label: 'UK Revenue Lift',
     stat1Val: '£36,450',
     stat2Label: 'Prime ROAS',
@@ -57,7 +57,7 @@ const DASHBOARDS = {
   consolidated: {
     title: 'Consolidated Executive Reporting (GCC, USA, UK & Cross-Border)',
     desc: 'Unified multi-region operational reporting dashboard comparing Amazon, Noon, Trendyol, and Shopify in a single accountable view.',
-    img: '/assets/reporting_dashboards_showcase.png',
+    img: '/assets/consolidated_light_dashboard.svg',
     stat1Label: 'Total Portfolio GMV',
     stat1Val: '$142,850,000',
     stat2Label: 'Avg Blended ROAS',

@@ -94,7 +94,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/marketplace-management/trendyol',
     serviceName: 'Trendyol GCC Cross-Border Management',
     platforms: ['Trendyol GCC', 'Arabic Feed Sync', 'Flash Sales', 'Express Air'],
-    image: '/assets/noon_trendyol_dashboard.png',
+    image: '/assets/trendyol_light_dashboard.svg',
     metrics: {
       salesGrowth: '+240%',
       volume: 'SAR 145,000/mo',
@@ -121,7 +121,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/marketplace-management/amazon-usa',
     serviceName: 'Amazon USA Expansion & DSP Advertising',
     platforms: ['Amazon.com', 'Amazon DSP', 'AMC Attribution', 'Prime FBA'],
-    image: '/assets/amazon_ad_dashboard.png',
+    image: '/assets/usa_amazon_light_dashboard.svg',
     metrics: {
       salesGrowth: '+507%',
       volume: '$48,900 Ad Sales',
