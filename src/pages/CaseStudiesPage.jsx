@@ -13,7 +13,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/marketplace-management/amazon-ksa',
     serviceName: 'Amazon KSA Marketplace Management',
     platforms: ['Amazon.sa', 'Amazon.ae', 'Sponsored Brands', 'Buy Box Defense'],
-    image: '/assets/homemaster_amazon_dashboard.svg',
+    image: '/assets/homemaster_case_study.jpg',
     metrics: {
       salesGrowth: '+11,963%',
       volume: '$32.2K/wk (SAR 120.8K)',
@@ -40,7 +40,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/shopify-dtc/store-setup',
     serviceName: 'Shopify Plus & DTC Performance Marketing',
     platforms: ['Shopify Storefront', 'Meta Ads', 'TikTok Ads', 'Tamara BNPL'],
-    image: '/assets/livora_shopify_dashboard.svg',
+    image: '/assets/livora_case_study.jpg',
     metrics: {
       salesGrowth: '+104%',
       volume: '$50.4K/mo (SAR 189K)',
@@ -67,7 +67,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/marketplace-management/noon',
     serviceName: 'Noon Marketplace Management (FBN)',
     platforms: ['Noon (FBN)', 'Noon Ad Boost', 'Seller Lab', 'Yellow Friday'],
-    image: '/assets/noon_ads_full_card.png',
+    image: '/assets/creativethings_case_study.jpg',
     metrics: {
       salesGrowth: '+311.0%',
       volume: 'SAR 208,535/mo',
@@ -94,7 +94,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/marketplace-management/trendyol',
     serviceName: 'Trendyol GCC Cross-Border Management',
     platforms: ['Trendyol GCC', 'Arabic Feed Sync', 'Flash Sales', 'Express Air'],
-    image: '/assets/trendyol_light_dashboard.svg',
+    image: '/assets/eurasia_case_study.svg',
     metrics: {
       salesGrowth: '+240%',
       volume: 'SAR 145,000/mo',
@@ -121,7 +121,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/marketplace-management/amazon-usa',
     serviceName: 'Amazon USA Expansion & DSP Advertising',
     platforms: ['Amazon.com', 'Amazon DSP', 'AMC Attribution', 'Prime FBA'],
-    image: '/assets/usa_amazon_light_dashboard.svg',
+    image: '/assets/nuvoaura_case_study.svg',
     metrics: {
       salesGrowth: '+507%',
       volume: '$48,900 Ad Sales',

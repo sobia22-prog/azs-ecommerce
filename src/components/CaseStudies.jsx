@@ -8,7 +8,7 @@ const FALLBACK_CASES = [
     category: 'Home & Kitchen Appliances',
     region: 'Saudi Arabia & UAE',
     platforms: ['Amazon UAE', 'Amazon Saudi', 'Shopify'],
-    image: '/assets/homemaster_amazon_dashboard.svg',
+    image: '/assets/homemaster_case_study.jpg',
     metrics: {
       salesGrowth: '+11,963%',
       sevenDayRevenue: '$32.2K (SAR 120.8K)',
@@ -24,7 +24,7 @@ const FALLBACK_CASES = [
     category: 'Fashion & Apparel',
     region: 'UK, UAE & KSA Cross-Border',
     platforms: ['Shopify', 'Meta Ads', 'TikTok Ads'],
-    image: '/assets/livora_shopify_dashboard.svg',
+    image: '/assets/livora_case_study.jpg',
     metrics: {
       salesGrowth: '+104%',
       sevenDayRevenue: '$50.4K/mo',
@@ -40,7 +40,7 @@ const FALLBACK_CASES = [
     category: 'Consumer Electronics & Creator Gear',
     region: 'GCC Multi-Channel',
     platforms: ['Noon (FBN)', 'Noon Ad Boost', 'Seller Lab'],
-    image: '/assets/noon_ads_full_card.png',
+    image: '/assets/creativethings_case_study.jpg',
     metrics: {
       salesGrowth: '+311.02%',
       sevenDayRevenue: 'SAR 208.5K',
@@ -53,9 +53,9 @@ const FALLBACK_CASES = [
 ];
 
 const CASE_STUDY_IMAGES = {
-  homemaster: '/assets/homemaster_amazon_dashboard.svg',
-  livora: '/assets/livora_shopify_dashboard.svg',
-  'creative-things': '/assets/noon_ads_full_card.png'
+  homemaster: '/assets/homemaster_case_study.jpg',
+  livora: '/assets/livora_case_study.jpg',
+  'creative-things': '/assets/creativethings_case_study.jpg'
 };
 
 export default function CaseStudies({ onOpenModal }) {
