@@ -13,7 +13,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/marketplace-management/amazon-ksa',
     serviceName: 'Amazon KSA Marketplace Management',
     platforms: ['Amazon.sa', 'Amazon.ae', 'Sponsored Brands', 'Buy Box Defense'],
-    image: '/assets/amz_seller_card.png',
+    image: '/assets/homemaster_amazon_dashboard.svg',
     metrics: {
       salesGrowth: '+11,963%',
       volume: '$32.2K/wk (SAR 120.8K)',
@@ -40,7 +40,7 @@ const ALL_CASE_STUDIES = [
     serviceLink: '/shopify-dtc/store-setup',
     serviceName: 'Shopify Plus & DTC Performance Marketing',
     platforms: ['Shopify Storefront', 'Meta Ads', 'TikTok Ads', 'Tamara BNPL'],
-    image: '/assets/shopify_dashboard_card.png',
+    image: '/assets/livora_shopify_dashboard.svg',
     metrics: {
       salesGrowth: '+104%',
       volume: '$50.4K/mo (SAR 189K)',
@@ -336,17 +336,16 @@ export default function CaseStudiesPage({ onOpenModal }) {
             ))}
           </div>
 
-          {/* Case Studies Grid */}
-          <div className="marketplace-grid">
+          {/* Case Studies Grid (3 columns per row dynamically wrapping) */}
+          <div className="case-studies-grid">
             {filtered.map((cs) => (
               <div className="mkt-card" key={cs.id}>
                 <div 
                   className="dashboard-img-container" 
-                  style={{ marginBottom: '20px', cursor: 'pointer' }}
                   onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
                   title="Click to zoom inspect proof"
                 >
-                  <img src={cs.image} alt={cs.title} style={{ height: '220px', objectFit: 'cover' }} />
+                  <img src={cs.image} alt={cs.title} loading="lazy" />
                   <div className="zoom-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <circle cx="11" cy="11" r="8"></circle>

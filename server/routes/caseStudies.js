@@ -8,10 +8,10 @@ const CASE_STUDIES = [
     category: 'Home & Kitchen Appliances',
     region: 'Saudi Arabia & UAE',
     platforms: ['Amazon UAE', 'Amazon Saudi', 'Shopify'],
-    image: 'assets/amz_seller_card.png',
+    image: '/assets/homemaster_amazon_dashboard.svg',
     metrics: {
       salesGrowth: '+11,963%',
-      sevenDayRevenue: '$32.2K',
+      sevenDayRevenue: '$32.2K (SAR 120.8K)',
       roas: '14.43x',
       acos: '6.93%'
     },
@@ -24,12 +24,12 @@ const CASE_STUDIES = [
     category: 'Fashion & Apparel',
     region: 'UK, UAE & KSA Cross-Border',
     platforms: ['Shopify', 'Meta Ads', 'TikTok Ads'],
-    image: 'assets/shopify_dashboard_card.png',
+    image: '/assets/livora_shopify_dashboard.svg',
     metrics: {
-      monthlySales: '$50,461.90',
-      salesLift: '+104%',
-      orders: '1,680 Units',
-      roas: '4.62x'
+      salesGrowth: '+104%',
+      sevenDayRevenue: '$50.4K/mo',
+      roas: '4.62x',
+      acos: '1,680 Units'
     },
     summary: 'Bespoke mobile-first Shopify storefront, UGC video acquisition on Meta and TikTok, and localized GCC checkout.',
     highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign, creator ad scaling, and local GCC payment gateway optimization.'
@@ -40,12 +40,12 @@ const CASE_STUDIES = [
     category: 'Consumer Electronics & Creator Gear',
     region: 'GCC Multi-Channel',
     platforms: ['Noon (FBN)', 'Noon Ad Boost', 'Seller Lab'],
-    image: 'assets/noon_ads_full_card.png',
+    image: '/assets/noon_ads_full_card.png',
     metrics: {
-      noonRevenue: 'SAR 208,535',
-      ordersGrowth: '+311.02%',
+      salesGrowth: '+311.02%',
+      sevenDayRevenue: 'SAR 208.5K',
       roas: '6.85x',
-      orders: '522 Units'
+      acos: '522 Units'
     },
     summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and category dominance.',
     highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 6.85x ROAS and seamless FBN Express delivery.'

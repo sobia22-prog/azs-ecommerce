@@ -1278,6 +1278,59 @@ img {
   margin-bottom: 60px;
 }
 
+/* ==========================================================================
+   Case Studies Grid (Strictly 3 Cards Per Row on Desktop, Responsive)
+   ========================================================================== */
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.case-studies-grid .mkt-card {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.case-studies-grid .mkt-card-title {
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.case-studies-grid .dashboard-img-container {
+  min-height: auto;
+  aspect-ratio: 16 / 9.5;
+  height: auto;
+  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.case-studies-grid .dashboard-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+@media (max-width: 1080px) {
+  .case-studies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 680px) {
+  .case-studies-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+
 .mkt-card {
   background: var(--bg-card);
   border: 1px solid var(--border-card);

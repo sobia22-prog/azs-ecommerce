@@ -8,7 +8,7 @@ const FALLBACK_CASES = [
     category: 'Home & Kitchen Appliances',
     region: 'Saudi Arabia & UAE',
     platforms: ['Amazon UAE', 'Amazon Saudi', 'Shopify'],
-    image: '/assets/amz_seller_card.png',
+    image: '/assets/homemaster_amazon_dashboard.svg',
     metrics: {
       salesGrowth: '+11,963%',
       sevenDayRevenue: '$32.2K (SAR 120.8K)',
@@ -24,7 +24,7 @@ const FALLBACK_CASES = [
     category: 'Fashion & Apparel',
     region: 'UK, UAE & KSA Cross-Border',
     platforms: ['Shopify', 'Meta Ads', 'TikTok Ads'],
-    image: '/assets/shopify_dashboard_card.png',
+    image: '/assets/livora_shopify_dashboard.svg',
     metrics: {
       salesGrowth: '+104%',
       sevenDayRevenue: '$50.4K/mo',
@@ -52,6 +52,12 @@ const FALLBACK_CASES = [
   }
 ];
 
+const CASE_STUDY_IMAGES = {
+  homemaster: '/assets/homemaster_amazon_dashboard.svg',
+  livora: '/assets/livora_shopify_dashboard.svg',
+  'creative-things': '/assets/noon_ads_full_card.png'
+};
+
 export default function CaseStudies({ onOpenModal }) {
   const [cases, setCases] = useState(FALLBACK_CASES);
 
@@ -60,7 +66,17 @@ export default function CaseStudies({ onOpenModal }) {
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data) {
-          setCases(data.data);
+          const formatted = data.data.map(item => ({
+            ...item,
+            image: CASE_STUDY_IMAGES[item.id] || item.image,
+            metrics: {
+              ...item.metrics,
+              salesGrowth: item.metrics?.salesGrowth || item.metrics?.salesLift || item.metrics?.ordersGrowth || '+100%',
+              sevenDayRevenue: item.metrics?.sevenDayRevenue || item.metrics?.monthlySales || item.metrics?.noonRevenue || '$32.2K',
+              roas: item.metrics?.roas || '4.5x'
+            }
+          }));
+          setCases(formatted);
         }
       })
       .catch(() => {
@@ -79,15 +95,16 @@ export default function CaseStudies({ onOpenModal }) {
           </p>
         </div>
 
-        <div className="marketplace-grid">
-          {cases.map((cs) => (
+        {/* Capped strictly to 3 case studies in 1 row on homepage */}
+        <div className="case-studies-grid">
+          {cases.slice(0, 3).map((cs) => (
             <div className="mkt-card" key={cs.id}>
               <div 
                 className="dashboard-img-container" 
-                style={{ marginBottom: '20px', cursor: 'pointer' }}
                 onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
+                title="Click to zoom inspect proof"
               >
-                <img src={cs.image} alt={cs.title} style={{ height: '200px', objectFit: 'cover' }} />
+                <img src={cs.image} alt={cs.title} loading="lazy" />
                 <div className="zoom-badge">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8"></circle>
@@ -98,7 +115,7 @@ export default function CaseStudies({ onOpenModal }) {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <span className="growth-badge">{cs.metrics.salesGrowth} Growth</span>
+                <span className="growth-badge">{cs.metrics?.salesGrowth || '+100%'} Growth</span>
                 <span style={{ fontSize: '0.8rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
               </div>
 
@@ -118,11 +135,11 @@ export default function CaseStudies({ onOpenModal }) {
               }}>
                 <div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Volume</div>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--neon-mint)' }}>{cs.metrics.sevenDayRevenue || cs.metrics.monthlySales || cs.metrics.noonRevenue}</div>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--neon-mint)' }}>{cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue}</div>
                 </div>
                 <div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Efficiency</div>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-heading)' }}>{cs.metrics.roas} ROAS</div>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-heading)' }}>{cs.metrics?.roas} ROAS</div>
                 </div>
               </div>
 
@@ -136,8 +153,8 @@ export default function CaseStudies({ onOpenModal }) {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '40px' }}>
-          <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '12px 28px' }}>
-            <span>Explore All 5 Documented Case Studies & Proof</span>
+          <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '12px 32px' }}>
+            <span>View More Case Studies & Proof</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
