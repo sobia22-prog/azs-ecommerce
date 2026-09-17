@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from '../Router';
 
 export default function RobotCompanion({ inline = false }) {
   const [isWaving, setIsWaving] = useState(true);
   const [speechIndex, setSpeechIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [showSparkle, setShowSparkle] = useState(false);
-  const [speechOpen, setSpeechOpen] = useState(true);
+  const [speechOpen, setSpeechOpen] = useState(false);
+  const { navigate } = useRouter();
 
   const tips = [
-    { text: "Welcome to AZS Solutions! Your dedicated growth partner across KSA, USA, and UK marketplaces.", badge: "GROWTH ADVISOR", action: "explore" },
-    { text: "HomeMaster achieved +11,963% growth on Amazon under our systems!", badge: "CASE STUDY", action: "cases" },
-    { text: "Try our dynamic ROI Simulator to forecast your scale across KSA, USA & UK.", badge: "SIMULATOR", action: "calculator" },
-    { text: "Dominating KSA (Amazon & Noon), USA (Amazon.com), and UK (Amazon.co.uk) synchronized under one roof.", badge: "3 MARKETS", action: "marketplaces" }
+    { text: "Welcome to AZS Solutions! Your growth partner across Amazon, Noon, Trendyol, and Shopify.", badge: "GROWTH ADVISOR", action: "explore" },
+    { text: "HomeMaster achieved +11,963% growth and 14.43x ROAS on Amazon Saudi under our systems!", badge: "CASE STUDY", action: "cases" },
+    { text: "Expanding from Turkey into the Gulf? Discover our turnkey Trendyol GCC launch corridor.", badge: "TRENDYOL HUB", action: "trendyol" },
+    { text: "Try our dynamic ROI Simulator to forecast your 6-month scale across KSA, USA & UK.", badge: "SIMULATOR", action: "calculator" },
+    { text: "Explore our two specialized divisions: Marketplaces and Shopify D2C Performance.", badge: "2 DIVISIONS", action: "divisions" }
   ];
 
   useEffect(() => {
@@ -24,26 +27,35 @@ export default function RobotCompanion({ inline = false }) {
   const handleRobotClick = () => {
     setIsWaving(true);
     setShowSparkle(true);
-    setSpeechOpen(true);
+    setSpeechOpen(prev => !prev);
     setTimeout(() => setShowSparkle(false), 1500);
-    setSpeechIndex((prev) => (prev + 1) % tips.length);
   };
 
   const handleAction = (action) => {
-    let targetId = 'calculator';
-    if (action === 'cases') targetId = 'case-studies';
-    if (action === 'marketplaces') targetId = 'marketplaces';
-    if (action === 'explore') targetId = 'challenges-solutions';
-
-    const el = document.getElementById(targetId);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (action === 'trendyol') {
+      navigate('/trendyol');
+      return;
+    }
+    if (action === 'cases') {
+      navigate('/case-studies');
+      return;
+    }
+    if (action === 'divisions') {
+      navigate('/marketplaces');
+      return;
+    }
+    if (action === 'calculator') {
+      navigate('/#calculator');
+      return;
+    }
+    navigate('/#challenges-solutions');
   };
 
   const currentTip = tips[speechIndex];
 
   return (
     <div className={`robot-container ${inline ? 'robot-inline' : 'robot-floating'}`}>
-      {/* Sleek Interactive Speech Bubble */}
+      {/* Sleek Interactive Speech Bubble (Opened only upon click) */}
       {speechOpen && (
         <div className="robot-speech-bubble">
           <div className="robot-speech-header">
@@ -57,8 +69,7 @@ export default function RobotCompanion({ inline = false }) {
                 e.stopPropagation();
                 setSpeechOpen(false);
               }}
-              title="Close speech bubble (click robot to reopen)"
-              aria-label="Close speech bubble"
+              title="Close speech bubble"
             >
               ✕
             </button>
@@ -66,25 +77,46 @@ export default function RobotCompanion({ inline = false }) {
           <p className="robot-speech-text">{currentTip.text}</p>
           <div className="robot-quick-actions">
             <button 
-              className="robot-action-pill"
+              className="robot-action-pill" 
               onClick={() => handleAction(currentTip.action)}
             >
-              Explore Now ➔
-            </button>
-            <button 
-              className="robot-action-pill wave-back-btn"
-              onClick={handleRobotClick}
-            >
-              👋 Wave back!
+              Explore Insight ➔
             </button>
           </div>
           <div className="robot-bubble-tail"></div>
         </div>
       )}
 
-      {/* Big, High-Fidelity Robot Character */}
+      {/* Subtle Launcher Pill when Speech Bubble is Closed (Desktop) */}
+      {!speechOpen && (
+        <button 
+          className="robot-launcher-pill desktop-only-pill"
+          onClick={handleRobotClick}
+          title="Click to open Growth Advisor"
+          aria-label="Open Growth Advisor"
+        >
+          <span className="pulse-dot"></span>
+          <span>Growth Advisor</span>
+        </button>
+      )}
+
+      {/* Mobile-Friendly Compact Floating AI Advisor Button */}
+      {!speechOpen && (
+        <button 
+          className="robot-mobile-fab-trigger"
+          onClick={handleRobotClick}
+          title="Open AI Growth Advisor"
+          aria-label="Open AI Growth Advisor"
+        >
+          <span className="mobile-fab-glow"></span>
+          <span className="mobile-fab-icon">🤖</span>
+          <span className="mobile-fab-pulse"></span>
+        </button>
+      )}
+
+      {/* High-Fidelity Robot Character (Desktop view) */}
       <div 
-        className={`robot-character ${isHovered ? 'hovered' : ''}`}
+        className={`robot-character desktop-robot-character ${isHovered ? 'hovered' : ''}`}
         onClick={handleRobotClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}

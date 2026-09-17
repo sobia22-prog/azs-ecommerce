@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '../Router';
 
 export default function WhatWeManage({ onOpenModal }) {
   const [activeService, setActiveService] = useState(0);
@@ -6,6 +7,7 @@ export default function WhatWeManage({ onOpenModal }) {
   const services = [
     {
       id: 1,
+      slug: 'store-setup',
       num: '01',
       title: 'Store Setup & Design',
       category: 'Brand Foundations',
@@ -25,6 +27,7 @@ export default function WhatWeManage({ onOpenModal }) {
     },
     {
       id: 2,
+      slug: 'catalog-optimization',
       num: '02',
       title: 'Catalog & Listings',
       category: 'Organic Dominance',
@@ -47,6 +50,7 @@ export default function WhatWeManage({ onOpenModal }) {
     },
     {
       id: 3,
+      slug: 'pricing-inventory',
       num: '03',
       title: 'Pricing & Inventory',
       category: 'Margin Protection',
@@ -67,6 +71,7 @@ export default function WhatWeManage({ onOpenModal }) {
     },
     {
       id: 4,
+      slug: 'orders-fulfillment',
       num: '04',
       title: 'Orders & Fulfillment',
       category: 'Operational Flow',
@@ -88,6 +93,7 @@ export default function WhatWeManage({ onOpenModal }) {
     },
     {
       id: 5,
+      slug: 'advertising-growth',
       num: '05',
       title: 'Advertising & Growth',
       category: 'Performance Marketing',
@@ -96,8 +102,8 @@ export default function WhatWeManage({ onOpenModal }) {
         'Amazon SP/SB/SD & Noon On-Site Bid Automation',
         'Meta Advantage+, TikTok UGC & Google PMax Funnels'
       ],
-      channels: ['Amazon Ads (KSA/US/UK)', 'Noon Ads', 'Meta', 'Google'],
-      impactMetric: '14.4x Peak ROAS',
+      channels: ['Amazon Ads (KSA/US/UK)', 'Noon Ads', 'Trendyol Ads', 'Meta', 'Google'],
+      impactMetric: '8.4x - 14.4x Peak ROAS',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <line x1="12" y1="20" x2="12" y2="10"></line>
@@ -108,6 +114,7 @@ export default function WhatWeManage({ onOpenModal }) {
     },
     {
       id: 6,
+      slug: 'reporting-analytics',
       num: '06',
       title: 'Reporting & Analytics',
       category: 'Data & Intelligence',
@@ -206,16 +213,33 @@ export default function WhatWeManage({ onOpenModal }) {
                 ))}
               </div>
 
-              <div className="srv-card-footer">
-                <div className="srv-channels-chips">
-                  {srv.channels.map((ch, i) => (
-                    <span key={i} className="srv-ch-chip">{ch}</span>
-                  ))}
+              <div className="srv-card-footer" style={{ flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                  <div className="srv-channels-chips">
+                    {srv.channels.map((ch, i) => (
+                      <span key={i} className="srv-ch-chip">{ch}</span>
+                    ))}
+                  </div>
+                  <div className="srv-impact-metric">{srv.impactMetric}</div>
                 </div>
-                <div className="srv-impact-metric">{srv.impactMetric}</div>
+
+                <Link 
+                  to={`/services/${srv.slug}`} 
+                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.80rem', fontWeight: 700, color: 'var(--neon-mint)', textDecoration: 'none', paddingTop: '10px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
+                >
+                  <span>Explore Module SLA & Deliverables</span>
+                  <span>➔</span>
+                </Link>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Explore All 6 Services Hub Link (Audit Finding #7) */}
+        <div style={{ textAlign: 'center', marginTop: '36px' }}>
+          <Link to="/services" className="btn btn-secondary" style={{ padding: '12px 28px', fontSize: '0.92rem' }}>
+            Explore All 6 Core Service Specifications & SLAs ➔
+          </Link>
         </div>
 
         {/* Deck Slide Footer Tagline */}

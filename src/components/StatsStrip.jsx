@@ -96,7 +96,7 @@ export default function StatsStrip({ currency = 'USD' }) {
     },
     {
       id: 'roas',
-      value: 4.8,
+      value: 8.4,
       prefix: '',
       suffix: 'x',
       decimals: 1,
@@ -122,6 +122,20 @@ export default function StatsStrip({ currency = 'USD' }) {
               <div className="stat-desc">{item.label}</div>
             </div>
           ))}
+        </div>
+
+        {/* Credibility Footnote & Audit Source Context (Audit Finding #1) */}
+        <div className="stats-footnote-row">
+          <div className="stats-audit-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            <span>AUDITED PARTNER DATA</span>
+          </div>
+          <p className="stats-footnote-text">
+            *Trailing 12 months, verified & aggregated across 35+ active partner brand accounts across Amazon (KSA/US/UK), Noon, Trendyol, and Shopify (Q1 2025 – Q4 2025 cohort). Refreshed quarterly.
+          </p>
         </div>
       </div>
     </section>

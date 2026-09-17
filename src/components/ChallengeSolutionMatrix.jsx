@@ -48,7 +48,7 @@ export default function ChallengeSolutionMatrix({ onOpenModal }) {
       solution: {
         title: 'Precision Performance Media',
         desc: 'Daily search-term harvesting, negative pruning, and full-funnel Sponsored Ads automation.',
-        deliverable: 'Verified 14.4x ROAS & 6.9% Target ACOS',
+        deliverable: 'Verified 8.4x - 14.4x Channel ROAS & Sub-12% ACOS',
         icon: (
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>

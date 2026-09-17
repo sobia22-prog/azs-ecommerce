@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from '../Router';
 
 const FALLBACK_CASES = [
   {
@@ -10,7 +11,7 @@ const FALLBACK_CASES = [
     image: '/assets/amz_seller_card.png',
     metrics: {
       salesGrowth: '+11,963%',
-      sevenDayRevenue: '$32.2K',
+      sevenDayRevenue: '$32.2K (SAR 120.8K)',
       roas: '14.43x',
       acos: '6.93%'
     },
@@ -27,27 +28,27 @@ const FALLBACK_CASES = [
     metrics: {
       salesGrowth: '+104%',
       sevenDayRevenue: '$50.4K/mo',
-      roas: '14.4x',
-      acos: '4.8 / 5'
+      roas: '4.62x',
+      acos: '1,680 Units'
     },
     summary: 'Bespoke mobile-first Shopify storefront, UGC video acquisition on Meta and TikTok, and localized GCC checkout.',
-    highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign and creator ad scaling.'
+    highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign, creator ad scaling, and local GCC payment gateway optimization.'
   },
   {
     id: 'creative-things',
     title: 'Creative Things Studio Gear',
     category: 'Consumer Electronics & Creator Gear',
     region: 'GCC Multi-Channel',
-    platforms: ['Noon (FBN)', 'Trendyol', 'Google P-Max'],
+    platforms: ['Noon (FBN)', 'Noon Ad Boost', 'Seller Lab'],
     image: '/assets/noon_ads_full_card.png',
     metrics: {
       salesGrowth: '+311.02%',
       sevenDayRevenue: 'SAR 208.5K',
-      roas: '13.61x',
-      acos: '522 Orders'
+      roas: '6.85x',
+      acos: '522 Units'
     },
-    summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and Trendyol rollout.',
-    highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 13.6x ROAS on Trendyol.'
+    summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and category dominance.',
+    highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 6.85x ROAS and seamless FBN Express delivery.'
   }
 ];
 
@@ -133,7 +134,18 @@ export default function CaseStudies({ onOpenModal }) {
             </div>
           ))}
         </div>
+
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '12px 28px' }}>
+            <span>Explore All 5 Documented Case Studies & Proof</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
+

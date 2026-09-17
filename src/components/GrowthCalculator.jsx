@@ -4,7 +4,7 @@ export default function GrowthCalculator({ currency = 'USD' }) {
   const isGCC = currency === 'GCC';
   const [revenue, setRevenue] = useState(50000);
   const [spend, setSpend] = useState(8000);
-  const [channels, setChannels] = useState(['ksa', 'usa', 'uk', 'shopify', 'meta', 'google']);
+  const [channels, setChannels] = useState(['ksa', 'trendyol', 'usa', 'uk', 'shopify', 'meta', 'google']);
   const [projection, setProjection] = useState({
     projectedMonthlyRevenue: 172500,
     incrementalMonthlyLift: 122500,
@@ -57,7 +57,7 @@ export default function GrowthCalculator({ currency = 'USD' }) {
           <div className="badge-pill badge-pill-cyan">Interactive Revenue Simulator</div>
           <h2>Forecast Your Multi-Marketplace Growth Potential</h2>
           <p>
-            Estimate your 6-month scale across KSA, USA, and UK marketplaces with synchronized performance media.
+            Estimate your 6-month scale across KSA, Trendyol, USA, and UK marketplaces with synchronized performance media.
           </p>
         </div>
 
@@ -101,11 +101,12 @@ export default function GrowthCalculator({ currency = 'USD' }) {
               <div className="channel-checkboxes">
                 {[
                   { id: 'ksa', label: '✓ 🇸🇦 KSA (Amazon & Noon)' },
+                  { id: 'trendyol', label: '✓ 🇹🇷 Trendyol GCC' },
                   { id: 'usa', label: '✓ 🇺🇸 USA (Amazon.com)' },
                   { id: 'uk', label: '✓ 🇬🇧 UK (Amazon.co.uk)' },
-                  { id: 'shopify', label: '✓ Shopify D2C' },
-                  { id: 'meta', label: '✓ Meta / TikTok' },
-                  { id: 'google', label: '✓ Google P-Max' },
+                  { id: 'shopify', label: '✓ 🛍️ Shopify D2C' },
+                  { id: 'meta', label: '✓ 📱 Meta / TikTok' },
+                  { id: 'google', label: '✓ 🔍 Google P-Max' },
                 ].map(c => (
                   <button
                     key={c.id}

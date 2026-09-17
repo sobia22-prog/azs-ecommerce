@@ -29,26 +29,26 @@ const CASE_STUDIES = [
       monthlySales: '$50,461.90',
       salesLift: '+104%',
       orders: '1,680 Units',
-      shopScore: '4.8 / 5'
+      roas: '4.62x'
     },
     summary: 'Bespoke mobile-first Shopify storefront, UGC video acquisition on Meta and TikTok, and localized GCC checkout.',
-    highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign and creator ad scaling.'
+    highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign, creator ad scaling, and local GCC payment gateway optimization.'
   },
   {
     id: 'creative-things',
     title: 'Creative Things Studio Gear',
     category: 'Consumer Electronics & Creator Gear',
     region: 'GCC Multi-Channel',
-    platforms: ['Noon (FBN)', 'Trendyol', 'Google P-Max'],
+    platforms: ['Noon (FBN)', 'Noon Ad Boost', 'Seller Lab'],
     image: 'assets/noon_ads_full_card.png',
     metrics: {
       noonRevenue: 'SAR 208,535',
       ordersGrowth: '+311.02%',
-      trendyolRoas: '13.61x',
-      orders: '522+'
+      roas: '6.85x',
+      orders: '522 Units'
     },
-    summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and Trendyol rollout.',
-    highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 13.6x ROAS on Trendyol.'
+    summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and category dominance.',
+    highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 6.85x ROAS and seamless FBN Express delivery.'
   }
 ];
 
