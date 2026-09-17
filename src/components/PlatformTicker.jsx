@@ -138,15 +138,26 @@ export default function PlatformTicker({ activePlatform, onSelectPlatform, showP
   return (
     <section className="platform-ticker-section">
       <div className="container">
-        {/* Official Agency Credentials Bar with Authentic Visual Partner Logos */}
-        <div className="certifications-ticker-row">
-          <div className="cert-ticker-header">
-            <span className="cert-live-dot"></span>
-            <span className="cert-ticker-title">VERIFIED AGENCY CREDENTIALS:</span>
-          </div>
-          <div className="cert-logos-scroller">
-            {credentials.map((item) => (
-              <div key={item.id} className="cert-partner-card" title={item.name}>
+        {/* Matching Section Header for Verified Agency Credentials */}
+        <div className="section-header cert-section-header">
+          <div className="badge-pill">Verified Agency Credentials</div>
+          <h2>Official Platform Accreditations &amp; Strategic Partnerships</h2>
+        </div>
+
+        {/* Continuous Infinite Marquee Loop (Right to Left) */}
+        <div className="cert-marquee-container" aria-label="Verified Platform Credentials Marquee">
+          <div className="cert-marquee-track">
+            {/* Primary Track */}
+            {credentials.map((item, idx) => (
+              <div key={`cred-1-${item.id}-${idx}`} className="cert-partner-card" title={item.name}>
+                <div className="cert-partner-logo-wrap">
+                  {item.logo}
+                </div>
+              </div>
+            ))}
+            {/* Seamless Looping Duplicate Track */}
+            {credentials.map((item, idx) => (
+              <div key={`cred-2-${item.id}-${idx}`} className="cert-partner-card" aria-hidden="true" title={item.name}>
                 <div className="cert-partner-logo-wrap">
                   {item.logo}
                 </div>
