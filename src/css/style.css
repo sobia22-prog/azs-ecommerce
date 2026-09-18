@@ -87,6 +87,8 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   background-color: var(--bg-darkest);
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -3267,66 +3269,213 @@ img {
 /* ==========================================================================
    Responsive Breakpoints
    ========================================================================== */
-@media (max-width: 1200px) {
-  .programs-grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+/* ==========================================================================
+   Responsive Breakpoints & Multi-Device Fluid Adaptation
+   ========================================================================== */
+
+/* 1. Large Laptops & Standard Desktop (1200px - 1440px) */
+@media (max-width: 1440px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+    gap: clamp(28px, 3.5vw, 56px);
   }
-  .services-coverage-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .hero-content h1 {
+    font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+  }
+  .case-studies-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .programs-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
   }
 }
 
-@media (max-width: 1024px) {
+/* 2. Standard Laptops & Compact Desktops (1024px - 1279px) */
+@media (max-width: 1279px) and (min-width: 1024px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
   .hero-grid {
-    grid-template-columns: 1.15fr 0.95fr;
-    gap: 24px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 28px;
+    align-items: center;
   }
   .hero-content h1 {
-    font-size: 2.1rem;
+    font-size: clamp(2.2rem, 3.4vw, 3.1rem);
   }
-  .marketplace-grid, .manage-grid, .testimonials-grid {
-    grid-template-columns: 1fr;
+  .hero-subtitle {
+    font-size: 0.96rem;
+    max-width: 560px;
   }
-  .dashboard-view-panel, .shopify-showcase-grid, .calculator-wrap, .booking-card {
-    grid-template-columns: 1fr;
+  .marketplace-grid,
+  .marketplace-grid-2col {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 22px;
   }
-  .process-timeline {
-    grid-template-columns: 1fr;
-  }
-  .stats-grid {
+  .case-studies-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
+  .calc-card,
+  .calculator-wrap {
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: 32px;
+    padding: 36px 30px;
+  }
+  .booking-card {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 36px;
+    padding: 44px 34px;
+  }
+  .programs-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .services-coverage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .manage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.8fr 1fr 1fr 1.1fr;
+    gap: 28px;
+  }
+  .dashboard-view-panel {
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: 28px;
+  }
+  .shopify-showcase-grid {
+    grid-template-columns: 1.05fr 0.95fr !important;
+    gap: 32px;
+  }
+  .testimonials-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px;
   }
   .banner-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 14px;
+  }
+  .why-trust-layout {
+    grid-template-columns: 1.3fr 0.9fr !important;
+    gap: 24px;
+  }
+}
+
+/* 3. Tablets & Large Foldables (769px - 1023px) */
+@media (max-width: 1023px) and (min-width: 769px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 24px;
+  }
+  .hero-content h1 {
+    font-size: 2.15rem;
+  }
+  .marketplace-grid,
+  .marketplace-grid-2col {
     grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .case-studies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .calc-card,
+  .calculator-wrap {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 30px 24px;
+  }
+  .booking-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 36px 26px;
+  }
+  .programs-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .manage-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .banner-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
   .why-trust-layout {
     grid-template-columns: 1fr;
   }
-  .matrix-row-card.mode-both {
-    grid-template-columns: 1fr;
+  .dashboard-view-panel {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+  .shopify-showcase-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px;
+  }
+  .models-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px;
   }
-  .matrix-connector {
-    flex-direction: row;
-    width: 100%;
+  .process-timeline {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px;
   }
-  .connector-line {
-    height: 1px;
-    width: 100%;
+  .services-coverage-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px;
+  }
+  .nav-menu {
+    display: none !important;
+  }
+  .mobile-toggle {
+    display: flex !important;
+  }
+  .desktop-currency-toggle {
+    display: none !important;
+  }
+  .mobile-drawer-extra {
+    display: block !important;
   }
 }
 
+/* 4. Mobile Phones & Small Tablets (<= 768px) */
 @media (max-width: 768px) {
   /* Safe body offset for sticky bottom navigation dock */
   body {
     padding-bottom: 68px;
   }
 
-  /* 1. Mobile Header & Nav Bar Sizing (Eliminates 390px CTA clipping) */
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 1. Mobile Header & Nav Bar Sizing */
   .site-header {
     height: 62px;
   }
@@ -3431,7 +3580,7 @@ img {
 
   /* 2. Mobile Hero Layout & Unobstructed CTAs */
   .hero-section {
-    padding-top: 70px;
+    padding-top: 72px;
     padding-bottom: 24px;
     min-height: auto;
   }
@@ -3446,31 +3595,25 @@ img {
     gap: 6px;
   }
 
-  .hero-option-pill {
-    font-size: 0.62rem;
-    padding: 3px 8px;
+  .hero-single-eyebrow {
+    font-size: 0.72rem;
+    padding: 6px 12px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 1.4;
   }
 
   .hero-content h1 {
-    font-size: 1.85rem;
+    font-size: clamp(1.8rem, 6.2vw, 2.35rem);
     line-height: 1.15;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .hero-subtitle {
     font-size: 0.88rem;
-    line-height: 1.45;
-    margin-bottom: 14px;
-  }
-
-  .hero-badges-row {
-    gap: 6px;
+    line-height: 1.5;
     margin-bottom: 16px;
-  }
-
-  .hero-division-badge {
-    font-size: 0.72rem;
-    padding: 4px 10px;
   }
 
   .hero-cta-group {
@@ -3478,9 +3621,8 @@ img {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
-    max-width: 360px;
     gap: 10px;
-    margin-bottom: 26px;
+    margin-bottom: 22px;
     position: relative;
     z-index: 10;
   }
@@ -3488,9 +3630,44 @@ img {
   .hero-cta-group .btn {
     width: 100%;
     justify-content: center;
-    padding: 12px 18px;
+    padding: 13px 18px;
     font-size: 0.92rem;
     text-align: center;
+  }
+
+  .live-revenue-card {
+    padding: 16px 14px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  .live-revenue-val {
+    font-size: clamp(1.5rem, 5vw, 1.95rem);
+  }
+
+  .hero-kpis {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .hero-kpis.hero-kpis-3col {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 5px !important;
+    padding-top: 10px !important;
+  }
+
+  .hero-kpis.hero-kpis-3col .kpi-chip {
+    padding: 8px 3px !important;
+  }
+
+  .hero-kpis.hero-kpis-3col .kpi-val {
+    font-size: clamp(0.92rem, 3.2vw, 1.15rem) !important;
+  }
+
+  .hero-kpis.hero-kpis-3col .kpi-label {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.02em !important;
   }
 
   .hero-trust-badges {
@@ -3503,120 +3680,472 @@ img {
     margin-left: 0;
   }
 
-  /* 3. Page Height & Vertical Spacing Compression (35k px optimization) */
-  .section-padding {
-    padding: 44px 0 !important;
+  /* 3. Section Compression & Proportional Headings */
+  .section {
+    padding: 40px 0 !important;
   }
 
   .section-header {
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
 
+  .section-header h2,
   .section-title {
-    font-size: 1.75rem;
-    margin-bottom: 10px;
+    font-size: clamp(1.45rem, 5vw, 1.95rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 8px !important;
   }
 
+  .section-header p,
   .section-subtitle {
-    font-size: 0.92rem;
-    margin-bottom: 18px;
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
   }
 
+  /* 4. Sleek 2x2 Stats Strip on Mobile */
   .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
   }
 
-  .channel-checkboxes {
-    grid-template-columns: 1fr;
+  .stat-card {
+    padding: 14px 10px !important;
   }
 
-  .form-grid-2 {
-    grid-template-columns: 1fr;
+  .stat-number {
+    font-size: clamp(1.35rem, 4.8vw, 1.8rem) !important;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .stat-label {
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
   }
 
-  .hero-kpis {
-    grid-template-columns: repeat(2, 1fr);
+  /* 5. Marketplaces & Case Studies */
+  .marketplace-grid,
+  .marketplace-grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 30px;
   }
 
-  .services-coverage-grid {
-    grid-template-columns: 1fr;
-    gap: 14px;
+  .case-studies-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 
-  .programs-grid-4 {
-    grid-template-columns: 1fr;
-    gap: 14px;
+  .mkt-card,
+  .case-studies-grid .mkt-card {
+    padding: 18px 14px !important;
+  }
+
+  .mkt-card-media {
+    height: auto !important;
+    max-height: 175px !important;
+    aspect-ratio: 16 / 9 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .mkt-card-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 14px !important;
+  }
+
+  /* Live Console Proof on Mobile */
+  .deck-switcher-pills {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .deck-pill-btn {
+    padding: 6px 12px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .dashboard-view-panel {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .dashboard-img-container {
+    min-height: auto !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+  }
+
+  .dashboard-details-col h3 {
+    font-size: clamp(1.25rem, 4.5vw, 1.55rem) !important;
+    margin-bottom: 10px !important;
+  }
+
+  .stat-callout-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .stat-callout {
+    padding: 10px 8px !important;
+  }
+
+  .stat-callout-number {
+    font-size: 1.15rem !important;
+  }
+
+  /* Shopify DTC Mobile */
+  .shopify-showcase-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    margin-bottom: 36px !important;
+  }
+
+  .store-tabs-nav {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .store-tab-pill {
+    padding: 6px 12px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .shopify-features-col h3 {
+    font-size: clamp(1.35rem, 4.8vw, 1.75rem) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .capabilities-list {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .banner-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .banner-metric-box h4 {
+    font-size: 1.35rem !important;
+  }
+
+  .manage-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .why-trust-layout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin-top: 20px !important;
   }
 
   .pillars-grid-6 {
-    grid-template-columns: 1fr;
-    gap: 14px;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
   }
 
-  .matrix-grid {
-    gap: 12px;
-    margin-top: 18px;
+  .direct-action-card {
+    padding: 22px 16px !important;
   }
 
-  .matrix-row-card {
-    padding: 16px 14px;
+  .direct-action-card h3 {
+    font-size: 1.35rem !important;
   }
 
-  .process-timeline {
-    gap: 12px;
-    margin-top: 20px;
+  .testimonials-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 
-  .process-step-card {
-    padding: 16px 14px;
+  .testi-card {
+    padding: 20px 16px !important;
+  }
+
+  .testi-quote {
+    font-size: 0.88rem !important;
+    margin-bottom: 16px !important;
+  }
+
+  .models-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    margin-top: 24px !important;
+  }
+
+  /* 6. Growth Calculator Mobile Fluid Layout */
+  .calc-card,
+  .calculator-wrap {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 18px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .channel-checkboxes {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .channel-check-btn {
+    flex: 1 1 calc(50% - 6px) !important;
+    min-width: 130px !important;
+    padding: 7px 8px !important;
+    font-size: 0.72rem !important;
+    text-align: center !important;
+    white-space: normal !important;
+    border-radius: var(--radius-sm) !important;
   }
 
   .calc-results-col {
-    padding: 20px 16px;
+    padding: 16px 12px !important;
   }
 
+  .projected-rev-big {
+    font-size: clamp(1.75rem, 5.5vw, 2.2rem) !important;
+  }
+
+  .res-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .res-metric-item {
+    padding: 10px 8px !important;
+  }
+
+  /* 7. Lead Capture & Growth Audit Form Mobile Fix */
   .booking-card {
-    padding: 22px 16px;
+    grid-template-columns: 1fr !important;
+    padding: 18px 12px !important;
+    gap: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
 
+  .booking-info h2 {
+    font-size: clamp(1.45rem, 5vw, 1.85rem) !important;
+    margin-bottom: 10px !important;
+  }
+
+  .booking-info p {
+    font-size: 0.86rem !important;
+    margin-bottom: 14px !important;
+  }
+
+  .booking-guarantees li {
+    font-size: 0.80rem !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .booking-form {
+    padding: 16px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .form-group {
+    margin-bottom: 12px !important;
+  }
+
+  .form-label {
+    font-size: 0.78rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .form-input,
+  .form-select {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+    padding: 10px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-submit-btn {
+    width: 100% !important;
+    padding: 14px 12px !important;
+    font-size: clamp(0.85rem, 3.4vw, 1rem) !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+    word-break: break-word !important;
+  }
+
+  /* 8. Floating Robot Safe Mobile Docking */
+  .robot-container.robot-floating {
+    bottom: 74px !important;
+    right: 12px !important;
+    z-index: 998 !important;
+    transform: scale(0.8) !important;
+  }
+
+  .robot-speech-bubble {
+    max-width: calc(100vw - 36px) !important;
+    right: 0 !important;
+    bottom: 58px !important;
+    font-size: 0.78rem !important;
+    padding: 10px 14px !important;
+  }
+
+  /* 9. Programs & Other Grids */
+  .programs-grid-4 {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .services-coverage-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .matrix-grid {
+    gap: 12px !important;
+    margin-top: 16px !important;
+  }
+
+  .matrix-row-card {
+    padding: 14px 12px !important;
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-top: 16px !important;
+  }
+
+  .process-step-card {
+    padding: 14px 12px !important;
+  }
+
+  /* Visual banners on mobile */
   .coverage-visual-hero {
-    margin-bottom: 20px;
+    margin-bottom: 24px !important;
   }
 
   .coverage-hero-content {
-    padding: 18px;
+    padding: 18px 14px !important;
   }
 
   .coverage-hero-img-wrap {
-    min-height: 160px;
-    height: 160px;
-  }
-
-  .matrix-visual-media, 
-  .trust-media-wrap {
-    height: 150px;
+    min-height: 170px !important;
+    height: 170px !important;
   }
 
   .trust-visual-centerpiece {
-    padding: 18px;
-    margin-bottom: 24px;
+    padding: 18px 14px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .trust-media-wrap {
+    height: 170px !important;
   }
 
   .matrix-visual-banner {
-    padding: 16px;
-    margin-top: 20px;
+    padding: 16px 12px !important;
+    margin-top: 20px !important;
   }
 
-  .matrix-filter-buttons {
-    flex-direction: column;
-    width: 100%;
-    border-radius: var(--radius-md);
+  .matrix-visual-media {
+    height: 170px !important;
+  }
+
+  /* 10. Footer Mobile */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .footer-links {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+
+  /* 11. Subpages Mobile */
+  .subpage-title {
+    font-size: clamp(1.75rem, 5.5vw, 2.3rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .subpage-subtitle {
+    font-size: 0.88rem !important;
+    margin-bottom: 18px !important;
+  }
+
+  .subpage-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+
+  .subpage-actions .btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .subpage-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .subpage-metric-card {
+    padding: 12px 10px !important;
+  }
+
+  .subpage-metric-val {
+    font-size: 1.4rem !important;
+  }
+}
+
+/* 5. Ultra-Compact Phones (<= 380px) */
+@media (max-width: 380px) {
+  .hero-content h1 {
+    font-size: 1.65rem !important;
+  }
+  .stat-card {
+    padding: 10px 6px !important;
+  }
+  .stat-number {
+    font-size: 1.25rem !important;
+  }
+  .channel-check-btn {
+    flex: 1 1 100% !important;
+  }
+  .booking-card {
+    padding: 14px 8px !important;
+  }
+  .booking-form {
+    padding: 14px 8px !important;
+  }
+  .hero-kpis.hero-kpis-3col {
+    gap: 3px !important;
+  }
+  .hero-kpis.hero-kpis-3col .kpi-chip {
+    padding: 6px 2px !important;
+  }
+  .hero-kpis.hero-kpis-3col .kpi-val {
+    font-size: 0.85rem !important;
+  }
+  .hero-kpis.hero-kpis-3col .kpi-label {
+    font-size: 0.52rem !important;
   }
 }
 
