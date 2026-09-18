@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter, Link } from '../../Router';
 import useSEO from '../../hooks/useSEO';
 
@@ -92,6 +92,71 @@ export default function AdminDashboardPage() {
     localStorage.removeItem('azs_admin_token');
     localStorage.removeItem('azs_admin_user');
     navigate('/admin/login');
+  };
+
+  const [uploading, setUploading] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const fileInputRef = useRef(null);
+
+  const fetchGallery = async () => {
+    try {
+      const res = await fetch('/api/upload/gallery', { headers: getHeaders() });
+      const data = await res.json();
+      if (data.success && data.data) {
+        setGalleryImages(data.data);
+      }
+    } catch {
+      // ignore
+    }
+  };
+
+  useEffect(() => {
+    if (editItem && galleryImages.length === 0) {
+      fetchGallery();
+    }
+  }, [editItem]);
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 15 * 1024 * 1024) {
+      notify('File too large. Please select an image under 15MB.', 'error');
+      return;
+    }
+
+    setUploading(true);
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        const base64Data = reader.result;
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          headers: getHeaders(),
+          body: JSON.stringify({
+            filename: file.name,
+            base64Data
+          })
+        });
+        const data = await res.json();
+        if (data.success && data.url) {
+          setEditItem(prev => ({
+            ...prev,
+            data: { ...prev.data, image: data.url }
+          }));
+          notify('Image uploaded and applied successfully!');
+          fetchGallery();
+        } else {
+          throw new Error(data.message || 'Upload failed');
+        }
+      } catch (err) {
+        notify(err.message || 'Error uploading file.', 'error');
+      } finally {
+        setUploading(false);
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   // Lead Actions
@@ -1005,16 +1070,288 @@ export default function AdminDashboardPage() {
                 </div>
               )}
 
-              {/* Image URL */}
+              {/* Visual Image & Console Upload / Picker */}
               {editItem.type !== 'blog' && (
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 700, color: '#94a3b8', marginBottom: '4px' }}>Image / Console URL</label>
+                <div style={{
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '10px',
+                  padding: '14px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: '#ffffff' }}>
+                        Console / Showcase Image
+                      </label>
+                      <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>
+                        Upload screenshot from your device or pick from existing console library
+                      </span>
+                    </div>
+                    {editItem.data.image && (
+                      <button
+                        type="button"
+                        onClick={() => setEditItem(prev => ({ ...prev, data: { ...prev.data, image: '' } }))}
+                        style={{
+                          background: 'rgba(239, 68, 68, 0.1)',
+                          border: '1px solid rgba(239, 68, 68, 0.25)',
+                          color: '#f87171',
+                          padding: '4px 8px',
+                          borderRadius: '6px',
+                          fontSize: '0.72rem',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        ✕ Remove
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Hidden File Input */}
                   <input
-                    type="text"
-                    value={editItem.data.image || ''}
-                    onChange={(e) => setEditItem({ ...editItem, data: { ...editItem.data, image: e.target.value } })}
-                    style={{ width: '100%', padding: '10px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '6px', color: '#ffffff' }}
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                    onChange={handleFileUpload}
+                    style={{ display: 'none' }}
                   />
+
+                  {/* Image Live Preview / Drop Box */}
+                  <div
+                    onDragOver={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      if (e.dataTransfer.files?.[0]) {
+                        handleFileUpload({ target: { files: e.dataTransfer.files } });
+                      }
+                    }}
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      minHeight: '160px',
+                      borderRadius: '8px',
+                      border: editItem.data.image
+                        ? '1px solid rgba(0, 245, 155, 0.35)'
+                        : '2px dashed rgba(255, 255, 255, 0.15)',
+                      background: editItem.data.image
+                        ? 'rgba(0, 0, 0, 0.4)'
+                        : 'rgba(255, 255, 255, 0.02)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '12px',
+                      transition: 'all 0.2s ease',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    {editItem.data.image ? (
+                      <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          background: 'rgba(0, 245, 155, 0.15)',
+                          border: '1px solid rgba(0, 245, 155, 0.4)',
+                          color: 'var(--neon-mint)',
+                          padding: '2px 8px',
+                          borderRadius: '4px',
+                          fontSize: '0.68rem',
+                          fontWeight: 700
+                        }}>
+                          ✓ Active Image
+                        </div>
+                        <img
+                          src={editItem.data.image}
+                          alt="Console Preview"
+                          style={{
+                            maxHeight: '150px',
+                            maxWidth: '100%',
+                            objectFit: 'contain',
+                            borderRadius: '6px',
+                            marginTop: '20px'
+                          }}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.style.opacity = '0.3';
+                          }}
+                        />
+                        <div style={{ marginTop: '8px', fontSize: '0.72rem', color: '#94a3b8' }}>
+                          {editItem.data.image.split('/').pop()}
+                        </div>
+                      </div>
+                    ) : (
+                      <div style={{ textAlign: 'center', padding: '16px' }}>
+                        <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🖼️</div>
+                        <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', marginBottom: '4px' }}>
+                          No Console Image Selected
+                        </div>
+                        <div style={{ fontSize: '0.74rem', color: '#64748b', maxWidth: '300px' }}>
+                          Drag and drop an image here, upload from your computer, or choose from the visual library below.
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Actions: Upload & Gallery Toggle */}
+                  <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                    <button
+                      type="button"
+                      disabled={uploading}
+                      onClick={() => fileInputRef.current?.click()}
+                      style={{
+                        flex: 1,
+                        minWidth: '160px',
+                        padding: '10px 14px',
+                        background: 'linear-gradient(135deg, rgba(0, 245, 155, 0.15), rgba(0, 217, 245, 0.15))',
+                        border: '1px solid rgba(0, 245, 155, 0.4)',
+                        color: 'var(--neon-mint)',
+                        borderRadius: '8px',
+                        fontSize: '0.8rem',
+                        fontWeight: 700,
+                        cursor: uploading ? 'wait' : 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '6px',
+                        transition: 'all 0.2s'
+                      }}
+                    >
+                      {uploading ? '⏳ Uploading Image...' : '📁 Upload from Computer'}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!galleryImages.length) fetchGallery();
+                        setShowGallery(prev => !prev);
+                      }}
+                      style={{
+                        padding: '10px 14px',
+                        background: showGallery ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 0.04)',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
+                        color: '#cbd5e1',
+                        borderRadius: '8px',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
+                    >
+                      🖼️ {showGallery ? 'Hide Gallery' : `Choose from Gallery (${galleryImages.length || '...'})`}
+                    </button>
+                  </div>
+
+                  {/* Visual Gallery Selection Grid */}
+                  {showGallery && (
+                    <div style={{
+                      background: 'rgba(0, 0, 0, 0.3)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      borderRadius: '8px',
+                      padding: '12px'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                        <span style={{ fontSize: '0.74rem', fontWeight: 700, color: '#94a3b8' }}>
+                          Select Console Thumbnail (Click to apply)
+                        </span>
+                        <button
+                          type="button"
+                          onClick={fetchGallery}
+                          style={{ background: 'none', border: 'none', color: 'var(--neon-cyan)', fontSize: '0.72rem', cursor: 'pointer', textDecoration: 'underline' }}
+                        >
+                          Refresh
+                        </button>
+                      </div>
+
+                      {galleryImages.length === 0 ? (
+                        <div style={{ textAlign: 'center', padding: '16px', color: '#64748b', fontSize: '0.75rem' }}>
+                          Loading gallery images...
+                        </div>
+                      ) : (
+                        <div style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
+                          gap: '8px',
+                          maxHeight: '220px',
+                          overflowY: 'auto',
+                          paddingRight: '4px'
+                        }}>
+                          {galleryImages.map(img => {
+                            const isSelected = editItem.data.image === img.url;
+                            const displayName = img.filename
+                              .replace(/\.(png|jpg|jpeg|svg|webp)$/i, '')
+                              .replace(/^[\d_]+/, '')
+                              .replace(/[_-]/g, ' ');
+                            return (
+                              <div
+                                key={img.url}
+                                onClick={() => setEditItem(prev => ({
+                                  ...prev,
+                                  data: { ...prev.data, image: img.url }
+                                }))}
+                                style={{
+                                  position: 'relative',
+                                  cursor: 'pointer',
+                                  borderRadius: '6px',
+                                  overflow: 'hidden',
+                                  border: isSelected ? '2px solid var(--neon-mint)' : '1px solid rgba(255, 255, 255, 0.08)',
+                                  background: isSelected ? 'rgba(0, 245, 155, 0.08)' : 'rgba(255, 255, 255, 0.02)',
+                                  padding: '4px',
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  transition: 'all 0.15s ease'
+                                }}
+                              >
+                                <div style={{ height: '60px', width: '100%', borderRadius: '4px', overflow: 'hidden', background: '#070b14', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                  <img
+                                    src={img.url}
+                                    alt={img.filename}
+                                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+                                    loading="lazy"
+                                  />
+                                </div>
+                                <div style={{
+                                  fontSize: '0.64rem',
+                                  color: isSelected ? 'var(--neon-mint)' : '#94a3b8',
+                                  marginTop: '4px',
+                                  whiteSpace: 'nowrap',
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis',
+                                  textTransform: 'capitalize'
+                                }}>
+                                  {displayName}
+                                </div>
+                                {isSelected && (
+                                  <div style={{
+                                    position: 'absolute',
+                                    top: '4px',
+                                    right: '4px',
+                                    background: 'var(--neon-mint)',
+                                    color: '#000000',
+                                    borderRadius: '50%',
+                                    width: '14px',
+                                    height: '14px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '9px',
+                                    fontWeight: 900
+                                  }}>
+                                    ✓
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               )}
 
