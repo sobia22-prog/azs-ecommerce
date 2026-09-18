@@ -3,9 +3,10 @@ import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 import GrowthCalculator from '../components/GrowthCalculator';
-import RobotCompanion from '../components/RobotCompanion';
+import { useCurrency } from '../context/CurrencyContext';
 
-export default function CalculatorPage({ currency, onToggleCurrency }) {
+export default function CalculatorPage() {
+  const { isSAR } = useCurrency();
   useSEO({
     title: 'Interactive Ecommerce & Marketplace ROI Simulator | AZS Solutions',
     description: 'Simulate your brand’s 6-month GMV run-rate and ad ROAS across Amazon KSA/USA/UK, Noon, Trendyol GCC, and Shopify D2C.',
@@ -38,7 +39,7 @@ export default function CalculatorPage({ currency, onToggleCurrency }) {
 
       {/* Full Interactive Simulator Engine */}
       <div id="simulator-engine" style={{ padding: '20px 0 60px' }}>
-        <GrowthCalculator currency={currency} />
+        <GrowthCalculator />
       </div>
 
       {/* Methodology & Calculation Framework */}
@@ -91,9 +92,6 @@ export default function CalculatorPage({ currency, onToggleCurrency }) {
           </div>
         </div>
       </section>
-
-      {/* Interactive Robot Companion */}
-      <RobotCompanion />
     </div>
   );
 }

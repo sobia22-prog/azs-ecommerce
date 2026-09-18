@@ -1,63 +1,89 @@
 const express = require('express');
 const router = express.Router();
+const CaseStudy = require('../models/CaseStudy');
+const { getIsConnected } = require('../config/db');
+const { SEED_DATA } = require('../seed');
+const { requireAdmin } = require('./auth');
 
-const CASE_STUDIES = [
-  {
-    id: 'homemaster',
-    title: 'HomeMaster Appliances',
-    category: 'Home & Kitchen Appliances',
-    region: 'Saudi Arabia & UAE',
-    platforms: ['Amazon UAE', 'Amazon Saudi', 'Shopify'],
-    image: '/assets/homemaster_case_study.jpg',
-    metrics: {
-      salesGrowth: '+11,963%',
-      sevenDayRevenue: '$32.2K (SAR 120.8K)',
-      roas: '14.43x',
-      acos: '6.93%'
-    },
-    summary: 'Turnkey catalog restructuring, Buy Box protection, Arabic SEO, and Sponsored Ads optimization across GCC marketplaces.',
-    highlightQuote: 'Reduced ACOS from 34% down to 6.93% while scaling weekly revenue by +11,963%.'
-  },
-  {
-    id: 'livora',
-    title: 'LIVORA Modern Essentials',
-    category: 'Fashion & Apparel',
-    region: 'UK, UAE & KSA Cross-Border',
-    platforms: ['Shopify', 'Meta Ads', 'TikTok Ads'],
-    image: '/assets/livora_case_study.jpg',
-    metrics: {
-      salesGrowth: '+104%',
-      sevenDayRevenue: '$50.4K/mo',
-      roas: '4.62x',
-      acos: '1,680 Units'
-    },
-    summary: 'Bespoke mobile-first Shopify storefront, UGC video acquisition on Meta and TikTok, and localized GCC checkout.',
-    highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign, creator ad scaling, and local GCC payment gateway optimization.'
-  },
-  {
-    id: 'creative-things',
-    title: 'Creative Things Studio Gear',
-    category: 'Consumer Electronics & Creator Gear',
-    region: 'GCC Multi-Channel',
-    platforms: ['Noon (FBN)', 'Noon Ad Boost', 'Seller Lab'],
-    image: '/assets/creativethings_case_study.jpg',
-    metrics: {
-      salesGrowth: '+311.02%',
-      sevenDayRevenue: 'SAR 208.5K',
-      roas: '6.85x',
-      acos: '522 Units'
-    },
-    summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and category dominance.',
-    highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 6.85x ROAS and seamless FBN Express delivery.'
+let memoryCaseStudies = [...SEED_DATA.caseStudies];
+
+// GET /api/case-studies - Public
+router.get('/', async (req, res) => {
+  try {
+    if (getIsConnected()) {
+      let items = await CaseStudy.find().sort({ sortOrder: 1 });
+      if (items.length === 0) {
+        await CaseStudy.insertMany(SEED_DATA.caseStudies);
+        items = await CaseStudy.find().sort({ sortOrder: 1 });
+      }
+      return res.json({ success: true, count: items.length, data: items });
+    } else {
+      return res.json({ success: true, count: memoryCaseStudies.length, data: memoryCaseStudies });
+    }
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message, data: memoryCaseStudies });
   }
-];
+});
 
-router.get('/', (req, res) => {
-  res.json({
-    success: true,
-    count: CASE_STUDIES.length,
-    data: CASE_STUDIES
-  });
+// POST /api/case-studies - Admin only
+router.post('/', requireAdmin, async (req, res) => {
+  try {
+    const data = req.body;
+    if (!data.title || !data.slug) {
+      return res.status(400).json({ success: false, message: 'Title and slug are required.' });
+    }
+
+    if (getIsConnected()) {
+      const item = await CaseStudy.create(data);
+      return res.status(201).json({ success: true, data: item });
+    } else {
+      const item = { _id: 'cs_' + Date.now(), ...data };
+      memoryCaseStudies.push(item);
+      return res.status(201).json({ success: true, data: item });
+    }
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// PUT /api/case-studies/:id - Admin only
+router.put('/:id', requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updates = req.body;
+
+    if (getIsConnected()) {
+      let item = await CaseStudy.findOne({ $or: [{ _id: id.match(/^[0-9a-fA-F]{24}$/) ? id : null }, { slug: id }] });
+      if (!item) {
+        return res.status(404).json({ success: false, message: 'Case study not found.' });
+      }
+      Object.assign(item, updates);
+      await item.save();
+      return res.json({ success: true, message: 'Case study updated.', data: item });
+    } else {
+      const idx = memoryCaseStudies.findIndex(c => c._id === id || c.slug === id);
+      if (idx === -1) return res.status(404).json({ success: false, message: 'Not found in fallback store.' });
+      memoryCaseStudies[idx] = { ...memoryCaseStudies[idx], ...updates };
+      return res.json({ success: true, message: 'Case study updated.', data: memoryCaseStudies[idx] });
+    }
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// DELETE /api/case-studies/:id - Admin only
+router.delete('/:id', requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (getIsConnected()) {
+      await CaseStudy.findOneAndDelete({ $or: [{ _id: id.match(/^[0-9a-fA-F]{24}$/) ? id : null }, { slug: id }] });
+    } else {
+      memoryCaseStudies = memoryCaseStudies.filter(c => c._id !== id && c.slug !== id);
+    }
+    return res.json({ success: true, message: 'Case study deleted.' });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 module.exports = router;

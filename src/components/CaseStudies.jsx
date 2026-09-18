@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from '../Router';
+import { useCurrency } from '../context/CurrencyContext';
 
 const FALLBACK_CASES = [
   {
@@ -59,6 +60,7 @@ const CASE_STUDY_IMAGES = {
 };
 
 export default function CaseStudies({ onOpenModal }) {
+  const { formatDynamicText } = useCurrency();
   const [cases, setCases] = useState(FALLBACK_CASES);
 
   useEffect(() => {
@@ -135,7 +137,9 @@ export default function CaseStudies({ onOpenModal }) {
               }}>
                 <div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Volume</div>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--neon-mint)' }}>{cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue}</div>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--neon-mint)' }}>
+                    {formatDynamicText(cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue)}
+                  </div>
                 </div>
                 <div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Efficiency</div>

@@ -3,9 +3,10 @@ import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import TailoredPrograms from '../components/TailoredPrograms';
 import useSEO from '../hooks/useSEO';
-import RobotCompanion from '../components/RobotCompanion';
+import { useCurrency } from '../context/CurrencyContext';
 
-export default function ProgramsPricingPage({ currency = 'USD', onToggleCurrency }) {
+export default function ProgramsPricingPage() {
+  const { currency, setCurrency, isSAR } = useCurrency();
   useSEO({
     title: 'Ecommerce Management Programs & Transparent Pricing | AZS Solutions',
     description: 'Explore our 4 partnership tiers with transparent indicative pricing: Full-Service Management, Turnkey Launch Sprints, Growth Retainers, and Custom Enterprise Partnerships.',
@@ -41,20 +42,20 @@ export default function ProgramsPricingPage({ currency = 'USD', onToggleCurrency
       <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
           <div style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
-            Viewing indicative pricing for: <strong style={{ color: 'var(--text-pure)' }}>{currency === 'GCC' ? 'Saudi Riyals (SAR / GCC)' : 'US Dollars ($ USD)'}</strong>
+            Viewing indicative pricing for: <strong style={{ color: 'var(--text-pure)' }}>{isSAR ? 'Saudi Riyals (SAR / GCC)' : 'US Dollars ($ USD)'}</strong>
           </div>
           <div className="currency-segmented-toggle">
             <button
               type="button"
-              className={`currency-pill-opt ${currency === 'USD' ? 'active' : ''}`}
-              onClick={() => { currency !== 'USD' && onToggleCurrency && onToggleCurrency(); }}
+              className={`currency-pill-opt ${!isSAR ? 'active' : ''}`}
+              onClick={() => setCurrency('USD')}
             >
               🌐 USD ($)
             </button>
             <button
               type="button"
-              className={`currency-pill-opt ${currency === 'GCC' ? 'active' : ''}`}
-              onClick={() => { currency !== 'GCC' && onToggleCurrency && onToggleCurrency(); }}
+              className={`currency-pill-opt ${isSAR ? 'active' : ''}`}
+              onClick={() => setCurrency('SAR')}
             >
               🇸🇦 SAR (ر.س)
             </button>
@@ -106,8 +107,6 @@ export default function ProgramsPricingPage({ currency = 'USD', onToggleCurrency
           </div>
         </div>
       </section>
-
-      <RobotCompanion />
     </div>
   );
 }

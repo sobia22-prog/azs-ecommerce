@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
-import RobotCompanion from '../components/RobotCompanion';
 
 const SERVICES_DATA = {
   'store-setup': {
@@ -255,9 +254,6 @@ export default function ServicesPage({ defaultSlug }) {
           </div>
         </div>
       </section>
-
-      {/* Robot Companion */}
-      <RobotCompanion />
     </div>
   );
 }

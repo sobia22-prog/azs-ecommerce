@@ -118,9 +118,9 @@ export default function AmazonPlatformPage({ onOpenModal }) {
               {/* Dashboard Preview */}
               <div 
                 style={{ cursor: 'pointer', position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(0, 245, 155, 0.2)' }}
-                onClick={() => onOpenModal('/assets/amz_seller_card.png', 'HomeMaster Appliances Verified Amazon Growth Console (+11,963%)')}
+                onClick={() => onOpenModal('/assets/homemaster_amazon_dashboard.svg', 'HomeMaster Appliances Verified Amazon Growth Console (+11,963%)')}
               >
-                <img src="/assets/amz_seller_card.png" alt="HomeMaster Amazon Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                <img src="/assets/homemaster_amazon_dashboard.svg" alt="HomeMaster Amazon Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
                 <div className="zoom-badge">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8"></circle>

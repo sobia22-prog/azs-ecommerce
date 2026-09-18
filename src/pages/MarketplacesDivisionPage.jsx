@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
+import { useCurrency } from '../context/CurrencyContext';
 
 export default function MarketplacesDivisionPage({ onOpenModal }) {
+  const { formatDynamicText } = useCurrency();
   useSEO({
     title: 'Amazon, Noon & Trendyol Marketplace Management Agency | KSA & USA — AZS Solutions',
     description: 'Scale your marketplace revenue across Amazon KSA, Noon, Trendyol, and Amazon USA with AZS Solutions. Certified SPN partner delivering 3.4x average GMV growth.',
@@ -20,6 +22,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       sub: 'KSA Flagship Marketplace & Riyadh/Jeddah FBA Logistics',
       icon: '🇸🇦',
       badge: 'MENA #1 Channel',
+      image: '/assets/homemaster_amazon_dashboard.svg',
+      buttonText: 'Explore Amazon KSA Hub',
       desc: 'Complete Seller Central & Vendor Central management, algorithmic Buy Box defense, Arabic/English A+ Brand Story design, and Sponsored Products/Brands/Display campaign scaling.',
       link: '/marketplace-management/amazon-ksa',
       metrics: {
@@ -40,6 +44,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       sub: 'North American Omnichannel, Amazon DSP & Nationwide FBA',
       icon: '🇺🇸',
       badge: 'Global Scale',
+      image: '/assets/usa_amazon_light_dashboard.svg',
+      buttonText: 'Explore Amazon USA Hub',
       desc: 'High-velocity expansion into Amazon.com USA. Programmatic Amazon DSP, multi-touch AMC attribution, nationwide FBA inventory distribution, and customs/tariff compliance.',
       link: '/marketplace-management/amazon-usa',
       metrics: {
@@ -60,6 +66,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       sub: 'KSA & UAE Seller Lab, Yellow Friday & FBN Express Routing',
       icon: '🟡',
       badge: 'GCC Leader',
+      image: '/assets/noon_ads_full_card.png',
+      buttonText: 'Explore Noon GCC Hub',
       desc: 'Noon Seller Lab onboarding, Fulfilled By Noon (FBN) direct warehouse routing, Yellow Friday mega-campaign execution, and localized GCC promotions.',
       link: '/marketplace-management/noon',
       metrics: {
@@ -80,6 +88,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       sub: 'Turkey & Europe to Saudi Arabia & UAE Fast-Growth Corridor',
       icon: '🇹🇷',
       badge: 'Official Partner',
+      image: '/assets/trendyol_light_dashboard.svg',
+      buttonText: 'Explore Trendyol Hub',
       desc: 'Strategic expansion onto the GCC’s fastest growing cross-border platform. Turnkey catalog translation, automated pricing harmonization, and localized fulfillment routing.',
       link: '/marketplace-management/trendyol',
       metrics: {
@@ -109,7 +119,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
         secondaryCtaText="Explore Case Studies"
         secondaryCtaLink="/case-studies"
         metrics={[
-          { val: '$142.8M+', label: 'Marketplace GMV', sub: 'Managed across portfolios' },
+          { val: formatDynamicText('$142.8M+'), label: 'Marketplace GMV', sub: 'Managed across portfolios' },
           { val: '93.4%', label: 'Avg. Buy Box Rate', sub: 'Algorithmic pricing & suppression defense' },
           { val: '3 Premier Corridors', label: 'GCC • USA • UK', sub: 'Unified multi-region ops' },
           { val: '100% Turnkey', label: 'A-to-Z Execution', sub: 'From catalog to ad scaling' }
@@ -130,7 +140,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
             </div>
             <div className="division-toggle-group">
               <span className="division-nav-btn active">📦 Marketplaces Division</span>
-              <Link to="/shopify" className="division-nav-btn">🛍️ Shopify & D2C Division</Link>
+              <Link to="/shopify-dtc" className="division-nav-btn">🛍️ Shopify & D2C Division</Link>
             </div>
           </div>
 
@@ -142,13 +152,30 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
             </p>
           </div>
 
-          {/* 3 Dedicated Platform Cards */}
+          {/* 4 Dedicated Platform Cards with Console Dashboards & Clean Buttons */}
           <div className="platform-detail-grid">
             {platforms.map((p) => (
               <div className="platform-detail-card" key={p.id}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
                   <div className="platform-detail-icon">{p.icon}</div>
                   <span className="growth-badge">{p.badge}</span>
+                </div>
+
+                {/* Light-theme verified console preview */}
+                <div 
+                  className="dashboard-img-container" 
+                  style={{ marginBottom: '18px', cursor: 'pointer', aspectRatio: '16 / 9.5', minHeight: 'auto' }}
+                  onClick={() => onOpenModal && onOpenModal(p.image, `${p.name} Verified Console`)}
+                  title="Click to inspect verified console"
+                >
+                  <img src={p.image} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div className="zoom-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    Inspect Console
+                  </div>
                 </div>
 
                 <h3 className="platform-detail-title">{p.name}</h3>
@@ -168,13 +195,13 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
                 }}>
                   <div>
                     <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>
-                      {p.metrics.highlight}
+                      {formatDynamicText(p.metrics.highlight)}
                     </div>
                     <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{p.metrics.sub}</div>
                   </div>
                   <div style={{ textAlign: 'right' }}>
                     <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-heading)' }}>
-                      {p.metrics.volume}
+                      {formatDynamicText(p.metrics.volume)}
                     </div>
                     <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Verified Metric</div>
                   </div>
@@ -191,10 +218,22 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
                   ))}
                 </ul>
 
-                <div style={{ marginTop: '28px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <Link to={p.link} className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center' }}>
-                    <span>Explore Dedicated {p.name} Hub</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                  <Link 
+                    to={p.link} 
+                    className="btn btn-secondary" 
+                    style={{ 
+                      width: '100%', 
+                      justifyContent: 'center', 
+                      whiteSpace: 'normal', 
+                      textAlign: 'center', 
+                      padding: '12px 16px', 
+                      fontSize: '0.88rem',
+                      lineHeight: '1.3'
+                    }}
+                  >
+                    <span>{p.buttonText}</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0 }}>
                       <line x1="5" y1="12" x2="19" y2="12"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>

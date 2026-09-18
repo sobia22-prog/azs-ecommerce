@@ -1,7 +1,9 @@
 import React from 'react';
+import { useCurrency } from '../context/CurrencyContext';
 
-export default function TailoredPrograms({ currency = 'USD' }) {
-  const isGCC = currency === 'GCC';
+export default function TailoredPrograms() {
+  const { isSAR } = useCurrency();
+  const isGCC = isSAR;
 
   const programs = [
     {

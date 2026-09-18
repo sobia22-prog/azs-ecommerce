@@ -85,6 +85,7 @@ export default function Footer() {
             <Link to="/about">About</Link>
             <Link to="/case-studies">Proof</Link>
             <Link to="/book-audit">Free Audit</Link>
+            <Link to="/admin/login" style={{ opacity: 0.75, color: 'var(--neon-mint)' }}>Console 🔒</Link>
           </div>
         </div>
       </div>

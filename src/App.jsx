@@ -41,6 +41,9 @@ import CalculatorPage from './pages/CalculatorPage';
 import ServicesPage from './pages/ServicesPage';
 import ProgramsPricingPage from './pages/ProgramsPricingPage';
 import AboutPage from './pages/AboutPage';
+import { CurrencyProvider } from './context/CurrencyContext';
+import AdminLoginPage from './pages/admin/AdminLoginPage';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 
 export default function App() {
   const { path } = useRouter();
@@ -102,8 +105,16 @@ export default function App() {
     }
   };
 
-  // Route Dispatcher (Part 3 Full Two-Division Sitemap)
+  // Route Dispatcher (Part 3 Full Two-Division Sitemap + Admin Console)
   const renderPageContent = () => {
+    // 0. Super Admin Console & Login
+    if (cleanPath === '/admin/login') {
+      return <AdminLoginPage />;
+    }
+    if (cleanPath.startsWith('/admin')) {
+      return <AdminDashboardPage />;
+    }
+
     // 1. Generic Services Hub and /services/:slug
     if (cleanPath.startsWith('/services')) {
       return <ServicesPage />;
@@ -206,37 +217,44 @@ export default function App() {
     }
   };
 
-  return (
-    <div className="app-root">
-      {/* Dynamic Ambient Background Orbs */}
-      <div className="ambient-orb orb-1" aria-hidden="true"></div>
-      <div className="ambient-orb orb-2" aria-hidden="true"></div>
-      <div className="ambient-orb orb-3" aria-hidden="true"></div>
-
-      <Navbar 
-        currency={currency} 
-        onToggleCurrency={handleToggleCurrency} 
-      />
-
-      <main id="main-content">
+  if (cleanPath.startsWith('/admin')) {
+    return (
+      <CurrencyProvider>
         {renderPageContent()}
-      </main>
+      </CurrencyProvider>
+    );
+  }
 
-      <Footer />
+  return (
+    <CurrencyProvider>
+      <div className="app-root">
+        {/* Dynamic Ambient Background Orbs */}
+        <div className="ambient-orb orb-1" aria-hidden="true"></div>
+        <div className="ambient-orb orb-2" aria-hidden="true"></div>
+        <div className="ambient-orb orb-3" aria-hidden="true"></div>
 
-      {/* Interactive Waving Robot Companion Dock */}
-      <RobotCompanion />
+        <Navbar />
 
-      {/* Sticky Mobile Bottom Navigation with Division Shortcuts */}
-      <MobileBottomNav />
+        <main id="main-content">
+          {renderPageContent()}
+        </main>
 
-      <ProofModal
-        isOpen={modalState.isOpen}
-        imgSrc={modalState.imgSrc}
-        title={modalState.title}
-        onClose={handleCloseModal}
-      />
-    </div>
+        <Footer />
+
+        {/* Interactive Waving Robot Companion Dock */}
+        <RobotCompanion />
+
+        {/* Sticky Mobile Bottom Navigation with Division Shortcuts */}
+        <MobileBottomNav />
+
+        <ProofModal
+          isOpen={modalState.isOpen}
+          imgSrc={modalState.imgSrc}
+          title={modalState.title}
+          onClose={handleCloseModal}
+        />
+      </div>
+    </CurrencyProvider>
   );
 }
 

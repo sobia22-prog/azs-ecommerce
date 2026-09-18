@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter, Link } from '../Router';
+import { useCurrency } from '../context/CurrencyContext';
 
-export default function Navbar({ currency, onToggleCurrency }) {
+export default function Navbar() {
+  const { currency, setCurrency, isSAR } = useCurrency();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -67,16 +69,16 @@ export default function Navbar({ currency, onToggleCurrency }) {
                 <div className="currency-segmented-toggle">
                   <button 
                     type="button"
-                    className={`currency-pill-opt ${currency === 'USD' ? 'active' : ''}`}
-                    onClick={() => { currency !== 'USD' && onToggleCurrency(); }}
+                    className={`currency-pill-opt ${!isSAR ? 'active' : ''}`}
+                    onClick={() => setCurrency('USD')}
                     aria-label="Display figures in USD"
                   >
                     USD
                   </button>
                   <button 
                     type="button"
-                    className={`currency-pill-opt ${currency === 'GCC' ? 'active' : ''}`}
-                    onClick={() => { currency !== 'GCC' && onToggleCurrency(); }}
+                    className={`currency-pill-opt ${isSAR ? 'active' : ''}`}
+                    onClick={() => setCurrency('SAR')}
                     aria-label="Display figures in SAR"
                   >
                     SAR
@@ -102,102 +104,128 @@ export default function Navbar({ currency, onToggleCurrency }) {
                 </svg>
               </button>
 
-              <div className="nav-dropdown-menu" style={{ minWidth: '320px' }}>
-                <Link 
-                  to="/marketplace-management" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">📦</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Marketplaces Hub Overview</span>
-                    <span className="dropdown-item-desc">Amazon, Noon & Trendyol unified ecosystem</span>
-                  </div>
-                </Link>
+              <div className="nav-dropdown-menu mega-dropdown-marketplaces">
+                <div className="mega-dropdown-grid">
+                  {/* Column 1: Core Platforms */}
+                  <div className="mega-dropdown-col">
+                    <div className="mega-col-heading">Core Marketplaces</div>
+                    
+                    <Link 
+                      to="/marketplace-management/amazon-ksa" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🇸🇦</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Amazon KSA (Amazon.sa)</span>
+                        <span className="dropdown-item-desc">Brand Registry, FBA Riyadh & Buy Box</span>
+                      </div>
+                    </Link>
 
-                <Link 
-                  to="/marketplace-management/amazon-ksa" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🇸🇦</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Amazon KSA (Amazon.sa)</span>
-                    <span className="dropdown-item-desc">Brand Registry, FBA Riyadh & Yellow Friday</span>
-                  </div>
-                </Link>
+                    <Link 
+                      to="/marketplace-management/amazon-usa" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🇺🇸</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Amazon USA (Amazon.com)</span>
+                        <span className="dropdown-item-desc">DSP display, AMC attribution & FBA</span>
+                      </div>
+                    </Link>
 
-                <Link 
-                  to="/marketplace-management/amazon-usa" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🇺🇸</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Amazon USA (Amazon.com)</span>
-                    <span className="dropdown-item-desc">DSP display, FBA restock & Sponsored Ads</span>
-                  </div>
-                </Link>
+                    <Link 
+                      to="/marketplace-management/noon" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🟡</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Noon KSA & UAE</span>
+                        <span className="dropdown-item-desc">Seller Lab, FBN Express & Mahali</span>
+                      </div>
+                    </Link>
 
-                <Link 
-                  to="/marketplace-management/noon" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🟡</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Noon KSA & UAE</span>
-                    <span className="dropdown-item-desc">Seller Lab, FBN Express & Mahali scale</span>
+                    <Link 
+                      to="/marketplace-management/trendyol" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🇹🇷</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Trendyol GCC Expansion</span>
+                        <span className="dropdown-item-desc">Turkey-to-Gulf catalog sync & sales</span>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
 
-                <Link 
-                  to="/marketplace-management/trendyol" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🇹🇷</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Trendyol GCC Expansion</span>
-                    <span className="dropdown-item-desc">Turkey-to-Gulf catalog sync & flash sales</span>
-                  </div>
-                </Link>
+                  {/* Column 2: Operations & Systems */}
+                  <div className="mega-dropdown-col">
+                    <div className="mega-col-heading">Operations & PPC</div>
 
-                <Link 
-                  to="/marketplace-management/listing-optimization" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🔍</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Listing Optimization & SEO</span>
-                    <span className="dropdown-item-desc">Bilingual Arabic/EN A+ Content & indexing</span>
-                  </div>
-                </Link>
+                    <Link 
+                      to="/marketplace-management/listing-optimization" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🔍</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Listing Optimization & SEO</span>
+                        <span className="dropdown-item-desc">Bilingual Arabic/EN A+ Content</span>
+                      </div>
+                    </Link>
 
-                <Link 
-                  to="/marketplace-management/ppc-advertising" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🎯</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">PPC & Retail Media Ads</span>
-                    <span className="dropdown-item-desc">Sponsored Products, Brands, Video & DSP</span>
-                  </div>
-                </Link>
+                    <Link 
+                      to="/marketplace-management/ppc-advertising" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🎯</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">PPC & Retail Media Ads</span>
+                        <span className="dropdown-item-desc">Sponsored Products, Brands & DSP</span>
+                      </div>
+                    </Link>
 
-                <Link 
-                  to="/marketplace-management/account-health" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🛡️</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Account Health & Defense</span>
-                    <span className="dropdown-item-desc">Suspension defense & policy compliance</span>
+                    <Link 
+                      to="/marketplace-management/account-health" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🛡️</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Account Health & Defense</span>
+                        <span className="dropdown-item-desc">Suspension defense & compliance</span>
+                      </div>
+                    </Link>
+
+                    <Link 
+                      to="/case-studies" 
+                      className="dropdown-subitem dropdown-highlight-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">📈</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Verified Case Studies</span>
+                        <span className="dropdown-item-desc">Inspect documented 14.43x ROAS</span>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
+                </div>
+
+                <div className="mega-dropdown-footer">
+                  <Link 
+                    to="/marketplace-management" 
+                    className="mega-footer-link"
+                    onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                  >
+                    <span>Explore Marketplaces Division Overview</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </li>
 
@@ -218,78 +246,104 @@ export default function Navbar({ currency, onToggleCurrency }) {
                 </svg>
               </button>
 
-              <div className="nav-dropdown-menu" style={{ minWidth: '310px' }}>
-                <Link 
-                  to="/shopify-dtc" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🛍️</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Shopify Division Hub</span>
-                    <span className="dropdown-item-desc">D2C performance marketing ecosystem</span>
-                  </div>
-                </Link>
+              <div className="nav-dropdown-menu mega-dropdown-shopify">
+                <div className="mega-dropdown-grid">
+                  {/* Column 1: Store & CRO */}
+                  <div className="mega-dropdown-col">
+                    <div className="mega-col-heading">Store Architecture</div>
 
-                <Link 
-                  to="/shopify-dtc/store-setup" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🏪</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Store Setup & Optimization</span>
-                    <span className="dropdown-item-desc">Bilingual AR/EN theme & Tamara/Tabby BNPL</span>
-                  </div>
-                </Link>
+                    <Link 
+                      to="/shopify-dtc/store-setup" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🏪</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Store Setup & RTL</span>
+                        <span className="dropdown-item-desc">Arabic UI theme & Tamara/Tabby BNPL</span>
+                      </div>
+                    </Link>
 
-                <Link 
-                  to="/shopify-dtc/meta-ads" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🔵</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Meta Ads (IG & FB)</span>
-                    <span className="dropdown-item-desc">Advantage+ catalog ads & UGC video reels</span>
-                  </div>
-                </Link>
+                    <Link 
+                      to="/shopify-dtc/cro" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">⚡</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Conversion Optimization</span>
+                        <span className="dropdown-item-desc">Frictionless checkout & AOV lift</span>
+                      </div>
+                    </Link>
 
-                <Link 
-                  to="/shopify-dtc/tiktok-ads" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🎵</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">TikTok Shop & Creator Ads</span>
-                    <span className="dropdown-item-desc">Viral hooks & creator partnership scale</span>
+                    <Link 
+                      to="/case-studies/livora" 
+                      className="dropdown-subitem dropdown-highlight-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🛍️</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">LIVORA DTC Case Study</span>
+                        <span className="dropdown-item-desc">$50.4K/mo verified revenue surge</span>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
 
-                <Link 
-                  to="/shopify-dtc/google-ads" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">🔴</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Google Performance Max</span>
-                    <span className="dropdown-item-desc">Shopping & high-intent commercial search</span>
-                  </div>
-                </Link>
+                  {/* Column 2: Paid Acquisition */}
+                  <div className="mega-dropdown-col">
+                    <div className="mega-col-heading">Paid Acquisition</div>
 
-                <Link 
-                  to="/shopify-dtc/cro" 
-                  className="dropdown-subitem"
-                  onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
-                >
-                  <div className="dropdown-icon-box">⚡</div>
-                  <div className="dropdown-item-text">
-                    <span className="dropdown-item-title">Conversion Rate Optimization</span>
-                    <span className="dropdown-item-desc">Mobile checkout friction & AOV expansion</span>
+                    <Link 
+                      to="/shopify-dtc/meta-ads" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🔵</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Meta Ads (IG & FB)</span>
+                        <span className="dropdown-item-desc">Advantage+ catalog & UGC reels</span>
+                      </div>
+                    </Link>
+
+                    <Link 
+                      to="/shopify-dtc/tiktok-ads" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🎵</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">TikTok Shop & Creator Ads</span>
+                        <span className="dropdown-item-desc">High-intent Spark ads & UGC creators</span>
+                      </div>
+                    </Link>
+
+                    <Link 
+                      to="/shopify-dtc/google-ads" 
+                      className="dropdown-subitem"
+                      onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                    >
+                      <div className="dropdown-icon-box">🔴</div>
+                      <div className="dropdown-item-text">
+                        <span className="dropdown-item-title">Google Performance Max</span>
+                        <span className="dropdown-item-desc">Shopping & high-intent search ads</span>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
+                </div>
+
+                <div className="mega-dropdown-footer">
+                  <Link 
+                    to="/shopify-dtc" 
+                    className="mega-footer-link"
+                    onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
+                  >
+                    <span>Explore All Shopify & DTC Solutions</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </li>
 
@@ -345,16 +399,16 @@ export default function Navbar({ currency, onToggleCurrency }) {
           <div className="currency-segmented-toggle desktop-currency-toggle" title="Switch display currency: USD ($) or SAR (ر.س)">
             <button 
               type="button"
-              className={`currency-pill-opt ${currency === 'USD' ? 'active' : ''}`}
-              onClick={() => currency !== 'USD' && onToggleCurrency()}
+              className={`currency-pill-opt ${!isSAR ? 'active' : ''}`}
+              onClick={() => setCurrency('USD')}
               aria-label="Display figures in USD"
             >
               USD
             </button>
             <button 
               type="button"
-              className={`currency-pill-opt ${currency === 'GCC' ? 'active' : ''}`}
-              onClick={() => currency !== 'GCC' && onToggleCurrency()}
+              className={`currency-pill-opt ${isSAR ? 'active' : ''}`}
+              onClick={() => setCurrency('SAR')}
               aria-label="Display figures in SAR"
             >
               SAR

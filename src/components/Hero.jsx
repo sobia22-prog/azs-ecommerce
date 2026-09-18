@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from '../Router';
+import { useCurrency } from '../context/CurrencyContext';
 
-export default function Hero({ onOpenModal, currency = 'USD' }) {
-  const isGCC = currency === 'GCC';
+export default function Hero({ onOpenModal }) {
+  const { isSAR } = useCurrency();
+  const isGCC = isSAR;
   
   // Format numbers depending on currency
   const formatHeroVal = (usdNum) => {

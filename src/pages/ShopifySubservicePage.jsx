@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
-import RobotCompanion from '../components/RobotCompanion';
 
 const SHOPIFY_SUBSERVICES = {
   'store-setup': {
@@ -211,8 +210,6 @@ export default function ShopifySubservicePage() {
           </div>
         </div>
       </section>
-
-      <RobotCompanion />
     </div>
   );
 }

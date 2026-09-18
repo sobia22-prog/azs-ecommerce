@@ -103,9 +103,9 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'center' }}>
               <div 
                 style={{ cursor: 'pointer', position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(0, 210, 255, 0.25)' }}
-                onClick={() => onOpenModal('/assets/shopify_dashboard_card.png', 'LIVORA Modern Essentials Verified Shopify Dashboard ($50,461.90/mo)')}
+                onClick={() => onOpenModal('/assets/livora_shopify_dashboard.svg', 'LIVORA Modern Essentials Verified Shopify Dashboard ($50,461.90/mo)')}
               >
-                <img src="/assets/shopify_dashboard_card.png" alt="LIVORA Shopify Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                <img src="/assets/livora_shopify_dashboard.svg" alt="LIVORA Shopify Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
                 <div className="zoom-badge">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8"></circle>

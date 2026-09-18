@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
-import RobotCompanion from '../components/RobotCompanion';
 
 export default function AccountHealthPage() {
   useSEO({
@@ -107,8 +106,6 @@ export default function AccountHealthPage() {
           </div>
         </div>
       </section>
-
-      <RobotCompanion />
     </div>
   );
 }

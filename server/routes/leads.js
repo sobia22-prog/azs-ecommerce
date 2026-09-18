@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Lead = require('../models/Lead');
 const { getIsConnected, fallbackMemoryStore } = require('../config/db');
+const { requireAdmin } = require('./auth');
 
-// POST /api/leads - Create new lead / discovery booking
+// POST /api/leads - Create new lead / discovery booking (Public)
 router.post('/', async (req, res) => {
   try {
     const { name, email, website, phone, revenueTier, primaryChannel, targetMarkets } = req.body;
@@ -55,11 +56,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/leads - Retrieve recent leads
+// GET /api/leads - Retrieve leads (Admin or overview)
 router.get('/', async (req, res) => {
   try {
     if (getIsConnected()) {
-      const leads = await Lead.find().sort({ createdAt: -1 }).limit(20);
+      const leads = await Lead.find().sort({ createdAt: -1 });
       return res.json({ success: true, count: leads.length, data: leads });
     } else {
       return res.json({
@@ -68,6 +69,44 @@ router.get('/', async (req, res) => {
         data: fallbackMemoryStore.leads
       });
     }
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// PUT /api/leads/:id - Update lead status (Admin only)
+router.put('/:id', requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if (getIsConnected()) {
+      const lead = await Lead.findById(id);
+      if (!lead) return res.status(404).json({ success: false, message: 'Lead not found.' });
+      if (status) lead.status = status;
+      await lead.save();
+      return res.json({ success: true, message: 'Lead status updated.', data: lead });
+    } else {
+      const lead = fallbackMemoryStore.leads.find(l => l._id === id);
+      if (!lead) return res.status(404).json({ success: false, message: 'Lead not found.' });
+      if (status) lead.status = status;
+      return res.json({ success: true, message: 'Lead status updated.', data: lead });
+    }
+  } catch (error) {
+    return res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// DELETE /api/leads/:id - Delete lead (Admin only)
+router.delete('/:id', requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (getIsConnected()) {
+      await Lead.findByIdAndDelete(id);
+    } else {
+      fallbackMemoryStore.leads = fallbackMemoryStore.leads.filter(l => l._id !== id);
+    }
+    return res.json({ success: true, message: 'Lead deleted successfully.' });
   } catch (error) {
     return res.status(500).json({ success: false, error: error.message });
   }

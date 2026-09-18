@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useCurrency } from '../context/CurrencyContext';
 
-export default function GrowthCalculator({ currency = 'USD' }) {
-  const isGCC = currency === 'GCC';
+export default function GrowthCalculator() {
+  const { isSAR } = useCurrency();
+  const isGCC = isSAR;
   const [revenue, setRevenue] = useState(50000);
   const [spend, setSpend] = useState(8000);
   const [channels, setChannels] = useState(['ksa', 'trendyol', 'usa', 'uk', 'shopify', 'meta', 'google']);

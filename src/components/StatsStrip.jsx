@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useCurrency } from '../context/CurrencyContext';
 
 function AnimatedNumber({ value, prefix = '', suffix = '', decimals = 0, isVisible, duration = 1600 }) {
   const [displayValue, setDisplayValue] = useState(0);
@@ -47,8 +48,9 @@ function AnimatedNumber({ value, prefix = '', suffix = '', decimals = 0, isVisib
   );
 }
 
-export default function StatsStrip({ currency = 'USD' }) {
-  const isGCC = currency === 'GCC';
+export default function StatsStrip() {
+  const { isSAR } = useCurrency();
+  const isGCC = isSAR;
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
