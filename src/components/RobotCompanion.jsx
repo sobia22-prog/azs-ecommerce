@@ -1,112 +1,266 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from '../Router';
 
 export default function RobotCompanion({ inline = false }) {
+  const [chatOpen, setChatOpen] = useState(false);
   const [isWaving, setIsWaving] = useState(true);
-  const [speechIndex, setSpeechIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [showSparkle, setShowSparkle] = useState(false);
-  const [speechOpen, setSpeechOpen] = useState(false);
-  const { navigate } = useRouter();
+  const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      id: 'welcome',
+      role: 'assistant',
+      content: '👋 **Hello! I am your AZS Solutions AI Growth Advisor, powered by Google Gemini.**\n\nI can assist you with scaling on **Amazon Saudi Arabia**, **Noon GCC**, **Trendyol cross-border trade**, or **Shopify D2C advertising** with verified 8.4x ROAS.\n\nWhat would you like to explore for your brand today?'
+    }
+  ]);
 
-  const tips = [
-    { text: "Welcome to AZS Solutions! Your growth partner across Amazon, Noon, Trendyol, and Shopify.", badge: "GROWTH ADVISOR", action: "explore" },
-    { text: "HomeMaster achieved +11,963% growth and 14.43x ROAS on Amazon Saudi under our systems!", badge: "CASE STUDY", action: "cases" },
-    { text: "Expanding from Turkey into the Gulf? Discover our turnkey Trendyol GCC launch corridor.", badge: "TRENDYOL HUB", action: "trendyol" },
-    { text: "Try our dynamic ROI Simulator to forecast your 6-month scale across KSA, USA & UK.", badge: "SIMULATOR", action: "calculator" },
-    { text: "Explore our two specialized divisions: Marketplaces and Shopify D2C Performance.", badge: "2 DIVISIONS", action: "divisions" }
+  const { navigate } = useRouter();
+  const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
+
+  const quickPrompts = [
+    { label: '🇸🇦 Scale on Amazon KSA', query: 'How does AZS Solutions scale brands on Amazon Saudi Arabia (Amazon.sa)?' },
+    { label: '🟡 Noon FBN Express', query: 'What is your fulfillment and promotion strategy for Noon in KSA and UAE?' },
+    { label: '🇹🇷 Trendyol Expansion', query: 'How does the Trendyol GCC cross-border launch corridor work?' },
+    { label: '🛍️ Shopify 8.4x ROAS', query: 'What performance marketing systems do you use for Shopify D2C?' },
+    { label: '🛡️ Claim Free Audit', query: 'How do I claim a Free 360° Marketplace Growth Audit for my brand?' }
   ];
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
-    const timer = setInterval(() => {
-      setSpeechIndex((prev) => (prev + 1) % tips.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, [tips.length]);
+    if (chatOpen) {
+      scrollToBottom();
+      setTimeout(() => inputRef.current?.focus(), 200);
+    }
+  }, [chatOpen, messages, loading]);
 
-  const handleRobotClick = () => {
-    setIsWaving(true);
-    setShowSparkle(true);
-    setSpeechOpen(prev => !prev);
-    setTimeout(() => setShowSparkle(false), 1500);
+  const handleSendMessage = async (textToSend) => {
+    const query = (textToSend || input).trim();
+    if (!query || loading) return;
+
+    const userMessage = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: query
+    };
+
+    const newHistory = [...messages, userMessage];
+    setMessages(newHistory);
+    setInput('');
+    setLoading(true);
+
+    try {
+      const res = await fetch('/api/ai/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: newHistory.map(m => ({ role: m.role, content: m.content }))
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.success && data.reply) {
+        setMessages(prev => [
+          ...prev,
+          {
+            id: (Date.now() + 1).toString(),
+            role: 'assistant',
+            content: data.reply
+          }
+        ]);
+      } else {
+        throw new Error(data.message || 'Error generating response');
+      }
+    } catch (err) {
+      setMessages(prev => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: 'Thank you for your question! Our directors are currently consulting live with brands across KSA, UAE, and the USA.\n\nYou can claim your **Free 360° Marketplace & Storefront Growth Audit** right now using the **Book Audit** button at the top of the page, or email us at **hello@azssolutions.com**.'
+        }
+      ]);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleAction = (action) => {
-    if (action === 'trendyol') {
-      navigate('/trendyol');
-      return;
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
     }
-    if (action === 'cases') {
-      navigate('/case-studies');
-      return;
-    }
-    if (action === 'divisions') {
-      navigate('/marketplaces');
-      return;
-    }
-    if (action === 'calculator') {
-      navigate('/#calculator');
-      return;
-    }
-    navigate('/#challenges-solutions');
   };
 
-  const currentTip = tips[speechIndex];
+  // Helper to render basic markdown formatting cleanly
+  const renderFormattedText = (text) => {
+    if (!text) return null;
+    const lines = text.split('\n');
+    return lines.map((line, idx) => {
+      // Bold syntax **text**
+      const parts = line.split(/(\*\*.*?\*\*)/g);
+      const formattedLine = parts.map((part, pIdx) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={pIdx} style={{ color: 'var(--text-pure)' }}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+      });
+
+      if (line.trim().startsWith('* ') || line.trim().startsWith('- ')) {
+        return (
+          <div key={idx} className="ai-msg-bullet">
+            <span className="bullet-dot">▸</span>
+            <span>{formattedLine}</span>
+          </div>
+        );
+      }
+
+      if (!line.trim()) {
+        return <div key={idx} style={{ height: '8px' }}></div>;
+      }
+
+      return <p key={idx} className="ai-msg-para">{formattedLine}</p>;
+    });
+  };
 
   return (
     <div className={`robot-container ${inline ? 'robot-inline' : 'robot-floating'}`}>
-      {/* Sleek Interactive Speech Bubble (Opened only upon click) */}
-      {speechOpen && (
-        <div className="robot-speech-bubble">
-          <div className="robot-speech-header">
-            <span className="robot-badge-pulse">
-              <span className="pulse-dot"></span>
-              {currentTip.badge}
-            </span>
-            <button 
-              className="robot-close-btn" 
-              onClick={(e) => {
-                e.stopPropagation();
-                setSpeechOpen(false);
-              }}
-              title="Close speech bubble"
+      {/* Live Intelligent Gemini AI Advisor Chat Window */}
+      {chatOpen && (
+        <div className="ai-chat-window">
+          {/* Header */}
+          <div className="ai-chat-header">
+            <div className="ai-chat-header-info">
+              <div className="ai-chat-avatar-frame">
+                <span className="ai-chat-avatar-icon">🤖</span>
+                <span className="ai-online-pulse"></span>
+              </div>
+              <div className="ai-chat-title-col">
+                <div className="ai-chat-name">
+                  AZS AI Growth Advisor
+                  <span className="gemini-powered-tag">Gemini AI</span>
+                </div>
+                <div className="ai-chat-subtitle">Live Customer Support & Ecommerce Strategy</div>
+              </div>
+            </div>
+            <button
+              className="ai-chat-close-btn"
+              onClick={() => setChatOpen(false)}
+              aria-label="Close AI Advisor"
+              title="Close chat"
             >
               ✕
             </button>
           </div>
-          <p className="robot-speech-text">{currentTip.text}</p>
-          <div className="robot-quick-actions">
-            <button 
-              className="robot-action-pill" 
-              onClick={() => handleAction(currentTip.action)}
-            >
-              Explore Insight ➔
-            </button>
+
+          {/* Messages Area */}
+          <div className="ai-chat-messages">
+            {messages.map((msg) => (
+              <div key={msg.id} className={`ai-message-row ${msg.role === 'user' ? 'user-row' : 'assistant-row'}`}>
+                {msg.role === 'assistant' && (
+                  <div className="ai-msg-bot-avatar">🤖</div>
+                )}
+                <div className={`ai-message-bubble ${msg.role === 'user' ? 'user-bubble' : 'assistant-bubble'}`}>
+                  {renderFormattedText(msg.content)}
+                </div>
+              </div>
+            ))}
+
+            {loading && (
+              <div className="ai-message-row assistant-row">
+                <div className="ai-msg-bot-avatar">🤖</div>
+                <div className="ai-message-bubble assistant-bubble loading-bubble">
+                  <span className="typing-dot d1"></span>
+                  <span className="typing-dot d2"></span>
+                  <span className="typing-dot d3"></span>
+                  <span className="typing-label">Analyzing strategy...</span>
+                </div>
+              </div>
+            )}
+
+            <div ref={messagesEndRef} />
           </div>
-          <div className="robot-bubble-tail"></div>
+
+          {/* Quick Prompts Carousel */}
+          <div className="ai-quick-prompts-row">
+            {quickPrompts.map((p, idx) => (
+              <button
+                key={idx}
+                className="ai-prompt-chip"
+                onClick={() => handleSendMessage(p.query)}
+                disabled={loading}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Chat Input & CTA */}
+          <div className="ai-chat-footer">
+            <div className="ai-input-wrap">
+              <input
+                ref={inputRef}
+                type="text"
+                className="ai-chat-input"
+                placeholder="Ask about Amazon, Noon, Trendyol, Shopify..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                disabled={loading}
+              />
+              <button
+                className="ai-send-btn"
+                onClick={() => handleSendMessage()}
+                disabled={!input.trim() || loading}
+                aria-label="Send query"
+                title="Send message"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+            <div className="ai-footer-cta-strip">
+              <button
+                className="ai-audit-link-btn"
+                onClick={() => {
+                  setChatOpen(false);
+                  navigate('/book-audit');
+                }}
+              >
+                ⚡ Claim Free 360° Growth Audit ➔
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
-      {/* Subtle Launcher Pill when Speech Bubble is Closed (Desktop) */}
-      {!speechOpen && (
-        <button 
+      {/* Floating Launcher Pill (Desktop view when closed) */}
+      {!chatOpen && (
+        <button
           className="robot-launcher-pill desktop-only-pill"
-          onClick={handleRobotClick}
-          title="Click to open Growth Advisor"
-          aria-label="Open Growth Advisor"
+          onClick={() => setChatOpen(true)}
+          title="Open AI Growth & Support Advisor"
+          aria-label="Open AI Growth & Support Advisor"
         >
           <span className="pulse-dot"></span>
-          <span>Growth Advisor</span>
+          <span>Ask AI Advisor</span>
         </button>
       )}
 
       {/* Mobile-Friendly Compact Floating AI Advisor Button */}
-      {!speechOpen && (
-        <button 
+      {!chatOpen && (
+        <button
           className="robot-mobile-fab-trigger"
-          onClick={handleRobotClick}
-          title="Open AI Growth Advisor"
-          aria-label="Open AI Growth Advisor"
+          onClick={() => setChatOpen(true)}
+          title="Open AI Growth & Support Advisor"
+          aria-label="Open AI Growth & Support Advisor"
         >
           <span className="mobile-fab-glow"></span>
           <span className="mobile-fab-icon">🤖</span>
@@ -115,209 +269,77 @@ export default function RobotCompanion({ inline = false }) {
       )}
 
       {/* High-Fidelity Robot Character (Desktop view) */}
-      <div 
-        className={`robot-character desktop-robot-character ${isHovered ? 'hovered' : ''}`}
-        onClick={handleRobotClick}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        title="Click to interact!"
-      >
-        {/* Floating Halo & Energy Rings */}
-        <div className="robot-energy-ring"></div>
-        <div className="robot-shadow"></div>
-
-        {/* Sparkle Particles on Click */}
-        {showSparkle && (
-          <div className="robot-sparkles">
-            <span className="sparkle s1">✨</span>
-            <span className="sparkle s2">⚡</span>
-            <span className="sparkle s3">🚀</span>
-          </div>
-        )}
-
-        {/* High-Fidelity Scaled SVG Cyber Robot */}
-        <svg 
-          className="robot-svg" 
-          viewBox="0 0 160 190" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
+      {!chatOpen && (
+        <div
+          className={`robot-character desktop-robot-character ${isHovered ? 'hovered' : ''}`}
+          onClick={() => setChatOpen(true)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          title="Click to ask the AI Advisor!"
         >
-          <defs>
-            <linearGradient id="metalChassis" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#1E293B" />
-              <stop offset="50%" stopColor="#0F172A" />
-              <stop offset="100%" stopColor="#020617" />
-            </linearGradient>
+          {/* Floating Halo & Energy Rings */}
+          <div className="robot-energy-ring"></div>
+          <div className="robot-shadow"></div>
 
-            <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#00F59B" />
-              <stop offset="100%" stopColor="#00D2FF" />
-            </linearGradient>
+          {/* High-Fidelity Scaled SVG Cyber Robot */}
+          <svg
+            className="robot-svg"
+            viewBox="0 0 160 190"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="metalChassis" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#1E293B" />
+                <stop offset="50%" pasture="true" stopColor="#0F172A" />
+                <stop offset="100%" stopColor="#020617" />
+              </linearGradient>
+              <linearGradient id="neonGlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#00F59B" />
+                <stop offset="100%" stopColor="#00D2FF" />
+              </linearGradient>
+              <filter id="visorGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
 
-            <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#00F59B" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#00D2FF" stopOpacity="0.8" />
-            </linearGradient>
+            {/* Antennas with Glowing Signal Orbs */}
+            <line x1="60" y1="46" x2="42" y2="22" stroke="#00F59B" strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="40" cy="20" r="4.5" fill="#00F59B" />
 
-            <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
+            <line x1="100" y1="46" x2="118" y2="22" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="120" cy="20" r="4.5" fill="#00D2FF" />
 
-          {/* Antennas */}
-          <g className="robot-antenna">
-            <line x1="80" y1="26" x2="80" y2="10" stroke="#64748B" strokeWidth="3" strokeLinecap="round" />
-            <circle cx="80" cy="8" r="6" fill="#00F59B" filter="url(#glowFilter)" className="antenna-glow" />
-            <line x1="60" y1="32" x2="52" y2="18" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" />
-            <circle cx="50" cy="16" r="4" fill="#00D2FF" />
-            <line x1="100" y1="32" x2="108" y2="18" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" />
-            <circle cx="110" cy="16" r="4" fill="#00D2FF" />
-          </g>
+            {/* Sleek Cyber Head Chassis */}
+            <rect x="44" y="44" width="72" height="54" rx="20" fill="url(#metalChassis)" stroke="url(#neonGlowGrad)" strokeWidth="2" />
 
-          {/* Floating Head */}
-          <g className="robot-head">
-            {/* Outer Helmet */}
-            <rect 
-              x="38" 
-              y="26" 
-              width="84" 
-              height="68" 
-              rx="24" 
-              fill="url(#metalChassis)" 
-              stroke="rgba(0, 245, 155, 0.45)" 
-              strokeWidth="2.5" 
-            />
-            {/* Ear Pods */}
-            <rect x="28" y="44" width="10" height="24" rx="5" fill="#00F59B" opacity="0.9" />
-            <rect x="122" y="44" width="10" height="24" rx="5" fill="#00D2FF" opacity="0.9" />
+            {/* Glowing Cyber Visor (Digital Eyes Display) */}
+            <rect x="52" y="56" width="56" height="26" rx="10" fill="#020617" stroke="rgba(0, 245, 155, 0.4)" strokeWidth="1.5" />
 
-            {/* Glowing Cyber Visor */}
-            <rect 
-              x="46" 
-              y="38" 
-              width="68" 
-              height="36" 
-              rx="12" 
-              fill="#06090E" 
-              stroke="rgba(0, 210, 255, 0.6)" 
-              strokeWidth="2" 
-            />
+            {/* Friendly Expressive Cyan/Mint Eyes */}
+            <rect x="62" y="64" width="10" height="10" rx="3" fill="#00F59B" filter="url(#visorGlow)" />
+            <rect x="88" y="64" width="10" height="10" rx="3" fill="#00D2FF" filter="url(#visorGlow)" />
 
-            {/* Expressive LED Eyes */}
-            <g className="robot-eyes">
-              {/* Left Eye */}
-              <ellipse 
-                cx="64" 
-                cy="54" 
-                rx="8" 
-                ry="9" 
-                fill="url(#visorGrad)" 
-                filter="url(#glowFilter)" 
-                className="robot-eye left-eye" 
-              />
-              <circle cx="66" cy="51" r="3" fill="#FFFFFF" />
+            {/* Cyber Torso Body */}
+            <path d="M 48 106 L 112 106 L 102 152 L 58 152 Z" fill="url(#metalChassis)" stroke="rgba(255, 255, 255, 0.12)" strokeWidth="1.5" />
 
-              {/* Right Eye */}
-              <ellipse 
-                cx="96" 
-                cy="54" 
-                rx="8" 
-                ry="9" 
-                fill="url(#visorGrad)" 
-                filter="url(#glowFilter)" 
-                className="robot-eye right-eye" 
-              />
-              <circle cx="98" cy="51" r="3" fill="#FFFFFF" />
+            {/* Chest Growth Core Pulse Indicator */}
+            <circle cx="80" cy="126" r="10" fill="#04070B" stroke="url(#neonGlowGrad)" strokeWidth="1.5" />
+            <circle cx="80" cy="126" r="4" fill="#00F59B" filter="url(#visorGlow)" />
+
+            {/* Animated Waving Right Hand */}
+            <g className={isWaving ? 'robot-arm-wave' : ''}>
+              <path d="M 112 112 Q 130 110 138 92" stroke="url(#metalChassis)" strokeWidth="6" strokeLinecap="round" />
+              <circle cx="138" cy="90" r="6" fill="#00F59B" />
             </g>
 
-            {/* Subtle Cute Smile / Status bar */}
-            <line x1="72" y1="67" x2="88" y2="67" stroke="#00F59B" strokeWidth="2.5" strokeLinecap="round" opacity="0.9" />
-          </g>
-
-          {/* Neck Joint */}
-          <rect x="72" y="96" width="16" height="8" rx="3" fill="#334155" />
-
-          {/* Robot Torso / Chassis */}
-          <g className="robot-body">
-            <rect 
-              x="44" 
-              y="104" 
-              width="72" 
-              height="58" 
-              rx="18" 
-              fill="url(#metalChassis)" 
-              stroke="rgba(0, 245, 155, 0.35)" 
-              strokeWidth="2.5" 
-            />
-
-            {/* Power Core Center Heart */}
-            <circle cx="80" cy="128" r="14" fill="#06090E" stroke="rgba(0, 210, 255, 0.5)" strokeWidth="1.5" />
-            <polygon 
-              points="80,119 89,134 71,134" 
-              fill="url(#neonGlow)" 
-              filter="url(#glowFilter)" 
-              className="robot-core-pulse" 
-            />
-
-            {/* Tech Stripes / Circuit Lines */}
-            <line x1="56" y1="148" x2="72" y2="148" stroke="#00F59B" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
-            <line x1="88" y1="148" x2="104" y2="148" stroke="#00D2FF" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
-          </g>
-
-          {/* Left Resting Arm */}
-          <g className="robot-left-arm">
-            <path 
-              d="M 44,115 Q 24,130 30,152" 
-              stroke="#475569" 
-              strokeWidth="8" 
-              strokeLinecap="round" 
-              fill="none" 
-            />
-            <circle cx="30" cy="154" r="6" fill="#00D2FF" />
-          </g>
-
-          {/* RIGHT MECHANICAL WAVING ARM (Articulated & Animated) */}
-          <g className={`robot-waving-arm ${isWaving ? 'waving-active' : ''}`}>
-            {/* Shoulder Joint */}
-            <circle cx="116" cy="115" r="6" fill="#334155" />
-            
-            {/* Upper Arm & Forearm */}
-            <path 
-              d="M 116,115 Q 140,102 144,82" 
-              stroke="#64748B" 
-              strokeWidth="8" 
-              strokeLinecap="round" 
-              fill="none" 
-            />
-            {/* Elbow Joint */}
-            <circle cx="140" cy="95" r="5" fill="#00F59B" filter="url(#glowFilter)" />
-
-            {/* Waving Hand & Fingers */}
-            <g className="robot-hand-group">
-              <rect x="136" y="68" width="16" height="17" rx="5" fill="#0F172A" stroke="#00F59B" strokeWidth="1.8" />
-              {/* Fingers */}
-              <line x1="139" y1="68" x2="139" y2="58" stroke="#00F59B" strokeWidth="3" strokeLinecap="round" />
-              <line x1="144" y1="68" x2="144" y2="56" stroke="#00F59B" strokeWidth="3" strokeLinecap="round" />
-              <line x1="149" y1="68" x2="149" y2="60" stroke="#00F59B" strokeWidth="3" strokeLinecap="round" />
-              {/* Palm Glow */}
-              <circle cx="144" cy="76" r="3.5" fill="#00D2FF" filter="url(#glowFilter)" />
-            </g>
-          </g>
-
-          {/* Floating Thruster Rings / Hover Pod */}
-          <g className="robot-thruster">
-            <ellipse cx="80" cy="164" rx="22" ry="6" fill="#1E293B" stroke="rgba(0, 245, 155, 0.4)" strokeWidth="1.5" />
-            <polygon 
-              points="66,166 80,185 94,166" 
-              fill="url(#visorGrad)" 
-              opacity="0.9" 
-              filter="url(#glowFilter)" 
-              className="thruster-flame" 
-            />
-          </g>
-        </svg>
-      </div>
+            {/* Left Arm Resting */}
+            <path d="M 48 112 Q 30 120 34 136" stroke="url(#metalChassis)" strokeWidth="6" strokeLinecap="round" />
+            <circle cx="34" cy="136" r="5" fill="#00D2FF" />
+          </svg>
+        </div>
+      )}
     </div>
   );
 }

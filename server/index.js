@@ -14,6 +14,7 @@ import blogsRoutes from './routes/blogs.js';
 import leadsRoutes from './routes/leads.js';
 import calculatorRoutes from './routes/calculator.js';
 import uploadRoutes from './routes/upload.js';
+import aiRoutes from './routes/ai.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -43,6 +44,7 @@ app.use('/api/case-studies', caseStudiesRoutes);
 app.use('/api/blogs', blogsRoutes);
 app.use('/api/leads', leadsRoutes);
 app.use('/api/calculator', calculatorRoutes);
+app.use('/api/ai', aiRoutes);
 
 // Health Check
 app.get('/api/health', (req, res) => {
