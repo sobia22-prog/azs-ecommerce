@@ -23,7 +23,6 @@ import AuditBooking from './components/AuditBooking';
 import Footer from './components/Footer';
 import ProofModal from './components/ProofModal';
 import RobotCompanion from './components/RobotCompanion';
-import MobileBottomNav from './components/MobileBottomNav';
 
 // Dedicated Sub-Pages
 import MarketplacesDivisionPage from './pages/MarketplacesDivisionPage';
@@ -243,9 +242,6 @@ export default function App() {
 
         {/* Interactive Waving Robot Companion Dock */}
         <RobotCompanion />
-
-        {/* Sticky Mobile Bottom Navigation with Division Shortcuts */}
-        <MobileBottomNav />
 
         <ProofModal
           isOpen={modalState.isOpen}

@@ -38,58 +38,25 @@ const STORES = {
 
 export default function ShopifyGrowth({ onOpenModal }) {
   const [activeStore, setActiveStore] = useState('homemaster');
-  const [viewMode, setViewMode] = useState('phone'); // 'phone' | 'multidevice'
-  const [isArabic, setIsArabic] = useState(false);
-  const [selectedSize, setSelectedSize] = useState('M');
-  const [orderPlaced, setOrderPlaced] = useState(false);
-
   const store = STORES[activeStore];
 
-  // Specific product data for Electric Eye live phone checkout mockup
-  const phoneProducts = {
+  // Clean visual device architecture mapping per brand
+  const storeVisuals = {
     homemaster: {
-      enTitle: 'HomeMaster Precision Air Fryer XXL (6.2L)',
-      arTitle: 'مقلاة هوائية ذكية هوم ماستر سعة 6.2 لتر',
-      enSub: 'Touchscreen Dual-Zone • Riyadh Hub In Stock',
-      arSub: 'شاشة رقمية مزدوجة • متوفر في مستودع الرياض',
-      price: 'SAR 449.00',
-      orig: 'SAR 599.00',
-      tabby: 'SAR 112.25',
-      badge: '🏆 #1 Air Fryer KSA',
-      sizes: ['4.5L', '6.2L (Top)', '8.0L']
+      img: '/assets/shopify_devices_hero.png',
+      caption: 'HomeMaster GCC Smart Appliances Storefront Architecture'
     },
     livora: {
-      enTitle: 'LIVORA French Linen Oversized Shirt',
-      arTitle: 'قميص كتان فرنسي فاخر للجنسين من ليفورا',
-      enSub: '100% Normandy Linen • Breathable Summer Weave',
-      arSub: 'كتان نورماندي 100% • خامة صيفية انسيابية',
-      price: 'SAR 289.00',
-      orig: 'SAR 380.00',
-      tabby: 'SAR 72.25',
-      badge: '🔥 48% BNPL Checkout',
-      sizes: ['S', 'M (Popular)', 'L', 'XL']
+      img: '/assets/shopify_storefronts_mockup.png',
+      caption: 'LIVORA French Linen Mobile & Desktop Storefront'
     },
     creativethings: {
-      enTitle: 'Creative Things Spatial ANC Headset',
-      arTitle: 'سماعات لاسلكية محيطية عازلة للضوضاء',
-      enSub: 'Hi-Res Audio 40h Battery • GCC Express 24h',
-      arSub: 'صوت عالي الدقة بطارية 40 ساعة • شحن سريع',
-      price: 'SAR 399.00',
-      orig: 'SAR 549.00',
-      tabby: 'SAR 99.75',
-      badge: '⚡ 64% Search Traffic',
-      sizes: ['Carbon', 'Silver', 'Desert Gold']
+      img: '/assets/shopify_devices_hero.png',
+      caption: 'Creative Things Audio Studio Commerce Architecture'
     }
   };
 
-  const currentProd = phoneProducts[activeStore];
-
-  const handleTriggerCheckout = (type) => {
-    setOrderPlaced(type);
-    setTimeout(() => {
-      setOrderPlaced(false);
-    }, 3800);
-  };
+  const currentVisual = storeVisuals[activeStore] || storeVisuals.homemaster;
 
   return (
     <section className="section section-alt" id="shopify-d2c">
@@ -103,7 +70,7 @@ export default function ShopifyGrowth({ onOpenModal }) {
         </div>
 
         <div className="shopify-showcase-grid">
-          {/* Device Mockup Showcase Column */}
+          {/* Visual Device Storefront Mockup Column */}
           <div>
             <div className="store-tabs-nav">
               <button
@@ -126,160 +93,25 @@ export default function ShopifyGrowth({ onOpenModal }) {
               </button>
             </div>
 
-            {/* View Mode Switcher: Electric Eye Live Mobile Checkout vs 3-Device Mockup */}
-            <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-              <div className="viewmode-switcher">
-                <button
-                  className={`viewmode-btn ${viewMode === 'phone' ? 'active' : ''}`}
-                  onClick={() => setViewMode('phone')}
-                >
-                  📱 Live Mobile Checkout (Electric Eye Style)
-                </button>
-                <button
-                  className={`viewmode-btn ${viewMode === 'multidevice' ? 'active' : ''}`}
-                  onClick={() => setViewMode('multidevice')}
-                >
-                  💻 3-Device Multi-Screen
-                </button>
+            {/* Clean Visual Storefront Architecture Graphic */}
+            <div
+              className="mockup-media-wrapper"
+              onClick={() => onOpenModal(currentVisual.img, `${store.name} — Storefront Architecture`)}
+              style={{ cursor: 'pointer' }}
+              title="Click to zoom high-resolution storefront architecture"
+            >
+              <img
+                src={currentVisual.img}
+                alt={`${store.name} Storefront Architecture by AZS Solutions`}
+              />
+              <div className="zoom-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                Inspect High-Resolution Architecture
               </div>
             </div>
-
-            {viewMode === 'phone' ? (
-              /* Electric Eye-Style Live Working Add-to-Cart Phone Mockup */
-              <div className="phone-mockup-container">
-                <div className="phone-bezel">
-                  <div className="phone-speaker-notch"></div>
-                  <div className="phone-status-bar">
-                    <span>9:41</span>
-                    <span>5G • 100%</span>
-                  </div>
-
-                  <div className="phone-screen-content" style={{ direction: isArabic ? 'rtl' : 'ltr' }}>
-                    {/* Store Header in Phone */}
-                    <div className="phone-store-header">
-                      <span className="phone-store-logo">{store.name.split(' ')[0].toUpperCase()}</span>
-                      <button
-                        className="phone-rtl-toggle"
-                        onClick={() => setIsArabic(!isArabic)}
-                        title="Toggle Arabic / English RTL layout"
-                      >
-                        🌐 {isArabic ? 'English' : 'عربي (RTL)'}
-                      </button>
-                    </div>
-
-                    {/* Product Photo Box */}
-                    <div className="phone-product-visual">
-                      <span className="phone-product-tag">{currentProd.badge}</span>
-                      <div style={{ fontSize: '3.2rem', filter: 'drop-shadow(0 10px 14px rgba(0,0,0,0.5))' }}>
-                        {activeStore === 'homemaster' ? '🍳' : activeStore === 'livora' ? '👕' : '🎧'}
-                      </div>
-                      <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-                        {isArabic ? 'صورة المنتج المباشرة على شوبيفاي' : 'Live Shopify Verified Storefront'}
-                      </span>
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="phone-product-info">
-                      <div className="phone-prod-title">
-                        {isArabic ? currentProd.arTitle : currentProd.enTitle}
-                      </div>
-                      <div className="phone-prod-sub">
-                        {isArabic ? currentProd.arSub : currentProd.enSub}
-                      </div>
-
-                      <div className="phone-prod-price-row">
-                        <span className="phone-prod-price">{currentProd.price}</span>
-                        <span className="phone-prod-orig">{currentProd.orig}</span>
-                        <span style={{ fontSize: '0.68rem', color: 'var(--neon-mint)', fontWeight: 700 }}>
-                          {isArabic ? 'شحن مجاني' : 'Free KSA Express'}
-                        </span>
-                      </div>
-
-                      {/* Tabby & Tamara BNPL Integration Strip */}
-                      <div className="phone-bnpl-strip">
-                        <div className="bnpl-chip-item">
-                          <span>
-                            {isArabic ? 'قسّمها على 4 دفعات بقيمة ' : 'or 4 interest-free payments of '}
-                            <strong>{currentProd.tabby}</strong>
-                          </span>
-                          <span className="bnpl-badge-tabby">tabby</span>
-                        </div>
-                        <div className="bnpl-chip-item">
-                          <span>{isArabic ? 'أو ادفع بعد 30 يوم مع تمارا' : 'or Pay in 30 days / Split with Tamara'}</span>
-                          <span className="bnpl-badge-tamara">tamara</span>
-                        </div>
-                      </div>
-
-                      {/* Options / Sizes */}
-                      <div className="phone-sizes-row">
-                        {currentProd.sizes.map((s, idx) => (
-                          <button
-                            key={idx}
-                            className={`size-pill-btn ${selectedSize === s ? 'active' : ''}`}
-                            onClick={() => setSelectedSize(s)}
-                          >
-                            {s}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Action Buttons: Add to Cart & Apple Pay */}
-                    <div className="phone-cta-group">
-                      <button
-                        className="phone-add-cart-btn"
-                        onClick={() => handleTriggerCheckout('cart')}
-                      >
-                        🛍️ {isArabic ? 'أضف إلى السلة — طلب فوري' : 'Add to Bag — Instant Checkout'}
-                      </button>
-                      <button
-                        className="phone-apple-pay-btn"
-                        onClick={() => handleTriggerCheckout('applepay')}
-                      >
-                        Pay | mada
-                      </button>
-                    </div>
-
-                    {/* Order Placed Toast Overlay */}
-                    {orderPlaced && (
-                      <div className="phone-order-toast">
-                        <div style={{ fontSize: '2.4rem', marginBottom: '8px' }}>🎉</div>
-                        <h4 style={{ color: 'var(--neon-mint)', fontSize: '1.05rem', marginBottom: '4px' }}>
-                          {isArabic ? 'تم تأكيد الطلب بنجاح!' : 'Order Placed Instantly!'}
-                        </h4>
-                        <p style={{ fontSize: '0.78rem', color: 'var(--text-pure)', marginBottom: '8px' }}>
-                          {isArabic
-                            ? 'تمت معالجة الدفع عبر مدى / آبل باي في 1.8 ثانية بنظام ZATCA'
-                            : 'Processed via Mada / Apple Pay in 1.8s with ZATCA E-Invoicing.'}
-                        </p>
-                        <span style={{ fontSize: '0.70rem', color: 'var(--neon-cyan)', background: 'rgba(0,210,255,0.1)', padding: '3px 8px', borderRadius: '4px' }}>
-                          ✓ Electric Eye UX Pattern Tested
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '8px' }}>
-                  Interactive live demo: Click buttons to test Tabby, Tamara BNPL, and Arabic RTL toggle
-                </span>
-              </div>
-            ) : (
-              /* 3-Device Storefront Image View */
-              <div
-                className="mockup-media-wrapper"
-                onClick={() => onOpenModal('/assets/shopify_storefronts_mockup.png', 'Client Shopify Storefront Mockups')}
-                style={{ cursor: 'pointer' }}
-              >
-                <img src="/assets/shopify_storefronts_mockup.png" alt="Shopify Storefronts Created by AZS Solutions" />
-                <div className="zoom-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                  View Full 3-Device Storefront
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Capabilities Column */}
