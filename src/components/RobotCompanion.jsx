@@ -97,21 +97,55 @@ export default function RobotCompanion({ inline = false }) {
     }
   };
 
-  // Helper to render basic markdown formatting cleanly
+  // Helper to render markdown formatting cleanly (bold, links, bullets)
   const renderFormattedText = (text) => {
     if (!text) return null;
     const lines = text.split('\n');
     return lines.map((line, idx) => {
-      // Bold syntax **text**
-      const parts = line.split(/(\*\*.*?\*\*)/g);
-      const formattedLine = parts.map((part, pIdx) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return <strong key={pIdx} style={{ color: 'var(--text-pure)' }}>{part.slice(2, -2)}</strong>;
-        }
-        return part;
-      });
+      // Parse markdown links [text](url) and bold **text**
+      const parseSegments = (str) => {
+        const tokenRegex = /(\[.*?\]\(.*?\)|\*\*.*?\*\*)/g;
+        const tokens = str.split(tokenRegex);
 
-      if (line.trim().startsWith('* ') || line.trim().startsWith('- ')) {
+        return tokens.map((token, tIdx) => {
+          if (token.startsWith('**') && token.endsWith('**')) {
+            return <strong key={tIdx} style={{ color: 'var(--text-pure)' }}>{token.slice(2, -2)}</strong>;
+          }
+          if (token.startsWith('[') && token.includes('](') && token.endsWith(')')) {
+            const label = token.slice(1, token.indexOf(']('));
+            const href = token.slice(token.indexOf('](') + 2, -1);
+            const isInternal = href.startsWith('/') || href.includes('azssolutions.com');
+            return (
+              <a
+                key={tIdx}
+                href={href}
+                onClick={(e) => {
+                  if (isInternal) {
+                    e.preventDefault();
+                    setChatOpen(false);
+                    navigate('/book-audit');
+                  }
+                }}
+                style={{
+                  color: 'var(--brand-mint)',
+                  textDecoration: 'underline',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+                target={isInternal ? '_self' : '_blank'}
+                rel="noreferrer"
+              >
+                {label}
+              </a>
+            );
+          }
+          return token;
+        });
+      };
+
+      const formattedLine = parseSegments(line);
+
+      if (line.trim().startsWith('* ') || line.trim().startsWith('- ') || line.trim().startsWith('• ')) {
         return (
           <div key={idx} className="ai-msg-bullet">
             <span className="bullet-dot">▸</span>
