@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "AZS Solutions - High-Converting Ecommerce & Performance Marketing Platform (MERN Stack)",
   "main": "server/index.js",
+  "type": "module",
   "scripts": {
     "server": "node server/index.js",
     "client": "vite --port 3000 --host",
@@ -30,7 +31,9 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.3.3",
     "vite": "^6.0.7"
   }
 }

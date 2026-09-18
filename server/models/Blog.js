@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const BlogSchema = new mongoose.Schema({
   slug: {
@@ -68,4 +68,4 @@ BlogSchema.pre('save', function (next) {
   next();
 });
 
-module.exports = mongoose.model('Blog', BlogSchema);
+export default mongoose.model('Blog', BlogSchema);

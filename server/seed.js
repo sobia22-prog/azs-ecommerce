@@ -1,9 +1,9 @@
-const AdminUser = require('./models/AdminUser');
-const Marketplace = require('./models/Marketplace');
-const CaseStudy = require('./models/CaseStudy');
-const Blog = require('./models/Blog');
+import AdminUser from './models/AdminUser.js';
+import Marketplace from './models/Marketplace.js';
+import CaseStudy from './models/CaseStudy.js';
+import Blog from './models/Blog.js';
 
-const SEED_DATA = {
+export const SEED_DATA = {
   superAdmin: {
     email: 'admin@azssolutions.com',
     name: 'AZS Super Admin',
@@ -268,7 +268,7 @@ const SEED_DATA = {
   ]
 };
 
-async function seedDatabase() {
+export async function seedDatabase() {
   try {
     // 1. Seed Super Admin
     const adminCount = await AdminUser.countDocuments();
@@ -308,4 +308,4 @@ async function seedDatabase() {
   }
 }
 
-module.exports = { seedDatabase, SEED_DATA };
+export default { seedDatabase, SEED_DATA };

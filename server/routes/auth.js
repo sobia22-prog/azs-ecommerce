@@ -1,9 +1,10 @@
-const express = require('express');
+import express from 'express';
+import crypto from 'crypto';
+import AdminUser from '../models/AdminUser.js';
+import { getIsConnected } from '../config/db.js';
+import { SEED_DATA } from '../seed.js';
+
 const router = express.Router();
-const crypto = require('crypto');
-const AdminUser = require('../models/AdminUser');
-const { getIsConnected } = require('../config/db');
-const { SEED_DATA } = require('../seed');
 
 // Active admin sessions map: token -> { user, expiresAt }
 const activeSessions = new Map();
@@ -14,7 +15,7 @@ function generateToken() {
 }
 
 // Middleware to verify admin authentication
-function requireAdmin(req, res, next) {
+export function requireAdmin(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.status(401).json({ success: false, message: 'Unauthorized: Admin authentication token required.' });
@@ -128,4 +129,5 @@ router.post('/logout', (req, res) => {
   res.json({ success: true, message: 'Logged out successfully.' });
 });
 
-module.exports = { router, requireAdmin };
+export default router;
+export { router };

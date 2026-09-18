@@ -1,8 +1,9 @@
-const express = require('express');
+import express from 'express';
+import Lead from '../models/Lead.js';
+import { getIsConnected, fallbackMemoryStore } from '../config/db.js';
+import { requireAdmin } from './auth.js';
+
 const router = express.Router();
-const Lead = require('../models/Lead');
-const { getIsConnected, fallbackMemoryStore } = require('../config/db');
-const { requireAdmin } = require('./auth');
 
 // POST /api/leads - Create new lead / discovery booking (Public)
 router.post('/', async (req, res) => {
@@ -112,4 +113,4 @@ router.delete('/:id', requireAdmin, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

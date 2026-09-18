@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
-const dns = require('dns');
+import mongoose from 'mongoose';
+import dns from 'dns';
 
 let isConnected = false;
-let fallbackMemoryStore = {
+export const fallbackMemoryStore = {
   leads: [],
   caseStudies: []
 };
 
-const connectDB = async () => {
+export const connectDB = async () => {
   const mongoURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/azs_ecommerce';
 
   // Configure public DNS resolvers for Atlas SRV lookups on Windows
@@ -31,8 +31,10 @@ const connectDB = async () => {
   }
 };
 
-module.exports = {
+export const getIsConnected = () => isConnected;
+
+export default {
   connectDB,
-  getIsConnected: () => isConnected,
+  getIsConnected,
   fallbackMemoryStore
 };

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const crypto = require('crypto');
+import mongoose from 'mongoose';
+import crypto from 'crypto';
 
 const AdminUserSchema = new mongoose.Schema({
   email: {
@@ -49,4 +49,4 @@ AdminUserSchema.methods.validatePassword = function (password) {
   return hash === originalHash;
 };
 
-module.exports = mongoose.model('AdminUser', AdminUserSchema);
+export default mongoose.model('AdminUser', AdminUserSchema);

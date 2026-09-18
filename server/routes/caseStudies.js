@@ -1,9 +1,10 @@
-const express = require('express');
+import express from 'express';
+import CaseStudy from '../models/CaseStudy.js';
+import { getIsConnected } from '../config/db.js';
+import { SEED_DATA } from '../seed.js';
+import { requireAdmin } from './auth.js';
+
 const router = express.Router();
-const CaseStudy = require('../models/CaseStudy');
-const { getIsConnected } = require('../config/db');
-const { SEED_DATA } = require('../seed');
-const { requireAdmin } = require('./auth');
 
 let memoryCaseStudies = [...SEED_DATA.caseStudies];
 
@@ -86,4 +87,4 @@ router.delete('/:id', requireAdmin, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

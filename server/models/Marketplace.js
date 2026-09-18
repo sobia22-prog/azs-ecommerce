@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const MarketplaceSchema = new mongoose.Schema({
   slug: {
@@ -69,4 +69,4 @@ MarketplaceSchema.pre('save', function (next) {
   next();
 });
 
-module.exports = mongoose.model('Marketplace', MarketplaceSchema);
+export default mongoose.model('Marketplace', MarketplaceSchema);

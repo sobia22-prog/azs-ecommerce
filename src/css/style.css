@@ -1,3 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-mint: #00f59b;
+  --color-neon-cyan: #00d2ff;
+  --color-neon-emerald: #10b981;
+  --color-neon-amber: #f59e0b;
+  --color-neon-purple: #8b5cf6;
+  --color-bg-darkest: #04070b;
+  --color-bg-primary: #070b12;
+  --color-bg-secondary: #0c121e;
+  --color-bg-surface: #111928;
+}
+
 /* ==========================================================================
    AZS SOLUTIONS - PREMIUM DESIGN SYSTEM & STYLESHEET
    Dark Cyber-Fintech Aesthetic with Glassmorphism & Neon Mint Accents

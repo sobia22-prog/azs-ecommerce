@@ -1,8 +1,13 @@
-const express = require('express');
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { requireAdmin } from './auth.js';
+
 const router = express.Router();
-const fs = require('fs');
-const path = require('path');
-const { requireAdmin } = require('./auth');
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const UPLOAD_DIR = path.join(__dirname, '../../public/assets/uploads');
 
@@ -93,4 +98,4 @@ router.get('/gallery', requireAdmin, (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

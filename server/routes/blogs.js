@@ -1,9 +1,10 @@
-const express = require('express');
+import express from 'express';
+import Blog from '../models/Blog.js';
+import { getIsConnected } from '../config/db.js';
+import { SEED_DATA } from '../seed.js';
+import { requireAdmin } from './auth.js';
+
 const router = express.Router();
-const Blog = require('../models/Blog');
-const { getIsConnected } = require('../config/db');
-const { SEED_DATA } = require('../seed');
-const { requireAdmin } = require('./auth');
 
 let memoryBlogs = [...SEED_DATA.blogs];
 
@@ -86,4 +87,4 @@ router.delete('/:id', requireAdmin, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

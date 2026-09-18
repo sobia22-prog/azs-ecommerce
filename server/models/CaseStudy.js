@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const CaseStudySchema = new mongoose.Schema({
   slug: {
@@ -62,4 +62,4 @@ CaseStudySchema.pre('save', function (next) {
   next();
 });
 
-module.exports = mongoose.model('CaseStudy', CaseStudySchema);
+export default mongoose.model('CaseStudy', CaseStudySchema);

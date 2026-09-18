@@ -1,18 +1,22 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import 'dotenv/config';
 
-const { connectDB, getIsConnected } = require('./config/db');
-const { seedDatabase } = require('./seed');
+import { connectDB, getIsConnected } from './config/db.js';
+import { seedDatabase } from './seed.js';
 
-const authRoutes = require('./routes/auth');
-const marketplacesRoutes = require('./routes/marketplaces');
-const caseStudiesRoutes = require('./routes/caseStudies');
-const blogsRoutes = require('./routes/blogs');
-const leadsRoutes = require('./routes/leads');
-const calculatorRoutes = require('./routes/calculator');
-const uploadRoutes = require('./routes/upload');
+import authRoutes from './routes/auth.js';
+import marketplacesRoutes from './routes/marketplaces.js';
+import caseStudiesRoutes from './routes/caseStudies.js';
+import blogsRoutes from './routes/blogs.js';
+import leadsRoutes from './routes/leads.js';
+import calculatorRoutes from './routes/calculator.js';
+import uploadRoutes from './routes/upload.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -32,7 +36,7 @@ app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
 // API Routes
-app.use('/api/auth', authRoutes.router);
+app.use('/api/auth', authRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/marketplaces', marketplacesRoutes);
 app.use('/api/case-studies', caseStudiesRoutes);
@@ -55,3 +59,5 @@ app.get('/api/health', (req, res) => {
 app.listen(PORT, () => {
   console.log(`[AZS Backend] Express API Server running on port ${PORT}`);
 });
+
+export default app;
