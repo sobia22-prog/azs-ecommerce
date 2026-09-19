@@ -39,10 +39,15 @@ export default function AdminLoginPage() {
         body: JSON.stringify({ email, password })
       });
 
-      const data = await res.json();
+      let data = null;
+      try {
+        data = await res.json();
+      } catch (jsonErr) {
+        throw new Error(`Server returned ${res.status} (${res.statusText || 'Endpoint unavailable'}). Please verify your backend deployment.`);
+      }
 
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || 'Login failed. Please check credentials.');
+      if (!res.ok || !data || !data.success) {
+        throw new Error(data?.message || 'Login failed. Please check credentials.');
       }
 
       localStorage.setItem('azs_admin_token', data.token);

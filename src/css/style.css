@@ -3447,7 +3447,7 @@ img {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 18px;
   }
-  .nav-menu {
+  .nav-menu:not(.mobile-visible) {
     display: none !important;
   }
   .mobile-toggle {
@@ -3473,6 +3473,11 @@ img {
   /* 1. Mobile Header & Nav Bar Sizing */
   .site-header {
     height: 62px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
   }
 
   .nav-wrapper {
@@ -3480,31 +3485,42 @@ img {
     gap: 8px;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
   }
 
   .brand-logo-link {
     gap: 8px;
     margin-right: 0;
+    flex-shrink: 1;
+    min-width: 0;
   }
 
   .brand-logo-frame {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
   }
 
   .brand-logo-img {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-text-col {
+    min-width: 0;
   }
 
   .brand-name {
-    font-size: 0.82rem;
-    letter-spacing: 0.04em;
+    font-size: 0.80rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .brand-sub {
-    font-size: 0.54rem;
-    letter-spacing: 0.06em;
+    font-size: 0.52rem;
+    letter-spacing: 0.05em;
   }
 
   .nav-actions {
@@ -3513,17 +3529,17 @@ img {
     flex-shrink: 0;
   }
 
-  /* Segmented currency toggle is hidden from cramped top row on mobile */
+  /* Segmented currency toggle is hidden from top header row on mobile */
   .desktop-currency-toggle {
     display: none !important;
   }
 
-  /* Currency switcher is neatly integrated into mobile menu drawer */
+  /* Currency switcher integrated into mobile drawer */
   .mobile-drawer-extra {
-    display: block;
-    margin-top: 10px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: block !important;
+    margin-bottom: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .mobile-drawer-currency-box {
@@ -3542,7 +3558,7 @@ img {
     color: var(--text-muted);
   }
 
-  /* Mobile CTA Label switch */
+  /* Mobile CTA Button */
   .desktop-cta-label {
     display: none !important;
   }
@@ -3560,17 +3576,224 @@ img {
     white-space: nowrap;
   }
 
-  .nav-menu {
-    display: none;
+  .nav-menu:not(.mobile-visible) {
+    display: none !important;
   }
 
-  .mobile-toggle {
+  /* Mobile Drawer Full Screen Overlay */
+  .nav-menu.mobile-visible {
+    display: flex !important;
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 62px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: calc(100vh - 62px) !important;
+    max-height: calc(100vh - 62px) !important;
+    background: rgba(4, 7, 13, 0.98) !important;
+    backdrop-filter: blur(28px) !important;
+    -webkit-backdrop-filter: blur(28px) !important;
+    padding: 16px 18px 80px 18px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    z-index: 99999 !important;
+    gap: 10px !important;
+    border-top: 1px solid rgba(0, 245, 155, 0.22) !important;
+    box-sizing: border-box !important;
+    animation: mobileDrawerFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes mobileDrawerFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-menu.mobile-visible .nav-item {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .nav-menu.mobile-visible .nav-link,
+  .nav-menu.mobile-visible .dropdown-toggle-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 12px 14px !important;
+    font-size: 0.94rem !important;
+    font-weight: 600 !important;
+    color: #f1f5f9 !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .nav-menu.mobile-visible .nav-link:hover,
+  .nav-menu.mobile-visible .dropdown-toggle-btn:hover,
+  .nav-menu.mobile-visible .dropdown-item-parent.open .dropdown-toggle-btn {
+    background: rgba(0, 245, 155, 0.08) !important;
+    border-color: rgba(0, 245, 155, 0.35) !important;
+    color: var(--neon-mint) !important;
+  }
+
+  .nav-menu.mobile-visible .nav-dropdown-menu {
+    position: static !important;
+    width: 100% !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: none;
+    box-shadow: none !important;
+    background: rgba(10, 16, 28, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 10px !important;
+    margin-top: 6px !important;
+    pointer-events: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .nav-menu.mobile-visible .dropdown-item-parent.open .nav-dropdown-menu {
+    display: block !important;
+  }
+
+  .nav-menu.mobile-visible .mega-dropdown-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .nav-menu.mobile-visible .dropdown-subitem {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 10px 12px !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .nav-menu.mobile-visible .dropdown-subitem:hover {
+    background: rgba(0, 245, 155, 0.1) !important;
+    border-color: rgba(0, 245, 155, 0.3) !important;
+  }
+
+  .nav-menu.mobile-visible .mobile-drawer-bottom-cta {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-drawer-audit-btn {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6px;
+    gap: 8px;
+    padding: 12px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+  }
+
+  .mobile-drawer-footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 4px;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+  }
+
+  .mobile-drawer-link-sub {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-drawer-link-sub:hover {
+    color: var(--neon-mint);
+  }
+
+  /* Hamburger Toggle Button */
+  .mobile-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    color: var(--text-pure);
+    cursor: pointer;
     flex-shrink: 0;
-    margin-left: 2px;
+    padding: 6px;
+    transition: all 0.2s ease;
+    z-index: 10005;
+  }
+
+  .mobile-toggle.is-active,
+  .mobile-toggle:hover {
+    background: rgba(0, 245, 155, 0.15);
+    border-color: rgba(0, 245, 155, 0.4);
+    color: #00F59B;
+    box-shadow: 0 0 12px rgba(0, 245, 155, 0.25);
+  }
+}
+
+/* Extra Compact Screens (<= 390px) */
+@media (max-width: 390px) {
+  .nav-wrapper {
+    padding: 0 8px !important;
+    gap: 6px !important;
+  }
+
+  .brand-logo-frame {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .brand-logo-img {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .brand-name {
+    font-size: 0.72rem !important;
+  }
+
+  .brand-sub {
+    display: none !important;
+  }
+
+  .nav-cta-btn {
+    padding: 5px 9px !important;
+    font-size: 0.72rem !important;
+    gap: 3px !important;
+  }
+
+  .mobile-toggle {
+    width: 34px !important;
+    height: 34px !important;
+    padding: 5px !important;
   }
 
   /* 2. Mobile Hero Layout & Unobstructed CTAs */

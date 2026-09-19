@@ -29,6 +29,24 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setMobileOpen(false);
+    setActiveDropdown(null);
+  }, [path]);
+
   const handleNavClick = (target, isAnchor = false) => {
     setActiveDropdown(null);
     setMobileOpen(false);
@@ -390,6 +408,29 @@ export default function Navbar() {
                 About
               </Link>
             </li>
+
+            {/* Mobile Drawer Bottom CTAs */}
+            <li className="mobile-drawer-bottom-cta">
+              <Link 
+                to="/book-audit" 
+                className="btn btn-primary mobile-drawer-audit-btn"
+                onClick={() => setMobileOpen(false)}
+              >
+                <span>⚡ Claim Free 360° Growth Audit</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </Link>
+              <div className="mobile-drawer-footer-links">
+                <Link to="/admin/login" onClick={() => setMobileOpen(false)} className="mobile-drawer-link-sub">
+                  🔐 Super Admin Console
+                </Link>
+                <a href="mailto:hello@azssolutions.com" className="mobile-drawer-link-sub">
+                  ✉️ hello@azssolutions.com
+                </a>
+              </div>
+            </li>
           </ul>
         </nav>
 
@@ -430,15 +471,23 @@ export default function Navbar() {
           </Link>
 
           <button 
-            className="mobile-toggle" 
-            aria-label="Toggle navigation menu"
+            className={`mobile-toggle ${mobileOpen ? 'is-active' : ''}`}
+            aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setMobileOpen(!mobileOpen)}
+            type="button"
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+            {mobileOpen ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            )}
           </button>
         </div>
       </div>

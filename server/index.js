@@ -36,18 +36,18 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
 app.use('/assets', express.static(path.join(__dirname, '../assets')));
 
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/upload', uploadRoutes);
-app.use('/api/marketplaces', marketplacesRoutes);
-app.use('/api/case-studies', caseStudiesRoutes);
-app.use('/api/blogs', blogsRoutes);
-app.use('/api/leads', leadsRoutes);
-app.use('/api/calculator', calculatorRoutes);
-app.use('/api/ai', aiRoutes);
+// API Router mounted at both /api and root to guarantee routing across all Vercel/proxied environments
+const apiRouter = express.Router();
+apiRouter.use('/auth', authRoutes);
+apiRouter.use('/upload', uploadRoutes);
+apiRouter.use('/marketplaces', marketplacesRoutes);
+apiRouter.use('/case-studies', caseStudiesRoutes);
+apiRouter.use('/blogs', blogsRoutes);
+apiRouter.use('/leads', leadsRoutes);
+apiRouter.use('/calculator', calculatorRoutes);
+apiRouter.use('/ai', aiRoutes);
 
-// Health Check
-app.get('/api/health', (req, res) => {
+apiRouter.get('/health', (req, res) => {
   res.json({
     status: 'online',
     timestamp: new Date().toISOString(),
@@ -57,9 +57,16 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`[AZS Backend] Express API Server running on port ${PORT}`);
-});
+app.use('/api', apiRouter);
+app.use('/', apiRouter);
+
+// Start Server in standard Node environments when run directly (avoid binding port in Vercel serverless functions or when imported)
+const isDirectRun = Boolean(process.argv[1] && (process.argv[1].endsWith('server\\index.js') || process.argv[1].endsWith('server/index.js')));
+
+if (isDirectRun && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[AZS Backend] Express API Server running on port ${PORT}`);
+  });
+}
 
 export default app;
