@@ -60,10 +60,8 @@ apiRouter.get('/health', (req, res) => {
 app.use('/api', apiRouter);
 app.use('/', apiRouter);
 
-// Start Server in standard Node environments when run directly (avoid binding port in Vercel serverless functions or when imported)
-const isDirectRun = Boolean(process.argv[1] && (process.argv[1].endsWith('server\\index.js') || process.argv[1].endsWith('server/index.js')));
-
-if (isDirectRun && !process.env.VERCEL) {
+// Start Server in local Node environments (Vercel sets VERCEL=1)
+if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`[AZS Backend] Express API Server running on port ${PORT}`);
   });

@@ -11,7 +11,7 @@ export default function RobotCompanion({ inline = false }) {
     {
       id: 'welcome',
       role: 'assistant',
-      content: '👋 **Hello! I am your AZS Solutions AI Growth Advisor, powered by Google Gemini.**\n\nI can assist you with scaling on **Amazon Saudi Arabia**, **Noon GCC**, **Trendyol cross-border trade**, or **Shopify D2C advertising** with verified 8.4x ROAS.\n\nWhat would you like to explore for your brand today?'
+      content: '👋 **Hello! Welcome to AZS Solutions.**\n\nI am your Growth Advisor. Whether you are looking to scale on **Amazon KSA & UAE**, **Noon**, **Trendyol cross-border**, or **Shopify D2C**, I am here to help.\n\nWhat can I assist your brand with today?'
     }
   ]);
 
@@ -164,28 +164,28 @@ export default function RobotCompanion({ inline = false }) {
 
   return (
     <div className={`robot-container ${inline ? 'robot-inline' : 'robot-floating'}`}>
-      {/* Live Intelligent Gemini AI Advisor Chat Window */}
+      {/* Live Growth Advisor Chat Window */}
       {chatOpen && (
         <div className="ai-chat-window">
           {/* Header */}
           <div className="ai-chat-header">
             <div className="ai-chat-header-info">
-              <div className="ai-chat-avatar-frame">
-                <span className="ai-chat-avatar-icon">🤖</span>
+              <div className="advisor-avatar-frame">
+                <img src="/assets/azs_logo.png" alt="AZS" className="advisor-avatar-img" />
                 <span className="ai-online-pulse"></span>
               </div>
               <div className="ai-chat-title-col">
                 <div className="ai-chat-name">
-                  AZS AI Growth Advisor
-                  <span className="gemini-powered-tag">Gemini AI</span>
+                  <span>AZS Growth Advisor</span>
+                  <span className="advisor-status-badge">Online</span>
                 </div>
-                <div className="ai-chat-subtitle">Live Customer Support & Ecommerce Strategy</div>
+                <div className="ai-chat-subtitle">Live Support & Advisory</div>
               </div>
             </div>
             <button
               className="ai-chat-close-btn"
               onClick={() => setChatOpen(false)}
-              aria-label="Close AI Advisor"
+              aria-label="Close chat"
               title="Close chat"
             >
               ✕
@@ -197,7 +197,9 @@ export default function RobotCompanion({ inline = false }) {
             {messages.map((msg) => (
               <div key={msg.id} className={`ai-message-row ${msg.role === 'user' ? 'user-row' : 'assistant-row'}`}>
                 {msg.role === 'assistant' && (
-                  <div className="ai-msg-bot-avatar">🤖</div>
+                  <div className="advisor-msg-avatar">
+                    <img src="/assets/azs_logo.png" alt="AZS" className="advisor-msg-avatar-img" />
+                  </div>
                 )}
                 <div className={`ai-message-bubble ${msg.role === 'user' ? 'user-bubble' : 'assistant-bubble'}`}>
                   {renderFormattedText(msg.content)}
@@ -207,12 +209,14 @@ export default function RobotCompanion({ inline = false }) {
 
             {loading && (
               <div className="ai-message-row assistant-row">
-                <div className="ai-msg-bot-avatar">🤖</div>
+                <div className="advisor-msg-avatar">
+                  <img src="/assets/azs_logo.png" alt="AZS" className="advisor-msg-avatar-img" />
+                </div>
                 <div className="ai-message-bubble assistant-bubble loading-bubble">
                   <span className="typing-dot d1"></span>
                   <span className="typing-dot d2"></span>
                   <span className="typing-dot d3"></span>
-                  <span className="typing-label">Analyzing strategy...</span>
+                  <span className="typing-label">Typing...</span>
                 </div>
               </div>
             )}
@@ -241,7 +245,7 @@ export default function RobotCompanion({ inline = false }) {
                 ref={inputRef}
                 type="text"
                 className="ai-chat-input"
-                placeholder="Ask about Amazon, Noon, Trendyol, Shopify..."
+                placeholder="Type your question..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -254,7 +258,7 @@ export default function RobotCompanion({ inline = false }) {
                 aria-label="Send query"
                 title="Send message"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <line x1="22" y1="2" x2="11" y2="13"></line>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
@@ -268,7 +272,7 @@ export default function RobotCompanion({ inline = false }) {
                   navigate('/book-audit');
                 }}
               >
-                ⚡ Claim Free 360° Growth Audit ➔
+                Claim Free 360° Account Audit →
               </button>
             </div>
           </div>
@@ -280,24 +284,26 @@ export default function RobotCompanion({ inline = false }) {
         <button
           className="robot-launcher-pill desktop-only-pill"
           onClick={() => setChatOpen(true)}
-          title="Open AI Growth & Support Advisor"
-          aria-label="Open AI Growth & Support Advisor"
+          title="Chat with an AZS Growth Advisor"
+          aria-label="Chat with an AZS Growth Advisor"
         >
           <span className="pulse-dot"></span>
-          <span>Ask AI Advisor</span>
+          <span>Chat with Advisor</span>
         </button>
       )}
 
-      {/* Mobile-Friendly Compact Floating AI Advisor Button */}
+      {/* Mobile-Friendly Compact Floating Advisor Button */}
       {!chatOpen && (
         <button
           className="robot-mobile-fab-trigger"
           onClick={() => setChatOpen(true)}
-          title="Open AI Growth & Support Advisor"
-          aria-label="Open AI Growth & Support Advisor"
+          title="Chat with an AZS Growth Advisor"
+          aria-label="Chat with an AZS Growth Advisor"
         >
           <span className="mobile-fab-glow"></span>
-          <span className="mobile-fab-icon">🤖</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00F59B" strokeWidth="2.2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
           <span className="mobile-fab-pulse"></span>
         </button>
       )}
@@ -309,7 +315,7 @@ export default function RobotCompanion({ inline = false }) {
           onClick={() => setChatOpen(true)}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          title="Click to ask the AI Advisor!"
+          title="Chat with an AZS Growth Advisor"
         >
           {/* Floating Halo & Energy Rings */}
           <div className="robot-energy-ring"></div>

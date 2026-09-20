@@ -1,3 +1,4 @@
+process.env.VERCEL = '1';
 import app from '../server/index.js';
 import { connectDB } from '../server/config/db.js';
 import { seedDatabase } from '../server/seed.js';
