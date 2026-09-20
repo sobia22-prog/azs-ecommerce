@@ -806,8 +806,9 @@ img {
   display: none;
 }
 
-.mobile-drawer-extra {
-  display: none;
+.mobile-drawer-extra,
+.mobile-drawer-bottom-cta {
+  display: none !important;
   list-style: none;
 }
 

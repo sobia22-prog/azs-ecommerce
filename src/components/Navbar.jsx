@@ -80,30 +80,32 @@ export default function Navbar() {
         {/* Clean Categorized Navigation with Two Divisions and Trendyol */}
         <nav aria-label="Primary Navigation">
           <ul className={`nav-menu ${mobileOpen ? 'mobile-visible' : ''}`}>
-            {/* Mobile Drawer Currency Switcher (Top of Drawer) */}
-            <li className="mobile-drawer-extra">
-              <div className="mobile-drawer-currency-box">
-                <span className="mobile-drawer-currency-lbl">Display Currency:</span>
-                <div className="currency-segmented-toggle">
-                  <button 
-                    type="button"
-                    className={`currency-pill-opt ${!isSAR ? 'active' : ''}`}
-                    onClick={() => setCurrency('USD')}
-                    aria-label="Display figures in USD"
-                  >
-                    USD
-                  </button>
-                  <button 
-                    type="button"
-                    className={`currency-pill-opt ${isSAR ? 'active' : ''}`}
-                    onClick={() => setCurrency('SAR')}
-                    aria-label="Display figures in SAR"
-                  >
-                    SAR
-                  </button>
+            {/* Mobile Drawer Currency Switcher (Top of Drawer) - Only in mobile view */}
+            {mobileOpen && (
+              <li className="mobile-drawer-extra">
+                <div className="mobile-drawer-currency-box">
+                  <span className="mobile-drawer-currency-lbl">Display Currency:</span>
+                  <div className="currency-segmented-toggle">
+                    <button 
+                      type="button"
+                      className={`currency-pill-opt ${!isSAR ? 'active' : ''}`}
+                      onClick={() => setCurrency('USD')}
+                      aria-label="Display figures in USD"
+                    >
+                      USD
+                    </button>
+                    <button 
+                      type="button"
+                      className={`currency-pill-opt ${isSAR ? 'active' : ''}`}
+                      onClick={() => setCurrency('SAR')}
+                      aria-label="Display figures in SAR"
+                    >
+                      SAR
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            )}
 
             {/* 1. MARKETPLACE MANAGEMENT DROPDOWN */}
             <li 
@@ -409,28 +411,30 @@ export default function Navbar() {
               </Link>
             </li>
 
-            {/* Mobile Drawer Bottom CTAs */}
-            <li className="mobile-drawer-bottom-cta">
-              <Link 
-                to="/book-audit" 
-                className="btn btn-primary mobile-drawer-audit-btn"
-                onClick={() => setMobileOpen(false)}
-              >
-                <span>⚡ Claim Free 360° Growth Audit</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </Link>
-              <div className="mobile-drawer-footer-links">
-                <Link to="/admin/login" onClick={() => setMobileOpen(false)} className="mobile-drawer-link-sub">
-                  🔐 Super Admin Console
+            {/* Mobile Drawer Bottom CTAs - Only in mobile view */}
+            {mobileOpen && (
+              <li className="mobile-drawer-bottom-cta">
+                <Link 
+                  to="/book-audit" 
+                  className="btn btn-primary mobile-drawer-audit-btn"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <span>⚡ Claim Free 360° Growth Audit</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </Link>
-                <a href="mailto:hello@azssolutions.com" className="mobile-drawer-link-sub">
-                  ✉️ hello@azssolutions.com
-                </a>
-              </div>
-            </li>
+                <div className="mobile-drawer-footer-links">
+                  <Link to="/admin/login" onClick={() => setMobileOpen(false)} className="mobile-drawer-link-sub">
+                    🔐 Super Admin Console
+                  </Link>
+                  <a href="mailto:hello@azssolutions.com" className="mobile-drawer-link-sub">
+                    ✉️ hello@azssolutions.com
+                  </a>
+                </div>
+              </li>
+            )}
           </ul>
         </nav>
 
