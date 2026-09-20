@@ -4679,12 +4679,12 @@ img {
 }
 
 .ai-chat-name {
-  font-size: 0.86rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: #f8fafc;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 }
 
 .advisor-status-badge {
@@ -4768,11 +4768,22 @@ img {
 
 /* User Message Bubble - High Contrast & Clean */
 .ai-message-bubble {
-  max-width: 82%;
-  padding: 9px 13px;
-  font-size: 0.84rem;
-  line-height: 1.5;
+  max-width: 84%;
+  padding: 8px 12px;
+  font-size: 0.78rem !important;
+  line-height: 1.46 !important;
   word-break: break-word;
+}
+
+.ai-message-bubble,
+.ai-message-bubble p,
+.ai-message-bubble .ai-msg-para,
+.ai-message-bubble span,
+.ai-message-bubble li,
+.ai-msg-bullet,
+.ai-msg-bullet span {
+  font-size: 0.78rem !important;
+  line-height: 1.46 !important;
 }
 
 .user-bubble {
@@ -4786,6 +4797,8 @@ img {
 .user-bubble p,
 .user-bubble span {
   color: #040e1b !important;
+  font-size: 0.78rem !important;
+  line-height: 1.46 !important;
   font-weight: 600 !important;
   margin: 0 !important;
 }
@@ -4799,6 +4812,8 @@ img {
 }
 
 .assistant-bubble .ai-msg-para {
+  font-size: 0.78rem !important;
+  line-height: 1.46 !important;
   margin-bottom: 6px;
   color: #cbd5e1;
 }
@@ -4808,8 +4823,9 @@ img {
 }
 
 .assistant-bubble strong {
+  font-size: 0.78rem !important;
   color: #ffffff !important;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .ai-msg-bullet {
@@ -4817,11 +4833,15 @@ img {
   gap: 6px;
   align-items: baseline;
   margin-bottom: 4px;
+  font-size: 0.78rem !important;
+  line-height: 1.46 !important;
+  color: #cbd5e1;
 }
 
 .bullet-dot {
   color: #00F59B;
-  font-size: 0.72rem;
+  font-size: 0.64rem !important;
+  line-height: 1.46 !important;
   flex-shrink: 0;
 }
 
@@ -4915,7 +4935,7 @@ img {
   border: none;
   outline: none;
   color: #f8fafc;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-family: inherit;
 }
 

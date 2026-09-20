@@ -102,6 +102,13 @@ export default function RobotCompanion({ inline = false }) {
     if (!text) return null;
     const lines = text.split('\n');
     return lines.map((line, idx) => {
+      const trimmed = line.trim();
+
+      // Skip empty bullet markers or stray asterisks
+      if (!trimmed || trimmed === '*' || trimmed === '-' || trimmed === '•') {
+        return trimmed ? null : <div key={idx} style={{ height: '6px' }}></div>;
+      }
+
       // Parse markdown links [text](url) and bold **text**
       const parseSegments = (str) => {
         const tokenRegex = /(\[.*?\]\(.*?\)|\*\*.*?\*\*)/g;
@@ -143,22 +150,20 @@ export default function RobotCompanion({ inline = false }) {
         });
       };
 
-      const formattedLine = parseSegments(line);
-
-      if (line.trim().startsWith('* ') || line.trim().startsWith('- ') || line.trim().startsWith('• ')) {
+      // Check for bullet list item: * or - or • or 1.
+      const bulletMatch = trimmed.match(/^(\*|-|•|\d+\.)\s+(.*)$/);
+      if (bulletMatch) {
+        const bulletText = bulletMatch[2];
+        if (!bulletText.trim()) return null;
         return (
           <div key={idx} className="ai-msg-bullet">
             <span className="bullet-dot">▸</span>
-            <span>{formattedLine}</span>
+            <span>{parseSegments(bulletText)}</span>
           </div>
         );
       }
 
-      if (!line.trim()) {
-        return <div key={idx} style={{ height: '8px' }}></div>;
-      }
-
-      return <p key={idx} className="ai-msg-para">{formattedLine}</p>;
+      return <p key={idx} className="ai-msg-para">{parseSegments(line)}</p>;
     });
   };
 
