@@ -37,8 +37,8 @@ export default function Hero({ onOpenModal }) {
         <div className="hero-eyebrow-row">
           <div className="hero-single-eyebrow">
             <span className="punchy-tag-dot"></span>
-            <span className="eyebrow-lead">GCC & GLOBAL COMMERCE:</span>
-            <span className="eyebrow-channels">🇸🇦 KSA (Amazon & Noon) • 🇺🇸 Amazon US • 🇬🇧 Amazon UK • 🛍️ Shopify DTC</span>
+            <span className="eyebrow-lead">GCC COMMERCE</span>
+            <span className="eyebrow-channels">Amazon • Noon • Shopify</span>
           </div>
         </div>
 

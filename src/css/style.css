@@ -3780,7 +3780,7 @@ img {
   }
 
   .hero-section {
-    padding-top: 88px;
+    padding-top: 104px;
     padding-bottom: 38px;
     min-height: auto;
   }
@@ -3797,16 +3797,59 @@ img {
   .hero-single-eyebrow {
     max-width: 100%;
     overflow: hidden;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     line-height: 1.35;
     white-space: normal;
   }
 
   .eyebrow-channels {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    color: var(--text-muted);
+  }
+
+  .track-switcher-wrap {
+    margin: 12px 0 8px;
+    width: 100%;
+  }
+
+  .track-tabs-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 6px;
+    padding: 5px;
+    border-radius: 18px;
+  }
+
+  .track-tab-btn {
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    border-radius: 13px;
+  }
+
+  .track-tab-btn svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+  }
+
+  .track-badge-tag {
+    font-size: 0.62rem;
+    white-space: nowrap;
+  }
+
+  .stats-footnote-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .stats-footnote-text {
+    font-size: 0.78rem;
+    line-height: 1.4;
+    margin: 0;
   }
 
   .hero-content h1 {
