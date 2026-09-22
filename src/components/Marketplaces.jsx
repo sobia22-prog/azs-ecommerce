@@ -80,7 +80,7 @@ export default function Marketplaces({ onOpenModal }) {
           <div className="badge-pill">The 4 Core Marketplaces</div>
           <h2>Dominating KSA, Trendyol, USA & UK Marketplaces</h2>
           <p>
-            End-to-end execution, catalog structuring, and multi-region advertising across the premier revenue corridors: Saudi Arabia (KSA), Trendyol GCC, United States (USA), and United Kingdom (UK).
+            One operating team for marketplace growth across the regions that matter.
           </p>
         </div>
 

@@ -52,7 +52,7 @@ export default function Hero({ onOpenModal }) {
 
             {/* Named Partner Credential Subhead */}
             <p className="hero-subtitle">
-              As an <strong>Amazon SPN Verified Partner</strong>, <strong>Noon Certified Growth Partner</strong>, and <strong>Shopify Plus Partner</strong>, we scale enterprise brands across Saudi Arabia, UAE, USA, and the UK with full-funnel performance marketing, Buy Box governance, and localized fulfillment.
+              We help ambitious brands grow across Amazon, Noon, Trendyol, and Shopify with one accountable growth team.
             </p>
 
             <div className="hero-cta-group">
@@ -83,7 +83,7 @@ export default function Hero({ onOpenModal }) {
                     <strong>4.9 / 5.0</strong> on <span className="tp-brand-name">Trustpilot</span>
                   </div>
                   <div className="proof-sub-line">
-                    45+ Verified Client Reviews
+                    45+ client reviews
                   </div>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function Hero({ onOpenModal }) {
                     <strong>35+ Enterprise Brands</strong>
                   </div>
                   <div className="proof-sub-line">
-                    Dominating Amazon, Noon & Shopify
+                    Amazon, Noon & Shopify
                   </div>
                 </div>
               </div>

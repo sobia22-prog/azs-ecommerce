@@ -180,7 +180,7 @@ img {
 }
 
 .section {
-  padding: 100px 0;
+  padding: 84px 0;
   position: relative;
 }
 
@@ -257,7 +257,7 @@ img {
 .section-header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 60px;
+  margin: 0 auto 44px;
 }
 
 .section-header h2 {
@@ -266,7 +266,7 @@ img {
 }
 
 .section-header p {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
 }
 
@@ -3757,6 +3757,101 @@ img {
     border-color: rgba(0, 245, 155, 0.4);
     color: #00F59B;
     box-shadow: 0 0 12px rgba(0, 245, 155, 0.25);
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-header {
+    max-width: 620px;
+    margin-bottom: 32px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.75rem, 5.5vw, 2.35rem);
+    line-height: 1.12;
+    margin-bottom: 10px;
+  }
+
+  .section-header p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .hero-section {
+    padding-top: 88px;
+    padding-bottom: 38px;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hero-eyebrow-row {
+    margin-bottom: 16px;
+  }
+
+  .hero-single-eyebrow {
+    max-width: 100%;
+    overflow: hidden;
+    font-size: 0.7rem;
+    line-height: 1.35;
+    white-space: normal;
+  }
+
+  .eyebrow-channels {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.25rem, 9vw, 3.5rem);
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+
+  .hero-subtitle {
+    max-width: 560px;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .hero-cta-group {
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .hero-cta-group .btn {
+    padding: 11px 18px;
+    font-size: 0.88rem;
+  }
+
+  .hero-social-proof-strip {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .proof-sub-line {
+    font-size: 0.7rem;
+  }
+
+  .live-revenue-card {
+    padding: 18px;
+    max-width: none;
+  }
+
+  .hero-products-proof-strip {
+    display: none;
+  }
+
+  .mkt-card {
+    padding: 24px 20px;
   }
 }
 

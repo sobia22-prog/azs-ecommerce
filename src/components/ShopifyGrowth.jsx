@@ -65,7 +65,7 @@ export default function ShopifyGrowth({ onOpenModal }) {
           <div className="badge-pill badge-pill-cyan">Storefronts & Paid Traffic</div>
           <h2>Shopify Mastery & Direct-to-Consumer Performance</h2>
           <p>
-            Bespoke high-converting storefronts, bilingual Arabic & English customer journeys, and omnichannel paid acquisition across Meta, TikTok, and Google Ads.
+            High-converting storefronts and paid acquisition built for GCC shoppers.
           </p>
         </div>
 
