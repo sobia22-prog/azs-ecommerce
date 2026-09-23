@@ -111,7 +111,7 @@ export default function Hero({ onOpenModal }) {
           {/* Right Column: Interactive Real-Time Revenue Chart Card */}
           <div className="hero-visual">
             <div className="live-revenue-card">
-              <div className="card-topbar">
+              <div className="card-topbar desktop-only">
                 <span className="card-title-sub">
                   <span className="desktop-only-txt">Verified </span>Portfolio <span className="desktop-only-txt">Volume</span><span className="mobile-only-txt">GMV</span>
                 </span>

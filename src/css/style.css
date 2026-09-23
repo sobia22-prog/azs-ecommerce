@@ -3966,19 +3966,7 @@ img {
   }
 
   .card-topbar {
-    margin-bottom: 6px !important;
-  }
-
-  .card-title-sub {
-    font-size: 0.68rem !important;
-    letter-spacing: 0.04em !important;
-    white-space: nowrap !important;
-  }
-
-  .live-tag {
-    font-size: 0.66rem !important;
-    padding: 2px 7px !important;
-    white-space: nowrap !important;
+    display: none !important;
   }
 
   .revenue-number-row {
