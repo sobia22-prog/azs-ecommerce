@@ -20,7 +20,12 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       id: 'amazon-ksa',
       name: 'Amazon Saudi Arabia (Amazon.sa)',
       sub: 'KSA Flagship Marketplace & Riyadh/Jeddah FBA Logistics',
-      icon: '🇸🇦',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      ),
       badge: 'MENA #1 Channel',
       image: '/assets/homemaster_amazon_dashboard.svg',
       buttonText: 'Explore Amazon KSA Hub',
@@ -42,7 +47,13 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       id: 'amazon-usa',
       name: 'Amazon USA Expansion (Amazon.com)',
       sub: 'North American Omnichannel, Amazon DSP & Nationwide FBA',
-      icon: '🇺🇸',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      ),
       badge: 'Global Scale',
       image: '/assets/usa_amazon_light_dashboard.svg',
       buttonText: 'Explore Amazon USA Hub',
@@ -64,7 +75,11 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       id: 'noon',
       name: 'Noon Marketplace GCC',
       sub: 'KSA & UAE Seller Lab, Yellow Friday & FBN Express Routing',
-      icon: '🟡',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      ),
       badge: 'GCC Leader',
       image: '/assets/noon_ads_full_card.png',
       buttonText: 'Explore Noon GCC Hub',
@@ -86,7 +101,12 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       id: 'trendyol',
       name: 'Trendyol Cross-Border Hub',
       sub: 'Turkey & Europe to Saudi Arabia & UAE Fast-Growth Corridor',
-      icon: '🇹🇷',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+          <polyline points="17 6 23 6 23 12"></polyline>
+        </svg>
+      ),
       badge: 'Official Partner',
       image: '/assets/trendyol_light_dashboard.svg',
       buttonText: 'Explore Trendyol Hub',
@@ -139,8 +159,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
               </h3>
             </div>
             <div className="division-toggle-group">
-              <span className="division-nav-btn active">📦 Marketplaces Division</span>
-              <Link to="/shopify-dtc" className="division-nav-btn">🛍️ Shopify & D2C Division</Link>
+              <span className="division-nav-btn active">Marketplaces Division</span>
+              <Link to="/shopify-dtc" className="division-nav-btn">Shopify & D2C Division</Link>
             </div>
           </div>
 
@@ -261,7 +281,11 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginTop: '30px' }}>
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ fontSize: '1.4rem', marginBottom: '10px' }}>🛡️</div>
+                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
                 <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>Buy Box & IP Defense</h4>
                 <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
                   Automated scraping of unauthorized third-party sellers, proactive brand registry enforcement, and algorithmic dynamic repricing maintaining &gt;90% Buy Box occupancy.
@@ -269,7 +293,13 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
               </div>
 
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ fontSize: '1.4rem', marginBottom: '10px' }}>🎯</div>
+                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="6" />
+                    <circle cx="12" cy="12" r="2" />
+                  </svg>
+                </div>
                 <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>PPC Campaign Structuring</h4>
                 <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
                   Exact, phrase, and broad keyword segmentation, dayparting, negative keyword harvesting, and Sponsored Brands video units delivering sub-15% ACOS.
@@ -277,7 +307,13 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
               </div>
 
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ fontSize: '1.4rem', marginBottom: '10px' }}>🇸🇦</div>
+                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
                 <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>Arabic Localization</h4>
                 <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
                   Native GCC Arabic dialect keyword search volume indexing, cultural compliance, and high-conversion Arabic A+ infographic storytelling.
@@ -285,7 +321,14 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
               </div>
 
               <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ fontSize: '1.4rem', marginBottom: '10px' }}>🚚</div>
+                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="1" y="3" width="15" height="13" />
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                    <circle cx="5.5" cy="18.5" r="2.5" />
+                    <circle cx="18.5" cy="18.5" r="2.5" />
+                  </svg>
+                </div>
                 <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>FBA / FBN Logistics</h4>
                 <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
                   Warehouse routing into Riyadh, Jeddah, and Dubai fulfillment nodes, avoiding stockouts during Ramadan and White/Yellow Friday mega-sales.

@@ -320,17 +320,18 @@ export default function CaseStudiesPage({ onOpenModal }) {
           }}>
             {[
               { id: 'all', label: 'All Channels (5)' },
-              { id: 'amazon', label: '📦 Amazon Global & GCC (2)' },
-              { id: 'noon', label: '🟡 Noon KSA & UAE (1)' },
-              { id: 'trendyol', label: '🇹🇷 Trendyol GCC Expansion (1)' },
-              { id: 'shopify', label: '🛍️ Shopify & Paid Media (1)' }
+              { id: 'amazon', label: 'Amazon Global & GCC (2)' },
+              { id: 'noon', label: 'Noon KSA & UAE (1)' },
+              { id: 'trendyol', label: 'Trendyol GCC Expansion (1)' },
+              { id: 'shopify', label: 'Shopify & Paid Media (1)' }
             ].map(f => (
               <button
                 key={f.id}
                 className={`platform-badge-pill ${activeFilter === f.id ? 'active' : ''}`}
                 onClick={() => setActiveFilter(f.id)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: activeFilter === f.id ? 'var(--neon-mint)' : 'rgba(255,255,255,0.3)', flexShrink: 0 }}></span>
                 {f.label}
               </button>
             ))}

@@ -50,14 +50,14 @@ export default function ProgramsPricingPage() {
               className={`currency-pill-opt ${!isSAR ? 'active' : ''}`}
               onClick={() => setCurrency('USD')}
             >
-              🌐 USD ($)
+              USD ($)
             </button>
             <button
               type="button"
               className={`currency-pill-opt ${isSAR ? 'active' : ''}`}
               onClick={() => setCurrency('SAR')}
             >
-              🇸🇦 SAR (ر.س)
+              SAR (ر.س)
             </button>
           </div>
         </div>

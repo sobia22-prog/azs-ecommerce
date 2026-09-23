@@ -230,10 +230,24 @@ export default function WhatWeManage({ onOpenModal }) {
                 We eliminate operational fragmentation by bridging factory supply lines directly to marketplace fulfillment (FBA, FBN, 3PL) and algorithmic ad acceleration.
               </p>
               <div className="coverage-hero-pills">
-                <span className="coverage-hero-pill">🇸🇦 KSA 3PL (Riyadh & Jeddah)</span>
-                <span className="coverage-hero-pill">🇺🇸 US FBA Restock</span>
-                <span className="coverage-hero-pill">🇬🇧 UK Prime & Pan-EU</span>
-                <span className="coverage-hero-pill">🛡️ 100% Health Shield</span>
+                <span className="coverage-hero-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                  KSA 3PL (Riyadh &amp; Jeddah)
+                </span>
+                <span className="coverage-hero-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                  US FBA Restock
+                </span>
+                <span className="coverage-hero-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                  UK Prime &amp; Pan-EU
+                </span>
+                <span className="coverage-hero-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-mint)', flexShrink: 0 }}>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  100% Health Shield
+                </span>
               </div>
             </div>
           </div>

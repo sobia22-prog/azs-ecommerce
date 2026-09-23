@@ -16,22 +16,43 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
   const expansionPillars = [
     {
       title: 'Automated Catalog Translation & Sync',
-      icon: '🔄',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <polyline points="23 4 23 10 17 10" />
+          <polyline points="1 20 1 14 7 14" />
+          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+        </svg>
+      ),
       desc: 'Seamless translation of Turkish or European catalogs into high-converting Gulf Arabic and English attributes, sizing conventions, and taxonomy.'
     },
     {
       title: 'Localized GCC Pricing & VAT Compliance',
-      icon: '💰',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </svg>
+      ),
       desc: 'Dynamic currency mapping into Saudi Riyals (SAR) and UAE Dirhams (AED) with automatic import duty and ZATCA / FTA tax reconciliation built-in.'
     },
     {
       title: 'Trendyol Flash Promotions & Megasales',
-      icon: '⚡',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      ),
       desc: 'Securing top-tier slot placements in Trendyol’s high-traffic flash sales, coupon drops, and seasonal promotional banners across GCC mobile apps.'
     },
     {
       title: 'Cross-Border Air Freight & 72h Fulfillment',
-      icon: '✈️',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <path d="M22 2L11 13" />
+          <polygon points="22 2 15 22 11 13 2 9 22 2" />
+        </svg>
+      ),
       desc: 'Direct air-express routing from Istanbul/European hubs into Riyadh, Jeddah, and Dubai with integrated last-mile delivery tracking under 72 hours.'
     }
   ];

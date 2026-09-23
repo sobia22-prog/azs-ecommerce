@@ -274,7 +274,9 @@ export default function AdminDashboardPage() {
             fontSize: '1.2rem',
             color: 'var(--neon-mint)'
           }}>
-            ⚡
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
           </div>
           <div>
             <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#ffffff' }}>
@@ -374,11 +376,11 @@ export default function AdminDashboardPage() {
           overflowX: 'auto'
         }}>
           {[
-            { id: 'overview', label: '📊 Overview & KPIs', count: null },
-            { id: 'leads', label: '📬 Inbound Leads', count: leads.length },
-            { id: 'marketplaces', label: '📦 Marketplaces Hub', count: marketplaces.length },
-            { id: 'caseStudies', label: '🏆 Case Studies', count: caseStudies.length },
-            { id: 'blogs', label: '✍️ Blogs & Playbooks', count: blogs.length }
+            { id: 'overview', label: 'Overview & KPIs', count: null },
+            { id: 'leads', label: 'Inbound Leads', count: leads.length },
+            { id: 'marketplaces', label: 'Marketplaces Hub', count: marketplaces.length },
+            { id: 'caseStudies', label: 'Case Studies', count: caseStudies.length },
+            { id: 'blogs', label: 'Blogs & Playbooks', count: blogs.length }
           ].map(tab => (
             <button
               key={tab.id}
@@ -664,7 +666,6 @@ export default function AdminDashboardPage() {
                         name: '',
                         sub: '',
                         badge: 'Official Partner',
-                        icon: '📦',
                         buttonText: 'Explore Hub',
                         image: '/assets/homemaster_amazon_dashboard.svg',
                         metrics: { highlight: '', sub: '', volume: '' },
@@ -1185,7 +1186,13 @@ export default function AdminDashboardPage() {
                       </div>
                     ) : (
                       <div style={{ textAlign: 'center', padding: '16px' }}>
-                        <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🖼️</div>
+                        <div style={{ color: 'var(--neon-mint)', marginBottom: '8px', display: 'flex', justifyContent: 'center' }}>
+                          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                          </svg>
+                        </div>
                         <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#ffffff', marginBottom: '4px' }}>
                           No Console Image Selected
                         </div>
@@ -1220,7 +1227,7 @@ export default function AdminDashboardPage() {
                         transition: 'all 0.2s'
                       }}
                     >
-                      {uploading ? '⏳ Uploading Image...' : '📁 Upload from Computer'}
+                      {uploading ? 'Uploading Image...' : 'Upload from Computer'}
                     </button>
 
                     <button
@@ -1243,7 +1250,7 @@ export default function AdminDashboardPage() {
                         gap: '6px'
                       }}
                     >
-                      🖼️ {showGallery ? 'Hide Gallery' : `Choose from Gallery (${galleryImages.length || '...'})`}
+                      {showGallery ? 'Hide Gallery' : `Choose from Gallery (${galleryImages.length || '...'})`}
                     </button>
                   </div>
 

@@ -17,31 +17,31 @@ export default function AboutPage() {
     {
       city: 'Riyadh, Saudi Arabia',
       role: 'GCC Flagship Operations Hub',
-      flag: '🇸🇦',
+      code: 'KSA',
       desc: 'Local Saudi account management, ZATCA e-invoicing compliance, FBA Riyadh warehouse logistics, and Arabic native listing harvesting.'
     },
     {
       city: 'Dubai, United Arab Emirates',
       role: 'MENA Performance Media Center',
-      flag: '🇦🇪',
+      code: 'UAE',
       desc: 'Paid media acquisition desk covering Meta Ads, TikTok Shop creator partnerships, Noon UAE Seller Lab, and cross-border currency clearing.'
     },
     {
       city: 'London, United Kingdom',
       role: 'European Gateway & VAT Desk',
-      flag: '🇬🇧',
+      code: 'UK',
       desc: 'Amazon UK Prime operations, HMRC VAT management, cross-border customs brokerage, and Western European marketplace expansion.'
     },
     {
       city: 'New York, United States',
       role: 'US Marketplace & DSP Engine',
-      flag: '🇺🇸',
+      code: 'USA',
       desc: 'Amazon.com nationwide FBA restock governance, Amazon DSP programmatic display desks, and multi-channel Shopify D2C scale.'
     },
     {
       city: 'Istanbul, Turkey',
       role: 'Trendyol Cross-Border Gateway',
-      flag: '🇹🇷',
+      code: 'TUR',
       desc: 'Direct air-express fulfillment routing, Turkish manufacturer catalog translation, and high-growth Gulf export corridor operations.'
     }
   ];
@@ -49,22 +49,45 @@ export default function AboutPage() {
   const values = [
     {
       title: 'Audited Institutional Data',
-      icon: '🛡️',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      ),
       desc: 'We never present unqualified marketing claims. Every figure, ROAS multiplier, and GMV benchmark is substantiated by verified partner data.'
     },
     {
       title: 'TACoS-First Margin Governance',
-      icon: '⚖️',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+      ),
       desc: 'Scaling revenue without protecting net contribution profit is failure. We calibrate ad budgets to maximize gross dollar margin.'
     },
     {
       title: 'Native Cultural Localization',
-      icon: '🌍',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      ),
       desc: 'No automated machine translations. We harvest native vernacular search terms tailored to high-spending Gulf consumers.'
     },
     {
       title: 'Senior Executive Access',
-      icon: '🤝',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      ),
       desc: 'You deal directly with senior growth practitioners, not junior account coordinators. Transparent weekly standups and direct communication.'
     }
   ];
@@ -105,7 +128,17 @@ export default function AboutPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
             {hubs.map((h, idx) => (
               <div key={idx} className="platform-detail-card">
-                <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{h.flag}</div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '38px', height: '38px', borderRadius: '8px', background: 'rgba(0, 245, 155, 0.1)', border: '1px solid rgba(0, 245, 155, 0.25)', color: 'var(--neon-mint)' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.08)', padding: '2px 8px', borderRadius: '4px', border: '1px solid rgba(0, 245, 155, 0.2)' }}>
+                    {h.code}
+                  </span>
+                </div>
                 <h3 className="platform-detail-title" style={{ fontSize: '1.2rem', marginBottom: '4px' }}>{h.city}</h3>
                 <div style={{ fontSize: '0.78rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>
                   {h.role}

@@ -4,10 +4,10 @@ import { Link } from '../Router';
 const MARKETPLACE_LIST = [
   {
     id: 'ksa',
-    tabLabel: '🇸🇦 KSA',
+    tabLabel: 'KSA Hub',
     title: 'KSA Marketplaces',
     region: 'Saudi Arabia — Amazon.sa & Noon KSA',
-    tag: '🇸🇦 KSA Territory',
+    tag: 'KSA Territory',
     tagColor: '#00f59b',
     tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '+311% Orders',
@@ -16,8 +16,8 @@ const MARKETPLACE_LIST = [
     metricLabel: 'KSA Blended ROAS',
     metricVal: '6.85x ROAS',
     features: [
-      { icon: '⚡', text: 'Amazon.sa & Noon Seller Lab Sync' },
-      { icon: '📦', text: 'FBN & FBA Warehousing (Riyadh & Jeddah)' }
+      { text: 'Amazon.sa & Noon Seller Lab Sync' },
+      { text: 'FBN & FBA Warehousing (Riyadh & Jeddah)' }
     ],
     links: [
       { to: '/amazon', label: 'Amazon Hub' },
@@ -26,20 +26,20 @@ const MARKETPLACE_LIST = [
   },
   {
     id: 'trendyol',
-    tabLabel: '🇹🇷 Trendyol',
+    tabLabel: 'Trendyol',
     title: 'Trendyol GCC Expansion',
     region: 'Saudi Arabia & UAE — Turkey / EU Cross-Border',
-    tag: '🇹🇷 Cross-Border',
-    tagColor: '#f59e0b',
-    tagBorder: 'rgba(245, 158, 11, 0.4)',
+    tag: 'Cross-Border',
+    tagColor: '#00f59b',
+    tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '7.80x ROAS',
     desc: 'Surging Turkey-to-Gulf mobile corridor. Turnkey Arabic catalog sync & rapid flash promotions.',
     img: '/assets/mkt_trendyol_gcc.jpg',
     metricLabel: 'Monthly Scaled Pace',
     metricVal: 'SAR 145,000',
     features: [
-      { icon: '🔄', text: 'Automated Arabic Attribute Mapping' },
-      { icon: '✈️', text: 'Air Express <72h GCC Delivery SLAs' }
+      { text: 'Automated Arabic Attribute Mapping' },
+      { text: 'Air Express <72h GCC Delivery SLAs' }
     ],
     links: [
       { to: '/trendyol', label: 'Explore Trendyol Hub' }
@@ -47,20 +47,20 @@ const MARKETPLACE_LIST = [
   },
   {
     id: 'usa',
-    tabLabel: '🇺🇸 USA',
+    tabLabel: 'USA Market',
     title: 'USA Marketplace',
     region: 'United States — Amazon.com & Omnichannel',
-    tag: '🇺🇸 US Territory',
-    tagColor: '#00d2ff',
-    tagBorder: 'rgba(0, 210, 255, 0.4)',
+    tag: 'USA Territory',
+    tagColor: '#00f59b',
+    tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '11.20x ROAS',
     desc: 'High-velocity US Amazon PPC bid automation, A+ storytelling & nationwide FBA restock.',
     img: '/assets/mkt_usa_nyc.jpg',
     metricLabel: 'ACOS Efficiency',
     metricVal: '8.90% Verified',
     features: [
-      { icon: '🎯', text: 'SP, SB & Display PPC Bidding Automation' },
-      { icon: '📦', text: 'Nationwide US FBA Restock & Logistics' }
+      { text: 'SP, SB & Display PPC Bidding Automation' },
+      { text: 'Nationwide US FBA Restock & Logistics' }
     ],
     links: [
       { to: '/amazon', label: 'Explore Amazon USA Hub' }
@@ -68,20 +68,20 @@ const MARKETPLACE_LIST = [
   },
   {
     id: 'uk',
-    tabLabel: '🇬🇧 UK',
+    tabLabel: 'UK Hub',
     title: 'UK Marketplace',
     region: 'United Kingdom — Amazon.co.uk & Europe',
-    tag: '🇬🇧 UK Gateway',
-    tagColor: '#a855f7',
-    tagBorder: 'rgba(168, 85, 247, 0.4)',
+    tag: 'UK Gateway',
+    tagColor: '#00f59b',
+    tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '+507% Lift',
     desc: 'Cross-border British expansion with UK VAT compliance, localized copy & Pan-EU Prime.',
     img: '/assets/mkt_uk_london.jpg',
     metricLabel: 'British Prime ROAS',
     metricVal: '9.45x ROAS',
     features: [
-      { icon: '⚡', text: 'Amazon UK Listing SEO & Localization' },
-      { icon: '📦', text: 'UK Prime & Pan-European FBA Routing' }
+      { text: 'Amazon UK Listing SEO & Localization' },
+      { text: 'UK Prime & Pan-European FBA Routing' }
     ],
     links: [
       { to: '/amazon', label: 'Explore Amazon UK Hub' }
@@ -183,23 +183,37 @@ export default function Marketplaces({ onOpenModal }) {
       </div>
 
       <div className="mkt-card-header">
-        <div className="mkt-icon-box" style={{ color: mkt.tagColor, background: `${mkt.tagColor}1a`, borderColor: `${mkt.tagColor}4d` }}>
-          <span>{mkt.tabLabel.slice(0, 2)}</span>
+        <div className="mkt-icon-box" style={{ color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.12)', borderColor: 'rgba(0, 245, 155, 0.35)' }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
         </div>
-        <span className="growth-badge" style={{ color: mkt.tagColor, borderColor: `${mkt.tagColor}4d`, background: `${mkt.tagColor}1a` }}>
+        <span className="growth-badge" style={{ color: 'var(--neon-mint)', borderColor: 'rgba(0, 245, 155, 0.35)', background: 'rgba(0, 245, 155, 0.12)' }}>
           {mkt.growthBadge}
         </span>
       </div>
       <h3 className="mkt-card-title">{mkt.title}</h3>
       <div className="mkt-card-regions">
-        <span>📍 {mkt.region}</span>
+        <span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--neon-mint)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', verticalAlign: '-1px', marginRight: '5px' }}>
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          {mkt.region}
+        </span>
       </div>
       <p className="mkt-card-desc">{mkt.desc}</p>
       
       <div className="mkt-feature-tags-grid">
         {mkt.features.map((feat, fIdx) => (
           <div key={fIdx} className="mkt-feature-tag-pill">
-            <span className="mkt-tag-icon">{feat.icon}</span>
+            <span className="mkt-tag-icon">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--neon-mint)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
             <span>{feat.text}</span>
           </div>
         ))}
@@ -265,8 +279,9 @@ export default function Marketplaces({ onOpenModal }) {
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '6px' }}>
                 <div className="badge-pill badge-pill-cyan">Multi-Marketplace Proof</div>
-                <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.12)', border: '1px solid rgba(0, 245, 155, 0.3)', padding: '2px 10px', borderRadius: '12px' }}>
-                  🛡️ Audited Partner Console Snapshot
+                <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.12)', border: '1px solid rgba(0, 245, 155, 0.3)', padding: '2px 10px', borderRadius: '12px', display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  Audited Partner Console Snapshot
                 </span>
               </div>
               <h3 style={{ fontSize: '1.8rem', marginTop: '4px' }}>Live Marketplace & Ad Performance Console</h3>
@@ -276,31 +291,31 @@ export default function Marketplaces({ onOpenModal }) {
                 className={`deck-pill-btn ${activeDash === 'ksa' ? 'active' : ''}`}
                 onClick={() => setActiveDash('ksa')}
               >
-                🇸🇦 KSA (Amazon & Noon)
+                KSA (Amazon & Noon)
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'trendyol' ? 'active' : ''}`}
                 onClick={() => setActiveDash('trendyol')}
               >
-                🇹🇷 Trendyol (7.80x)
+                Trendyol (7.80x)
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'usa' ? 'active' : ''}`}
                 onClick={() => setActiveDash('usa')}
               >
-                🇺🇸 USA (11.20x)
+                USA (11.20x)
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'uk' ? 'active' : ''}`}
                 onClick={() => setActiveDash('uk')}
               >
-                🇬🇧 UK (9.45x)
+                UK (9.45x)
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'consolidated' ? 'active' : ''}`}
                 onClick={() => setActiveDash('consolidated')}
               >
-                🌐 Consolidated View
+                Consolidated View
               </button>
             </div>
           </div>

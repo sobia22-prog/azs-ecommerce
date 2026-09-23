@@ -11,7 +11,7 @@ export default function RobotCompanion({ inline = false }) {
     {
       id: 'welcome',
       role: 'assistant',
-      content: '👋 **Hello! Welcome to AZS Solutions.**\n\nI am your Growth Advisor. Whether you are looking to scale on **Amazon KSA & UAE**, **Noon**, **Trendyol cross-border**, or **Shopify D2C**, I am here to help.\n\nWhat can I assist your brand with today?'
+      content: '**Hello! Welcome to AZS Solutions.**\n\nI am your Growth Advisor. Whether you are looking to scale on **Amazon KSA & UAE**, **Noon**, **Trendyol cross-border**, or **Shopify D2C**, I am here to help.\n\nWhat can I assist your brand with today?'
     }
   ]);
 
@@ -20,11 +20,11 @@ export default function RobotCompanion({ inline = false }) {
   const inputRef = useRef(null);
 
   const quickPrompts = [
-    { label: '🇸🇦 Scale on Amazon KSA', query: 'How does AZS Solutions scale brands on Amazon Saudi Arabia (Amazon.sa)?' },
-    { label: '🟡 Noon FBN Express', query: 'What is your fulfillment and promotion strategy for Noon in KSA and UAE?' },
-    { label: '🇹🇷 Trendyol Expansion', query: 'How does the Trendyol GCC cross-border launch corridor work?' },
-    { label: '🛍️ Shopify 8.4x ROAS', query: 'What performance marketing systems do you use for Shopify D2C?' },
-    { label: '🛡️ Claim Free Audit', query: 'How do I claim a Free 360° Marketplace Growth Audit for my brand?' }
+    { label: 'Scale on Amazon KSA', query: 'How does AZS Solutions scale brands on Amazon Saudi Arabia (Amazon.sa)?' },
+    { label: 'Noon FBN Express', query: 'What is your fulfillment and promotion strategy for Noon in KSA and UAE?' },
+    { label: 'Trendyol Expansion', query: 'How does the Trendyol GCC cross-border launch corridor work?' },
+    { label: 'Shopify 8.4x ROAS', query: 'What performance marketing systems do you use for Shopify D2C?' },
+    { label: 'Claim Free Audit', query: 'How do I claim a Free 360° Marketplace Growth Audit for my brand?' }
   ];
 
   const scrollToBottom = () => {
@@ -237,7 +237,9 @@ export default function RobotCompanion({ inline = false }) {
                 className="ai-prompt-chip"
                 onClick={() => handleSendMessage(p.query)}
                 disabled={loading}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
+                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--neon-mint)', flexShrink: 0 }}></span>
                 {p.label}
               </button>
             ))}

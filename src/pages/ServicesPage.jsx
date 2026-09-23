@@ -22,7 +22,12 @@ const SERVICES_DATA = {
     ],
     sla: '30-Day Turnkey Launch Sprint',
     kpi: '100% Brand Verification Rate',
-    icon: '🏪'
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+    )
   },
   'catalog-optimization': {
     id: 'catalog-optimization',
@@ -42,7 +47,12 @@ const SERVICES_DATA = {
     ],
     sla: 'Continuous Weekly Indexing Audits',
     kpi: '+38% Organic Conversion Lift',
-    icon: '🔍'
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    )
   },
   'pricing-inventory': {
     id: 'pricing-inventory',
@@ -62,7 +72,13 @@ const SERVICES_DATA = {
     ],
     sla: '15-Minute Repricing Cycles',
     kpi: '93.4% Avg Buy Box Win Rate',
-    icon: '⚖️'
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+        <line x1="18" y1="20" x2="18" y2="10" />
+        <line x1="12" y1="20" x2="12" y2="4" />
+        <line x1="6" y1="20" x2="6" y2="14" />
+      </svg>
+    )
   },
   'orders-fulfillment': {
     id: 'orders-fulfillment',
@@ -82,7 +98,13 @@ const SERVICES_DATA = {
     ],
     sla: '99.8% On-Time Inbound Delivery',
     kpi: '<0.2% Order Defect Rate',
-    icon: '📦'
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+        <line x1="12" y1="22.08" x2="12" y2="12" />
+      </svg>
+    )
   },
   'advertising-growth': {
     id: 'advertising-growth',
@@ -102,7 +124,13 @@ const SERVICES_DATA = {
     ],
     sla: 'Daily Bid & Search Term Optimization',
     kpi: '8.40x Blended Portfolio ROAS',
-    icon: '📈'
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+        <circle cx="12" cy="12" r="10" />
+        <circle cx="12" cy="12" r="6" />
+        <circle cx="12" cy="12" r="2" />
+      </svg>
+    )
   },
   'reporting-analytics': {
     id: 'reporting-analytics',
@@ -122,7 +150,12 @@ const SERVICES_DATA = {
     ],
     sla: '24/7 Live Real-Time Dashboard Access',
     kpi: '100% Reconciled Financials',
-    icon: '📊'
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        <polyline points="17 6 23 6 23 12" />
+      </svg>
+    )
   }
 };
 
@@ -193,9 +226,9 @@ export default function ServicesPage({ defaultSlug }) {
                 key={item.id}
                 onClick={() => navigate(`/services/${item.id}`)}
                 className={`deck-pill-btn ${selectedSlug === item.id ? 'active' : ''}`}
-                style={{ justifyContent: 'center', padding: '12px 14px', width: '100%', borderRadius: '12px' }}
+                style={{ justifyContent: 'center', padding: '12px 14px', width: '100%', borderRadius: '12px', display: 'flex', alignItems: 'center' }}
               >
-                <span style={{ marginRight: '6px' }}>{item.icon}</span>
+                <span style={{ marginRight: '8px', display: 'flex', alignItems: 'center' }}>{item.icon}</span>
                 <span>{item.title.split('&')[0].trim()}</span>
               </button>
             ))}
@@ -205,7 +238,9 @@ export default function ServicesPage({ defaultSlug }) {
           <div className="mkt-card" style={{ padding: '40px', background: 'rgba(11, 17, 29, 0.95)', border: '1px solid var(--neon-mint)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <span style={{ fontSize: '2.2rem' }}>{service.icon}</span>
+                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(0, 245, 155, 0.1)', border: '1px solid rgba(0, 245, 155, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {service.icon}
+                </div>
                 <div>
                   <div style={{ fontSize: '0.78rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                     Service Module {service.num}

@@ -16,9 +16,9 @@ export default function TailoredPrograms() {
       desc: 'Complete day-to-day catalog, content, and operations across our 3 core marketplaces: KSA, USA & UK, plus Shopify.',
       ideal: 'Established brands ($50K+/mo) wanting full operational takeover.',
       chips: [
-        { icon: '⚡', text: 'Daily Catalog & Multi-Market Feed' },
-        { icon: '🎯', text: 'KSA, US & UK PPC Ad Scaling' },
-        { icon: '🛡️', text: '24/7 Account Health Defense' }
+        { text: 'Daily Catalog & Multi-Market Feed' },
+        { text: 'KSA, US & UK PPC Ad Scaling' },
+        { text: '24/7 Account Health Defense' }
       ]
     },
     {
@@ -31,9 +31,9 @@ export default function TailoredPrograms() {
       desc: 'Rapid onboarding sprint to get registered, verified, and ranking on Amazon KSA, Noon KSA, Amazon US, or Amazon UK.',
       ideal: 'Brands expanding into KSA, USA, or UK for the first time.',
       chips: [
-        { icon: '🚀', text: 'Brand Registry & Marketplace Setup' },
-        { icon: '✍️', text: 'Arabic & English Listing SEO' },
-        { icon: '📦', text: 'FBA / FBN Initial Inbound Logistics' }
+        { text: 'Brand Registry & Marketplace Setup' },
+        { text: 'Arabic & English Listing SEO' },
+        { text: 'FBA / FBN Initial Inbound Logistics' }
       ]
     },
     {
@@ -46,9 +46,9 @@ export default function TailoredPrograms() {
       desc: 'Dedicated media buying across Amazon (KSA/US/UK), Noon, Trendyol, Meta, TikTok, and Google to lower ACOS and maximize GMV.',
       ideal: 'Brands aiming to scale from 3x to 10x+ ROAS across target corridors.',
       chips: [
-        { icon: '📈', text: 'Multi-Market Ad Optimization & TACoS Defense' },
-        { icon: '🎬', text: 'Meta Advantage+ & TikTok UGC' },
-        { icon: '📊', text: 'Weekly TACoS & Profit Audits' }
+        { text: 'Multi-Market Ad Optimization & TACoS Defense' },
+        { text: 'Meta Advantage+ & TikTok UGC' },
+        { text: 'Weekly TACoS & Profit Audits' }
       ]
     },
     {
@@ -61,9 +61,9 @@ export default function TailoredPrograms() {
       desc: 'Tailored scopes for conglomerates scaling across KSA, UAE, Trendyol GCC, USA, and UK with exclusive distribution support.',
       ideal: 'Enterprise manufacturers and multi-brand portfolios.',
       chips: [
-        { icon: '🌐', text: 'KSA, US & UK Multi-Region 3PL' },
-        { icon: '🔌', text: 'Custom Omnichannel ERP Syncing' },
-        { icon: '🤝', text: 'Dedicated Senior Director Lead' }
+        { text: 'KSA, US & UK Multi-Region 3PL' },
+        { text: 'Custom Omnichannel ERP Syncing' },
+        { text: 'Dedicated Senior Director Lead' }
       ]
     }
   ];
@@ -107,15 +107,22 @@ export default function TailoredPrograms() {
 
               <p className="mkt-card-desc">{prog.desc}</p>
               
-              <div className="program-ideal-target">
-                🎯 {prog.ideal}
+              <div className="program-ideal-target" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-cyan)', flexShrink: 0, marginTop: '2px' }}>
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+                <span>{prog.ideal}</span>
               </div>
 
               {/* Sleek Feature Tags Grid */}
               <div className="mkt-feature-tags-grid" style={{ marginBottom: '16px' }}>
                 {prog.chips.map((chip, i) => (
-                  <div key={i} className="mkt-feature-tag-pill">
-                    <span className="mkt-tag-icon">{chip.icon}</span>
+                  <div key={i} className="mkt-feature-tag-pill" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: 'var(--neon-mint)', flexShrink: 0 }}>
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
                     <span>{chip.text}</span>
                   </div>
                 ))}

@@ -16,22 +16,45 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
   const usaPillars = [
     {
       title: 'Programmatic Amazon DSP Advertising',
-      icon: '🎯',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      ),
       desc: 'Exclusive access to Amazon Demand-Side Platform (DSP) for programmatic display, audio, and OTT/video ads targeting in-market shoppers on and off Amazon.com.'
     },
     {
       title: 'Nationwide FBA Restock & Storage Hygiene',
-      icon: '📦',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+          <line x1="12" y1="22.08" x2="12" y2="12" />
+        </svg>
+      ),
       desc: 'Algorithmic inventory velocity forecasting across East Coast and West Coast fulfillment centers to prevent aged storage surcharges and capacity limit throttling.'
     },
     {
       title: 'Amazon Marketing Cloud (AMC) Custom Attribution',
-      icon: '📊',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+          <polyline points="17 6 23 6 23 12" />
+        </svg>
+      ),
       desc: 'SQL-driven query models combining Sponsored Ads and DSP touchpoints to map multi-touch customer journeys and eliminate ad waste.'
     },
     {
       title: 'Cross-Border USA Tax & Customs Gateway',
-      icon: '⚖️',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <line x1="12" y1="8" x2="12" y2="16" />
+          <line x1="8" y1="12" x2="16" y2="12" />
+        </svg>
+      ),
       desc: 'US customs clearance, Section 321 de minimis compliance, and state sales tax marketplace facilitator reconciliation for international brands.'
     }
   ];

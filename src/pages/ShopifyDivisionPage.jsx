@@ -16,28 +16,51 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
   const channels = [
     {
       name: 'Meta Ads (Instagram & Facebook)',
-      icon: '🔵',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+        </svg>
+      ),
       badge: 'Acquisition Engine',
       desc: 'Broad targeting with dynamic creative testing (DCT). High-impact founder videos, UGC unboxings, and localized Arabic carousels delivering predictable customer acquisition cost (CAC).',
       metric: '4.85x Top Campaign ROAS'
     },
     {
       name: 'TikTok Shop & Creator Spark Ads',
-      icon: '🎵',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polygon points="23 7 16 12 23 17 23 7" />
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+        </svg>
+      ),
       badge: 'High-Velocity Viral',
       desc: 'GCC creator seeding and native TikTok Spark Ads. High-conversion micro-influencer product demos in Saudi & Emirati dialects converting mobile shoppers directly in-app.',
       metric: '+188% Gen-Z Order Lift'
     },
     {
       name: 'Google Performance Max & Search',
-      icon: '🔴',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+        </svg>
+      ),
       badge: 'High-Intent Capture',
       desc: 'Full-funnel Google Shopping, Search, and P-Max asset groups. Dominating brand keywords and high-intent transactional search queries across Saudi Arabia, UAE, and the UK.',
       metric: '5.20x Search ROAS'
     },
     {
       name: 'GCC Checkout & BNPL Optimization',
-      icon: '💳',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+          <line x1="1" y1="10" x2="23" y2="10" />
+        </svg>
+      ),
       badge: 'Conversion Multiplier',
       desc: 'One-click frictionless checkout integrated with Tamara, Tabby (Buy Now Pay Later), Mada cards, Apple Pay, and automated cash-on-delivery (COD) fraud verification.',
       metric: '+38% Checkout Completion'
@@ -77,8 +100,8 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
               </h3>
             </div>
             <div className="division-toggle-group">
-              <Link to="/marketplaces" className="division-nav-btn">📦 Marketplaces Division</Link>
-              <span className="division-nav-btn active">🛍️ Shopify & D2C Division</span>
+              <Link to="/marketplaces" className="division-nav-btn">Marketplaces Division</Link>
+              <span className="division-nav-btn active">Shopify & D2C Division</span>
             </div>
           </div>
 
@@ -189,8 +212,11 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
                 </div>
                 <h3 className="platform-detail-title">{ch.name}</h3>
                 <p className="platform-detail-desc">{ch.desc}</p>
-                <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', fontSize: '0.85rem', color: 'var(--neon-mint)', fontWeight: 700 }}>
-                  ⚡ {ch.metric}
+                <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', fontSize: '0.85rem', color: 'var(--neon-mint)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                  {ch.metric}
                 </div>
               </div>
             ))}
@@ -213,22 +239,22 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginTop: '24px' }}>
               <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-heading)', marginBottom: '4px' }}>💳 Mada Debit Cards</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-heading)', marginBottom: '4px' }}>Mada Debit Cards</div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>Over 80% of online card transactions in Saudi Arabia happen via Mada.</p>
               </div>
 
               <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ff5a5f', marginBottom: '4px' }}>🛍️ Tamara (BNPL)</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--neon-mint)', marginBottom: '4px' }}>Tamara (BNPL)</div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>Splitting payments into 4 interest-free installments boosts AOV by +42%.</p>
               </div>
 
               <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#3ee59e', marginBottom: '4px' }}>✨ Tabby (BNPL)</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--neon-cyan)', marginBottom: '4px' }}>Tabby (BNPL)</div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>The premier Buy Now Pay Later network across UAE and Saudi Arabia.</p>
               </div>
 
               <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--neon-cyan)', marginBottom: '4px' }}>🍎 Apple Pay</div>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-heading)', marginBottom: '4px' }}>Apple Pay</div>
                 <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>1-touch biometric mobile checkout eliminating address entry friction.</p>
               </div>
             </div>

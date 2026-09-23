@@ -9,7 +9,6 @@ export default function Testimonials() {
       role: 'Managing Director, HomeMaster Appliances (Riyadh)',
       initials: 'TA',
       platform: 'Trustpilot Verified Review',
-      platformIcon: '⭐',
       verifiedDate: 'November 2025'
     },
     {
@@ -19,7 +18,6 @@ export default function Testimonials() {
       role: 'VP of International E-commerce, LIVORA London',
       initials: 'SM',
       platform: 'Clutch Verified Client',
-      platformIcon: '🏆',
       verifiedDate: 'January 2026'
     },
     {
@@ -29,7 +27,6 @@ export default function Testimonials() {
       role: 'Co-Founder, Creative Things Studio (Dubai)',
       initials: 'RK',
       platform: 'Google Partner Verified',
-      platformIcon: '🌐',
       verifiedDate: 'December 2025'
     }
   ];
@@ -61,8 +58,10 @@ export default function Testimonials() {
           </div>
 
           <div style={{ background: 'rgba(11, 17, 29, 0.85)', border: '1px solid rgba(0, 210, 255, 0.3)', borderRadius: 'var(--radius-md)', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(0, 210, 255, 0.15)', color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', fontWeight: 800 }}>
-              ⚡
+            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(0, 210, 255, 0.15)', color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
             </div>
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -80,7 +79,7 @@ export default function Testimonials() {
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span style={{ fontWeight: 800, color: 'var(--text-pure)', fontSize: '1.1rem' }}>4.9 / 5.0</span>
-                <span style={{ color: '#F59E0B', fontSize: '0.85rem' }}>★★★★★</span>
+                <span style={{ color: 'var(--neon-mint)', fontSize: '0.85rem' }}>★★★★★</span>
               </div>
               <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>Google Verified Partner Rating</div>
             </div>

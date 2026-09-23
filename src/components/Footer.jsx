@@ -28,10 +28,10 @@ export default function Footer() {
               <span>hello@azssolutions.com</span>
             </a>
             <div className="footer-hubs-strip">
-              <span className="hub-tag">🇸🇦 Riyadh</span>
-              <span className="hub-tag">🇦🇪 Dubai</span>
-              <span className="hub-tag">🇬🇧 London</span>
-              <span className="hub-tag">🇺🇸 New York</span>
+              <span className="hub-tag"><span style={{ color: 'var(--neon-mint)', marginRight: '5px' }}>●</span> Riyadh</span>
+              <span className="hub-tag"><span style={{ color: 'var(--neon-mint)', marginRight: '5px' }}>●</span> Dubai</span>
+              <span className="hub-tag"><span style={{ color: 'var(--neon-mint)', marginRight: '5px' }}>●</span> London</span>
+              <span className="hub-tag"><span style={{ color: 'var(--neon-mint)', marginRight: '5px' }}>●</span> New York</span>
             </div>
           </div>
 
@@ -85,7 +85,13 @@ export default function Footer() {
             <Link to="/about">About</Link>
             <Link to="/case-studies">Proof</Link>
             <Link to="/book-audit">Free Audit</Link>
-            <Link to="/admin/login" style={{ opacity: 0.75, color: 'var(--neon-mint)' }}>Console 🔒</Link>
+            <Link to="/admin/login" style={{ opacity: 0.75, color: 'var(--neon-mint)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              Admin Console
+            </Link>
           </div>
         </div>
       </div>

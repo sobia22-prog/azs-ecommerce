@@ -102,27 +102,31 @@ export default function GrowthCalculator() {
               <span className="input-label">Select Target Channels for Expansion:</span>
               <div className="channel-checkboxes">
                 {[
-                  { id: 'ksa', label: '✓ 🇸🇦 KSA (Amazon & Noon)' },
-                  { id: 'trendyol', label: '✓ 🇹🇷 Trendyol GCC' },
-                  { id: 'usa', label: '✓ 🇺🇸 USA (Amazon.com)' },
-                  { id: 'uk', label: '✓ 🇬🇧 UK (Amazon.co.uk)' },
-                  { id: 'shopify', label: '✓ 🛍️ Shopify D2C' },
-                  { id: 'meta', label: '✓ 📱 Meta / TikTok' },
-                  { id: 'google', label: '✓ 🔍 Google P-Max' },
+                  { id: 'ksa', label: 'KSA (Amazon & Noon)' },
+                  { id: 'trendyol', label: 'Trendyol GCC' },
+                  { id: 'usa', label: 'USA (Amazon.com)' },
+                  { id: 'uk', label: 'UK (Amazon.co.uk)' },
+                  { id: 'shopify', label: 'Shopify D2C' },
+                  { id: 'meta', label: 'Meta / TikTok' },
+                  { id: 'google', label: 'Google P-Max' },
                 ].map(c => (
                   <button
                     key={c.id}
                     className={`channel-check-btn ${channels.includes(c.id) ? 'checked' : ''}`}
                     onClick={() => toggleChannel(c.id)}
                   >
+                    <span style={{ color: channels.includes(c.id) ? 'var(--neon-mint)' : 'var(--text-muted)', fontWeight: 800, marginRight: '6px' }}>✓</span>
                     {c.label}
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="calc-synergy-hint">
-              ⚡ <strong>Cross-Market Synergy:</strong> Expanding across KSA, USA, and UK unlocks blended ad efficiency and reduces customer acquisition cost by up to 38%.
+            <div className="calc-synergy-hint" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-mint)', flexShrink: 0, marginTop: '2px' }}>
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+              <span><strong>Cross-Market Synergy:</strong> Expanding across KSA, USA, and UK unlocks blended ad efficiency and reduces customer acquisition cost by up to 38%.</span>
             </div>
           </div>
 

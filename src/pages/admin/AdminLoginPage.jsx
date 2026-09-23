@@ -109,7 +109,9 @@ export default function AdminLoginPage() {
             fontSize: '1.4rem',
             marginBottom: '14px'
           }}>
-            ⚡
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
           </div>
           <h1 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#ffffff', margin: 0 }}>
             AZS Solutions <span style={{ color: 'var(--neon-mint)' }}>Console</span>
@@ -133,7 +135,11 @@ export default function AdminLoginPage() {
             alignItems: 'center',
             gap: '8px'
           }}>
-            <span>⚠️</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ flexShrink: 0 }}>
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+              <line x1="12" y1="9" x2="12" y2="13" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
             <span>{error}</span>
           </div>
         )}

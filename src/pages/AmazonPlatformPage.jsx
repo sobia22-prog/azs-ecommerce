@@ -15,25 +15,25 @@ export default function AmazonPlatformPage({ onOpenModal }) {
 
   const regions = [
     {
-      code: '🇸🇦 Amazon Saudi Arabia (Amazon.sa)',
+      code: 'Amazon Saudi Arabia (Amazon.sa)',
       badge: 'Highest GMV Lift',
       focus: 'Riyadh & Jeddah FBA nodes, Arabic keyword dominance, Tamimi/Lulu consumer alignment, and White Friday surge execution.',
       metric: '+11,963% Revenue Spike'
     },
     {
-      code: '🇦🇪 Amazon UAE (Amazon.ae)',
+      code: 'Amazon UAE (Amazon.ae)',
       badge: 'Cross-Border Hub',
       focus: 'Dubai logistics consolidation, multi-currency pricing, high Prime penetration, and luxury/electronics brand dominance.',
       metric: '94.2% Prime Buy Box Win Rate'
     },
     {
-      code: '🇺🇸 Amazon USA (Amazon.com)',
+      code: 'Amazon USA (Amazon.com)',
       badge: 'Volume Anchor',
       focus: 'Sponsored Products SP/SB/SD scaling, high-velocity listing indexing, Vine review acceleration, and sub-10% ACOS maintenance.',
       metric: '$48.9K Ad Sales (11.20x ROAS)'
     },
     {
-      code: '🇬🇧 Amazon UK (Amazon.co.uk)',
+      code: 'Amazon UK (Amazon.co.uk)',
       badge: 'High-Margin Gateway',
       focus: 'HMRC VAT compliance, localized UK English keyword indexing, European fulfillment network routing, and Prime badge certification.',
       metric: '£36.5K Revenue Lift (9.45x ROAS)'
@@ -86,12 +86,18 @@ export default function AmazonPlatformPage({ onOpenModal }) {
             {regions.map((r, i) => (
               <div className="platform-detail-card" key={i}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                  <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-heading)' }}>{r.code}</span>
+                  <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-heading)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ color: 'var(--neon-mint)' }}>●</span>
+                    {r.code}
+                  </span>
                   <span className="growth-badge">{r.badge}</span>
                 </div>
                 <p className="platform-detail-desc" style={{ marginBottom: '16px' }}>{r.focus}</p>
-                <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', fontSize: '0.85rem', color: 'var(--neon-mint)', fontWeight: 700 }}>
-                  ⚡ {r.metric}
+                <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', fontSize: '0.85rem', color: 'var(--neon-mint)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                  {r.metric}
                 </div>
               </div>
             ))}
@@ -195,7 +201,13 @@ export default function AmazonPlatformPage({ onOpenModal }) {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">🎯</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <circle cx="12" cy="12" r="6" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Full-Funnel Sponsored Ads (PPC)</h3>
               <p className="platform-detail-desc">
                 Custom campaigns across Sponsored Products, Sponsored Brands Video, and Sponsored Display. Strict keyword isolation, bid rules, and dayparting.
@@ -203,7 +215,11 @@ export default function AmazonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">🛡️</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Buy Box & Brand Registry Defense</h3>
               <p className="platform-detail-desc">
                 Proactive Project Zero / Transparency integration, counterfeit suppression, algorithmic dynamic repricing, and Seller Central health monitoring.
@@ -211,7 +227,13 @@ export default function AmazonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">🇸🇦</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Arabic & English A+ Content</h3>
               <p className="platform-detail-desc">
                 Premium infographic modules, lifestyle imagery, comparison tables, and native GCC Arabic copywriting optimized for conversion and search indexing.
@@ -219,7 +241,13 @@ export default function AmazonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">📦</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">FBA Logistics & Restock Forecasting</h3>
               <p className="platform-detail-desc">
                 Inventory shipment creation, customs prep into Riyadh/Jeddah/Dubai fulfillment centers, pallet labeling, and stranded inventory resolution.
@@ -227,7 +255,11 @@ export default function AmazonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">⭐</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Review Acceleration & Compliance</h3>
               <p className="platform-detail-desc">
                 Amazon Vine enrollment strategies, automated TOS-compliant review request sequencing, and negative feedback dispute removal.
@@ -235,7 +267,12 @@ export default function AmazonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">📊</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  <polyline points="17 6 23 6 23 12" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Weekly P&L and Profit Analytics</h3>
               <p className="platform-detail-desc">
                 Transparent attribution dashboards tracking true net profit after FBA pick/pack fees, storage costs, refunds, and advertising spend.

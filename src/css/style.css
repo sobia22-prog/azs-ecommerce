@@ -575,13 +575,21 @@ img {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 245, 155, 0.08);
+  border: 1px solid rgba(0, 245, 155, 0.22);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  color: var(--neon-mint);
   flex-shrink: 0;
+  transition: var(--transition-fast);
+}
+
+.dropdown-subitem:hover .dropdown-icon-box {
+  background: rgba(0, 245, 155, 0.18);
+  border-color: rgba(0, 245, 155, 0.45);
+  color: #fff;
+  transform: scale(1.05);
 }
 
 .dropdown-item-text {
@@ -7207,7 +7215,15 @@ img {
 }
 
 .cap-compact-icon {
-  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(0, 245, 155, 0.1);
+  border: 1px solid rgba(0, 245, 155, 0.25);
+  color: var(--neon-mint);
   flex-shrink: 0;
 }
 

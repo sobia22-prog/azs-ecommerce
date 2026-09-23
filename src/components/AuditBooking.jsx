@@ -75,7 +75,13 @@ export default function AuditBooking() {
           <div className="booking-form-wrap">
             {submitted ? (
               <div className="form-success-banner" style={{ display: 'block' }}>
-                <div style={{ fontSize: '1.4rem', marginBottom: '8px' }}>🎉 Growth Consultation Confirmed!</div>
+                <div style={{ fontSize: '1.4rem', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-mint)' }}>
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  Growth Consultation Confirmed!
+                </div>
                 <p style={{ color: '#d1fae5', fontSize: '0.95rem', lineHeight: '1.5' }}>
                   Thank you, <strong>{formData.name}</strong>. Our GCC & Global Ecommerce Director has received your application for <em>{formData.website || 'your brand'}</em>.
                   A customized audit schedule and channel evaluation have been sent to <strong>{formData.email}</strong>.
@@ -174,10 +180,10 @@ export default function AuditBooking() {
                       onChange={handleChange}
                       className="form-select"
                     >
-                      <option value="KSA Marketplace (Amazon.sa & Noon)">🇸🇦 KSA Marketplace (Amazon.sa & Noon)</option>
-                      <option value="USA Marketplace (Amazon.com)">🇺🇸 USA Marketplace (Amazon.com)</option>
-                      <option value="UK Marketplace (Amazon.co.uk)">🇬🇧 UK Marketplace (Amazon.co.uk)</option>
-                      <option value="All 3 Marketplaces (KSA, USA, UK)">🌐 All 3 Marketplaces (KSA, USA, UK)</option>
+                      <option value="KSA Marketplace (Amazon.sa & Noon)">KSA Marketplace (Amazon.sa & Noon)</option>
+                      <option value="USA Marketplace (Amazon.com)">USA Marketplace (Amazon.com)</option>
+                      <option value="UK Marketplace (Amazon.co.uk)">UK Marketplace (Amazon.co.uk)</option>
+                      <option value="All 3 Marketplaces (KSA, USA, UK)">All 3 Marketplaces (KSA, USA, UK)</option>
                       <option value="Shopify & Paid Social (Meta/TikTok/Google)">Shopify & Paid Social (Meta/TikTok/Google)</option>
                     </select>
                   </div>

@@ -116,11 +116,26 @@ export default function WhyTrustSection({ onOpenModal }) {
             </p>
 
             <div className="verified-partner-badges">
-              <span className="partner-badge-pill">🇸🇦 Amazon.sa & Noon KSA</span>
-              <span className="partner-badge-pill">🇺🇸 Amazon.com USA Partner</span>
-              <span className="partner-badge-pill">🇬🇧 Amazon.co.uk Prime</span>
-              <span className="partner-badge-pill">🟢 Shopify Partner</span>
-              <span className="partner-badge-pill">🔵 Meta Business Partner</span>
+              <span className="partner-badge-pill">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                Amazon.sa &amp; Noon KSA
+              </span>
+              <span className="partner-badge-pill">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                Amazon.com USA Partner
+              </span>
+              <span className="partner-badge-pill">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                Amazon.co.uk Prime
+              </span>
+              <span className="partner-badge-pill">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                Shopify Partner
+              </span>
+              <span className="partner-badge-pill">
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
+                Meta Business Partner
+              </span>
             </div>
           </div>
         </div>
@@ -150,7 +165,12 @@ export default function WhyTrustSection({ onOpenModal }) {
             </p>
 
             <div className="direct-email-chip">
-              <span className="email-icon">✉️</span>
+              <span className="email-icon" style={{ display: 'flex', alignItems: 'center' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </span>
               <a href="mailto:hello@azssolutions.com" className="email-link">
                 hello@azssolutions.com
               </a>

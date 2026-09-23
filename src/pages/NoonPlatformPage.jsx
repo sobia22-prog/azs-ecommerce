@@ -142,7 +142,13 @@ export default function NoonPlatformPage({ onOpenModal }) {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">🟡</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Fulfilled by Noon (FBN) Setup</h3>
               <p className="platform-detail-desc">
                 Complete transition from Back-to-Back (B2B) to FBN Express. We create ASN shipments, barcode labeling, and coordinate delivery into Noon Riyadh & Dubai hubs.
@@ -150,7 +156,11 @@ export default function NoonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">⚡</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Yellow Friday Mega-Events</h3>
               <p className="platform-detail-desc">
                 Early deal lock-ins, inventory buffer planning 60 days in advance, and aggressive Noon Ad Boost bid management during Yellow Friday, Ramadan, and Payday festivals.
@@ -158,7 +168,12 @@ export default function NoonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">📢</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Noon Ad Boost & Keywords</h3>
               <p className="platform-detail-desc">
                 High-intent search placement targeting, product detail page banner syndication, and category sponsor bidding maintaining low cost-per-click.
@@ -166,7 +181,11 @@ export default function NoonPlatformPage({ onOpenModal }) {
             </div>
 
             <div className="platform-detail-card">
-              <div className="platform-detail-icon">🛡️</div>
+              <div className="platform-detail-icon" style={{ color: 'var(--neon-mint)' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
               <h3 className="platform-detail-title">Price Engine & Buy Box Lock</h3>
               <p className="platform-detail-desc">
                 Dynamic repricing against local Saudi & UAE resellers. Immediate alerts for price matching and fee optimization to protect gross margins.

@@ -92,9 +92,9 @@ export default function Hero({ onOpenModal }) {
 
               <div className="proof-col-item">
                 <div className="hero-trust-avatars">
-                  <div className="avatar-chip" style={{ backgroundColor: '#00F59B', color: '#000', fontWeight: 800, fontSize: 10 }}>KSA</div>
-                  <div className="avatar-chip" style={{ backgroundColor: '#00D2FF', color: '#000', fontWeight: 800, fontSize: 10 }}>USA</div>
-                  <div className="avatar-chip" style={{ backgroundColor: '#A855F7', color: '#000', fontWeight: 800, fontSize: 10 }}>UK</div>
+                  <div className="avatar-chip" style={{ background: 'rgba(0, 245, 155, 0.15)', color: '#00F59B', border: '1px solid rgba(0, 245, 155, 0.4)', fontWeight: 800, fontSize: 9 }}>KSA</div>
+                  <div className="avatar-chip" style={{ background: 'rgba(0, 245, 155, 0.15)', color: '#00F59B', border: '1px solid rgba(0, 245, 155, 0.4)', fontWeight: 800, fontSize: 9 }}>USA</div>
+                  <div className="avatar-chip" style={{ background: 'rgba(0, 245, 155, 0.15)', color: '#00F59B', border: '1px solid rgba(0, 245, 155, 0.4)', fontWeight: 800, fontSize: 9 }}>UK</div>
                 </div>
                 <div className="proof-text-group">
                   <div className="proof-main-line">

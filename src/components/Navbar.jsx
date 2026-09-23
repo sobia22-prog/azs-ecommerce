@@ -135,7 +135,12 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🇸🇦</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                          <circle cx="12" cy="10" r="3" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Amazon KSA (Amazon.sa)</span>
                         <span className="dropdown-item-desc">Brand Registry, FBA Riyadh & Buy Box</span>
@@ -147,7 +152,13 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🇺🇸</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10" />
+                          <line x1="2" y1="12" x2="22" y2="12" />
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Amazon USA (Amazon.com)</span>
                         <span className="dropdown-item-desc">DSP display, AMC attribution & FBA</span>
@@ -159,7 +170,11 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🟡</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Noon KSA & UAE</span>
                         <span className="dropdown-item-desc">Seller Lab, FBN Express & Mahali</span>
@@ -171,7 +186,12 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🇹🇷</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M22 2L11 13" />
+                          <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Trendyol GCC Expansion</span>
                         <span className="dropdown-item-desc">Turkey-to-Gulf catalog sync & sales</span>
@@ -188,7 +208,12 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🔍</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="11" cy="11" r="8" />
+                          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Listing Optimization & SEO</span>
                         <span className="dropdown-item-desc">Bilingual Arabic/EN A+ Content</span>
@@ -200,7 +225,13 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🎯</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10" />
+                          <circle cx="12" cy="12" r="6" />
+                          <circle cx="12" cy="12" r="2" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">PPC & Retail Media Ads</span>
                         <span className="dropdown-item-desc">Sponsored Products, Brands & DSP</span>
@@ -212,7 +243,11 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🛡️</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Account Health & Defense</span>
                         <span className="dropdown-item-desc">Suspension defense & compliance</span>
@@ -224,7 +259,12 @@ export default function Navbar() {
                       className="dropdown-subitem dropdown-highlight-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">📈</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                          <polyline points="17 6 23 6 23 12" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Verified Case Studies</span>
                         <span className="dropdown-item-desc">Inspect documented 14.43x ROAS</span>
@@ -277,7 +317,12 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🏪</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                          <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Store Setup & RTL</span>
                         <span className="dropdown-item-desc">Arabic UI theme & Tamara/Tabby BNPL</span>
@@ -289,7 +334,11 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">⚡</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Conversion Optimization</span>
                         <span className="dropdown-item-desc">Frictionless checkout & AOV lift</span>
@@ -301,7 +350,13 @@ export default function Navbar() {
                       className="dropdown-subitem dropdown-highlight-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🛍️</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                          <line x1="3" y1="6" x2="21" y2="6" />
+                          <path d="M16 10a4 4 0 0 1-8 0" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">LIVORA DTC Case Study</span>
                         <span className="dropdown-item-desc">$50.4K/mo verified revenue surge</span>
@@ -318,7 +373,15 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🔵</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="18" cy="5" r="3" />
+                          <circle cx="6" cy="12" r="3" />
+                          <circle cx="18" cy="19" r="3" />
+                          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Meta Ads (IG & FB)</span>
                         <span className="dropdown-item-desc">Advantage+ catalog & UGC reels</span>
@@ -330,7 +393,12 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🎵</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polygon points="23 7 16 12 23 17 23 7" />
+                          <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">TikTok Shop & Creator Ads</span>
                         <span className="dropdown-item-desc">High-intent Spark ads & UGC creators</span>
@@ -342,7 +410,12 @@ export default function Navbar() {
                       className="dropdown-subitem"
                       onClick={() => { setActiveDropdown(null); setMobileOpen(false); }}
                     >
-                      <div className="dropdown-icon-box">🔴</div>
+                      <div className="dropdown-icon-box" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <circle cx="12" cy="12" r="10" />
+                          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
+                        </svg>
+                      </div>
                       <div className="dropdown-item-text">
                         <span className="dropdown-item-title">Google Performance Max</span>
                         <span className="dropdown-item-desc">Shopping & high-intent search ads</span>
@@ -419,18 +492,31 @@ export default function Navbar() {
                   className="btn btn-primary mobile-drawer-audit-btn"
                   onClick={() => setMobileOpen(false)}
                 >
-                  <span>⚡ Claim Free 360° Growth Audit</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
+                    Claim Free 360° Growth Audit
+                  </span>
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
                 </Link>
                 <div className="mobile-drawer-footer-links">
-                  <Link to="/admin/login" onClick={() => setMobileOpen(false)} className="mobile-drawer-link-sub">
-                    🔐 Super Admin Console
+                  <Link to="/admin/login" onClick={() => setMobileOpen(false)} className="mobile-drawer-link-sub" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    Super Admin Console
                   </Link>
-                  <a href="mailto:hello@azssolutions.com" className="mobile-drawer-link-sub">
-                    ✉️ hello@azssolutions.com
+                  <a href="mailto:hello@azssolutions.com" className="mobile-drawer-link-sub" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    hello@azssolutions.com
                   </a>
                 </div>
               </li>
