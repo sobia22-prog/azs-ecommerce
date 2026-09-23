@@ -1239,6 +1239,14 @@ img {
   line-height: 1.35;
 }
 
+.stat-desc-short {
+  display: none;
+}
+
+.stat-desc-full {
+  display: inline;
+}
+
 .stats-footnote-row {
   display: flex;
   align-items: center;
@@ -4233,22 +4241,51 @@ img {
   }
 
   /* 4. Sleek 2x2 Stats Strip on Mobile */
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 10px !important;
+  .stats-bar-section {
+    padding: 14px 0 !important;
   }
 
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px 14px !important;
+  }
+
+  .stat-item,
   .stat-card {
-    padding: 14px 10px !important;
+    padding: 6px 4px !important;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none !important;
   }
 
   .stat-number {
-    font-size: clamp(1.35rem, 4.8vw, 1.8rem) !important;
+    font-size: clamp(1.2rem, 4.4vw, 1.45rem) !important;
+    margin-bottom: 2px !important;
+    line-height: 1.1 !important;
   }
 
+  .stat-desc,
   .stat-label {
-    font-size: 0.72rem !important;
-    line-height: 1.35 !important;
+    font-size: 0.70rem !important;
+    line-height: 1.25 !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+  }
+
+  .stat-desc-short {
+    display: inline !important;
+  }
+
+  .stat-desc-full {
+    display: none !important;
+  }
+
+  .stats-footnote-row {
+    display: none !important;
   }
 
   /* 5. Marketplaces & Case Studies */
@@ -7540,6 +7577,52 @@ img {
     width: 44px !important;
     height: 44px !important;
     box-shadow: 0 4px 16px rgba(0, 245, 155, 0.3) !important;
+  }
+
+  /* 8. Authority Stats Strip - Compact Mobile Refinement */
+  .stats-bar-section {
+    padding: 14px 0 !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px 12px !important;
+  }
+
+  .stat-item {
+    padding: 4px 2px !important;
+  }
+
+  .stat-item:not(:last-child)::after {
+    display: none !important;
+  }
+
+  .stat-number {
+    font-size: clamp(1.2rem, 4.4vw, 1.45rem) !important;
+    margin-bottom: 2px !important;
+    line-height: 1.1 !important;
+  }
+
+  .stat-desc {
+    font-size: 0.70rem !important;
+    line-height: 1.25 !important;
+    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em !important;
+    margin-top: 2px !important;
+    white-space: nowrap !important;
+  }
+
+  .stat-desc-short {
+    display: inline !important;
+  }
+
+  .stat-desc-full {
+    display: none !important;
+  }
+
+  .stats-footnote-row {
+    display: none !important;
   }
 }
 

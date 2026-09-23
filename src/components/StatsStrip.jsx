@@ -78,7 +78,8 @@ export default function StatsStrip() {
       prefix: isGCC ? 'SAR ' : '$',
       suffix: 'M+',
       decimals: 0,
-      label: 'Client GMV Generated'
+      label: 'Client GMV',
+      fullLabel: 'Client GMV Generated'
     },
     {
       id: 'growth',
@@ -86,7 +87,8 @@ export default function StatsStrip() {
       prefix: '+',
       suffix: '%',
       decimals: 0,
-      label: 'Average YoY Brand Growth'
+      label: 'YoY Growth',
+      fullLabel: 'Average YoY Brand Growth'
     },
     {
       id: 'brands',
@@ -94,7 +96,8 @@ export default function StatsStrip() {
       prefix: '',
       suffix: '+',
       decimals: 0,
-      label: 'Enterprise Brands Scaled'
+      label: 'Brands Scaled',
+      fullLabel: 'Enterprise Brands Scaled'
     },
     {
       id: 'roas',
@@ -102,7 +105,8 @@ export default function StatsStrip() {
       prefix: '',
       suffix: 'x',
       decimals: 1,
-      label: 'Average Blended Ad ROAS'
+      label: 'Blended ROAS',
+      fullLabel: 'Average Blended Ad ROAS'
     }
   ];
 
@@ -121,22 +125,12 @@ export default function StatsStrip() {
                   isVisible={isVisible}
                 />
               </div>
-              <div className="stat-desc">{item.label}</div>
+              <div className="stat-desc">
+                <span className="stat-desc-short">{item.label}</span>
+                <span className="stat-desc-full">{item.fullLabel}</span>
+              </div>
             </div>
           ))}
-        </div>
-
-        <div className="stats-footnote-row">
-          <div className="stats-audit-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <polyline points="9 12 11 14 15 10"></polyline>
-            </svg>
-            <span>AUDITED PARTNER DATA</span>
-          </div>
-          <p className="stats-footnote-text">
-            Verified trailing-12-month partner data. Refreshed quarterly.
-          </p>
         </div>
       </div>
     </section>
