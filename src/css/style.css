@@ -179,6 +179,15 @@ img {
   z-index: 1;
 }
 
+/* Responsive Visibility Helpers */
+.mobile-only-txt {
+  display: none !important;
+}
+.desktop-only-txt,
+.desktop-only {
+  display: inline;
+}
+
 .section {
   padding: 84px 0;
   position: relative;
@@ -3931,13 +3940,80 @@ img {
     font-size: 0.80rem !important;
   }
 
+  .mobile-only-txt {
+    display: inline !important;
+  }
+  .desktop-only-txt,
+  .desktop-only {
+    display: none !important;
+  }
+
   .live-revenue-card {
-    padding: 18px;
-    max-width: none;
+    padding: 14px 14px 12px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: var(--radius-lg) !important;
   }
 
   .hero-products-proof-strip {
-    display: none;
+    display: none !important;
+  }
+
+  .chart-container {
+    height: 105px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .card-topbar {
+    margin-bottom: 6px !important;
+  }
+
+  .card-title-sub {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+  }
+
+  .live-tag {
+    font-size: 0.66rem !important;
+    padding: 2px 7px !important;
+    white-space: nowrap !important;
+  }
+
+  .revenue-number-row {
+    margin-bottom: 6px !important;
+  }
+
+  .live-revenue-val {
+    font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+  }
+
+  .growth-badge {
+    padding: 3px 8px !important;
+    font-size: 0.70rem !important;
+  }
+
+  .hero-kpis.hero-kpis-3col {
+    padding-top: 8px !important;
+    gap: 6px !important;
+  }
+
+  .hero-kpis.hero-kpis-3col .kpi-chip {
+    padding: 7px 5px !important;
+    text-align: center !important;
+  }
+
+  .hero-kpis.hero-kpis-3col .kpi-label {
+    font-size: 0.64rem !important;
+    white-space: nowrap !important;
+    letter-spacing: 0.02em !important;
+    margin-bottom: 2px !important;
+  }
+
+  .hero-kpis.hero-kpis-3col .kpi-val {
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
   }
 
   .mkt-card {
@@ -4076,38 +4152,41 @@ img {
   }
 
   .live-revenue-card {
-    padding: 16px 14px;
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto;
+    padding: 12px 12px 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+  }
+
+  .chart-container {
+    height: 95px !important;
+    margin-bottom: 8px !important;
   }
 
   .live-revenue-val {
-    font-size: clamp(1.5rem, 5vw, 1.95rem);
-  }
-
-  .hero-kpis {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
+    font-size: clamp(1.35rem, 5vw, 1.65rem) !important;
   }
 
   .hero-kpis.hero-kpis-3col {
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 5px !important;
-    padding-top: 10px !important;
+    gap: 4px !important;
+    padding-top: 8px !important;
   }
 
   .hero-kpis.hero-kpis-3col .kpi-chip {
-    padding: 8px 3px !important;
+    padding: 6px 3px !important;
+    text-align: center !important;
   }
 
   .hero-kpis.hero-kpis-3col .kpi-val {
-    font-size: clamp(0.92rem, 3.2vw, 1.15rem) !important;
+    font-size: 0.85rem !important;
+    font-weight: 800 !important;
   }
 
   .hero-kpis.hero-kpis-3col .kpi-label {
-    font-size: 0.58rem !important;
+    font-size: 0.60rem !important;
     letter-spacing: 0.02em !important;
+    white-space: nowrap !important;
   }
 
   .hero-trust-badges {

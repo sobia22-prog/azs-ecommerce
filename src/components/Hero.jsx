@@ -112,10 +112,17 @@ export default function Hero({ onOpenModal }) {
           <div className="hero-visual">
             <div className="live-revenue-card">
               <div className="card-topbar">
-                <span className="card-title-sub">Verified Portfolio Volume</span>
+                <span className="card-title-sub">
+                  <span className="desktop-only-txt">Verified </span>Portfolio <span className="desktop-only-txt">Volume</span><span className="mobile-only-txt">GMV</span>
+                </span>
                 <span className="live-tag">
                   <span className="pulse-dot"></span>
-                  {activeLabel}
+                  {activeLabel === 'All-Time Volume' ? (
+                    <>
+                      <span className="desktop-only-txt">All-Time Volume</span>
+                      <span className="mobile-only-txt">All-Time</span>
+                    </>
+                  ) : activeLabel}
                 </span>
               </div>
 
@@ -183,8 +190,8 @@ export default function Hero({ onOpenModal }) {
                 </svg>
               </div>
 
-              {/* Real Client Proof Chips Strip */}
-              <div className="hero-products-proof-strip">
+              {/* Real Client Proof Chips Strip - Desktop Only to keep mobile chart clean */}
+              <div className="hero-products-proof-strip desktop-only">
                 <span className="proof-strip-label">Managed Brands:</span>
                 <div className="proof-chips-row">
                   <span className="product-proof-chip">HomeMaster Air Fryer</span>
@@ -196,15 +203,15 @@ export default function Hero({ onOpenModal }) {
               {/* Verified KPI Grid: 3 Clean, Well-Spaced Metrics */}
               <div className="hero-kpis hero-kpis-3col">
                 <div className="kpi-chip">
-                  <div className="kpi-label">Blended ROAS</div>
+                  <div className="kpi-label"><span className="desktop-only-txt">Blended </span>ROAS</div>
                   <div className="kpi-val">8.40x</div>
                 </div>
                 <div className="kpi-chip">
-                  <div className="kpi-label">Avg ACOS</div>
+                  <div className="kpi-label"><span className="desktop-only-txt">Avg </span>ACOS</div>
                   <div className="kpi-val">11.8%</div>
                 </div>
                 <div className="kpi-chip">
-                  <div className="kpi-label">Buy Box Win Rate</div>
+                  <div className="kpi-label">Buy Box<span className="desktop-only-txt"> Win Rate</span></div>
                   <div className="kpi-val">93.4%</div>
                 </div>
               </div>
