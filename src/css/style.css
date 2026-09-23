@@ -824,8 +824,9 @@ img {
 /* ==========================================================================
    Hero Section
    ========================================================================== */
-.hero-section {
-  padding-top: calc(70px + clamp(16px, 2.5vh, 40px));
+.hero-section,
+.section.hero-section {
+  padding-top: calc(88px + clamp(18px, 2.5vh, 40px)) !important;
   padding-bottom: clamp(24px, 3.5vh, 48px);
   min-height: calc(100vh - 70px);
   display: flex;
@@ -3779,8 +3780,9 @@ img {
     line-height: 1.5;
   }
 
-  .hero-section {
-    padding-top: 104px;
+  .hero-section,
+  .section.hero-section {
+    padding-top: 112px !important;
     padding-bottom: 38px;
     min-height: auto;
   }
@@ -3792,14 +3794,16 @@ img {
 
   .hero-eyebrow-row {
     margin-bottom: 16px;
+    width: 100%;
   }
 
   .hero-single-eyebrow {
     max-width: 100%;
-    overflow: hidden;
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     line-height: 1.35;
-    white-space: normal;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
   }
 
   .eyebrow-channels {
@@ -3936,8 +3940,9 @@ img {
   }
 
   /* 2. Mobile Hero Layout & Unobstructed CTAs */
-  .hero-section {
-    padding-top: 72px;
+  .hero-section,
+  .section.hero-section {
+    padding-top: 108px !important;
     padding-bottom: 24px;
     min-height: auto;
   }
@@ -3948,16 +3953,19 @@ img {
   }
 
   .hero-eyebrow-row {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     gap: 6px;
+    width: 100%;
   }
 
   .hero-single-eyebrow {
     font-size: 0.72rem;
-    padding: 6px 12px;
+    padding: 5px 12px;
     gap: 6px;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
     line-height: 1.4;
   }
 
@@ -4038,7 +4046,7 @@ img {
   }
 
   /* 3. Section Compression & Proportional Headings */
-  .section {
+  .section:not(.hero-section) {
     padding: 40px 0 !important;
   }
 
