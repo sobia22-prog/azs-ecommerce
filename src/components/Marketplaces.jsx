@@ -4,7 +4,7 @@ import { Link } from '../Router';
 const MARKETPLACE_LIST = [
   {
     id: 'ksa',
-    tabLabel: 'KSA Hub',
+    tabLabel: 'KSA',
     title: 'KSA Marketplaces',
     region: 'Saudi Arabia — Amazon.sa & Noon KSA',
     tag: 'KSA Territory',
@@ -47,7 +47,7 @@ const MARKETPLACE_LIST = [
   },
   {
     id: 'usa',
-    tabLabel: 'USA Market',
+    tabLabel: 'USA',
     title: 'USA Marketplace',
     region: 'United States — Amazon.com & Omnichannel',
     tag: 'USA Territory',
@@ -68,7 +68,7 @@ const MARKETPLACE_LIST = [
   },
   {
     id: 'uk',
-    tabLabel: 'UK Hub',
+    tabLabel: 'UK',
     title: 'UK Marketplace',
     region: 'United Kingdom — Amazon.co.uk & Europe',
     tag: 'UK Gateway',
@@ -243,11 +243,7 @@ export default function Marketplaces({ onOpenModal }) {
     <section className="section" id="marketplaces">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill">The 4 Core Marketplaces</div>
           <h2>Dominating KSA, Trendyol, USA & UK Marketplaces</h2>
-          <p>
-            One operating team for marketplace growth across the regions that matter.
-          </p>
         </div>
 
         {/* Mobile-Only Interactive Marketplace Selector Pills */}
