@@ -3782,24 +3782,25 @@ img {
 
   .hero-section,
   .section.hero-section {
-    padding-top: 112px !important;
-    padding-bottom: 38px;
+    padding-top: 84px !important;
+    padding-bottom: 28px;
     min-height: auto;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 20px;
   }
 
   .hero-eyebrow-row {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     width: 100%;
   }
 
   .hero-single-eyebrow {
     max-width: 100%;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
+    padding: 4px 10px;
     line-height: 1.35;
     white-space: nowrap;
     display: inline-flex;
@@ -3857,35 +3858,77 @@ img {
   }
 
   .hero-content h1 {
-    font-size: clamp(2.25rem, 9vw, 3.5rem);
-    line-height: 1.05;
-    margin-bottom: 14px;
+    font-size: clamp(1.35rem, 5.2vw, 1.65rem) !important;
+    line-height: 1.18 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.02em !important;
   }
 
   .hero-subtitle {
     max-width: 560px;
-    font-size: 0.98rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 14px !important;
+    color: var(--text-muted) !important;
   }
 
   .hero-cta-group {
-    gap: 10px;
-    margin-bottom: 22px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
+    position: relative;
+    z-index: 10;
   }
 
   .hero-cta-group .btn {
-    padding: 11px 18px;
-    font-size: 0.88rem;
+    width: 100% !important;
+    padding: 10px 6px !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap !important;
+    letter-spacing: -0.01em !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 4px !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-cta-group .btn .btn-icon {
+    width: 13px !important;
+    height: 13px !important;
+    margin-left: 2px !important;
+    flex-shrink: 0 !important;
   }
 
   .hero-social-proof-strip {
-    padding: 12px;
-    gap: 12px;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    padding: 10px 14px !important;
+    margin-bottom: 18px !important;
   }
 
-  .proof-sub-line {
-    font-size: 0.7rem;
+  .hero-social-proof-strip .proof-sub-line {
+    display: none !important;
+  }
+
+  .proof-col-divider {
+    display: none !important;
+  }
+
+  .proof-col-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .proof-main-line {
+    font-size: 0.80rem !important;
   }
 
   .live-revenue-card {
@@ -3942,26 +3985,26 @@ img {
   /* 2. Mobile Hero Layout & Unobstructed CTAs */
   .hero-section,
   .section.hero-section {
-    padding-top: 108px !important;
-    padding-bottom: 24px;
+    padding-top: 80px !important;
+    padding-bottom: 20px;
     min-height: auto;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .hero-eyebrow-row {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     gap: 6px;
     width: 100%;
   }
 
   .hero-single-eyebrow {
-    font-size: 0.72rem;
-    padding: 5px 12px;
-    gap: 6px;
+    font-size: 0.66rem;
+    padding: 4px 10px;
+    gap: 5px;
     display: inline-flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -3970,34 +4013,66 @@ img {
   }
 
   .hero-content h1 {
-    font-size: clamp(1.8rem, 6.2vw, 2.35rem);
-    line-height: 1.15;
-    margin-bottom: 10px;
+    font-size: clamp(1.28rem, 5vw, 1.55rem) !important;
+    line-height: 1.18 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.02em !important;
   }
 
   .hero-subtitle {
-    font-size: 0.88rem;
-    line-height: 1.5;
-    margin-bottom: 16px;
+    font-size: 0.78rem !important;
+    line-height: 1.42 !important;
+    margin-bottom: 14px !important;
+    color: var(--text-muted) !important;
   }
 
   .hero-cta-group {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    gap: 10px;
-    margin-bottom: 22px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 6px !important;
+    margin-bottom: 16px !important;
     position: relative;
     z-index: 10;
   }
 
   .hero-cta-group .btn {
-    width: 100%;
-    justify-content: center;
-    padding: 13px 18px;
-    font-size: 0.92rem;
-    text-align: center;
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 10px 4px !important;
+    font-size: 0.75rem !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    gap: 2px !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-cta-group .btn .btn-icon {
+    width: 12px !important;
+    height: 12px !important;
+    margin-left: 2px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-social-proof-strip {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-social-proof-strip .proof-sub-line {
+    display: none !important;
+  }
+
+  .proof-main-line {
+    font-size: 0.76rem !important;
   }
 
   .live-revenue-card {
@@ -4483,7 +4558,7 @@ img {
 /* 5. Ultra-Compact Phones (<= 380px) */
 @media (max-width: 380px) {
   .hero-content h1 {
-    font-size: 1.65rem !important;
+    font-size: 1.25rem !important;
   }
   .stat-card {
     padding: 10px 6px !important;
