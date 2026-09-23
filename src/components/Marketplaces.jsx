@@ -206,7 +206,7 @@ export default function Marketplaces({ onOpenModal }) {
       </div>
       <p className="mkt-card-desc">{mkt.desc}</p>
       
-      <div className="mkt-feature-tags-grid">
+      <div className="mkt-feature-tags-grid desktop-only">
         {mkt.features.map((feat, fIdx) => (
           <div key={fIdx} className="mkt-feature-tag-pill">
             <span className="mkt-tag-icon">
@@ -243,7 +243,11 @@ export default function Marketplaces({ onOpenModal }) {
     <section className="section" id="marketplaces">
       <div className="container">
         <div className="section-header">
+          <div className="badge-pill desktop-only">The 4 Core Marketplaces</div>
           <h2>Dominating KSA, Trendyol, USA & UK Marketplaces</h2>
+          <p className="desktop-only">
+            One operating team for marketplace growth across the regions that matter.
+          </p>
         </div>
 
         {/* Mobile-Only Interactive Marketplace Selector Pills */}
