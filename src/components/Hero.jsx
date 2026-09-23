@@ -158,13 +158,13 @@ export default function Hero({ onOpenModal }) {
                     className="chart-stroke"
                   />
 
-                  {/* Interactive Points */}
+                  {/* Interactive Points with Touch & Hover */}
                   {points.map((pt, i) => (
                     <circle
                       key={i}
                       cx={pt.cx}
                       cy={pt.cy}
-                      r="5.5"
+                      r="6"
                       className="chart-point"
                       onMouseEnter={() => {
                         setActivePoint(i);
@@ -173,6 +173,10 @@ export default function Hero({ onOpenModal }) {
                       onMouseLeave={() => {
                         setActivePoint(null);
                         setActiveLabel('All-Time Volume');
+                      }}
+                      onTouchStart={() => {
+                        setActivePoint(i);
+                        setActiveLabel(pt.label);
                       }}
                     />
                   ))}

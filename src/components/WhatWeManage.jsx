@@ -9,6 +9,7 @@ export default function WhatWeManage({ onOpenModal }) {
       id: 1,
       slug: 'store-setup',
       num: '01',
+      shortTab: '01 Setup',
       title: 'Store Setup & Design',
       category: 'Brand Foundations',
       summary: 'Marketplace onboarding, storefront setup and brand-ready presentation.',
@@ -16,7 +17,7 @@ export default function WhatWeManage({ onOpenModal }) {
         'Amazon Brand Registry (KSA, USA, UK) & Noon Setup',
         'Bilingual Arabic/EN High-Converting Storefront UX'
       ],
-      channels: ['KSA (Amz/Noon)', 'USA (Amazon)', 'UK (Amazon)', 'Shopify'],
+      channels: ['KSA (Amz/Noon)', 'USA', 'UK', 'Shopify'],
       impactMetric: '100% Brand Verification',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -29,9 +30,10 @@ export default function WhatWeManage({ onOpenModal }) {
       id: 2,
       slug: 'catalog-optimization',
       num: '02',
+      shortTab: '02 Catalog',
       title: 'Catalog & Listings',
       category: 'Organic Dominance',
-      summary: 'Uploads, variations, optimisation and listing hygiene.',
+      summary: 'Uploads, variations, algorithmic SEO and listing hygiene.',
       highlights: [
         'Algorithmic Keyword Harvesting for Arabic & English',
         'Premium A+ Content & Parent-Child SKU Architecture'
@@ -52,6 +54,7 @@ export default function WhatWeManage({ onOpenModal }) {
       id: 3,
       slug: 'pricing-inventory',
       num: '03',
+      shortTab: '03 Pricing',
       title: 'Pricing & Inventory',
       category: 'Margin Protection',
       summary: 'Margin protection, stock coordination and promotion planning.',
@@ -73,6 +76,7 @@ export default function WhatWeManage({ onOpenModal }) {
       id: 4,
       slug: 'orders-fulfillment',
       num: '04',
+      shortTab: '04 Logistics',
       title: 'Orders & Fulfillment',
       category: 'Operational Flow',
       summary: 'Operational follow-up, FBA or marketplace coordination and issue handling.',
@@ -95,15 +99,16 @@ export default function WhatWeManage({ onOpenModal }) {
       id: 5,
       slug: 'advertising-growth',
       num: '05',
+      shortTab: '05 Ads',
       title: 'Advertising & Growth',
       category: 'Performance Marketing',
-      summary: 'Amazon, noon, Meta, TikTok and Google paid media management.',
+      summary: 'Amazon, Noon, Meta, TikTok and Google paid media management.',
       highlights: [
         'Amazon SP/SB/SD & Noon On-Site Bid Automation',
         'Meta Advantage+, TikTok UGC & Google PMax Funnels'
       ],
-      channels: ['Amazon Ads (KSA/US/UK)', 'Noon Ads', 'Trendyol Ads', 'Meta', 'Google'],
-      impactMetric: '8.4x - 14.4x Peak ROAS',
+      channels: ['Amazon Ads', 'Noon Ads', 'Meta', 'TikTok', 'Google'],
+      impactMetric: '8.4x - 14.4x ROAS',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <line x1="12" y1="20" x2="12" y2="10"></line>
@@ -116,6 +121,7 @@ export default function WhatWeManage({ onOpenModal }) {
       id: 6,
       slug: 'reporting-analytics',
       num: '06',
+      shortTab: '06 BI',
       title: 'Reporting & Analytics',
       category: 'Data & Intelligence',
       summary: 'Sales, ad performance and operational dashboards for decision-making.',
@@ -123,7 +129,7 @@ export default function WhatWeManage({ onOpenModal }) {
         'Real-Time Live Executive Consolidated Dashboards',
         'Weekly TACoS Audits & SKU Contribution Margin'
       ],
-      channels: ['KSA/USA/UK Executive Portal', 'TACoS Audits'],
+      channels: ['KSA/USA/UK Portal', 'TACoS Audits'],
       impactMetric: 'Radical Transparency',
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -133,6 +139,55 @@ export default function WhatWeManage({ onOpenModal }) {
       )
     }
   ];
+
+  const currentSrv = services[activeService] || services[0];
+
+  const renderServiceCard = (srv) => (
+    <div
+      key={srv.id}
+      className={`service-coverage-card ${activeService === srv.id - 1 ? 'highlighted' : ''}`}
+      onMouseEnter={() => setActiveService(srv.id - 1)}
+    >
+      <div className="srv-card-top">
+        <div className="srv-icon-badge">{srv.icon}</div>
+        <div className="srv-num-pill">{srv.num}</div>
+      </div>
+
+      <div className="srv-category-tag">{srv.category}</div>
+      <h3 className="srv-card-title">{srv.title}</h3>
+      <p className="srv-card-summary">{srv.summary}</p>
+
+      <div className="srv-details-list">
+        {srv.highlights.map((h, i) => (
+          <div key={i} className="srv-detail-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--neon-mint)" strokeWidth="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>{h}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="srv-card-footer" style={{ flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+          <div className="srv-channels-chips">
+            {srv.channels.map((ch, i) => (
+              <span key={i} className="srv-ch-chip">{ch}</span>
+            ))}
+          </div>
+          <div className="srv-impact-metric">{srv.impactMetric}</div>
+        </div>
+
+        <Link 
+          to={`/services/${srv.slug}`} 
+          style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.80rem', fontWeight: 700, color: 'var(--neon-mint)', textDecoration: 'none', paddingTop: '10px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
+        >
+          <span>Explore Module SLA & Deliverables</span>
+          <span>➔</span>
+        </Link>
+      </div>
+    </div>
+  );
 
   return (
     <section className="section" id="service-coverage">
@@ -144,11 +199,11 @@ export default function WhatWeManage({ onOpenModal }) {
           </div>
           <h2>What We Manage</h2>
           <p>
-            An accountable end-to-end service stack delivering operational excellence across our 3 core marketplaces: KSA, USA, and UK.
+            An accountable end-to-end service stack delivering operational excellence across KSA, USA, and UK.
           </p>
         </div>
 
-        {/* Visual Media Hero Banner (Breaks up text with 8K futuristic logistics artwork) */}
+        {/* Visual Media Hero Banner */}
         <div className="coverage-visual-hero">
           <div className="coverage-visual-hero-inner">
             <div
@@ -156,7 +211,7 @@ export default function WhatWeManage({ onOpenModal }) {
               onClick={() => onOpenModal && onOpenModal('/assets/gcc_logistics_network.jpg', 'KSA, USA & UK Supply Chain Network')}
               title="Click to zoom logistics & fulfillment network"
             >
-              <img src="/assets/gcc_logistics_network.jpg" alt="Cross-Border Supply Chain & Fulfillment Network" />
+              <img src="/assets/gcc_logistics_network.jpg" alt="Cross-Border Supply Chain & Fulfillment Network" loading="lazy" />
               <span className="mkt-media-overlay-badge">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <circle cx="11" cy="11" r="8"></circle>
@@ -168,74 +223,46 @@ export default function WhatWeManage({ onOpenModal }) {
 
             <div className="coverage-hero-content">
               <div className="badge-pill badge-pill-cyan">KSA, USA & UK Infrastructure</div>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-pure)' }}>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-pure)' }}>
                 Fulfillment, Advertising & Operations Synchronized
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: '1.5' }}>
-                We eliminate operational fragmentation by bridging manufacturer supply lines directly to marketplace fulfillment (FBA, FBN, 3PL) and algorithmic ad acceleration across Saudi Arabia, the US, and the UK.
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: '1.5' }}>
+                We eliminate operational fragmentation by bridging factory supply lines directly to marketplace fulfillment (FBA, FBN, 3PL) and algorithmic ad acceleration.
               </p>
               <div className="coverage-hero-pills">
-                <span className="coverage-hero-pill">🇸🇦 KSA Bonded 3PL (Riyadh & Jeddah)</span>
-                <span className="coverage-hero-pill">🇺🇸 Nationwide US FBA Restock</span>
-                <span className="coverage-hero-pill">🇬🇧 UK Prime & Pan-EU Routing</span>
-                <span className="coverage-hero-pill">🛡️ 100% Account Defense</span>
+                <span className="coverage-hero-pill">🇸🇦 KSA 3PL (Riyadh & Jeddah)</span>
+                <span className="coverage-hero-pill">🇺🇸 US FBA Restock</span>
+                <span className="coverage-hero-pill">🇬🇧 UK Prime & Pan-EU</span>
+                <span className="coverage-hero-pill">🛡️ 100% Health Shield</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 6 Streamlined Service Cards */}
-        <div className="services-coverage-grid">
+        {/* Mobile-Only Interactive 6-Pillar Tab Bar */}
+        <div className="mobile-services-tabs-bar">
           {services.map((srv, idx) => (
-            <div
+            <button
               key={srv.id}
-              className={`service-coverage-card ${activeService === idx ? 'highlighted' : ''}`}
-              onMouseEnter={() => setActiveService(idx)}
+              className={`mobile-srv-tab-btn ${activeService === idx ? 'active' : ''}`}
+              onClick={() => setActiveService(idx)}
             >
-              <div className="srv-card-top">
-                <div className="srv-icon-badge">{srv.icon}</div>
-                <div className="srv-num-pill">{srv.num}</div>
-              </div>
-
-              <div className="srv-category-tag">{srv.category}</div>
-              <h3 className="srv-card-title">{srv.title}</h3>
-              <p className="srv-card-summary">{srv.summary}</p>
-
-              {/* Streamlined Feature Chips (2 instead of 4 long bullets) */}
-              <div className="srv-details-list">
-                {srv.highlights.map((h, i) => (
-                  <div key={i} className="srv-detail-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--neon-mint)" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>{h}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="srv-card-footer" style={{ flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                  <div className="srv-channels-chips">
-                    {srv.channels.map((ch, i) => (
-                      <span key={i} className="srv-ch-chip">{ch}</span>
-                    ))}
-                  </div>
-                  <div className="srv-impact-metric">{srv.impactMetric}</div>
-                </div>
-
-                <Link 
-                  to={`/services/${srv.slug}`} 
-                  style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.80rem', fontWeight: 700, color: 'var(--neon-mint)', textDecoration: 'none', paddingTop: '10px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}
-                >
-                  <span>Explore Module SLA & Deliverables</span>
-                  <span>➔</span>
-                </Link>
-              </div>
-            </div>
+              {srv.shortTab}
+            </button>
           ))}
         </div>
 
-        {/* Explore All 6 Services Hub Link (Audit Finding #7) */}
+        {/* Mobile Single Active Service Card View */}
+        <div className="mobile-srv-single-card-wrap">
+          {renderServiceCard(currentSrv)}
+        </div>
+
+        {/* Desktop 6-Card Coverage Grid */}
+        <div className="desktop-services-grid services-coverage-grid">
+          {services.map((srv) => renderServiceCard(srv))}
+        </div>
+
+        {/* Explore All 6 Services Hub Link */}
         <div style={{ textAlign: 'center', marginTop: '36px' }}>
           <Link to="/services" className="btn btn-secondary" style={{ padding: '12px 28px', fontSize: '0.92rem' }}>
             Explore All 6 Core Service Specifications & SLAs ➔
@@ -254,3 +281,4 @@ export default function WhatWeManage({ onOpenModal }) {
     </section>
   );
 }
+

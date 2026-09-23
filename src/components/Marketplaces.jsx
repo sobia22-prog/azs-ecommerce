@@ -1,6 +1,94 @@
 import React, { useState } from 'react';
 import { Link } from '../Router';
 
+const MARKETPLACE_LIST = [
+  {
+    id: 'ksa',
+    tabLabel: '🇸🇦 KSA',
+    title: 'KSA Marketplaces',
+    region: 'Saudi Arabia — Amazon.sa & Noon KSA',
+    tag: '🇸🇦 KSA Territory',
+    tagColor: '#00f59b',
+    tagBorder: 'rgba(0, 245, 155, 0.4)',
+    growthBadge: '+311% Orders',
+    desc: 'Dominating Amazon.sa and Noon Seller Lab with Riyadh/Jeddah warehousing & Arabic optimization.',
+    img: '/assets/mkt_ksa_riyadh.jpg',
+    metricLabel: 'KSA Blended ROAS',
+    metricVal: '6.85x ROAS',
+    features: [
+      { icon: '⚡', text: 'Amazon.sa & Noon Seller Lab Sync' },
+      { icon: '📦', text: 'FBN & FBA Warehousing (Riyadh & Jeddah)' }
+    ],
+    links: [
+      { to: '/amazon', label: 'Amazon Hub' },
+      { to: '/noon', label: 'Noon Hub' }
+    ]
+  },
+  {
+    id: 'trendyol',
+    tabLabel: '🇹🇷 Trendyol',
+    title: 'Trendyol GCC Expansion',
+    region: 'Saudi Arabia & UAE — Turkey / EU Cross-Border',
+    tag: '🇹🇷 Cross-Border',
+    tagColor: '#f59e0b',
+    tagBorder: 'rgba(245, 158, 11, 0.4)',
+    growthBadge: '7.80x ROAS',
+    desc: 'Surging Turkey-to-Gulf mobile corridor. Turnkey Arabic catalog sync & rapid flash promotions.',
+    img: '/assets/mkt_trendyol_gcc.jpg',
+    metricLabel: 'Monthly Scaled Pace',
+    metricVal: 'SAR 145,000',
+    features: [
+      { icon: '🔄', text: 'Automated Arabic Attribute Mapping' },
+      { icon: '✈️', text: 'Air Express <72h GCC Delivery SLAs' }
+    ],
+    links: [
+      { to: '/trendyol', label: 'Explore Trendyol Hub' }
+    ]
+  },
+  {
+    id: 'usa',
+    tabLabel: '🇺🇸 USA',
+    title: 'USA Marketplace',
+    region: 'United States — Amazon.com & Omnichannel',
+    tag: '🇺🇸 US Territory',
+    tagColor: '#00d2ff',
+    tagBorder: 'rgba(0, 210, 255, 0.4)',
+    growthBadge: '11.20x ROAS',
+    desc: 'High-velocity US Amazon PPC bid automation, A+ storytelling & nationwide FBA restock.',
+    img: '/assets/mkt_usa_nyc.jpg',
+    metricLabel: 'ACOS Efficiency',
+    metricVal: '8.90% Verified',
+    features: [
+      { icon: '🎯', text: 'SP, SB & Display PPC Bidding Automation' },
+      { icon: '📦', text: 'Nationwide US FBA Restock & Logistics' }
+    ],
+    links: [
+      { to: '/amazon', label: 'Explore Amazon USA Hub' }
+    ]
+  },
+  {
+    id: 'uk',
+    tabLabel: '🇬🇧 UK',
+    title: 'UK Marketplace',
+    region: 'United Kingdom — Amazon.co.uk & Europe',
+    tag: '🇬🇧 UK Gateway',
+    tagColor: '#a855f7',
+    tagBorder: 'rgba(168, 85, 247, 0.4)',
+    growthBadge: '+507% Lift',
+    desc: 'Cross-border British expansion with UK VAT compliance, localized copy & Pan-EU Prime.',
+    img: '/assets/mkt_uk_london.jpg',
+    metricLabel: 'British Prime ROAS',
+    metricVal: '9.45x ROAS',
+    features: [
+      { icon: '⚡', text: 'Amazon UK Listing SEO & Localization' },
+      { icon: '📦', text: 'UK Prime & Pan-European FBA Routing' }
+    ],
+    links: [
+      { to: '/amazon', label: 'Explore Amazon UK Hub' }
+    ]
+  }
+];
+
 const DASHBOARDS = {
   ksa: {
     title: 'KSA Marketplace Growth Console (Amazon.sa & Noon KSA)',
@@ -70,8 +158,72 @@ const DASHBOARDS = {
 };
 
 export default function Marketplaces({ onOpenModal }) {
+  const [activeMobileMkt, setActiveMobileMkt] = useState('ksa');
   const [activeDash, setActiveDash] = useState('ksa');
   const current = DASHBOARDS[activeDash] || DASHBOARDS.ksa;
+  const activeMktData = MARKETPLACE_LIST.find(m => m.id === activeMobileMkt) || MARKETPLACE_LIST[0];
+
+  const renderCardContent = (mkt) => (
+    <div className="mkt-card" key={mkt.id} style={mkt.id === 'trendyol' ? { borderColor: 'rgba(245, 158, 11, 0.25)' } : {}}>
+      <div className="mkt-card-glow" style={mkt.id === 'trendyol' ? { background: 'radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 70%)' } : {}}></div>
+
+      <div
+        className="mkt-card-media"
+        onClick={() => onOpenModal(mkt.img, `${mkt.title} — Corridor Proof`)}
+        title="Click to view marketplace hub"
+      >
+        <img src={mkt.img} alt={`${mkt.title} Hub`} loading="lazy" />
+        <span className="mkt-media-overlay-badge" style={{ color: mkt.tagColor, borderColor: mkt.tagBorder }}>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          {mkt.tag}
+        </span>
+      </div>
+
+      <div className="mkt-card-header">
+        <div className="mkt-icon-box" style={{ color: mkt.tagColor, background: `${mkt.tagColor}1a`, borderColor: `${mkt.tagColor}4d` }}>
+          <span>{mkt.tabLabel.slice(0, 2)}</span>
+        </div>
+        <span className="growth-badge" style={{ color: mkt.tagColor, borderColor: `${mkt.tagColor}4d`, background: `${mkt.tagColor}1a` }}>
+          {mkt.growthBadge}
+        </span>
+      </div>
+      <h3 className="mkt-card-title">{mkt.title}</h3>
+      <div className="mkt-card-regions">
+        <span>📍 {mkt.region}</span>
+      </div>
+      <p className="mkt-card-desc">{mkt.desc}</p>
+      
+      <div className="mkt-feature-tags-grid">
+        {mkt.features.map((feat, fIdx) => (
+          <div key={fIdx} className="mkt-feature-tag-pill">
+            <span className="mkt-tag-icon">{feat.icon}</span>
+            <span>{feat.text}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mkt-metric-footer" style={{ marginBottom: '14px' }}>
+        <span className="mkt-metric-tag">{mkt.metricLabel}</span>
+        <span className="mkt-metric-val" style={{ color: mkt.tagColor }}>{mkt.metricVal}</span>
+      </div>
+
+      <div style={{ display: 'flex', gap: '8px' }}>
+        {mkt.links.map((link, lIdx) => (
+          <Link
+            key={lIdx}
+            to={link.to}
+            className="btn btn-secondary"
+            style={{ flex: 1, justifyContent: 'center', fontSize: '0.82rem', padding: '9px 12px' }}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <section className="section" id="marketplaces">
@@ -84,237 +236,27 @@ export default function Marketplaces({ onOpenModal }) {
           </p>
         </div>
 
-        {/* 4 Marketplace Cards: KSA, Trendyol, USA, UK (2 cards per row) */}
-        <div className="marketplace-grid marketplace-grid-2col">
-          {/* 1. KSA Marketplace */}
-          <div className="mkt-card">
-            <div className="mkt-card-glow"></div>
-
-            <div
-              className="mkt-card-media"
-              onClick={() => onOpenModal('/assets/mkt_ksa_riyadh.jpg', 'Saudi Arabia Marketplace Corridor (Amazon.sa & Noon KSA)')}
-              title="Click to view Saudi Arabia marketplace hub"
+        {/* Mobile-Only Interactive Marketplace Selector Pills */}
+        <div className="mobile-mkt-tabs-bar">
+          {MARKETPLACE_LIST.map((mkt) => (
+            <button
+              key={mkt.id}
+              className={`mobile-mkt-tab-btn ${activeMobileMkt === mkt.id ? 'active' : ''}`}
+              onClick={() => setActiveMobileMkt(mkt.id)}
             >
-              <img src="/assets/mkt_ksa_riyadh.jpg" alt="Saudi Arabia Marketplace Hub — Riyadh" />
-              <span className="mkt-media-overlay-badge" style={{ color: '#00f59b', borderColor: 'rgba(0, 245, 155, 0.4)' }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                🇸🇦 KSA Territory
-              </span>
-            </div>
+              {mkt.tabLabel}
+            </button>
+          ))}
+        </div>
 
-            <div className="mkt-card-header">
-              <div className="mkt-icon-box" style={{ color: '#00f59b', background: 'rgba(0, 245, 155, 0.1)', borderColor: 'rgba(0, 245, 155, 0.3)' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <span className="growth-badge">+311% Orders</span>
-            </div>
-            <h3 className="mkt-card-title">KSA Marketplaces</h3>
-            <div className="mkt-card-regions">
-              <span>📍 Saudi Arabia — Amazon.sa & Noon KSA</span>
-            </div>
-            <p className="mkt-card-desc">
-              Dominating the Kingdom of Saudi Arabia. Complete Amazon.sa and Noon Seller Lab execution, FBA/FBN Riyadh warehousing, and Arabic listing optimization.
-            </p>
-            
-            <div className="mkt-feature-tags-grid">
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon">⚡</span>
-                <span>Amazon.sa & Noon Seller Lab Sync</span>
-              </div>
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon">📦</span>
-                <span>FBN & FBA Warehousing (Riyadh & Jeddah)</span>
-              </div>
-            </div>
+        {/* Mobile Single Active Card View */}
+        <div className="mobile-mkt-single-card-wrap">
+          {renderCardContent(activeMktData)}
+        </div>
 
-            <div className="mkt-metric-footer" style={{ marginBottom: '14px' }}>
-              <span className="mkt-metric-tag">KSA Blended ROAS</span>
-              <span className="mkt-metric-val">6.85x ROAS</span>
-            </div>
-
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <Link to="/amazon" className="btn btn-secondary" style={{ flex: 1, justifyContent: 'center', fontSize: '0.78rem', padding: '8px 12px' }}>
-                Amazon Hub
-              </Link>
-              <Link to="/noon" className="btn btn-secondary" style={{ flex: 1, justifyContent: 'center', fontSize: '0.78rem', padding: '8px 12px' }}>
-                Noon Hub
-              </Link>
-            </div>
-          </div>
-
-          {/* 2. Trendyol GCC Marketplace (NEW INTEGRATION) */}
-          <div className="mkt-card" style={{ borderColor: 'rgba(245, 158, 11, 0.25)' }}>
-            <div className="mkt-card-glow" style={{ background: 'radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.15) 0%, transparent 70%)' }}></div>
-
-            <div
-              className="mkt-card-media"
-              onClick={() => onOpenModal('/assets/mkt_trendyol_gcc.jpg', 'Trendyol GCC Cross-Border Trade Corridor (Turkey & GCC)')}
-              title="Click to view Trendyol GCC cross-border trade corridor"
-            >
-              <img src="/assets/mkt_trendyol_gcc.jpg" alt="Trendyol GCC Cross-Border Trade Corridor — Istanbul to GCC" />
-              <span className="mkt-media-overlay-badge" style={{ color: '#f59e0b', borderColor: 'rgba(245, 158, 11, 0.4)' }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                🇹🇷 Cross-Border Trade
-              </span>
-            </div>
-
-            <div className="mkt-card-header">
-              <div className="mkt-icon-box" style={{ color: '#f59e0b', background: 'rgba(245, 158, 11, 0.1)', borderColor: 'rgba(245, 158, 11, 0.3)' }}>
-                <span>🇹🇷</span>
-              </div>
-              <span className="growth-badge" style={{ color: '#f59e0b', background: 'rgba(245, 158, 11, 0.1)', borderColor: 'rgba(245, 158, 11, 0.3)' }}>7.80x ROAS</span>
-            </div>
-            <h3 className="mkt-card-title">Trendyol GCC Expansion</h3>
-            <div className="mkt-card-regions">
-              <span>📍 Saudi Arabia & UAE — Turkey / EU Cross-Border</span>
-            </div>
-            <p className="mkt-card-desc">
-              Expanding onto Trendyol's surging GCC mobile corridor. Turnkey Arabic catalog translation, VAT duty reconciliation, and high-margin flash promotions.
-            </p>
-            
-            <div className="mkt-feature-tags-grid">
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon" style={{ color: '#f59e0b', background: 'rgba(245, 158, 11, 0.12)' }}>🔄</span>
-                <span>Automated Arabic Attribute Mapping</span>
-              </div>
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon" style={{ color: '#f59e0b', background: 'rgba(245, 158, 11, 0.12)' }}>✈️</span>
-                <span>Air Express &lt;72h GCC Delivery SLAs</span>
-              </div>
-            </div>
-
-            <div className="mkt-metric-footer" style={{ marginBottom: '14px' }}>
-              <span className="mkt-metric-tag">Monthly Scaled Pace</span>
-              <span className="mkt-metric-val" style={{ color: '#f59e0b' }}>SAR 145,000</span>
-            </div>
-
-            <Link to="/trendyol" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.78rem', padding: '8px 12px' }}>
-              Explore Trendyol Hub
-            </Link>
-          </div>
-
-          {/* 3. USA Marketplace */}
-          <div className="mkt-card">
-            <div className="mkt-card-glow"></div>
-
-            <div
-              className="mkt-card-media"
-              onClick={() => onOpenModal('/assets/mkt_usa_nyc.jpg', 'United States Marketplace Expansion (Amazon.com)')}
-              title="Click to view United States marketplace hub"
-            >
-              <img src="/assets/mkt_usa_nyc.jpg" alt="USA Marketplace Expansion — New York" />
-              <span className="mkt-media-overlay-badge" style={{ color: '#00d2ff', borderColor: 'rgba(0, 210, 255, 0.4)' }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                🇺🇸 US Territory
-              </span>
-            </div>
-
-            <div className="mkt-card-header">
-              <div className="mkt-icon-box" style={{ color: '#00d2ff', background: 'rgba(0, 210, 255, 0.1)', borderColor: 'rgba(0, 210, 255, 0.3)' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M13.6 15.5c-2.4 1.8-5.9 2.7-8.9 2.7-4.2 0-8-1.5-10.9-4.1-.2-.2 0-.5.2-.3 3.1 1.8 6.9 2.9 10.7 2.9 2.7 0 5.8-.7 8.3-2.1.4-.2.7.2.6.9zm1.1-1.3c-.3-.4-1.9-.2-2.6-.1-.2 0-.3-.2-.1-.3 1.3-.9 3.4-.6 3.7-.3.3.4.1 2.5-.9 3.5-.2.2-.3.1-.2-.1.3-.6.4-2.3.1-2.7zM18.8 8.4c-.1-.3-.3-.4-.5-.4-.4 0-.8.4-.8.8v2.4c0 1.7-.8 2.7-2.3 2.7-1.1 0-1.9-.7-2.3-1.6l-.3-.7v-2.8c0-.4-.4-.8-.8-.8s-.8.4-.8.8v3.4c0 1.2.3 2.2 1 2.9.7.7 1.7 1 2.8 1 1.4 0 2.5-.6 3.1-1.7v1.1c0 .4.4.8.8.8s.8-.4.8-.8V9.2c0-.3 0-.6-.1-.8z"/>
-                </svg>
-              </div>
-              <span className="growth-badge">11.20x ROAS</span>
-            </div>
-            <h3 className="mkt-card-title">USA Marketplace</h3>
-            <div className="mkt-card-regions">
-              <span>📍 United States — Amazon.com & US Omnichannel</span>
-            </div>
-            <p className="mkt-card-desc">
-              High-velocity scale on the world's largest marketplace. Amazon US PPC bid automation, A+ storytelling, and nationwide US FBA restock optimization.
-            </p>
-            
-            <div className="mkt-feature-tags-grid">
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon" style={{ color: '#00d2ff', background: 'rgba(0, 210, 255, 0.12)' }}>🎯</span>
-                <span>SP, SB & Display PPC Bidding Automation</span>
-              </div>
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon" style={{ color: '#00d2ff', background: 'rgba(0, 210, 255, 0.12)' }}>📦</span>
-                <span>Nationwide US FBA Restock & Logistics</span>
-              </div>
-            </div>
-
-            <div className="mkt-metric-footer" style={{ marginBottom: '14px' }}>
-              <span className="mkt-metric-tag">ACOS Efficiency</span>
-              <span className="mkt-metric-val">8.90% Verified</span>
-            </div>
-
-            <Link to="/amazon" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.78rem', padding: '8px 12px' }}>
-              Explore Amazon USA Hub
-            </Link>
-          </div>
-
-          {/* 4. UK Marketplace */}
-          <div className="mkt-card">
-            <div className="mkt-card-glow"></div>
-
-            <div
-              className="mkt-card-media"
-              onClick={() => onOpenModal('/assets/mkt_uk_london.jpg', 'United Kingdom Marketplace Gateway (Amazon.co.uk)')}
-              title="Click to view United Kingdom marketplace gateway"
-            >
-              <img src="/assets/mkt_uk_london.jpg" alt="UK Marketplace Gateway — London" />
-              <span className="mkt-media-overlay-badge" style={{ color: '#a855f7', borderColor: 'rgba(168, 85, 247, 0.4)' }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                🇬🇧 UK Gateway
-              </span>
-            </div>
-
-            <div className="mkt-card-header">
-              <div className="mkt-icon-box" style={{ color: '#a855f7', background: 'rgba(168, 85, 247, 0.1)', borderColor: 'rgba(168, 85, 247, 0.3)' }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="3" y1="9" x2="21" y2="9"></line>
-                  <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
-              </div>
-              <span className="growth-badge" style={{ color: '#a855f7', borderColor: 'rgba(168, 85, 247, 0.3)', background: 'rgba(168, 85, 247, 0.1)' }}>+507% Lift</span>
-            </div>
-            <h3 className="mkt-card-title">UK Marketplace</h3>
-            <div className="mkt-card-regions">
-              <span>📍 United Kingdom — Amazon.co.uk & Europe Gateway</span>
-            </div>
-            <p className="mkt-card-desc">
-              Cross-border British expansion and European gateway on Amazon.co.uk. Seamless UK VAT compliance, localized British copy, and Pan-European FBA Prime delivery.
-            </p>
-            
-            <div className="mkt-feature-tags-grid">
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon" style={{ color: '#a855f7', background: 'rgba(168, 85, 247, 0.12)' }}>⚡</span>
-                <span>Amazon UK Listing SEO & Localization</span>
-              </div>
-              <div className="mkt-feature-tag-pill">
-                <span className="mkt-tag-icon" style={{ color: '#a855f7', background: 'rgba(168, 85, 247, 0.12)' }}>📦</span>
-                <span>UK Prime & Pan-European FBA Routing</span>
-              </div>
-            </div>
-
-            <div className="mkt-metric-footer" style={{ marginBottom: '14px' }}>
-              <span className="mkt-metric-tag">British Prime ROAS</span>
-              <span className="mkt-metric-val">9.45x ROAS</span>
-            </div>
-
-            <Link to="/amazon" className="btn btn-secondary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.78rem', padding: '8px 12px' }}>
-              Explore Amazon UK Hub
-            </Link>
-          </div>
+        {/* Desktop 2x2 Marketplace Grid */}
+        <div className="desktop-marketplace-grid marketplace-grid marketplace-grid-2col">
+          {MARKETPLACE_LIST.map((mkt) => renderCardContent(mkt))}
         </div>
 
         {/* Live Marketplace Console */}
@@ -368,7 +310,7 @@ export default function Marketplaces({ onOpenModal }) {
               className="dashboard-img-container"
               onClick={() => onOpenModal(current.img, current.title)}
             >
-              <img src={current.img} alt={current.title} />
+              <img src={current.img} alt={current.title} loading="lazy" />
               <div className="zoom-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="11" cy="11" r="8"></circle>
@@ -424,4 +366,5 @@ export default function Marketplaces({ onOpenModal }) {
     </section>
   );
 }
+
 

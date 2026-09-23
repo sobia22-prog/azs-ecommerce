@@ -4,34 +4,34 @@ const STORES = {
   homemaster: {
     name: 'HomeMaster Appliances',
     category: 'Premium Home & Kitchen Gear',
-    highlight: 'Bilingual Arabic & English experience, elevated product storytelling, 4.8/5 shop performance score.',
+    highlight: 'Bilingual Arabic/EN experience, high-converting UX & 4.8/5 shop rating.',
     uniqueMetrics: [
-      { label: 'Scale Velocity', val: '+11,963%', desc: 'Lifetime GMV expansion' },
-      { label: 'Sponsored Ad ACOS', val: '6.93%', desc: '14.43x ROAS benchmark' },
-      { label: 'Units Dispatched', val: '42,800+', desc: 'FBA & localized D2C' },
-      { label: 'GCC Localization', val: '100% RTL', desc: 'Bilingual Saudi checkout' }
+      { label: 'Scale Velocity', val: '+11,963%', desc: 'GMV Expansion' },
+      { label: 'Sponsored Ad ACOS', val: '6.93%', desc: '14.43x ROAS' },
+      { label: 'Units Dispatched', val: '42,800+', desc: 'FBA & Direct D2C' },
+      { label: 'GCC Localization', val: '100% RTL', desc: 'Bilingual Checkout' }
     ]
   },
   livora: {
-    name: 'LIVORA Lifestyle & Fashion',
+    name: 'LIVORA Modern Essentials',
     category: 'Modern Essentials & Timeless Apparel',
-    highlight: 'Visual hero storytelling, frictionless mobile checkout, Meta & TikTok Ads conversion funnel.',
+    highlight: 'Frictionless mobile checkout, Tamara/Tabby BNPL & creator ad funnels.',
     uniqueMetrics: [
-      { label: 'Monthly Net Sales', val: '$50,461.90', desc: '+104% MoM acceleration' },
-      { label: 'Paid Social ROAS', val: '4.62x', desc: 'Blended Meta & TikTok ads' },
-      { label: 'Checkout CVR', val: '3.82%', desc: '+122% mobile conversion lift' },
-      { label: 'GCC BNPL Adoption', val: '48% Share', desc: 'Tamara & Tabby integrated' }
+      { label: 'Monthly Net Sales', val: '$50,461.90', desc: '+104% MoM Scale' },
+      { label: 'Paid Social ROAS', val: '4.62x', desc: 'Meta & TikTok' },
+      { label: 'Checkout CVR', val: '3.82%', desc: '+122% Conversion Lift' },
+      { label: 'Total Orders', val: '1,680 Units', desc: '90-Day Sprint' }
     ]
   },
   creativethings: {
     name: 'Creative Things Tech',
-    category: 'Creator Studios, Electronics & Gadgets',
-    highlight: '3D lifestyle assets, Google Performance Max integration, lightning-fast GCC shipping badges.',
+    category: 'Creator Studios & Sound Gear',
+    highlight: '3D lifestyle assets, Google PMax integration & 72h GCC delivery.',
     uniqueMetrics: [
-      { label: 'Q4 Campaign Run-Rate', val: 'SAR 208,535', desc: 'Electronics holiday push' },
-      { label: 'Cross-Channel ROAS', val: '6.85x', desc: 'Noon + Google PMax' },
-      { label: 'Average Order Value', val: 'SAR 399', desc: '+42% basket size increase' },
-      { label: 'High-Intent Traffic', val: '64% Search', desc: 'Commercial search capture' }
+      { label: 'Campaign Run-Rate', val: 'SAR 208,535', desc: 'Peak Push' },
+      { label: 'Cross-Channel ROAS', val: '6.85x', desc: 'PMax + Noon' },
+      { label: 'Average Order Value', val: 'SAR 399', desc: '+42% Basket Size' },
+      { label: 'High-Intent Traffic', val: '64% Search', desc: 'Commercial Intent' }
     ]
   }
 };
@@ -40,7 +40,6 @@ export default function ShopifyGrowth({ onOpenModal }) {
   const [activeStore, setActiveStore] = useState('homemaster');
   const store = STORES[activeStore];
 
-  // Clean visual device architecture mapping per brand
   const storeVisuals = {
     homemaster: {
       img: '/assets/shopify_devices_hero.png',
@@ -72,25 +71,27 @@ export default function ShopifyGrowth({ onOpenModal }) {
         <div className="shopify-showcase-grid">
           {/* Visual Device Storefront Mockup Column */}
           <div>
-            <div className="store-tabs-nav">
-              <button
-                className={`store-tab-pill ${activeStore === 'homemaster' ? 'active' : ''}`}
-                onClick={() => setActiveStore('homemaster')}
-              >
-                HomeMaster (Appliances)
-              </button>
-              <button
-                className={`store-tab-pill ${activeStore === 'livora' ? 'active' : ''}`}
-                onClick={() => setActiveStore('livora')}
-              >
-                LIVORA (Fashion & Style)
-              </button>
-              <button
-                className={`store-tab-pill ${activeStore === 'creativethings' ? 'active' : ''}`}
-                onClick={() => setActiveStore('creativethings')}
-              >
-                Creative Things (Studio Tech)
-              </button>
+            <div className="store-tabs-wrapper">
+              <div className="store-tabs-nav">
+                <button
+                  className={`store-tab-pill ${activeStore === 'homemaster' ? 'active' : ''}`}
+                  onClick={() => setActiveStore('homemaster')}
+                >
+                  HomeMaster
+                </button>
+                <button
+                  className={`store-tab-pill ${activeStore === 'livora' ? 'active' : ''}`}
+                  onClick={() => setActiveStore('livora')}
+                >
+                  LIVORA Apparel
+                </button>
+                <button
+                  className={`store-tab-pill ${activeStore === 'creativethings' ? 'active' : ''}`}
+                  onClick={() => setActiveStore('creativethings')}
+                >
+                  Creative Things
+                </button>
+              </div>
             </div>
 
             {/* Clean Visual Storefront Architecture Graphic */}
@@ -103,13 +104,14 @@ export default function ShopifyGrowth({ onOpenModal }) {
               <img
                 src={currentVisual.img}
                 alt={`${store.name} Storefront Architecture by AZS Solutions`}
+                loading="lazy"
               />
               <div className="zoom-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-                Inspect High-Resolution Architecture
+                Inspect Architecture
               </div>
             </div>
           </div>
@@ -118,97 +120,61 @@ export default function ShopifyGrowth({ onOpenModal }) {
           <div className="shopify-features-col">
             <div className="badge-pill">High-Conversion UX</div>
             <h3>{store.name}</h3>
-            <p style={{ color: 'var(--neon-cyan)', fontWeight: 700, marginBottom: '8px' }}>{store.category}</p>
-            <p style={{ marginBottom: '24px' }}>{store.highlight}</p>
+            <p style={{ color: 'var(--neon-cyan)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '6px' }}>{store.category}</p>
+            <p style={{ fontSize: '0.88rem', color: 'var(--text-body)', marginBottom: '18px', lineHeight: 1.5 }}>{store.highlight}</p>
 
-            <div className="capabilities-list">
-              <div className="capability-card">
-                <svg className="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-                <div className="cap-title">Arabic & English Localization</div>
-                <div className="cap-desc">Native GCC cultural nuances, RTL layouts, and currency formatting for UAE & Saudi.</div>
+            {/* Sleek 2x2 Feature Matrix - Concise & Modern */}
+            <div className="capabilities-compact-grid">
+              <div className="cap-compact-card">
+                <div className="cap-compact-icon">🌐</div>
+                <div className="cap-compact-text">
+                  <strong>Arabic & RTL Checkout</strong>
+                  <span>Saudi & UAE localized</span>
+                </div>
               </div>
 
-              <div className="capability-card">
-                <svg className="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                  <line x1="8" y1="21" x2="16" y2="21"></line>
-                  <line x1="12" y1="17" x2="12" y2="21"></line>
-                </svg>
-                <div className="cap-title">Meta Ads (IG & FB)</div>
-                <div className="cap-desc">Advantage+ catalog ads, UGC video reels, and high-frequency retargeting funnels.</div>
+              <div className="cap-compact-card">
+                <div className="cap-compact-icon">📱</div>
+                <div className="cap-compact-text">
+                  <strong>Meta Advantage+ Ads</strong>
+                  <span>High-ROAS video funnels</span>
+                </div>
               </div>
 
-              <div className="capability-card">
-                <svg className="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <div className="cap-title">Google Performance Max</div>
-                <div className="cap-desc">Capturing bottom-funnel commercial searches across Google Shopping, Search & YouTube.</div>
+              <div className="cap-compact-card">
+                <div className="cap-compact-icon">🔍</div>
+                <div className="cap-compact-text">
+                  <strong>Google PMax Engine</strong>
+                  <span>High-intent search capture</span>
+                </div>
               </div>
 
-              <div className="capability-card">
-                <svg className="cap-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                </svg>
-                <div className="cap-title">TikTok Ads & Creator UGC</div>
-                <div className="cap-desc">Viral hooks, lifestyle influencer collaborations, and impulse purchase acceleration.</div>
+              <div className="cap-compact-card">
+                <div className="cap-compact-icon">🎬</div>
+                <div className="cap-compact-text">
+                  <strong>TikTok Creator UGC</strong>
+                  <span>Viral impulse acceleration</span>
+                </div>
               </div>
             </div>
 
-            {/* Dynamic Store-Specific Unique Metric Callout (Audit Finding #5) */}
-            <div style={{ background: 'rgba(11, 17, 29, 0.95)', border: '1px solid rgba(0, 245, 155, 0.25)', padding: '18px', borderRadius: 'var(--radius-md)' }}>
+            {/* Store-Specific Verified Impact Card */}
+            <div className="store-metrics-panel">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
                 <span style={{ fontSize: '0.75rem', color: 'var(--neon-mint)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em' }}>
-                  Audited Client Impact
+                  🛡️ Audited Client Impact
                 </span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Documented Performance</span>
+                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Verified Sprint Data</span>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
                 {store.uniqueMetrics.map((m, idx) => (
-                  <div key={idx} style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '10px 12px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <div style={{ fontSize: '0.70rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>{m.label}</div>
-                    <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-pure)', margin: '2px 0' }}>{m.val}</div>
-                    <div style={{ fontSize: '0.68rem', color: 'var(--neon-cyan)' }}>{m.desc}</div>
+                  <div key={idx} className="store-metric-item">
+                    <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>{m.label}</div>
+                    <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-pure)', margin: '2px 0' }}>{m.val}</div>
+                    <div style={{ fontSize: '0.70rem', color: 'var(--neon-cyan)' }}>{m.desc}</div>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Real Verified Shopify Store Performance Banner (from Slide 8) */}
-        <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '14px' }}>
-          <span style={{ fontSize: '0.74rem', color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.08)', border: '1px solid rgba(0, 245, 155, 0.25)', padding: '4px 14px', borderRadius: '16px', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700 }}>
-            🛡️ Documented Client Cohort: LIVORA Apparel 90-Day Scaling Sprint
-          </span>
-        </div>
-        <div className="shopify-metrics-banner" style={{ marginTop: '0' }}>
-          <div className="banner-grid">
-            <div className="banner-metric-box">
-              <h4 className="gradient-text">$50,461.90</h4>
-              <p>Monthly Sales (+104%)</p>
-            </div>
-            <div className="banner-metric-box">
-              <h4 className="gradient-text">1,680</h4>
-              <p>Total Orders (+122%)</p>
-            </div>
-            <div className="banner-metric-box">
-              <h4 className="gradient-text">1.69%</h4>
-              <p>Store Conversion Rate</p>
-            </div>
-            <div className="banner-metric-box">
-              <h4 className="gradient-text">73,934</h4>
-              <p>High-Intent Sessions (+97%)</p>
-            </div>
-            <div className="banner-metric-box">
-              <h4 className="gradient-text">4.8 / 5</h4>
-              <p>Shop Performance Score</p>
             </div>
           </div>
         </div>
@@ -216,3 +182,4 @@ export default function ShopifyGrowth({ onOpenModal }) {
     </section>
   );
 }
+

@@ -16,7 +16,7 @@ const FALLBACK_CASES = [
       roas: '14.43x',
       acos: '6.93%'
     },
-    summary: 'Turnkey catalog restructuring, Buy Box protection, Arabic SEO, and Sponsored Ads optimization across GCC marketplaces.',
+    summary: 'Catalog restructuring, Buy Box defense and Sponsored Ads scale across GCC.',
     highlightQuote: 'Reduced ACOS from 34% down to 6.93% while scaling weekly revenue by +11,963%.'
   },
   {
@@ -32,13 +32,13 @@ const FALLBACK_CASES = [
       roas: '4.62x',
       acos: '1,680 Units'
     },
-    summary: 'Bespoke mobile-first Shopify storefront, UGC video acquisition on Meta and TikTok, and localized GCC checkout.',
-    highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign, creator ad scaling, and local GCC payment gateway optimization.'
+    summary: 'Bespoke mobile-first Shopify storefront, creator video ads & localized checkout.',
+    highlightQuote: 'Doubled monthly revenue in 60 days with creator scaling and localized checkout.'
   },
   {
     id: 'creative-things',
     title: 'Creative Things Studio Gear',
-    category: 'Consumer Electronics & Creator Gear',
+    category: 'Consumer Electronics & Gear',
     region: 'GCC Multi-Channel',
     platforms: ['Noon (FBN)', 'Noon Ad Boost', 'Seller Lab'],
     image: '/assets/creativethings_case_study.jpg',
@@ -48,8 +48,8 @@ const FALLBACK_CASES = [
       roas: '6.85x',
       acos: '522 Units'
     },
-    summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and category dominance.',
-    highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 6.85x ROAS and seamless FBN Express delivery.'
+    summary: 'Noon Seller Lab onboarding, FBN warehouse routing & mega campaign execution.',
+    highlightQuote: 'Exceeded 520 units in initial campaign push with blended 6.85x ROAS.'
   }
 ];
 
@@ -62,6 +62,7 @@ const CASE_STUDY_IMAGES = {
 export default function CaseStudies({ onOpenModal }) {
   const { formatDynamicText } = useCurrency();
   const [cases, setCases] = useState(FALLBACK_CASES);
+  const [mobileIdx, setMobileIdx] = useState(0);
 
   useEffect(() => {
     fetch('/api/case-studies')
@@ -86,6 +87,73 @@ export default function CaseStudies({ onOpenModal }) {
       });
   }, []);
 
+  const activeCases = cases.slice(0, 3);
+  const currentCase = activeCases[mobileIdx] || activeCases[0];
+
+  const handlePrev = () => {
+    setMobileIdx((prev) => (prev === 0 ? activeCases.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setMobileIdx((prev) => (prev === activeCases.length - 1 ? 0 : prev + 1));
+  };
+
+  const renderCaseCard = (cs) => (
+    <div className="mkt-card case-study-card" key={cs.id}>
+      <div 
+        className="dashboard-img-container" 
+        onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
+        title="Click to zoom inspect proof"
+      >
+        <img src={cs.image} alt={cs.title} loading="lazy" />
+        <div className="zoom-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          Inspect Proof
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+        <span className="growth-badge">{cs.metrics?.salesGrowth || '+100%'} Growth</span>
+        <span style={{ fontSize: '0.78rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
+      </div>
+
+      <h3 className="mkt-card-title">{cs.title}</h3>
+      <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '8px' }}>{cs.category}</p>
+      <p className="mkt-card-desc" style={{ marginBottom: '14px' }}>{cs.summary}</p>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: '8px',
+        background: 'rgba(255, 255, 255, 0.02)',
+        padding: '10px 12px',
+        borderRadius: 'var(--radius-sm)',
+        border: '1px solid rgba(255, 255, 255, 0.05)',
+        marginBottom: '14px'
+      }}>
+        <div>
+          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Volume</div>
+          <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--neon-mint)' }}>
+            {formatDynamicText(cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue)}
+          </div>
+        </div>
+        <div>
+          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Efficiency</div>
+          <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-heading)' }}>{cs.metrics?.roas} ROAS</div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: 'auto' }}>
+        <p style={{ fontSize: '0.78rem', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.45 }}>
+          "{cs.highlightQuote}"
+        </p>
+      </div>
+    </div>
+  );
+
   return (
     <section className="section" id="case-studies">
       <div className="container">
@@ -93,72 +161,44 @@ export default function CaseStudies({ onOpenModal }) {
           <div className="badge-pill">Proven Results</div>
           <h2>Documented Client Scale Case Studies</h2>
           <p>
-            Real sales, advertising, and operational reporting screenshots from brands managed by AZS Solutions.
+            Real sales, advertising, and operational reporting from brands managed by AZS Solutions.
           </p>
         </div>
 
-        {/* Capped strictly to 3 case studies in 1 row on homepage */}
-        <div className="case-studies-grid">
-          {cases.slice(0, 3).map((cs) => (
-            <div className="mkt-card" key={cs.id}>
-              <div 
-                className="dashboard-img-container" 
-                onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
-                title="Click to zoom inspect proof"
-              >
-                <img src={cs.image} alt={cs.title} loading="lazy" />
-                <div className="zoom-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                  Inspect Proof
-                </div>
-              </div>
+        {/* Mobile Interactive Swipeable Carousel */}
+        <div className="mobile-cases-carousel-wrap">
+          <div className="mobile-carousel-slide">
+            {renderCaseCard(currentCase)}
+          </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <span className="growth-badge">{cs.metrics?.salesGrowth || '+100%'} Growth</span>
-                <span style={{ fontSize: '0.8rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
-              </div>
-
-              <h3 className="mkt-card-title">{cs.title}</h3>
-              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '12px' }}>{cs.category}</p>
-              <p className="mkt-card-desc" style={{ marginBottom: '20px' }}>{cs.summary}</p>
-
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '10px',
-                background: 'rgba(255, 255, 255, 0.02)',
-                padding: '12px',
-                borderRadius: 'var(--radius-sm)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                marginBottom: '20px'
-              }}>
-                <div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Volume</div>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--neon-mint)' }}>
-                    {formatDynamicText(cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue)}
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Efficiency</div>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-heading)' }}>{cs.metrics?.roas} ROAS</div>
-                </div>
-              </div>
-
-              <div style={{ marginTop: 'auto' }}>
-                <p style={{ fontSize: '0.82rem', fontStyle: 'italic', color: 'var(--text-secondary)' }}>
-                  "{cs.highlightQuote}"
-                </p>
-              </div>
+          <div className="mobile-carousel-controls">
+            <button className="carousel-nav-btn prev" onClick={handlePrev} aria-label="Previous case study">
+              ‹
+            </button>
+            <div className="carousel-dots">
+              {activeCases.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`carousel-dot ${mobileIdx === idx ? 'active' : ''}`}
+                  onClick={() => setMobileIdx(idx)}
+                  aria-label={`Go to case study ${idx + 1}`}
+                />
+              ))}
             </div>
-          ))}
+            <button className="carousel-nav-btn next" onClick={handleNext} aria-label="Next case study">
+              ›
+            </button>
+          </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+        {/* Desktop 3-Card Grid */}
+        <div className="desktop-cases-grid case-studies-grid">
+          {activeCases.map((cs) => renderCaseCard(cs))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '36px' }}>
           <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '12px 32px' }}>
-            <span>View More Case Studies & Proof</span>
+            <span>View All Case Studies & 4K Proof</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
@@ -169,4 +209,5 @@ export default function CaseStudies({ onOpenModal }) {
     </section>
   );
 }
+
 

@@ -6965,6 +6965,575 @@ img {
   }
 }
 
+/* ==========================================================================
+   MOBILE UI/UX REDESIGN & INTERACTIVE EXPERIENCE ENHANCEMENTS
+   ========================================================================== */
+
+/* Keyframe Animations */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.97) translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 245, 155, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(0, 245, 155, 0.45);
+  }
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base Desktop Defaults for Mobile-First Toggled Sections */
+.mobile-mkt-tabs-bar,
+.mobile-mkt-single-card-wrap,
+.mobile-services-tabs-bar,
+.mobile-srv-single-card-wrap,
+.mobile-cases-carousel-wrap,
+.mobile-sticky-bottom-nav {
+  display: none;
+}
+
+.desktop-marketplace-grid,
+.desktop-services-grid,
+.desktop-cases-grid {
+  display: grid;
+}
+
+/* Compact Capabilities Grid & Store Metrics */
+.capabilities-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.cap-compact-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  transition: var(--transition-fast);
+}
+
+.cap-compact-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(0, 245, 155, 0.3);
+  transform: translateY(-2px);
+}
+
+.cap-compact-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.cap-compact-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.cap-compact-text strong {
+  font-size: 0.82rem;
+  color: var(--text-pure);
+}
+
+.cap-compact-text span {
+  font-size: 0.70rem;
+  color: var(--text-muted);
+}
+
+.store-metrics-panel {
+  background: rgba(11, 17, 29, 0.95);
+  border: 1px solid rgba(0, 245, 155, 0.25);
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.store-metric-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.matrix-filter-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Mobile Sticky Bottom Navigation Bar */
+.mobile-sticky-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(7, 11, 18, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  z-index: 9990;
+  padding: 6px 10px;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  gap: 3px;
+  transition: var(--transition-fast);
+}
+
+.mobile-bottom-nav-item.active,
+.mobile-bottom-nav-item:hover {
+  color: var(--neon-mint);
+}
+
+.mobile-nav-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.mobile-bottom-audit-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--grad-primary);
+  color: #04070b !important;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 0 14px rgba(0, 245, 155, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.mobile-bottom-audit-btn:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Quick Jump Drawer */
+.mobile-jump-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: flex-end;
+  animation: fadeInScale 0.2s ease;
+}
+
+.mobile-jump-sheet {
+  width: 100%;
+  max-height: 75vh;
+  background: var(--bg-surface);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: none;
+  padding: 20px 16px 36px;
+  overflow-y: auto;
+  animation: slideUpFade 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-jump-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-jump-sheet-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-pure);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-jump-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-muted);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.mobile-jump-links-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-jump-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobile-jump-group-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--neon-mint);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.mobile-jump-item-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: var(--text-heading);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.mobile-jump-item-btn:hover,
+.mobile-jump-item-btn:active {
+  background: rgba(0, 245, 155, 0.1);
+  border-color: rgba(0, 245, 155, 0.3);
+  color: var(--neon-mint);
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERHAUL (Screens <= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 64px !important;
+  }
+
+  .mobile-sticky-bottom-nav {
+    display: flex !important;
+  }
+
+  /* 1. Track Switcher - Compact Horizontal Segmented Bar */
+  .track-switcher-wrap {
+    margin: 12px 0 6px !important;
+  }
+
+  .track-tabs-container {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 6px !important;
+    padding: 4px !important;
+    border-radius: 9999px !important;
+    background: rgba(11, 17, 29, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .track-tab-btn {
+    flex: 1 !important;
+    padding: 9px 12px !important;
+    font-size: 0.82rem !important;
+    border-radius: 9999px !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    text-align: center !important;
+  }
+
+  .track-badge-tag {
+    display: none !important;
+  }
+
+  /* 2. Marketplaces - Interactive Single-Card Selector */
+  .desktop-marketplace-grid {
+    display: none !important;
+  }
+
+  .mobile-mkt-tabs-bar {
+    display: flex !important;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 2px 14px;
+    margin-bottom: 6px;
+  }
+
+  .mobile-mkt-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-mkt-tab-btn {
+    flex: 1;
+    min-width: 72px;
+    padding: 9px 12px;
+    border-radius: 9999px;
+    background: rgba(16, 25, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .mobile-mkt-tab-btn.active {
+    background: var(--grad-primary);
+    color: #04070b;
+    border-color: transparent;
+    box-shadow: 0 0 14px rgba(0, 245, 155, 0.35);
+  }
+
+  .mobile-mkt-single-card-wrap {
+    display: block !important;
+    animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* 3. Challenge & Solution Matrix - Single-Column Flow & No Overflow */
+  .matrix-row-card.mode-both {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 16px 14px !important;
+  }
+
+  .matrix-connector {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 4px 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .matrix-connector .connector-line {
+    display: none !important;
+  }
+
+  .matrix-connector .connector-circle {
+    width: 32px !important;
+    height: 32px !important;
+    transform: rotate(90deg) !important;
+    background: rgba(0, 245, 155, 0.15) !important;
+    border: 1px solid rgba(0, 245, 155, 0.4) !important;
+    box-shadow: 0 0 12px rgba(0, 245, 155, 0.3) !important;
+  }
+
+  .matrix-filter-wrapper {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 4px !important;
+  }
+
+  .matrix-filter-buttons {
+    display: inline-flex !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    border-radius: 9999px !important;
+  }
+
+  .matrix-filter-btn {
+    padding: 7px 14px !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* 4. What We Manage - 6-Pillar Interactive Tab Explorer */
+  .desktop-services-grid {
+    display: none !important;
+  }
+
+  .mobile-services-tabs-bar {
+    display: flex !important;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 2px 14px;
+    margin-bottom: 6px;
+  }
+
+  .mobile-services-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-srv-tab-btn {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 9999px;
+    background: rgba(16, 25, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-srv-tab-btn.active {
+    background: var(--grad-primary);
+    color: #04070b;
+    border-color: transparent;
+    box-shadow: 0 0 14px rgba(0, 245, 155, 0.35);
+  }
+
+  .mobile-srv-single-card-wrap {
+    display: block !important;
+    animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* 5. Case Studies - Mobile Interactive Swipe Carousel */
+  .desktop-cases-grid {
+    display: none !important;
+  }
+
+  .mobile-cases-carousel-wrap {
+    display: block !important;
+    position: relative;
+  }
+
+  .mobile-carousel-slide {
+    animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 14px;
+  }
+
+  .carousel-nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(16, 25, 42, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-pure);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .carousel-nav-btn:active {
+    background: rgba(0, 245, 155, 0.2);
+    color: var(--neon-mint);
+  }
+
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .carousel-dot.active {
+    width: 22px;
+    border-radius: 4px;
+    background: var(--neon-mint);
+    box-shadow: 0 0 8px rgba(0, 245, 155, 0.5);
+  }
+
+  /* 6. Live Console Pills Bar */
+  .deck-switcher-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 6px !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .deck-switcher-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .deck-pill-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 7. Floating Chat Advisor Mobile Placement (Safe Clearance) */
+  .robot-container.robot-floating {
+    bottom: 74px !important;
+    right: 12px !important;
+    z-index: 9980 !important;
+  }
+
+  .robot-mobile-fab-trigger {
+    width: 44px !important;
+    height: 44px !important;
+    box-shadow: 0 4px 16px rgba(0, 245, 155, 0.3) !important;
+  }
+}
+
+
 
 
 
