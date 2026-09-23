@@ -6288,185 +6288,7 @@ img {
   transform: translateX(-3px);
 }
 
-/* ==========================================================================
-   Sticky Mobile Bottom Navigation Dock & Jump to Division Shortcut
-   ========================================================================== */
-.mobile-sticky-bottom-nav {
-  display: none;
-}
 
-.mobile-jump-backdrop {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .mobile-sticky-bottom-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: rgba(6, 10, 18, 0.96);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(0, 245, 155, 0.22);
-    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.7);
-    z-index: 999;
-    align-items: center;
-    justify-content: space-around;
-    padding: 0 8px;
-    padding-bottom: env(safe-area-inset-bottom, 0);
-  }
-
-  .mobile-bottom-nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    color: var(--text-muted);
-    font-size: 0.65rem;
-    font-weight: 700;
-    gap: 2px;
-    cursor: pointer;
-    padding: 4px 6px;
-    transition: all var(--transition-fast);
-    text-decoration: none;
-  }
-
-  .mobile-bottom-nav-item:hover,
-  .mobile-bottom-nav-item.active {
-    color: var(--neon-mint);
-  }
-
-  .mobile-bottom-nav-item .mobile-nav-icon {
-    font-size: 1.15rem;
-    line-height: 1;
-  }
-
-  .mobile-bottom-audit-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: var(--grad-primary);
-    color: #04070b;
-    font-size: 0.76rem;
-    font-weight: 800;
-    padding: 7px 12px;
-    border-radius: 9999px;
-    text-decoration: none;
-    box-shadow: 0 0 14px rgba(0, 245, 155, 0.35);
-    flex-shrink: 0;
-    transition: transform var(--transition-fast);
-  }
-
-  .mobile-bottom-audit-btn:active {
-    transform: scale(0.95);
-  }
-
-  /* Quick Jump Drawer Modal */
-  .mobile-jump-backdrop {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    background: rgba(4, 7, 11, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 1001;
-    align-items: flex-end;
-    animation: fadeInBackdrop 0.2s ease;
-  }
-
-  .mobile-jump-sheet {
-    width: 100%;
-    background: rgba(11, 17, 29, 0.98);
-    border-top: 1.5px solid var(--neon-mint);
-    border-radius: 20px 20px 0 0;
-    padding: 20px 18px 36px;
-    max-height: 82vh;
-    overflow-y: auto;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 245, 155, 0.15);
-    animation: slideUpSheet 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .mobile-jump-sheet-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .mobile-jump-sheet-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--neon-mint);
-  }
-
-  .mobile-jump-close-btn {
-    background: rgba(255, 255, 255, 0.08);
-    border: none;
-    color: var(--text-pure);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-  }
-
-  .mobile-jump-links-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .mobile-jump-section-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .mobile-jump-group-title {
-    font-size: 0.72rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--neon-cyan);
-    margin-bottom: 2px;
-  }
-
-  .mobile-jump-item-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 14px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 10px;
-    color: var(--text-heading);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-
-  .mobile-jump-item-btn:hover,
-  .mobile-jump-item-btn:active {
-    background: rgba(0, 245, 155, 0.1);
-    border-color: rgba(0, 245, 155, 0.3);
-    color: var(--neon-mint);
-  }
-}
 
 @keyframes fadeInBackdrop {
   from { opacity: 0; }
@@ -7265,23 +7087,9 @@ img {
   width: 100%;
 }
 
-/* Mobile Sticky Bottom Navigation Bar (Minimalist Floating Icon Dock) */
+/* Mobile Sticky Bottom Navigation Bar (Minimalist Floating Icon Dock - Mobile Only) */
 .mobile-sticky-bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 52px;
-  background: rgba(6, 10, 18, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  z-index: 9990;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.5);
+  display: none !important;
 }
 
 .mobile-bottom-nav-item {
@@ -7333,16 +7141,9 @@ img {
   display: none !important;
 }
 
-/* Mobile Quick Jump Drawer */
+/* Mobile Quick Jump Drawer (Mobile Only) */
 .mobile-jump-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  z-index: 10000;
-  display: flex;
-  align-items: flex-end;
-  animation: fadeInScale 0.2s ease;
+  display: none !important;
 }
 
 .mobile-jump-sheet {
@@ -7444,6 +7245,31 @@ img {
 
   .mobile-sticky-bottom-nav {
     display: flex !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 52px !important;
+    background: rgba(6, 10, 18, 0.94) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    z-index: 9990 !important;
+    padding: 0 16px !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .mobile-jump-backdrop {
+    display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+    z-index: 10000 !important;
+    align-items: flex-end !important;
+    animation: fadeInBackdrop 0.2s ease !important;
   }
 
   /* 1. Track Switcher - Compact Horizontal Segmented Bar */
