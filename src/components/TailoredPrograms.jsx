@@ -136,15 +136,6 @@ export default function TailoredPrograms() {
             </div>
           ))}
         </div>
-
-        {/* Deck Slide Footer Tagline */}
-        <div className="deck-slide-footer" style={{ marginTop: '40px' }}>
-          <div className="deck-footer-left">ONE ACCOUNTABLE TEAM | CROSS-CHANNEL EXECUTION | DATA-DRIVEN DECISIONS</div>
-          <div className="deck-footer-right">
-            <span className="deck-footer-bar"></span>
-            <span>09 / 10</span>
-          </div>
-        </div>
       </div>
     </section>
   );

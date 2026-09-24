@@ -200,15 +200,6 @@ export default function ChallengeSolutionMatrix({ onOpenModal }) {
             </div>
           ))}
         </div>
-
-        {/* Deck Slide Footer Tagline */}
-        <div className="deck-slide-footer">
-          <div className="deck-footer-left">ONE TEAM. CLEAR SYSTEMS. SUSTAINABLE GROWTH.</div>
-          <div className="deck-footer-right">
-            <span className="deck-footer-bar"></span>
-            <span>03 / 10</span>
-          </div>
-        </div>
       </div>
     </section>
   );

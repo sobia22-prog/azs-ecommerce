@@ -282,15 +282,6 @@ export default function WhatWeManage({ onOpenModal }) {
             Explore All 6 Core Service Specifications & SLAs ➔
           </Link>
         </div>
-
-        {/* Deck Slide Footer Tagline */}
-        <div className="deck-slide-footer">
-          <div className="deck-footer-left">BRANDS | MARKETPLACES | PERFORMANCE | GROWTH</div>
-          <div className="deck-footer-right">
-            <span className="deck-footer-bar"></span>
-            <span>04 / 10</span>
-          </div>
-        </div>
       </div>
     </section>
   );

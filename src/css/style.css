@@ -2864,16 +2864,7 @@ div.desktop-only,
 }
 
 .deck-slide-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 50px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  text-transform: uppercase;
+  display: none !important;
 }
 
 .deck-footer-right {

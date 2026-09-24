@@ -182,15 +182,6 @@ export default function WhyTrustSection({ onOpenModal }) {
             </a>
           </div>
         </div>
-
-        {/* Deck Slide Footer Tagline */}
-        <div className="deck-slide-footer" style={{ marginTop: '40px' }}>
-          <div className="deck-footer-left">THANK YOU FOR BEING PART OF OUR JOURNEY | LET'S BUILD WHAT'S NEXT, TOGETHER.</div>
-          <div className="deck-footer-right">
-            <span className="deck-footer-bar"></span>
-            <span>10 / 10</span>
-          </div>
-        </div>
       </div>
     </section>
   );
