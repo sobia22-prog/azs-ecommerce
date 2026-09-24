@@ -98,54 +98,76 @@ export default function CaseStudies({ onOpenModal }) {
     setMobileIdx((prev) => (prev === activeCases.length - 1 ? 0 : prev + 1));
   };
 
-  const renderCaseCard = (cs) => (
-    <div className="mkt-card case-study-card" key={cs.id}>
-      <div 
-        className="dashboard-img-container" 
-        onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
-        title="Click to zoom inspect proof"
-      >
-        <img src={cs.image} alt={cs.title} loading="lazy" />
-      </div>
+  const renderCaseCard = (cs) => {
+    const rawVolume = cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue || '$32.2K';
+    const formattedVolume = formatDynamicText(rawVolume);
+    const parenMatch = formattedVolume.match(/^([^(]+)(?:\(([^)]+)\))?$/);
+    const mainVol = parenMatch ? parenMatch[1].trim() : formattedVolume;
+    const subVol = parenMatch && parenMatch[2] ? parenMatch[2].trim() : null;
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-        <span className="growth-badge">{cs.metrics?.salesGrowth || '+100%'} Growth</span>
-        <span style={{ fontSize: '0.78rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
-      </div>
+    return (
+      <div className="mkt-card case-study-card" key={cs.id}>
+        <div 
+          className="dashboard-img-container" 
+          onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
+          title="Click to zoom inspect proof"
+        >
+          <img src={cs.image} alt={cs.title} loading="lazy" />
+        </div>
 
-      <h3 className="mkt-card-title">{cs.title}</h3>
-      <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '8px' }}>{cs.category}</p>
-      <p className="mkt-card-desc" style={{ marginBottom: '14px' }}>{cs.summary}</p>
+        {/* Growth and Region badges - Hidden on mobile because it's already in the image overlay */}
+        <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+          <span className="growth-badge">{cs.metrics?.salesGrowth || '+100%'} Growth</span>
+          <span style={{ fontSize: '0.78rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
+        </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gap: '8px',
-        background: 'rgba(255, 255, 255, 0.02)',
-        padding: '10px 12px',
-        borderRadius: 'var(--radius-sm)',
-        border: '1px solid rgba(255, 255, 255, 0.05)',
-        marginBottom: '14px'
-      }}>
-        <div>
-          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Volume</div>
-          <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--neon-mint)' }}>
-            {formatDynamicText(cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue)}
+        <h3 className="mkt-card-title">{cs.title}</h3>
+        {/* Category text - Hidden on mobile per user instruction */}
+        <p className="desktop-only" style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '8px' }}>{cs.category}</p>
+        <p className="mkt-card-desc" style={{ marginBottom: '12px' }}>{cs.summary}</p>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '8px',
+          background: 'rgba(255, 255, 255, 0.02)',
+          padding: '10px 12px',
+          borderRadius: 'var(--radius-sm)',
+          border: '1px solid rgba(255, 255, 255, 0.05)',
+          marginBottom: '12px'
+        }}>
+          <div>
+            <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Volume</div>
+            <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--neon-mint)', lineHeight: 1.2 }}>
+              {mainVol}
+            </div>
+            {subVol && (
+              <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', marginTop: '2px', lineHeight: 1.1 }}>
+                {subVol}
+              </div>
+            )}
+          </div>
+          <div>
+            <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Efficiency</div>
+            <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-heading)', lineHeight: 1.2 }}>
+              {cs.metrics?.roas} ROAS
+            </div>
+            {cs.metrics?.acos && (
+              <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '2px', lineHeight: 1.1 }}>
+                {cs.metrics.acos} ACOS
+              </div>
+            )}
           </div>
         </div>
-        <div>
-          <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Efficiency</div>
-          <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-heading)' }}>{cs.metrics?.roas} ROAS</div>
+
+        <div style={{ marginTop: 'auto' }}>
+          <p style={{ fontSize: '0.76rem', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.45 }}>
+            "{cs.highlightQuote}"
+          </p>
         </div>
       </div>
-
-      <div style={{ marginTop: 'auto' }}>
-        <p style={{ fontSize: '0.78rem', fontStyle: 'italic', color: 'var(--text-secondary)', lineHeight: 1.45 }}>
-          "{cs.highlightQuote}"
-        </p>
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section className="section" id="case-studies">
@@ -153,7 +175,7 @@ export default function CaseStudies({ onOpenModal }) {
         <div className="section-header">
           <div className="badge-pill">Proven Results</div>
           <h2>Documented Client Scale Case Studies</h2>
-          <p>
+          <p className="desktop-only">
             Real sales, advertising, and operational reporting from brands managed by AZS Solutions.
           </p>
         </div>

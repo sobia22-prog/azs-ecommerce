@@ -8078,7 +8078,41 @@ div.desktop-only,
     margin-top: 14px !important;
   }
 
-  /* 5. Case Studies - Mobile Interactive Swipe Carousel */
+  /* 5. Case Studies - Mobile Interactive Swipe Carousel & Refinements */
+  #case-studies {
+    padding-top: 18px !important;
+    padding-bottom: 24px !important;
+  }
+
+  #case-studies .section-header {
+    margin-bottom: 14px !important;
+  }
+
+  #case-studies .section-header h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 0 !important;
+  }
+
+  .case-study-card {
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+  }
+
+  .case-study-card .mkt-card-title {
+    font-size: 1.12rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .case-study-card .mkt-card-desc {
+    font-size: 0.78rem !important;
+    line-height: 1.38 !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 10px !important;
+  }
+
   .desktop-cases-grid {
     display: none !important;
   }
