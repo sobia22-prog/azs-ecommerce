@@ -130,19 +130,22 @@ export default function ChallengeSolutionMatrix({ onOpenModal }) {
                 className={`matrix-filter-btn ${filterMode === 'both' ? 'active' : ''}`}
                 onClick={() => setFilterMode('both')}
               >
-                All Transformations
+                <span className="matrix-tab-short">All</span>
+                <span className="matrix-tab-full">All Transformations</span>
               </button>
               <button
                 className={`matrix-filter-btn ${filterMode === 'challenges' ? 'active' : ''}`}
                 onClick={() => setFilterMode('challenges')}
               >
-                Bottlenecks
+                <span className="matrix-tab-short">Bottlenecks</span>
+                <span className="matrix-tab-full">Bottlenecks</span>
               </button>
               <button
                 className={`matrix-filter-btn ${filterMode === 'solutions' ? 'active' : ''}`}
                 onClick={() => setFilterMode('solutions')}
               >
-                AZS Solutions
+                <span className="matrix-tab-short">Solutions</span>
+                <span className="matrix-tab-full">AZS Solutions</span>
               </button>
             </div>
           </div>

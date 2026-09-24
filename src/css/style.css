@@ -2945,6 +2945,14 @@ img {
   box-shadow: 0 0 16px rgba(0, 245, 155, 0.3);
 }
 
+.matrix-tab-short {
+  display: none;
+}
+
+.matrix-tab-full {
+  display: inline;
+}
+
 .matrix-grid {
   display: flex;
   flex-direction: column;
@@ -7572,17 +7580,121 @@ img {
   }
 
   /* 3. Challenge & Solution Matrix - Single-Column Flow & No Overflow */
+  .section-matrix {
+    padding: 24px 0 32px !important;
+  }
+
+  .section-matrix .section-header {
+    margin-bottom: 14px !important;
+    text-align: center !important;
+  }
+
+  .section-matrix .section-header h2 {
+    font-size: clamp(1.15rem, 4.4vw, 1.35rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+    text-align: center !important;
+  }
+
+  .section-matrix .section-header p {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+
+  .matrix-filter-wrapper {
+    display: flex !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    overflow-x: visible !important;
+    padding-bottom: 0 !important;
+    justify-content: center !important;
+  }
+
+  .matrix-filter-buttons {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 4px !important;
+    justify-content: space-between !important;
+    border-radius: 9999px !important;
+    padding: 3px !important;
+    box-sizing: border-box !important;
+  }
+
+  .matrix-filter-btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 6px 2px !important;
+    font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    justify-content: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .matrix-tab-short {
+    display: inline !important;
+  }
+
+  .matrix-tab-full {
+    display: none !important;
+  }
+
+  .matrix-grid {
+    margin-top: 14px !important;
+    gap: 12px !important;
+  }
+
+  .matrix-row-card,
   .matrix-row-card.mode-both {
     grid-template-columns: 1fr !important;
+    gap: 6px !important;
+    padding: 12px 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .matrix-col-header {
     gap: 8px !important;
-    padding: 16px 14px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .matrix-icon-badge {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 7px !important;
+  }
+
+  .matrix-icon-badge svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .matrix-tag {
+    font-size: 0.62rem !important;
+    padding: 2px 6px !important;
+  }
+
+  .matrix-col-title {
+    font-size: 0.94rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .matrix-col-desc {
+    font-size: 0.74rem !important;
+    line-height: 1.38 !important;
+    margin: 0 !important;
   }
 
   .matrix-connector {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin: 4px 0 !important;
+    margin: 2px 0 !important;
     width: 100% !important;
     height: auto !important;
   }
@@ -7592,32 +7704,29 @@ img {
   }
 
   .matrix-connector .connector-circle {
-    width: 32px !important;
-    height: 32px !important;
+    width: 24px !important;
+    height: 24px !important;
     transform: rotate(90deg) !important;
     background: rgba(0, 245, 155, 0.15) !important;
     border: 1px solid rgba(0, 245, 155, 0.4) !important;
-    box-shadow: 0 0 12px rgba(0, 245, 155, 0.3) !important;
+    box-shadow: 0 0 10px rgba(0, 245, 155, 0.3) !important;
   }
 
-  .matrix-filter-wrapper {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    padding-bottom: 4px !important;
+  .matrix-connector .connector-circle svg {
+    width: 12px !important;
+    height: 12px !important;
   }
 
-  .matrix-filter-buttons {
-    display: inline-flex !important;
-    flex-wrap: nowrap !important;
-    white-space: nowrap !important;
-    border-radius: 9999px !important;
+  .matrix-deliverable-chip {
+    margin-top: 8px !important;
+    padding: 4px 8px !important;
+    font-size: 0.68rem !important;
+    border-radius: 6px !important;
   }
 
-  .matrix-filter-btn {
-    padding: 7px 14px !important;
-    font-size: 0.78rem !important;
-    white-space: nowrap !important;
+  .deck-slide-footer {
+    margin-top: 16px !important;
+    font-size: 0.64rem !important;
   }
 
   /* 4. What We Manage - 6-Pillar Interactive Tab Explorer */
