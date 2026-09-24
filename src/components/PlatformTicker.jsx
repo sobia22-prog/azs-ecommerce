@@ -140,7 +140,7 @@ export default function PlatformTicker({ activePlatform, onSelectPlatform, showP
       <div className="container">
         {/* Matching Section Header for Verified Agency Credentials */}
         <div className="section-header cert-section-header">
-          <div className="badge-pill">Verified Agency Credentials</div>
+          <div className="badge-pill desktop-only">Verified Agency Credentials</div>
           <h2>Official Platform Accreditations &amp; Strategic Partnerships</h2>
         </div>
 

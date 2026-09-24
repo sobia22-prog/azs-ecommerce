@@ -318,9 +318,9 @@ export default function WhatWeManage({ onOpenModal }) {
         </div>
 
         {/* Explore All 6 Services Hub Link */}
-        <div style={{ textAlign: 'center', marginTop: '36px' }}>
-          <Link to="/services" className="btn btn-secondary" style={{ padding: '12px 28px', fontSize: '0.92rem' }}>
-            Explore All 6 Core Service Specifications & SLAs ➔
+        <div className="services-hub-link-wrap">
+          <Link to="/services" className="btn btn-secondary services-hub-btn">
+            Explore All 6 Core Service Specifications &amp; SLAs ➔
           </Link>
         </div>
       </div>
