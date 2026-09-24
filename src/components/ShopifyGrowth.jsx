@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from '../Router';
 
 const STORES = {
   homemaster: {
@@ -77,19 +78,22 @@ export default function ShopifyGrowth({ onOpenModal }) {
                   className={`store-tab-pill ${activeStore === 'homemaster' ? 'active' : ''}`}
                   onClick={() => setActiveStore('homemaster')}
                 >
-                  HomeMaster
+                  <span className="store-pill-short">HomeMaster</span>
+                  <span className="store-pill-full">HomeMaster</span>
                 </button>
                 <button
                   className={`store-tab-pill ${activeStore === 'livora' ? 'active' : ''}`}
                   onClick={() => setActiveStore('livora')}
                 >
-                  LIVORA Apparel
+                  <span className="store-pill-short">LIVORA</span>
+                  <span className="store-pill-full">LIVORA Apparel</span>
                 </button>
                 <button
                   className={`store-tab-pill ${activeStore === 'creativethings' ? 'active' : ''}`}
                   onClick={() => setActiveStore('creativethings')}
                 >
-                  Creative Things
+                  <span className="store-pill-short">Creative</span>
+                  <span className="store-pill-full">Creative Things</span>
                 </button>
               </div>
             </div>
@@ -119,9 +123,9 @@ export default function ShopifyGrowth({ onOpenModal }) {
           {/* Capabilities Column */}
           <div className="shopify-features-col">
             <div className="badge-pill">High-Conversion UX</div>
-            <h3>{store.name}</h3>
-            <p style={{ color: 'var(--neon-cyan)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '6px' }}>{store.category}</p>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-body)', marginBottom: '18px', lineHeight: 1.5 }}>{store.highlight}</p>
+            <h3 className="shopify-store-title">{store.name}</h3>
+            <p className="shopify-store-category">{store.category}</p>
+            <p className="shopify-store-highlight">{store.highlight}</p>
 
             {/* Sleek 2x2 Feature Matrix - Concise & Modern */}
             <div className="capabilities-compact-grid">
@@ -199,6 +203,17 @@ export default function ShopifyGrowth({ onOpenModal }) {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Action buttons in 1 row */}
+            <div className="deck-cta-row" style={{ marginTop: '14px' }}>
+              <Link to="/book-audit" className="btn btn-primary deck-cta-btn">
+                Audit My Store
+              </Link>
+              <Link to="/shopify" className="btn btn-secondary deck-cta-btn">
+                <span className="deck-btn-short">Explore Hub</span>
+                <span className="deck-btn-full">Explore Shopify Hub</span>
+              </Link>
             </div>
           </div>
         </div>

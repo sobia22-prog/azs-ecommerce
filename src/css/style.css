@@ -1833,14 +1833,34 @@ img {
   color: var(--neon-cyan);
 }
 
-.shopify-features-col h3 {
-  font-size: 2.2rem;
-  margin-bottom: 16px;
+.store-pill-short {
+  display: none;
 }
 
-.shopify-features-col p {
-  margin-bottom: 28px;
-  color: var(--text-secondary);
+.store-pill-full {
+  display: inline;
+}
+
+.shopify-features-col h3,
+.shopify-store-title {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.shopify-store-category {
+  color: var(--neon-cyan);
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+.shopify-store-highlight {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  margin-bottom: 18px;
+  line-height: 1.5;
 }
 
 .capabilities-list {
@@ -4510,24 +4530,33 @@ img {
   /* Shopify DTC Mobile */
   .shopify-showcase-grid {
     grid-template-columns: 1fr !important;
-    gap: 24px !important;
-    margin-bottom: 36px !important;
+    gap: 14px !important;
+    margin-bottom: 24px !important;
   }
 
   .store-tabs-nav {
-    flex-wrap: wrap !important;
-    gap: 6px !important;
-    margin-bottom: 14px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 4px !important;
+    margin-bottom: 12px !important;
+    justify-content: space-between !important;
   }
 
   .store-tab-pill {
-    padding: 6px 12px !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 7px 2px !important;
     font-size: 0.74rem !important;
+    text-align: center !important;
+    white-space: nowrap !important;
   }
 
-  .shopify-features-col h3 {
-    font-size: clamp(1.35rem, 4.8vw, 1.75rem) !important;
-    margin-bottom: 12px !important;
+  .shopify-features-col h3,
+  .shopify-store-title {
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
   }
 
   .capabilities-list {
@@ -7994,6 +8023,164 @@ img {
 
   .deck-btn-full {
     display: none !important;
+  }
+
+  /* Shopify Mastery & D2C Mobile Overhaul */
+  #shopify-d2c.section {
+    padding: 24px 0 32px !important;
+  }
+
+  #shopify-d2c .section-header {
+    margin-bottom: 14px !important;
+    text-align: center !important;
+  }
+
+  #shopify-d2c .section-header h2 {
+    font-size: clamp(1.15rem, 4.4vw, 1.35rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+    text-align: center !important;
+  }
+
+  #shopify-d2c .section-header p {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+
+  .shopify-showcase-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* 3 Store Tabs in 1 Single Row on Mobile */
+  .store-tabs-nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 4px !important;
+    margin-bottom: 10px !important;
+    overflow-x: visible !important;
+    justify-content: space-between !important;
+  }
+
+  .store-tab-pill {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 6px 2px !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .store-pill-short {
+    display: inline !important;
+  }
+
+  .store-pill-full {
+    display: none !important;
+  }
+
+  /* Mockup Media Frame - Tight padding and sleek aspect ratio */
+  .mockup-media-wrapper {
+    padding: 8px 8px 10px !important;
+    border-radius: var(--radius-lg) !important;
+    margin-bottom: 14px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  }
+
+  .mockup-media-wrapper img {
+    border-radius: 8px !important;
+  }
+
+  .mockup-media-wrapper .zoom-badge {
+    padding: 4px 8px !important;
+    font-size: 0.65rem !important;
+    bottom: 6px !important;
+    right: 6px !important;
+  }
+
+  /* Storefront Details Column */
+  .shopify-features-col {
+    margin-top: 0 !important;
+  }
+
+  .shopify-features-col .badge-pill {
+    margin-bottom: 6px !important;
+    font-size: 0.68rem !important;
+    padding: 2px 8px !important;
+  }
+
+  .shopify-features-col h3,
+  .shopify-store-title {
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    margin-bottom: 3px !important;
+    color: var(--text-pure) !important;
+  }
+
+  .shopify-store-category {
+    font-size: 0.76rem !important;
+    margin-bottom: 3px !important;
+  }
+
+  .shopify-store-highlight {
+    font-size: 0.74rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 2x2 Capabilities Matrix */
+  .capabilities-compact-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .cap-compact-card {
+    padding: 7px 8px !important;
+    gap: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  .cap-compact-icon {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .cap-compact-icon svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .cap-compact-text strong {
+    font-size: 0.72rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .cap-compact-text span {
+    font-size: 0.62rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Store-Specific Verified Impact Card */
+  .store-metrics-panel {
+    padding: 10px 10px !important;
+    border-radius: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .store-metric-item {
+    padding: 4px 2px !important;
   }
 }
 
