@@ -240,89 +240,95 @@ export default function Marketplaces({ onOpenModal }) {
   );
 
   return (
-    <section className="section" id="marketplaces">
-      <div className="container">
-        <div className="section-header">
-          <div className="badge-pill desktop-only">The 4 Core Marketplaces</div>
-          <h2>Dominating KSA, Trendyol, USA & UK Marketplaces</h2>
-          <p className="desktop-only">
-            One operating team for marketplace growth across the regions that matter.
-          </p>
-        </div>
+    <>
+      <section className="section" id="marketplaces">
+        <div className="container">
+          <div className="section-header">
+            <div className="badge-pill desktop-only">The 4 Core Marketplaces</div>
+            <h2>Dominating KSA, Trendyol, USA & UK Marketplaces</h2>
+            <p className="desktop-only">
+              One operating team for marketplace growth across the regions that matter.
+            </p>
+          </div>
 
-        {/* Mobile-Only Interactive Marketplace Selector Pills */}
-        <div className="mobile-mkt-tabs-bar">
-          {MARKETPLACE_LIST.map((mkt) => (
+          {/* Mobile-Only Interactive Marketplace Selector Pills */}
+          <div className="mobile-mkt-tabs-bar">
+            {MARKETPLACE_LIST.map((mkt) => (
+              <button
+                key={mkt.id}
+                className={`mobile-mkt-tab-btn ${activeMobileMkt === mkt.id ? 'active' : ''}`}
+                onClick={() => setActiveMobileMkt(mkt.id)}
+              >
+                {mkt.tabLabel}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Single Active Card View */}
+          <div className="mobile-mkt-single-card-wrap">
+            {renderCardContent(activeMktData)}
+          </div>
+
+          {/* Desktop 2x2 Marketplace Grid */}
+          <div className="desktop-marketplace-grid marketplace-grid marketplace-grid-2col">
+            {MARKETPLACE_LIST.map((mkt) => renderCardContent(mkt))}
+          </div>
+        </div>
+      </section>
+
+      {/* Standalone Section: Live Marketplace & Ad Performance Console */}
+      <section className="section live-console-section" id="dashboards-proof">
+        <div className="container">
+          <div className="section-header text-center">
+            <div className="deck-showcase-badge-row">
+              <div className="badge-pill badge-pill-cyan">Multi-Marketplace Proof</div>
+              <span className="deck-snapshot-badge desktop-only">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                Audited Partner Console Snapshot
+              </span>
+            </div>
+            <h2 className="section-title">Live Marketplace & Ad Performance Console</h2>
+            <p className="desktop-only section-subtitle">
+              Audited live account telemetry and verified cohort performance across Amazon, Noon & Trendyol.
+            </p>
+          </div>
+
+          <div className="deck-switcher-pills">
             <button
-              key={mkt.id}
-              className={`mobile-mkt-tab-btn ${activeMobileMkt === mkt.id ? 'active' : ''}`}
-              onClick={() => setActiveMobileMkt(mkt.id)}
+              className={`deck-pill-btn ${activeDash === 'ksa' ? 'active' : ''}`}
+              onClick={() => setActiveDash('ksa')}
             >
-              {mkt.tabLabel}
+              <span className="deck-pill-short">KSA</span>
+              <span className="deck-pill-full">KSA (Amazon & Noon)</span>
             </button>
-          ))}
-        </div>
-
-        {/* Mobile Single Active Card View */}
-        <div className="mobile-mkt-single-card-wrap">
-          {renderCardContent(activeMktData)}
-        </div>
-
-        {/* Desktop 2x2 Marketplace Grid */}
-        <div className="desktop-marketplace-grid marketplace-grid marketplace-grid-2col">
-          {MARKETPLACE_LIST.map((mkt) => renderCardContent(mkt))}
-        </div>
-
-        {/* Live Marketplace Console */}
-        <div className="deck-showcase-wrapper" id="dashboards-proof">
-          <div className="deck-showcase-header">
-            <div>
-              <div className="deck-showcase-badge-row">
-                <div className="badge-pill badge-pill-cyan">Multi-Marketplace Proof</div>
-                <span className="deck-snapshot-badge desktop-only">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                  Audited Partner Console Snapshot
-                </span>
-              </div>
-              <h3 className="deck-showcase-title">Live Marketplace & Ad Performance Console</h3>
-            </div>
-            <div className="deck-switcher-pills">
-              <button
-                className={`deck-pill-btn ${activeDash === 'ksa' ? 'active' : ''}`}
-                onClick={() => setActiveDash('ksa')}
-              >
-                <span className="deck-pill-short">KSA</span>
-                <span className="deck-pill-full">KSA (Amazon & Noon)</span>
-              </button>
-              <button
-                className={`deck-pill-btn ${activeDash === 'trendyol' ? 'active' : ''}`}
-                onClick={() => setActiveDash('trendyol')}
-              >
-                <span className="deck-pill-short">Trendyol</span>
-                <span className="deck-pill-full">Trendyol (7.80x)</span>
-              </button>
-              <button
-                className={`deck-pill-btn ${activeDash === 'usa' ? 'active' : ''}`}
-                onClick={() => setActiveDash('usa')}
-              >
-                <span className="deck-pill-short">USA</span>
-                <span className="deck-pill-full">USA (11.20x)</span>
-              </button>
-              <button
-                className={`deck-pill-btn ${activeDash === 'uk' ? 'active' : ''}`}
-                onClick={() => setActiveDash('uk')}
-              >
-                <span className="deck-pill-short">UK</span>
-                <span className="deck-pill-full">UK (9.45x)</span>
-              </button>
-              <button
-                className={`deck-pill-btn ${activeDash === 'consolidated' ? 'active' : ''}`}
-                onClick={() => setActiveDash('consolidated')}
-              >
-                <span className="deck-pill-short">All</span>
-                <span className="deck-pill-full">Consolidated View</span>
-              </button>
-            </div>
+            <button
+              className={`deck-pill-btn ${activeDash === 'trendyol' ? 'active' : ''}`}
+              onClick={() => setActiveDash('trendyol')}
+            >
+              <span className="deck-pill-short">Trendyol</span>
+              <span className="deck-pill-full">Trendyol (7.80x)</span>
+            </button>
+            <button
+              className={`deck-pill-btn ${activeDash === 'usa' ? 'active' : ''}`}
+              onClick={() => setActiveDash('usa')}
+            >
+              <span className="deck-pill-short">USA</span>
+              <span className="deck-pill-full">USA (11.20x)</span>
+            </button>
+            <button
+              className={`deck-pill-btn ${activeDash === 'uk' ? 'active' : ''}`}
+              onClick={() => setActiveDash('uk')}
+            >
+              <span className="deck-pill-short">UK</span>
+              <span className="deck-pill-full">UK (9.45x)</span>
+            </button>
+            <button
+              className={`deck-pill-btn ${activeDash === 'consolidated' ? 'active' : ''}`}
+              onClick={() => setActiveDash('consolidated')}
+            >
+              <span className="deck-pill-short">All</span>
+              <span className="deck-pill-full">Consolidated View</span>
+            </button>
           </div>
 
           <div className="dashboard-view-panel">
@@ -341,7 +347,7 @@ export default function Marketplaces({ onOpenModal }) {
             </div>
 
             <div className="dashboard-details-col">
-              <div className="deck-cohort-row">
+              <div className="deck-cohort-row desktop-only">
                 <span className="deck-cohort-badge">
                   Audited Cohort Data
                 </span>
@@ -349,8 +355,8 @@ export default function Marketplaces({ onOpenModal }) {
                   Trailing 90-Day Verified Run-Rate
                 </span>
               </div>
-              <h3>{current.title}</h3>
-              <p>{current.desc}</p>
+              <h3 className="desktop-only">{current.title}</h3>
+              <p className="desktop-only">{current.desc}</p>
 
               <div className="stat-callout-grid">
                 <div className="stat-callout">
@@ -383,8 +389,8 @@ export default function Marketplaces({ onOpenModal }) {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
