@@ -7920,10 +7920,27 @@ img {
     right: 6px !important;
   }
 
-  .deck-cohort-row,
-  .dashboard-details-col h3,
-  .dashboard-details-col p {
+  .deck-cohort-row {
     display: none !important;
+  }
+
+  .dashboard-details-col h3,
+  .dashboard-console-subhead {
+    display: block !important;
+    font-size: 0.92rem !important;
+    line-height: 1.3 !important;
+    font-weight: 700 !important;
+    margin: 4px 0 4px !important;
+    color: var(--text-pure) !important;
+  }
+
+  .dashboard-details-col p,
+  .dashboard-console-desc {
+    display: block !important;
+    font-size: 0.74rem !important;
+    line-height: 1.4 !important;
+    color: var(--text-secondary) !important;
+    margin: 0 0 10px !important;
   }
 
   .stat-callout-grid {

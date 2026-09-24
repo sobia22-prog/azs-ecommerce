@@ -355,8 +355,8 @@ export default function Marketplaces({ onOpenModal }) {
                   Trailing 90-Day Verified Run-Rate
                 </span>
               </div>
-              <h3 className="desktop-only">{current.title}</h3>
-              <p className="desktop-only">{current.desc}</p>
+              <h3 className="dashboard-console-subhead">{current.title}</h3>
+              <p className="dashboard-console-desc">{current.desc}</p>
 
               <div className="stat-callout-grid">
                 <div className="stat-callout">
