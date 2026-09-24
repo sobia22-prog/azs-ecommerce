@@ -274,7 +274,7 @@ export default function Marketplaces({ onOpenModal }) {
           </div>
 
           {/* Live Marketplace Console */}
-          <div className="deck-showcase-wrapper" id="dashboards-proof" style={{ marginTop: '50px' }}>
+          <div className="deck-showcase-wrapper" id="dashboards-proof">
             <div className="deck-showcase-header">
               <div>
                 <div className="deck-showcase-badge-row">

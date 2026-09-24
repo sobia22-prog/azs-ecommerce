@@ -7992,11 +7992,14 @@ div.desktop-only,
     font-size: 0.76rem !important;
   }
 
-  /* Live Marketplace & Ad Performance Console Mobile Overhaul */
+  /* Live Marketplace & Ad Performance Console Mobile Overhaul - Seamless (No Card Box) */
   .deck-showcase-wrapper {
-    padding: 14px 10px !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 20px 0 10px !important;
     margin-top: 20px !important;
-    border-radius: var(--radius-lg) !important;
+    border-radius: 0 !important;
   }
 
   .deck-showcase-header {
