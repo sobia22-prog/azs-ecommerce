@@ -1571,6 +1571,7 @@ img {
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-md);
+  margin-top: 50px;
 }
 
 .deck-showcase-header {
@@ -1580,6 +1581,34 @@ img {
   margin-bottom: 30px;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.deck-showcase-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.deck-snapshot-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--neon-mint);
+  background: rgba(0, 245, 155, 0.12);
+  border: 1px solid rgba(0, 245, 155, 0.3);
+  padding: 2px 10px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.deck-showcase-title {
+  font-size: 1.8rem;
+  margin-top: 4px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .deck-switcher-pills {
@@ -1603,6 +1632,14 @@ img {
   background: rgba(0, 245, 155, 0.15);
   border-color: var(--neon-mint);
   color: var(--neon-mint);
+}
+
+.deck-pill-short {
+  display: none;
+}
+
+.deck-pill-full {
+  display: inline;
 }
 
 .dashboard-view-panel {
@@ -1656,6 +1693,29 @@ img {
   gap: 6px;
 }
 
+.deck-cohort-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.deck-cohort-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--neon-cyan);
+  background: rgba(0, 210, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.deck-cohort-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
 .dashboard-details-col h3 {
   font-size: 1.85rem;
   margin-bottom: 14px;
@@ -1693,6 +1753,26 @@ img {
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--neon-mint);
+}
+
+.deck-cta-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.deck-cta-row .deck-cta-btn {
+  padding: 12px 22px;
+  font-size: 0.9rem;
+}
+
+.deck-btn-short {
+  display: none;
+}
+
+.deck-btn-full {
+  display: inline;
 }
 
 /* ==========================================================================
@@ -4374,29 +4454,37 @@ img {
 
   /* Live Console Proof on Mobile */
   .deck-switcher-pills {
-    flex-wrap: wrap !important;
-    gap: 6px !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 4px !important;
+    justify-content: space-between !important;
   }
 
   .deck-pill-btn {
-    padding: 6px 12px !important;
-    font-size: 0.74rem !important;
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 6px 2px !important;
+    font-size: 0.72rem !important;
+    text-align: center !important;
+    white-space: nowrap !important;
   }
 
   .dashboard-view-panel {
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
+    gap: 14px !important;
   }
 
   .dashboard-img-container {
     min-height: auto !important;
     height: auto !important;
-    aspect-ratio: 16 / 10 !important;
+    aspect-ratio: 16 / 9.5 !important;
   }
 
   .dashboard-details-col h3 {
-    font-size: clamp(1.25rem, 4.5vw, 1.55rem) !important;
-    margin-bottom: 10px !important;
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
   }
 
   .stat-callout-grid {
@@ -4405,7 +4493,7 @@ img {
   }
 
   .stat-callout {
-    padding: 10px 8px !important;
+    padding: 8px 10px !important;
   }
 
   .stat-callout-number {
@@ -7750,6 +7838,160 @@ img {
   .mkt-card .btn {
     padding: 7px 10px !important;
     font-size: 0.76rem !important;
+  }
+
+  /* Live Marketplace & Ad Performance Console Mobile Overhaul */
+  .deck-showcase-wrapper {
+    padding: 14px 10px !important;
+    margin-top: 20px !important;
+    border-radius: var(--radius-lg) !important;
+  }
+
+  .deck-showcase-header {
+    margin-bottom: 12px !important;
+    gap: 8px !important;
+  }
+
+  .deck-showcase-badge-row {
+    margin-bottom: 4px !important;
+  }
+
+  .deck-showcase-title {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+    margin: 4px 0 0 !important;
+  }
+
+  .deck-switcher-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 4px !important;
+    margin-bottom: 10px !important;
+    overflow-x: visible !important;
+    justify-content: space-between !important;
+  }
+
+  .deck-pill-btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 6px 2px !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .deck-pill-short {
+    display: inline !important;
+  }
+
+  .deck-pill-full {
+    display: none !important;
+  }
+
+  .dashboard-view-panel {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .dashboard-img-container {
+    min-height: auto !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9.5 !important;
+    border-radius: 10px !important;
+  }
+
+  .zoom-badge {
+    padding: 4px 8px !important;
+    font-size: 0.65rem !important;
+    bottom: 6px !important;
+    right: 6px !important;
+  }
+
+  .deck-cohort-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .deck-cohort-badge {
+    font-size: 0.64rem !important;
+    padding: 2px 6px !important;
+  }
+
+  .deck-cohort-label {
+    font-size: 0.68rem !important;
+  }
+
+  .dashboard-details-col h3 {
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+    font-weight: 700 !important;
+  }
+
+  .dashboard-details-col p {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .stat-callout-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .stat-callout {
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+  }
+
+  .stat-callout-label {
+    font-size: 0.64rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .stat-callout-number {
+    font-size: 1.15rem !important;
+    font-weight: 800 !important;
+  }
+
+  /* Both buttons in 1 row on mobile */
+  .deck-cta-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    width: 100% !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+  }
+
+  .deck-cta-row .deck-cta-btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 9px 4px !important;
+    font-size: 0.76rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  .deck-btn-short {
+    display: inline !important;
+  }
+
+  .deck-btn-full {
+    display: none !important;
   }
 }
 

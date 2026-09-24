@@ -274,48 +274,53 @@ export default function Marketplaces({ onOpenModal }) {
         </div>
 
         {/* Live Marketplace Console */}
-        <div className="deck-showcase-wrapper" id="dashboards-proof" style={{ marginTop: '50px' }}>
+        <div className="deck-showcase-wrapper" id="dashboards-proof">
           <div className="deck-showcase-header">
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '6px' }}>
+              <div className="deck-showcase-badge-row">
                 <div className="badge-pill badge-pill-cyan">Multi-Marketplace Proof</div>
-                <span style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.12)', border: '1px solid rgba(0, 245, 155, 0.3)', padding: '2px 10px', borderRadius: '12px', display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                <span className="deck-snapshot-badge desktop-only">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                   Audited Partner Console Snapshot
                 </span>
               </div>
-              <h3 style={{ fontSize: '1.8rem', marginTop: '4px' }}>Live Marketplace & Ad Performance Console</h3>
+              <h3 className="deck-showcase-title">Live Marketplace & Ad Performance Console</h3>
             </div>
             <div className="deck-switcher-pills">
               <button
                 className={`deck-pill-btn ${activeDash === 'ksa' ? 'active' : ''}`}
                 onClick={() => setActiveDash('ksa')}
               >
-                KSA (Amazon & Noon)
+                <span className="deck-pill-short">KSA</span>
+                <span className="deck-pill-full">KSA (Amazon & Noon)</span>
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'trendyol' ? 'active' : ''}`}
                 onClick={() => setActiveDash('trendyol')}
               >
-                Trendyol (7.80x)
+                <span className="deck-pill-short">Trendyol</span>
+                <span className="deck-pill-full">Trendyol (7.80x)</span>
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'usa' ? 'active' : ''}`}
                 onClick={() => setActiveDash('usa')}
               >
-                USA (11.20x)
+                <span className="deck-pill-short">USA</span>
+                <span className="deck-pill-full">USA (11.20x)</span>
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'uk' ? 'active' : ''}`}
                 onClick={() => setActiveDash('uk')}
               >
-                UK (9.45x)
+                <span className="deck-pill-short">UK</span>
+                <span className="deck-pill-full">UK (9.45x)</span>
               </button>
               <button
                 className={`deck-pill-btn ${activeDash === 'consolidated' ? 'active' : ''}`}
                 onClick={() => setActiveDash('consolidated')}
               >
-                Consolidated View
+                <span className="deck-pill-short">All</span>
+                <span className="deck-pill-full">Consolidated View</span>
               </button>
             </div>
           </div>
@@ -336,11 +341,11 @@ export default function Marketplaces({ onOpenModal }) {
             </div>
 
             <div className="dashboard-details-col">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <span style={{ fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--neon-cyan)', background: 'rgba(0, 210, 255, 0.1)', padding: '2px 8px', borderRadius: '6px' }}>
+              <div className="deck-cohort-row">
+                <span className="deck-cohort-badge">
                   Audited Cohort Data
                 </span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                <span className="deck-cohort-label">
                   Trailing 90-Day Verified Run-Rate
                 </span>
               </div>
@@ -358,7 +363,7 @@ export default function Marketplaces({ onOpenModal }) {
                 </div>
                 <div className="stat-callout">
                   <div className="stat-callout-label">{current.stat3Label}</div>
-                  <div className="stat-callout-number">{current.stat3Val}</div>
+                  <div className="stat-callout-number">{current.stat4Label ? current.stat3Val : current.stat3Val}</div>
                 </div>
                 <div className="stat-callout">
                   <div className="stat-callout-label">{current.stat4Label}</div>
@@ -366,12 +371,13 @@ export default function Marketplaces({ onOpenModal }) {
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                <Link to="/book-audit" className="btn btn-primary" style={{ padding: '12px 22px', fontSize: '0.9rem' }}>
+              <div className="deck-cta-row">
+                <Link to="/book-audit" className="btn btn-primary deck-cta-btn">
                   Audit My Account
                 </Link>
-                <Link to="/marketplaces" className="btn btn-secondary" style={{ padding: '12px 22px', fontSize: '0.9rem' }}>
-                  Explore Marketplaces Hub
+                <Link to="/marketplaces" className="btn btn-secondary deck-cta-btn">
+                  <span className="deck-btn-short">Explore Hub</span>
+                  <span className="deck-btn-full">Explore Marketplaces Hub</span>
                 </Link>
               </div>
             </div>
