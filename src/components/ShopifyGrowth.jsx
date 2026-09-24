@@ -122,10 +122,11 @@ export default function ShopifyGrowth({ onOpenModal }) {
 
           {/* Capabilities Column */}
           <div className="shopify-features-col">
-            <div className="badge-pill">High-Conversion UX</div>
-            <h3 className="shopify-store-title">{store.name}</h3>
-            <p className="shopify-store-category">{store.category}</p>
-            <p className="shopify-store-highlight">{store.highlight}</p>
+            <div className="shopify-store-header">
+              <h3 className="shopify-store-title">{store.name}</h3>
+              <p className="shopify-store-category">{store.category}</p>
+              <p className="shopify-store-highlight">{store.highlight}</p>
+            </div>
 
             {/* Sleek 2x2 Feature Matrix - Concise & Modern */}
             <div className="capabilities-compact-grid">
@@ -180,28 +181,6 @@ export default function ShopifyGrowth({ onOpenModal }) {
                   <strong>TikTok Creator UGC</strong>
                   <span>Viral impulse acceleration</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Store-Specific Verified Impact Card */}
-            <div className="store-metrics-panel">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                <span style={{ fontSize: '0.75rem', color: 'var(--neon-mint)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em', display: 'flex', alignItems: 'center' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '6px', flexShrink: 0 }}>
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                  Audited Client Impact
-                </span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Verified Sprint Data</span>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
-                {store.uniqueMetrics.map((m, idx) => (
-                  <div key={idx} className="store-metric-item">
-                    <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>{m.label}</div>
-                    <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-pure)', margin: '2px 0' }}>{m.val}</div>
-                    <div style={{ fontSize: '0.70rem', color: 'var(--neon-cyan)' }}>{m.desc}</div>
-                  </div>
-                ))}
               </div>
             </div>
 

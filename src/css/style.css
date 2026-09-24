@@ -1841,12 +1841,18 @@ img {
   display: inline;
 }
 
+.shopify-store-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
 .shopify-features-col h3,
 .shopify-store-title {
   font-size: 2.2rem;
   margin-bottom: 8px;
   font-weight: 800;
   line-height: 1.25;
+  text-align: center;
 }
 
 .shopify-store-category {
@@ -1854,6 +1860,7 @@ img {
   font-weight: 700;
   font-size: 0.92rem;
   margin-bottom: 6px;
+  text-align: center;
 }
 
 .shopify-store-highlight {
@@ -1861,6 +1868,7 @@ img {
   color: var(--text-body);
   margin-bottom: 18px;
   line-height: 1.5;
+  text-align: center;
 }
 
 .capabilities-list {
@@ -8111,10 +8119,9 @@ img {
     margin-top: 0 !important;
   }
 
-  .shopify-features-col .badge-pill {
-    margin-bottom: 6px !important;
-    font-size: 0.68rem !important;
-    padding: 2px 8px !important;
+  .shopify-store-header {
+    text-align: center !important;
+    margin-bottom: 10px !important;
   }
 
   .shopify-features-col h3,
@@ -8124,17 +8131,20 @@ img {
     font-weight: 700 !important;
     margin-bottom: 3px !important;
     color: var(--text-pure) !important;
+    text-align: center !important;
   }
 
   .shopify-store-category {
     font-size: 0.76rem !important;
     margin-bottom: 3px !important;
+    text-align: center !important;
   }
 
   .shopify-store-highlight {
     font-size: 0.74rem !important;
     line-height: 1.4 !important;
     margin-bottom: 12px !important;
+    text-align: center !important;
   }
 
   /* 2x2 Capabilities Matrix */
