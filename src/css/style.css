@@ -6016,6 +6016,18 @@ div.desktop-only,
   background: linear-gradient(135deg, rgba(11, 17, 29, 0.95) 0%, rgba(6, 10, 18, 0.98) 100%);
 }
 
+.coverage-hero-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-pure);
+}
+
+.coverage-hero-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
 .coverage-hero-pills {
   display: flex;
   flex-wrap: wrap;
@@ -7724,44 +7736,203 @@ div.desktop-only,
     display: none !important;
   }
 
-  .mobile-services-tabs-bar {
-    display: flex !important;
-    gap: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 4px 2px 14px;
-    margin-bottom: 6px;
+  /* What We Manage Mobile Overhaul */
+  #service-coverage.section {
+    padding: 24px 0 32px !important;
   }
 
-  .mobile-services-tabs-bar::-webkit-scrollbar {
-    display: none;
+  #service-coverage .section-header {
+    margin-bottom: 14px !important;
+    text-align: center !important;
+  }
+
+  #service-coverage .section-header h2 {
+    font-size: clamp(1.15rem, 4.4vw, 1.35rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+    text-align: center !important;
+  }
+
+  #service-coverage .section-header p {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+  }
+
+  /* Visual Media Hero Banner on Mobile */
+  .coverage-visual-hero {
+    margin-bottom: 14px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+  }
+
+  .coverage-hero-img-wrap {
+    min-height: 120px !important;
+    height: 120px !important;
+  }
+
+  .coverage-hero-content {
+    padding: 12px 10px !important;
+    gap: 6px !important;
+  }
+
+  .coverage-hero-content .badge-pill {
+    font-size: 0.68rem !important;
+    padding: 2px 8px !important;
+    margin-bottom: 2px !important;
+  }
+
+  .coverage-hero-title {
+    font-size: 1.02rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 3px !important;
+  }
+
+  .coverage-hero-desc {
+    font-size: 0.74rem !important;
+    line-height: 1.38 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .coverage-hero-pills {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+
+  .coverage-hero-pill {
+    padding: 3px 7px !important;
+    font-size: 0.65rem !important;
+    gap: 4px !important;
+  }
+
+  /* 6 Service Tabs in Clean 3x2 Grid - All Visible, No Overflow */
+  .mobile-services-tabs-bar {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 5px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin-bottom: 10px !important;
+    overflow-x: visible !important;
   }
 
   .mobile-srv-tab-btn {
-    flex-shrink: 0;
-    padding: 8px 14px;
-    border-radius: 9999px;
-    background: rgba(16, 25, 42, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
-    font-size: 0.78rem;
-    font-weight: 700;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    width: 100% !important;
+    padding: 6px 2px !important;
+    border-radius: 8px !important;
+    background: rgba(16, 25, 42, 0.85) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.70rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    justify-content: center !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
   }
 
   .mobile-srv-tab-btn.active {
-    background: var(--grad-primary);
-    color: #04070b;
-    border-color: transparent;
-    box-shadow: 0 0 14px rgba(0, 245, 155, 0.35);
+    background: var(--grad-primary) !important;
+    color: #04070b !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 14px rgba(0, 245, 155, 0.35) !important;
   }
 
   .mobile-srv-single-card-wrap {
     display: block !important;
     animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Service Coverage Card Mobile Refinement */
+  .service-coverage-card {
+    padding: 12px 10px !important;
+    border-radius: 12px !important;
+  }
+
+  .srv-card-top {
+    margin-bottom: 8px !important;
+  }
+
+  .srv-icon-badge {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 8px !important;
+  }
+
+  .srv-icon-badge svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .srv-num-pill {
+    font-size: 0.68rem !important;
+    padding: 2px 6px !important;
+  }
+
+  .srv-category-tag {
+    font-size: 0.64rem !important;
+    margin-bottom: 2px !important;
+  }
+
+  .srv-card-title {
+    font-size: 0.98rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 3px !important;
+  }
+
+  .srv-card-summary {
+    font-size: 0.74rem !important;
+    line-height: 1.38 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .srv-details-list {
+    gap: 5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .srv-detail-item {
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+    gap: 6px !important;
+  }
+
+  .srv-detail-item svg {
+    width: 12px !important;
+    height: 12px !important;
+    margin-top: 2px !important;
+  }
+
+  .srv-card-footer {
+    padding-top: 8px !important;
+    gap: 8px !important;
+  }
+
+  .srv-channels-chips {
+    gap: 4px !important;
+  }
+
+  .srv-ch-chip {
+    font-size: 0.62rem !important;
+    padding: 2px 6px !important;
+  }
+
+  .srv-impact-metric {
+    font-size: 0.70rem !important;
+    font-weight: 800 !important;
+  }
+
+  #service-coverage .btn-secondary {
+    padding: 9px 12px !important;
+    font-size: 0.74rem !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 14px !important;
   }
 
   /* 5. Case Studies - Mobile Interactive Swipe Carousel */

@@ -223,10 +223,10 @@ export default function WhatWeManage({ onOpenModal }) {
 
             <div className="coverage-hero-content">
               <div className="badge-pill badge-pill-cyan">KSA, USA & UK Infrastructure</div>
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-pure)' }}>
+              <h3 className="coverage-hero-title">
                 Fulfillment, Advertising & Operations Synchronized
               </h3>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: '1.5' }}>
+              <p className="coverage-hero-desc">
                 We eliminate operational fragmentation by bridging factory supply lines directly to marketplace fulfillment (FBA, FBN, 3PL) and algorithmic ad acceleration.
               </p>
               <div className="coverage-hero-pills">
