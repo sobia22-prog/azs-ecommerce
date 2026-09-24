@@ -240,8 +240,7 @@ export default function Marketplaces({ onOpenModal }) {
   );
 
   return (
-    <>
-      <section className="section" id="marketplaces">
+    <section className="section" id="marketplaces">
         <div className="container">
           <div className="section-header">
             <div className="badge-pill desktop-only">The 4 Core Marketplaces</div>
@@ -273,27 +272,23 @@ export default function Marketplaces({ onOpenModal }) {
           <div className="desktop-marketplace-grid marketplace-grid marketplace-grid-2col">
             {MARKETPLACE_LIST.map((mkt) => renderCardContent(mkt))}
           </div>
-        </div>
-      </section>
 
-      {/* Standalone Section: Live Marketplace & Ad Performance Console */}
-      <section className="section live-console-section" id="dashboards-proof">
-        <div className="container">
-          <div className="section-header text-center">
-            <div className="deck-showcase-badge-row">
-              <div className="badge-pill badge-pill-cyan">Multi-Marketplace Proof</div>
-              <span className="deck-snapshot-badge desktop-only">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                Audited Partner Console Snapshot
-              </span>
+          {/* Live Marketplace Console */}
+          <div className="deck-showcase-wrapper" id="dashboards-proof" style={{ marginTop: '50px' }}>
+            <div className="deck-showcase-header">
+              <div>
+                <div className="deck-showcase-badge-row">
+                  <div className="badge-pill badge-pill-cyan">Multi-Marketplace Proof</div>
+                  <span className="deck-snapshot-badge desktop-only">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Audited Partner Console Snapshot
+                  </span>
+                </div>
+                <h3 className="deck-showcase-title">Live Marketplace & Ad Performance Console</h3>
+              </div>
             </div>
-            <h2 className="section-title">Live Marketplace & Ad Performance Console</h2>
-            <p className="desktop-only section-subtitle">
-              Audited live account telemetry and verified cohort performance across Amazon, Noon & Trendyol.
-            </p>
-          </div>
 
-          <div className="deck-switcher-pills">
+            <div className="deck-switcher-pills">
             <button
               className={`deck-pill-btn ${activeDash === 'ksa' ? 'active' : ''}`}
               onClick={() => setActiveDash('ksa')}
@@ -389,8 +384,8 @@ export default function Marketplaces({ onOpenModal }) {
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 

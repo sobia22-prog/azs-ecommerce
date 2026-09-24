@@ -132,6 +132,19 @@ export default function StatsStrip() {
             </div>
           ))}
         </div>
+
+        <div className="stats-footnote-row desktop-only">
+          <div className="stats-audit-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              <polyline points="9 12 11 14 15 10"></polyline>
+            </svg>
+            <span>AUDITED PARTNER DATA</span>
+          </div>
+          <p className="stats-footnote-text">
+            Verified trailing-12-month partner data. Refreshed quarterly.
+          </p>
+        </div>
       </div>
     </section>
   );

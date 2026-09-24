@@ -184,8 +184,18 @@ img {
   display: none !important;
 }
 .desktop-only-txt,
-.desktop-only {
+span.desktop-only {
   display: inline;
+}
+div.desktop-only,
+.desktop-only {
+  display: block;
+}
+.badge-pill.desktop-only {
+  display: inline-flex;
+}
+.stats-footnote-row.desktop-only {
+  display: flex;
 }
 
 .section {
@@ -1562,32 +1572,25 @@ img {
   color: var(--neon-mint);
 }
 
-/* Standalone Live Marketplace Dashboard Console Section */
-.live-console-section {
+/* Real Deck Data Marketplace Dashboard Console */
+.deck-showcase-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-xl);
+  padding: 40px;
   position: relative;
-  padding: 80px 0;
-  background: transparent;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: 50px;
 }
 
-.live-console-section .section-header {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.live-console-section .deck-showcase-badge-row {
+.deck-showcase-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 30px;
   flex-wrap: wrap;
-  margin-bottom: 8px;
-}
-
-.live-console-section .deck-switcher-pills {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 32px;
+  gap: 20px;
 }
 
 .deck-showcase-badge-row {
@@ -1842,7 +1845,6 @@ img {
 }
 
 .shopify-store-header {
-  text-align: center;
   margin-bottom: 18px;
 }
 
@@ -1852,7 +1854,6 @@ img {
   margin-bottom: 8px;
   font-weight: 800;
   line-height: 1.25;
-  text-align: center;
 }
 
 .shopify-store-category {
@@ -1860,7 +1861,6 @@ img {
   font-weight: 700;
   font-size: 0.92rem;
   margin-bottom: 6px;
-  text-align: center;
 }
 
 .shopify-store-highlight {
@@ -1868,7 +1868,6 @@ img {
   color: var(--text-body);
   margin-bottom: 18px;
   line-height: 1.5;
-  text-align: center;
 }
 
 .capabilities-list {
@@ -7993,30 +7992,31 @@ img {
     font-size: 0.76rem !important;
   }
 
-  /* Standalone Live Marketplace Console Mobile Optimization */
-  .live-console-section {
-    padding: 20px 0 28px !important;
-    background: transparent !important;
+  /* Live Marketplace & Ad Performance Console Mobile Overhaul */
+  .deck-showcase-wrapper {
+    padding: 14px 10px !important;
+    margin-top: 20px !important;
+    border-radius: var(--radius-lg) !important;
   }
 
-  .live-console-section .section-header {
+  .deck-showcase-header {
     margin-bottom: 12px !important;
     text-align: center !important;
   }
 
-  .live-console-section .deck-showcase-badge-row {
+  .deck-showcase-badge-row {
     justify-content: center !important;
     margin-bottom: 4px !important;
   }
 
-  .live-console-section .section-title {
+  .deck-showcase-title {
     font-size: 1.15rem !important;
     line-height: 1.25 !important;
     margin: 4px 0 0 !important;
     text-align: center !important;
   }
 
-  .live-console-section .deck-switcher-pills {
+  .deck-switcher-pills {
     display: flex !important;
     flex-wrap: nowrap !important;
     width: 100% !important;
@@ -8291,15 +8291,9 @@ img {
     line-height: 1.2 !important;
   }
 
-  /* Store-Specific Verified Impact Card */
+  /* Store-Specific Verified Impact Card - Hidden on mobile, shown on laptop */
   .store-metrics-panel {
-    padding: 10px 10px !important;
-    border-radius: 10px !important;
-    margin-bottom: 12px !important;
-  }
-
-  .store-metric-item {
-    padding: 4px 2px !important;
+    display: none !important;
   }
 }
 
