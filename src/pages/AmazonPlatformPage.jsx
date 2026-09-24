@@ -127,13 +127,6 @@ export default function AmazonPlatformPage({ onOpenModal }) {
                 onClick={() => onOpenModal('/assets/homemaster_amazon_dashboard.svg', 'HomeMaster Appliances Verified Amazon Growth Console (+11,963%)')}
               >
                 <img src="/assets/homemaster_amazon_dashboard.svg" alt="HomeMaster Amazon Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
-                <div className="zoom-badge">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                  </svg>
-                  Click to Inspect Verified Proof
-                </div>
               </div>
 
               {/* Data & Impact Breakdown */}

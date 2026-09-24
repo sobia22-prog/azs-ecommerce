@@ -173,13 +173,6 @@ export default function Marketplaces({ onOpenModal }) {
         title="Click to view marketplace hub"
       >
         <img src={mkt.img} alt={`${mkt.title} Hub`} loading="lazy" />
-        <span className="mkt-media-overlay-badge" style={{ color: mkt.tagColor, borderColor: mkt.tagBorder }}>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          {mkt.tag}
-        </span>
       </div>
 
       <div className="mkt-card-header">
@@ -332,13 +325,6 @@ export default function Marketplaces({ onOpenModal }) {
               onClick={() => onOpenModal(current.img, current.title)}
             >
               <img src={current.img} alt={current.title} loading="lazy" />
-              <div className="zoom-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                Click to Inspect Audited 4K Console
-              </div>
             </div>
 
             <div className="dashboard-details-col">

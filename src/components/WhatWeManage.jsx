@@ -155,7 +155,7 @@ export default function WhatWeManage({ onOpenModal }) {
 
       <div className="srv-category-tag">{srv.category}</div>
       <h3 className="srv-card-title">{srv.title}</h3>
-      <p className="srv-card-summary">{srv.summary}</p>
+      <p className="srv-card-summary desktop-only">{srv.summary}</p>
 
       <div className="srv-details-list">
         {srv.highlights.map((h, i) => (
@@ -198,7 +198,7 @@ export default function WhatWeManage({ onOpenModal }) {
             <span>SERVICE COVERAGE</span>
           </div>
           <h2>What We Manage</h2>
-          <p>
+          <p className="desktop-only">
             An accountable end-to-end service stack delivering operational excellence across KSA, USA, and UK.
           </p>
         </div>
@@ -212,13 +212,6 @@ export default function WhatWeManage({ onOpenModal }) {
               title="Click to zoom logistics & fulfillment network"
             >
               <img src="/assets/gcc_logistics_network.jpg" alt="Cross-Border Supply Chain & Fulfillment Network" loading="lazy" />
-              <span className="mkt-media-overlay-badge">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                Inspect Infrastructure
-              </span>
             </div>
 
             <div className="coverage-hero-content">
@@ -226,10 +219,10 @@ export default function WhatWeManage({ onOpenModal }) {
               <h3 className="coverage-hero-title">
                 Fulfillment, Advertising & Operations Synchronized
               </h3>
-              <p className="coverage-hero-desc">
+              <p className="coverage-hero-desc desktop-only">
                 We eliminate operational fragmentation by bridging factory supply lines directly to marketplace fulfillment (FBA, FBN, 3PL) and algorithmic ad acceleration.
               </p>
-              <div className="coverage-hero-pills">
+              <div className="coverage-hero-pills desktop-only">
                 <span className="coverage-hero-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                   <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--neon-mint)', boxShadow: '0 0 8px rgba(0,245,155,0.8)', flexShrink: 0 }}></span>
                   KSA 3PL (Riyadh &amp; Jeddah)

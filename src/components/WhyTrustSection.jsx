@@ -97,13 +97,6 @@ export default function WhyTrustSection({ onOpenModal }) {
             title="Click to view full 4K orbital network globe"
           >
             <img src="/assets/global_gcc_network_globe.png" alt="AZS Global Commerce Footprint" />
-            <span className="mkt-media-overlay-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              View Global Footprint
-            </span>
           </div>
 
           <div>

@@ -211,13 +211,6 @@ export default function CaseStudiesPage({ onOpenModal }) {
               title="Click to zoom inspect proof"
             >
               <img src={activeCaseStudy.image} alt={activeCaseStudy.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
-              <div className="zoom-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                Click to Inspect Verified Proof Console
-              </div>
             </div>
 
             {/* Deep Breakdown Grid */}
@@ -347,13 +340,6 @@ export default function CaseStudiesPage({ onOpenModal }) {
                   title="Click to zoom inspect proof"
                 >
                   <img src={cs.image} alt={cs.title} loading="lazy" />
-                  <div className="zoom-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    Inspect Proof
-                  </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>

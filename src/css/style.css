@@ -1688,19 +1688,10 @@ div.desktop-only,
   transform: scale(1.02);
 }
 
-.zoom-badge {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  color: var(--text-pure);
-  display: flex;
-  align-items: center;
-  gap: 6px;
+/* Remove inspect button & text on every image globally */
+.zoom-badge,
+.mkt-media-overlay-badge {
+  display: none !important;
 }
 
 .deck-cohort-row {

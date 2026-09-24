@@ -189,13 +189,6 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
                   title="Click to inspect verified console"
                 >
                   <img src={p.image} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  <div className="zoom-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    Inspect Console
-                  </div>
                 </div>
 
                 <h3 className="platform-detail-title">{p.name}</h3>
