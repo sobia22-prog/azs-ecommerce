@@ -7247,13 +7247,15 @@ div.desktop-only,
 .mobile-srv-single-card-wrap,
 .mobile-services-accordion,
 .mobile-cases-carousel-wrap,
+.mobile-programs-slideshow-wrap,
 .mobile-sticky-bottom-nav {
   display: none;
 }
 
 .desktop-marketplace-grid,
 .desktop-services-grid,
-.desktop-cases-grid {
+.desktop-cases-grid,
+.desktop-programs-grid {
   display: grid;
 }
 
@@ -8176,6 +8178,113 @@ div.desktop-only,
     border-radius: 4px;
     background: var(--neon-mint);
     box-shadow: 0 0 8px rgba(0, 245, 155, 0.5);
+  }
+
+  /* 5.1 Programs / Engagement Models - Mobile Slideshow Layout */
+  #programs {
+    padding-top: 18px !important;
+    padding-bottom: 24px !important;
+  }
+
+  #programs .section-header {
+    margin-bottom: 14px !important;
+  }
+
+  #programs .section-header h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 0 !important;
+  }
+
+  .desktop-programs-grid {
+    display: none !important;
+  }
+
+  .mobile-programs-slideshow-wrap {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    padding: 0 4px !important;
+  }
+
+  .prog-slide-card-container {
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  .prog-slide-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(16, 25, 42, 0.95) !important;
+    border: 1px solid rgba(0, 245, 155, 0.4) !important;
+    color: var(--neon-mint) !important;
+    font-size: 1.4rem !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 245, 155, 0.25) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .prog-slide-arrow:active {
+    transform: translateY(-50%) scale(0.92) !important;
+    background: var(--neon-mint) !important;
+    color: #04070b !important;
+  }
+
+  .prog-slide-arrow.prev {
+    left: -12px !important;
+  }
+
+  .prog-slide-arrow.next {
+    right: -12px !important;
+  }
+
+  .program-card-elevated {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    animation: fadeInScale 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .program-card-elevated .mkt-card-title {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .program-card-elevated .mkt-card-desc {
+    font-size: 0.78rem !important;
+    line-height: 1.38 !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 8px !important;
+  }
+
+  .program-ideal-target {
+    font-size: 0.74rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 10px !important;
+    padding: 7px 9px !important;
+    border-radius: 8px !important;
+    background: rgba(0, 210, 255, 0.04) !important;
+    border: 1px solid rgba(0, 210, 255, 0.12) !important;
+  }
+
+  .mkt-feature-tag-pill {
+    font-size: 0.72rem !important;
+    padding: 4px 8px !important;
+  }
+
+  /* Hide Repeatable Growth (Growth Engine) on Mobile */
+  #process {
+    display: none !important;
   }
 
   /* 6. Live Console Pills Bar */

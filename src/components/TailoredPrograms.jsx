@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCurrency } from '../context/CurrencyContext';
 
 export default function TailoredPrograms() {
   const { isSAR } = useCurrency();
   const isGCC = isSAR;
+  const [mobileIdx, setMobileIdx] = useState(0);
 
   const programs = [
     {
@@ -68,6 +69,59 @@ export default function TailoredPrograms() {
     }
   ];
 
+  const renderProgramCard = (prog) => (
+    <div className="mkt-card program-card-elevated" key={prog.num}>
+      <div className="mkt-card-glow"></div>
+      <div className="mkt-card-header">
+        <span className="growth-badge">{prog.badge}</span>
+        <span className="program-number-badge">{prog.num}</span>
+      </div>
+      <h3 className="mkt-card-title">{prog.title}</h3>
+      
+      {/* Indicative Starting Price Box */}
+      <div style={{ background: 'rgba(0, 245, 155, 0.06)', border: '1px solid rgba(0, 245, 155, 0.25)', borderRadius: '10px', padding: '10px 14px', margin: '10px 0 14px' }}>
+        <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)', fontWeight: 700 }}>
+          Indicative Investment
+        </div>
+        <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--neon-mint)', marginTop: '2px' }}>
+          {isGCC ? prog.priceGCC : prog.priceUSD}
+        </div>
+        <div style={{ fontSize: '0.70rem', color: 'var(--neon-cyan)', marginTop: '2px' }}>
+          {prog.priceNote}
+        </div>
+      </div>
+
+      <p className="mkt-card-desc">{prog.desc}</p>
+      
+      <div className="program-ideal-target" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-cyan)', flexShrink: 0, marginTop: '2px' }}>
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+        <span>{prog.ideal}</span>
+      </div>
+
+      {/* Sleek Feature Tags Grid */}
+      <div className="mkt-feature-tags-grid" style={{ marginBottom: '16px' }}>
+        {prog.chips.map((chip, i) => (
+          <div key={i} className="mkt-feature-tag-pill" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: 'var(--neon-mint)', flexShrink: 0 }}>
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>{chip.text}</span>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 'auto', paddingTop: '16px' }}>
+        <a href="#book-audit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem' }}>
+          Explore Program Scope
+        </a>
+      </div>
+    </div>
+  );
+
   return (
     <section className="section" id="programs">
       <div className="container">
@@ -77,64 +131,55 @@ export default function TailoredPrograms() {
             <span>ENGAGEMENT MODELS</span>
           </div>
           <h2>Tailored Programs for High-Yield Acceleration</h2>
-          <p>
+          <p className="desktop-only">
             Choose the operational partnership that aligns with your scale, channel mix, and GCC expansion timeline. Transparent indicative pricing to fast-track your qualification.
           </p>
         </div>
 
-        <div className="programs-grid-4">
-          {programs.map((prog, idx) => (
-            <div className="mkt-card program-card-elevated" key={idx}>
-              <div className="mkt-card-glow"></div>
-              <div className="mkt-card-header">
-                <span className="growth-badge">{prog.badge}</span>
-                <span className="program-number-badge">{prog.num}</span>
-              </div>
-              <h3 className="mkt-card-title">{prog.title}</h3>
-              
-              {/* Indicative Starting Price Box (Audit Finding #8) */}
-              <div style={{ background: 'rgba(0, 245, 155, 0.06)', border: '1px solid rgba(0, 245, 155, 0.25)', borderRadius: '10px', padding: '10px 14px', margin: '10px 0 14px' }}>
-                <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)', fontWeight: 700 }}>
-                  Indicative Investment
-                </div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--neon-mint)', marginTop: '2px' }}>
-                  {isGCC ? prog.priceGCC : prog.priceUSD}
-                </div>
-                <div style={{ fontSize: '0.70rem', color: 'var(--neon-cyan)', marginTop: '2px' }}>
-                  {prog.priceNote}
-                </div>
-              </div>
+        {/* Desktop 4-Column Grid */}
+        <div className="programs-grid-4 desktop-programs-grid">
+          {programs.map(prog => renderProgramCard(prog))}
+        </div>
 
-              <p className="mkt-card-desc">{prog.desc}</p>
-              
-              <div className="program-ideal-target" style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-cyan)', flexShrink: 0, marginTop: '2px' }}>
-                  <circle cx="12" cy="12" r="10" />
-                  <circle cx="12" cy="12" r="6" />
-                  <circle cx="12" cy="12" r="2" />
-                </svg>
-                <span>{prog.ideal}</span>
-              </div>
+        {/* Mobile Interactive Slideshow with Conditional Arrows */}
+        <div className="mobile-programs-slideshow-wrap">
+          <div className="prog-slide-card-container">
+            {mobileIdx > 0 && (
+              <button 
+                type="button" 
+                className="prog-slide-arrow prev" 
+                onClick={() => setMobileIdx(prev => prev - 1)} 
+                aria-label="Previous Program"
+              >
+                ‹
+              </button>
+            )}
 
-              {/* Sleek Feature Tags Grid */}
-              <div className="mkt-feature-tags-grid" style={{ marginBottom: '16px' }}>
-                {prog.chips.map((chip, i) => (
-                  <div key={i} className="mkt-feature-tag-pill" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ color: 'var(--neon-mint)', flexShrink: 0 }}>
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                    <span>{chip.text}</span>
-                  </div>
-                ))}
-              </div>
+            {renderProgramCard(programs[mobileIdx])}
 
-              <div style={{ marginTop: 'auto', paddingTop: '16px' }}>
-                <a href="#book-audit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem' }}>
-                  Explore Program Scope
-                </a>
-              </div>
-            </div>
-          ))}
+            {mobileIdx < programs.length - 1 && (
+              <button 
+                type="button" 
+                className="prog-slide-arrow next" 
+                onClick={() => setMobileIdx(prev => prev + 1)} 
+                aria-label="Next Program"
+              >
+                ›
+              </button>
+            )}
+          </div>
+
+          <div className="carousel-dots" style={{ marginTop: '14px' }}>
+            {programs.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                className={`carousel-dot ${mobileIdx === i ? 'active' : ''}`}
+                onClick={() => setMobileIdx(i)}
+                aria-label={`Go to program ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

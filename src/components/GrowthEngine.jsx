@@ -30,7 +30,7 @@ export default function GrowthEngine() {
   ];
 
   return (
-    <section className="section section-alt" id="process">
+    <section className="section section-alt desktop-only" id="process">
       <div className="container">
         <div className="section-header">
           <div className="badge-pill">Repeatable Growth</div>
