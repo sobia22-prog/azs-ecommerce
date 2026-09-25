@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
@@ -141,9 +141,21 @@ const ALL_CASE_STUDIES = [
   }
 ];
 
+const FILTER_TABS = [
+  { id: 'all', label: 'All Channels (5)', shortLabel: 'All (5)' },
+  { id: 'amazon', label: 'Amazon Global & GCC (2)', shortLabel: 'Amazon (2)' },
+  { id: 'noon', label: 'Noon KSA & UAE (1)', shortLabel: 'Noon (1)' },
+  { id: 'trendyol', label: 'Trendyol GCC Expansion (1)', shortLabel: 'Trendyol (1)' },
+  { id: 'shopify', label: 'Shopify & Paid Media (1)', shortLabel: 'Shopify (1)' }
+];
+
 export default function CaseStudiesPage({ onOpenModal }) {
   const { path } = useRouter();
   const [activeFilter, setActiveFilter] = useState('all');
+  const [mobileIdx, setMobileIdx] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Detect individual case study slug: e.g. /case-studies/homemaster
   const slugMatch = path.match(/^\/case-studies\/([a-zA-Z0-9_-]+)/);
@@ -170,6 +182,138 @@ export default function CaseStudiesPage({ onOpenModal }) {
     canonicalPath: activeCaseStudy ? `/case-studies/${activeCaseStudy.id}` : '/case-studies'
   });
 
+  // Directory View (All Case Studies Grid)
+  const filtered = activeFilter === 'all'
+    ? ALL_CASE_STUDIES
+    : ALL_CASE_STUDIES.filter(cs => cs.channel === activeFilter);
+
+  // Reset index when filter changes
+  useEffect(() => {
+    setMobileIdx(0);
+  }, [activeFilter]);
+
+  // Automatic slideshow rotation for mobile carousel every 4.5 seconds
+  useEffect(() => {
+    if (isPaused || filtered.length <= 1) return;
+    const timer = setInterval(() => {
+      setMobileIdx((prev) => (prev + 1) % filtered.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isPaused, filtered.length]);
+
+  const handlePrev = () => {
+    setMobileIdx((prev) => (prev - 1 + filtered.length) % filtered.length);
+  };
+
+  const handleNext = () => {
+    setMobileIdx((prev) => (prev + 1) % filtered.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setIsPaused(true);
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) {
+      setTimeout(() => setIsPaused(false), 3500);
+      return;
+    }
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+    setTimeout(() => setIsPaused(false), 3500);
+  };
+
+  const safeMobileIdx = mobileIdx >= filtered.length ? 0 : mobileIdx;
+
+  const renderCaseCard = (cs, isMobile = false) => (
+    <div className="mkt-card case-study-card" key={cs.id}>
+      <div 
+        className="dashboard-img-container" 
+        onClick={() => onOpenModal && onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
+        title="Click to zoom inspect proof"
+      >
+        <img src={cs.image} alt={cs.title} loading="lazy" />
+      </div>
+
+      {/* On desktop: show duplicate growth badge. On mobile: hidden because it's already in the image */}
+      <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+        <span className="growth-badge">{cs.metrics.salesGrowth} Growth</span>
+        <span style={{ fontSize: '0.8rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
+      </div>
+
+      <div className="mobile-only" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+        <span style={{ fontSize: '0.74rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
+      </div>
+
+      <h3 className="mkt-card-title">{cs.title}</h3>
+      <p className="desktop-only" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '12px' }}>{cs.category}</p>
+      <p className="mkt-card-desc" style={{ marginBottom: isMobile ? '12px' : '18px' }}>{cs.summary}</p>
+
+      {/* Platforms Tags */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: isMobile ? '12px' : '16px' }}>
+        {cs.platforms.map((plat, idx) => (
+          <span key={idx} style={{
+            fontSize: isMobile ? '0.68rem' : '0.72rem',
+            padding: isMobile ? '2px 7px' : '3px 8px',
+            borderRadius: '12px',
+            background: 'rgba(255, 255, 255, 0.04)',
+            color: 'var(--text-heading)',
+            border: '1px solid rgba(255, 255, 255, 0.08)'
+          }}>
+            {plat}
+          </span>
+        ))}
+      </div>
+
+      {/* KPI Matrix Box */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: isMobile ? '8px' : '10px',
+        background: 'rgba(255, 255, 255, 0.02)',
+        padding: isMobile ? '8px 10px' : '12px',
+        borderRadius: 'var(--radius-sm)',
+        border: '1px solid rgba(255, 255, 255, 0.05)',
+        marginBottom: isMobile ? '14px' : '20px'
+      }}>
+        <div>
+          <div style={{ fontSize: isMobile ? '0.66rem' : '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Volume</div>
+          <div style={{ fontSize: isMobile ? '0.92rem' : '0.98rem', fontWeight: 800, color: 'var(--neon-mint)' }}>{cs.metrics.volume}</div>
+        </div>
+        <div>
+          <div style={{ fontSize: isMobile ? '0.66rem' : '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Efficiency</div>
+          <div style={{ fontSize: isMobile ? '0.92rem' : '0.98rem', fontWeight: 800, color: 'var(--text-heading)' }}>{cs.metrics.roas}</div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: 'auto' }}>
+        <p style={{ fontSize: isMobile ? '0.76rem' : '0.82rem', fontStyle: 'italic', color: 'var(--text-secondary)', marginBottom: isMobile ? '12px' : '14px', lineHeight: 1.45 }}>
+          "{cs.highlightQuote}"
+        </p>
+        <Link
+          to={`/case-studies/${cs.id}`}
+          className="btn btn-secondary"
+          style={{ width: '100%', justifyContent: 'center', fontSize: '0.82rem', padding: '10px 14px' }}
+        >
+          <span>Read Full Case Study</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ marginLeft: '4px' }}>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </Link>
+      </div>
+    </div>
+  );
+
   // Render Single Case Study View if activeCaseStudy is found
   if (activeCaseStudy) {
     return (
@@ -185,7 +329,7 @@ export default function CaseStudiesPage({ onOpenModal }) {
           ]}
           primaryCtaText="Replicate These Results"
           primaryCtaLink="/book-audit"
-          secondaryCtaText="Explore Programs & Pricing"
+          secondaryCtaText="Explore Programs"
           secondaryCtaLink="/programs-pricing"
           metrics={[
             { val: activeCaseStudy.metrics.salesGrowth, label: 'Sales Growth', sub: 'Verified scale lift' },
@@ -207,7 +351,7 @@ export default function CaseStudiesPage({ onOpenModal }) {
             <div 
               className="dashboard-img-container" 
               style={{ marginBottom: '40px', cursor: 'pointer', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(0, 245, 155, 0.3)' }}
-              onClick={() => onOpenModal(activeCaseStudy.image, `${activeCaseStudy.title} Verified Console Proof`)}
+              onClick={() => onOpenModal && onOpenModal(activeCaseStudy.image, `${activeCaseStudy.title} Verified Console Proof`)}
               title="Click to zoom inspect proof"
             >
               <img src={activeCaseStudy.image} alt={activeCaseStudy.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
@@ -275,138 +419,97 @@ export default function CaseStudiesPage({ onOpenModal }) {
     );
   }
 
-  // Directory View (All Case Studies Grid)
-  const filtered = activeFilter === 'all'
-    ? ALL_CASE_STUDIES
-    : ALL_CASE_STUDIES.filter(cs => cs.channel === activeFilter);
-
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge="Documented Performance"
-        title="Verified Client"
-        highlight="Case Studies & Proof"
-        subtitle="Unfiltered sales, advertising, and operational performance dashboards from brands scaled by AZS Solutions across Saudi Arabia, UAE, USA, and the UK."
+        badge="Proven Results"
+        title="Case Studies"
+        highlight="& Proof"
+        subtitle="Real sales, advertising, and growth dashboards from brands scaled by AZS Solutions across Saudi Arabia, UAE, USA, and the UK."
         breadcrumbs={[{ label: 'Case Studies' }]}
-        primaryCtaText="Book Your Discovery Call"
+        primaryCtaText="Book Discovery Call"
         primaryCtaLink="/book-audit"
-        secondaryCtaText="Simulate Your ROI"
+        secondaryCtaText="Simulate ROI"
         secondaryCtaLink="/#calculator"
         metrics={[
-          { val: '5 Institutional Cases', label: 'Cross-Channel Proof', sub: 'Verified dashboards' },
-          { val: '100% Unfiltered', label: 'Actual Screenshots', sub: 'Inspectable proof modals' },
-          { val: '4 Platforms', label: 'Amazon • Noon • Trendyol • Shopify', sub: 'Complete channel breadth' },
-          { val: 'Zero Retold Claims', label: 'Independent Metrics', sub: 'Client-specific attribution' }
+          { val: '5 Brands', label: 'Verified Cases', sub: 'Cross-channel proof' },
+          { val: '100%', label: 'Unfiltered Proof', sub: 'Direct from consoles' },
+          { val: '4 Platforms', label: 'GCC & Global', sub: 'Amazon • Noon • Trendyol • Shopify' },
+          { val: 'SAR 140M+', label: 'Managed GMV', sub: 'Documented revenue' }
         ]}
       />
 
       <section className="section">
         <div className="container">
-          {/* Channel Filter Buttons */}
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '10px',
-            marginBottom: '40px',
-            paddingBottom: '20px',
-            borderBottom: '1px solid var(--border-subtle)'
-          }}>
-            {[
-              { id: 'all', label: 'All Channels (5)' },
-              { id: 'amazon', label: 'Amazon Global & GCC (2)' },
-              { id: 'noon', label: 'Noon KSA & UAE (1)' },
-              { id: 'trendyol', label: 'Trendyol GCC Expansion (1)' },
-              { id: 'shopify', label: 'Shopify & Paid Media (1)' }
-            ].map(f => (
+          {/* Channel Filter Tabs (Desktop full labels, Mobile sleek 1-row compact tabs) */}
+          <div className="case-studies-filter-bar">
+            {FILTER_TABS.map(f => (
               <button
                 key={f.id}
-                className={`platform-badge-pill ${activeFilter === f.id ? 'active' : ''}`}
+                type="button"
+                className={`case-study-tab-btn ${activeFilter === f.id ? 'active' : ''}`}
                 onClick={() => setActiveFilter(f.id)}
-                style={{ cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: activeFilter === f.id ? 'var(--neon-mint)' : 'rgba(255,255,255,0.3)', flexShrink: 0 }}></span>
-                {f.label}
+                <span className="desktop-only">{f.label}</span>
+                <span className="mobile-only">{f.shortLabel}</span>
               </button>
             ))}
           </div>
 
-          {/* Case Studies Grid (3 columns per row dynamically wrapping) */}
-          <div className="case-studies-grid">
-            {filtered.map((cs) => (
-              <div className="mkt-card" key={cs.id}>
-                <div 
-                  className="dashboard-img-container" 
-                  onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
-                  title="Click to zoom inspect proof"
+          {/* Mobile Automatic Interactive Slideshow Carousel */}
+          <div 
+            className="mobile-cases-page-carousel-wrap"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="mobile-carousel-slide">
+              {filtered.length > 0 && renderCaseCard(filtered[safeMobileIdx], true)}
+            </div>
+
+            {filtered.length > 1 && (
+              <div className="mobile-carousel-controls">
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn prev" 
+                  onClick={handlePrev} 
+                  aria-label="Previous case study"
                 >
-                  <img src={cs.image} alt={cs.title} loading="lazy" />
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <span className="growth-badge">{cs.metrics.salesGrowth} Growth</span>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--neon-cyan)', fontWeight: 600 }}>{cs.region}</span>
-                </div>
-
-                <h3 className="mkt-card-title">{cs.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '12px' }}>{cs.category}</p>
-                <p className="mkt-card-desc" style={{ marginBottom: '20px' }}>{cs.summary}</p>
-
-                {/* Platforms Tags */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
-                  {cs.platforms.map((plat, idx) => (
-                    <span key={idx} style={{
-                      fontSize: '0.72rem',
-                      padding: '3px 8px',
-                      borderRadius: '12px',
-                      background: 'rgba(255, 255, 255, 0.04)',
-                      color: 'var(--text-heading)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)'
-                    }}>
-                      {plat}
-                    </span>
+                  ‹
+                </button>
+                <div className="carousel-dots">
+                  {filtered.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className={`carousel-dot ${safeMobileIdx === idx ? 'active' : ''}`}
+                      onClick={() => setMobileIdx(idx)}
+                      aria-label={`Go to case study ${idx + 1}`}
+                    />
                   ))}
                 </div>
-
-                {/* KPI Matrix Box */}
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(2, 1fr)',
-                  gap: '10px',
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  padding: '12px',
-                  borderRadius: 'var(--radius-sm)',
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
-                  marginBottom: '20px'
-                }}>
-                  <div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Volume</div>
-                    <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--neon-mint)' }}>{cs.metrics.volume}</div>
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Efficiency</div>
-                    <div style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--text-heading)' }}>{cs.metrics.roas}</div>
-                  </div>
-                </div>
-
-                <div style={{ marginTop: 'auto' }}>
-                  <p style={{ fontSize: '0.82rem', fontStyle: 'italic', color: 'var(--text-secondary)', marginBottom: '14px' }}>
-                    "{cs.highlightQuote}"
-                  </p>
-                  <Link
-                    to={`/case-studies/${cs.id}`}
-                    className="btn btn-secondary"
-                    style={{ width: '100%', justifyContent: 'center', fontSize: '0.82rem', padding: '10px 14px' }}
-                  >
-                    Read Full Case Study ➔
-                  </Link>
-                </div>
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn next" 
+                  onClick={handleNext} 
+                  aria-label="Next case study"
+                >
+                  ›
+                </button>
               </div>
-            ))}
+            )}
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '60px' }}>
-            <Link to="/book-audit" className="btn btn-primary" style={{ padding: '14px 36px' }}>
-              <span>Book Discovery Call to Scale Your Brand</span>
+          {/* Desktop Multi-Column Grid */}
+          <div className="desktop-cases-page-grid case-studies-grid">
+            {filtered.map((cs) => renderCaseCard(cs, false))}
+          </div>
+
+          <div className="case-studies-bottom-cta">
+            <Link to="/book-audit" className="btn btn-primary case-studies-cta-btn">
+              <span>Book Discovery Call</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>

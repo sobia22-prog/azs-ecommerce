@@ -7237,6 +7237,7 @@ div.desktop-only,
 .mobile-srv-single-card-wrap,
 .mobile-services-accordion,
 .mobile-cases-carousel-wrap,
+.mobile-cases-page-carousel-wrap,
 .mobile-programs-slideshow-wrap,
 .mobile-testi-carousel-wrap,
 .mobile-platform-carousel-wrap,
@@ -7249,12 +7250,54 @@ div.desktop-only,
 .desktop-marketplace-grid,
 .desktop-services-grid,
 .desktop-cases-grid,
+.desktop-cases-page-grid,
 .desktop-programs-grid,
 .desktop-testimonials-grid,
 .desktop-platform-grid,
 .desktop-channels-grid,
 .desktop-manage-grid {
   display: grid;
+}
+
+.case-studies-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.case-study-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: rgba(16, 25, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.case-study-tab-btn:hover {
+  border-color: rgba(0, 245, 155, 0.3);
+  color: var(--text-pure);
+}
+
+.case-study-tab-btn.active {
+  background: rgba(0, 245, 155, 0.12);
+  color: var(--neon-mint);
+  border-color: rgba(0, 245, 155, 0.4);
+  box-shadow: 0 0 12px rgba(0, 245, 155, 0.15);
+}
+
+.case-studies-bottom-cta {
+  text-align: center;
+  margin-top: 50px;
 }
 
 /* Marketplaces Matrix Container - Desktop Base Styles (Unboxed Clean Flow) */
@@ -9850,6 +9893,74 @@ div.desktop-only,
   }
 
   .shopify-channels-cta .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 16px !important;
+    font-size: 0.88rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Case Studies Directory Page - Mobile Carousel & Sleek Tabs */
+  .desktop-cases-page-grid {
+    display: none !important;
+  }
+
+  .case-studies-filter-bar {
+    display: flex !important;
+    gap: 4px !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+    overflow: visible !important;
+  }
+
+  .case-study-tab-btn {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    padding: 7px 2px !important;
+    border-radius: 20px !important;
+    background: rgba(16, 25, 42, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .case-study-tab-btn.active {
+    background: var(--grad-primary) !important;
+    color: #04070b !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 10px rgba(0, 245, 155, 0.35) !important;
+    font-weight: 700 !important;
+  }
+
+  .mobile-cases-page-carousel-wrap {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  .mobile-cases-page-carousel-wrap .mkt-card {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    min-height: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .case-studies-bottom-cta {
+    margin-top: 24px !important;
+    width: 100% !important;
+  }
+
+  .case-studies-cta-btn {
     width: 100% !important;
     max-width: 100% !important;
     padding: 12px 16px !important;
