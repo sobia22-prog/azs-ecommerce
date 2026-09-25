@@ -420,11 +420,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
 
           {/* Operational Systems: "How We Manage Your Brand" */}
           <div className="marketplaces-matrix-container">
-            <div className="section-header" style={{ textAlign: 'left', marginBottom: '18px' }}>
+            <div className="section-header" style={{ textAlign: 'left', marginBottom: '16px' }}>
               <h2>How We Manage Your Brand</h2>
-              <p>
-                Every marketplace account is steered by dedicated brand managers, native Arabic listing copywriters, PPC optimization specialists, and account health guardians.
-              </p>
             </div>
 
             {/* Mobile Automatic Slideshow in Card Style with Unified Controls */}
