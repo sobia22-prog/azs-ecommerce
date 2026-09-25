@@ -7240,6 +7240,7 @@ div.desktop-only,
 .mobile-cases-carousel-wrap,
 .mobile-programs-slideshow-wrap,
 .mobile-testi-carousel-wrap,
+.mobile-platform-carousel-wrap,
 .mobile-sticky-bottom-nav {
   display: none;
 }
@@ -7248,8 +7249,57 @@ div.desktop-only,
 .desktop-services-grid,
 .desktop-cases-grid,
 .desktop-programs-grid,
-.desktop-testimonials-grid {
+.desktop-testimonials-grid,
+.desktop-platform-grid {
   display: grid;
+}
+
+/* Marketplaces Matrix Container - Desktop Base Styles */
+.marketplaces-matrix-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-top: 60px;
+}
+
+.marketplaces-systems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.marketplaces-system-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.marketplaces-system-card .system-card-icon {
+  margin-bottom: 12px;
+  color: var(--neon-mint);
+}
+
+.marketplaces-system-card h4 {
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.marketplaces-system-card p {
+  font-size: 0.84rem;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+
+.marketplaces-matrix-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.marketplaces-cta-btn {
+  padding: 14px 32px;
 }
 
 /* Compact Capabilities Grid & Store Metrics */
@@ -9212,6 +9262,260 @@ div.desktop-only,
 
   .footer-legal-links a {
     font-size: 0.70rem !important;
+  }
+
+  /* ==========================================================================
+     MARKETPLACES DIVISION SUBPAGE - MOBILE OPTIMIZATIONS (< 768px)
+     ========================================================================== */
+  .page-header-container {
+    padding: 78px 0 24px !important;
+  }
+
+  .subpage-breadcrumbs {
+    margin-bottom: 10px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .subpage-title {
+    font-size: clamp(1.45rem, 5.5vw, 1.95rem) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .subpage-subtitle {
+    font-size: 0.80rem !important;
+    line-height: 1.42 !important;
+    margin-bottom: 16px !important;
+    color: var(--text-secondary) !important;
+  }
+
+  .subpage-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+  }
+
+  .subpage-actions .btn {
+    width: 100% !important;
+    padding: 11px 16px !important;
+    font-size: 0.86rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .subpage-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+    margin-top: 16px !important;
+  }
+
+  .subpage-metric-card {
+    padding: 10px 10px !important;
+    border-radius: 10px !important;
+  }
+
+  .subpage-metric-val {
+    font-size: clamp(1.1rem, 4vw, 1.25rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 4px !important;
+    font-weight: 800 !important;
+  }
+
+  .subpage-metric-lbl {
+    font-size: 0.68rem !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.03em !important;
+  }
+
+  .subpage-metric-sub {
+    font-size: 0.64rem !important;
+    line-height: 1.3 !important;
+    margin-top: 3px !important;
+    color: var(--text-dim) !important;
+  }
+
+  /* Division Switcher Ribbon Mobile */
+  .division-split-header {
+    padding: 12px 14px !important;
+    margin-bottom: 18px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .division-split-header h3 {
+    font-size: 1.05rem !important;
+    line-height: 1.25 !important;
+    margin-top: 2px !important;
+  }
+
+  .division-toggle-group {
+    width: 100% !important;
+    display: flex !important;
+    padding: 4px !important;
+    border-radius: 24px !important;
+    gap: 4px !important;
+  }
+
+  .division-nav-btn {
+    flex: 1 1 0 !important;
+    text-align: center !important;
+    padding: 7px 6px !important;
+    font-size: 0.74rem !important;
+    border-radius: 18px !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Platform Carousel Section Mobile */
+  .desktop-platform-grid {
+    display: none !important;
+  }
+
+  .mobile-platform-carousel-wrap {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  .mobile-platform-tabs-bar {
+    display: flex !important;
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 2px !important;
+  }
+
+  .mobile-platform-tabs-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .mobile-platform-tab-btn {
+    flex: 1 1 0 !important;
+    min-width: fit-content !important;
+    padding: 7px 10px !important;
+    border-radius: 20px !important;
+    background: rgba(16, 25, 42, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--text-secondary) !important;
+    font-size: 0.74rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .mobile-platform-tab-btn.active {
+    background: var(--grad-primary) !important;
+    color: #04070b !important;
+    border-color: transparent !important;
+    box-shadow: 0 0 10px rgba(0, 245, 155, 0.35) !important;
+    font-weight: 700 !important;
+  }
+
+  .mobile-platform-slide-wrap {
+    width: 100% !important;
+  }
+
+  .mobile-platform-slide-wrap .platform-detail-card {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .mobile-platform-slide-wrap .platform-detail-title {
+    font-size: 1.15rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .mobile-platform-slide-wrap .platform-detail-desc {
+    font-size: 0.76rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
+  }
+
+  .mobile-platform-slide-wrap .platform-checklist {
+    padding-top: 10px !important;
+    gap: 6px !important;
+  }
+
+  .mobile-platform-slide-wrap .platform-checklist-item {
+    font-size: 0.74rem !important;
+    line-height: 1.35 !important;
+    gap: 8px !important;
+  }
+
+  /* Operational Systems Matrix Mobile */
+  .marketplaces-matrix-container {
+    padding: 18px 14px !important;
+    margin-top: 24px !important;
+    border-radius: 12px !important;
+  }
+
+  .marketplaces-matrix-container .section-header {
+    margin-bottom: 14px !important;
+  }
+
+  .marketplaces-matrix-container .section-header h2 {
+    font-size: 1.2rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .marketplaces-matrix-container .section-header p {
+    font-size: 0.76rem !important;
+    line-height: 1.38 !important;
+  }
+
+  .marketplaces-systems-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 14px !important;
+  }
+
+  .marketplaces-system-card {
+    padding: 12px 10px !important;
+    border-radius: 10px !important;
+  }
+
+  .marketplaces-system-card .system-card-icon {
+    margin-bottom: 6px !important;
+  }
+
+  .marketplaces-system-card h4 {
+    font-size: 0.92rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .marketplaces-system-card p {
+    font-size: 0.76rem !important;
+    line-height: 1.38 !important;
+  }
+
+  .marketplaces-matrix-cta {
+    margin-top: 18px !important;
+    width: 100% !important;
+  }
+
+  .marketplaces-cta-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px 16px !important;
+    font-size: 0.88rem !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
   }
 }
 

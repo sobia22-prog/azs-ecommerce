@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
@@ -6,6 +6,10 @@ import { useCurrency } from '../context/CurrencyContext';
 
 export default function MarketplacesDivisionPage({ onOpenModal }) {
   const { formatDynamicText } = useCurrency();
+  const [mobileIdx, setMobileIdx] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   useSEO({
     title: 'Amazon, Noon & Trendyol Marketplace Management Agency | KSA & USA — AZS Solutions',
     description: 'Scale your marketplace revenue across Amazon KSA, Noon, Trendyol, and Amazon USA with AZS Solutions. Certified SPN partner delivering 3.4x average GMV growth.',
@@ -18,8 +22,9 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
   const platforms = [
     {
       id: 'amazon-ksa',
-      name: 'Amazon Saudi Arabia (Amazon.sa)',
-      sub: 'KSA Flagship Marketplace & Riyadh/Jeddah FBA Logistics',
+      shortLabel: 'Amazon KSA',
+      name: 'Amazon Saudi Arabia',
+      sub: 'KSA Flagship & FBA Logistics',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -33,20 +38,21 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       link: '/marketplace-management/amazon-ksa',
       metrics: {
         highlight: '14.43x ROAS',
-        sub: 'HomeMaster Appliances Flagship',
+        sub: 'HomeMaster Flagship',
         volume: 'SAR 120.8K/wk'
       },
       features: [
         'Sponsored Products, Brands & Display PPC Architecture',
         'Riyadh & Jeddah FBA Inbound Shipment Routing',
-        'Hijacker Suppression & Buy Box Win-Rate Optimization (>96%)',
-        'Arabic Keyword Indexing & High-Converting Brand Stores'
+        'Buy Box Defense & Hijacker Suppression (>96%)',
+        'Arabic Keyword Indexing & High-Converting Stores'
       ]
     },
     {
       id: 'amazon-usa',
-      name: 'Amazon USA Expansion (Amazon.com)',
-      sub: 'North American Omnichannel, Amazon DSP & Nationwide FBA',
+      shortLabel: 'Amazon USA',
+      name: 'Amazon USA',
+      sub: 'DSP Media & Nationwide FBA',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10"></circle>
@@ -61,20 +67,21 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       link: '/marketplace-management/amazon-usa',
       metrics: {
         highlight: '11.20x ROAS',
-        sub: 'NuvoAura Beauty Flagship',
+        sub: 'NuvoAura Beauty',
         volume: '$48.9K Ad Sales'
       },
       features: [
-        'Programmatic Amazon Demand-Side Platform (DSP) Media',
-        'Amazon Marketing Cloud (AMC) Multi-Touch Attribution',
-        'Nationwide FBA Restock Limit & Inventory Velocity Hygiene',
-        'A+ Brand Storytelling & US Cross-Border Tariff Optimization'
+        'Programmatic Amazon DSP Advertising',
+        'Amazon Marketing Cloud (AMC) Attribution',
+        'Nationwide FBA Restock Limit & Inventory Flow',
+        'A+ Brand Storytelling & US Tariff Compliance'
       ]
     },
     {
       id: 'noon',
-      name: 'Noon Marketplace GCC',
-      sub: 'KSA & UAE Seller Lab, Yellow Friday & FBN Express Routing',
+      shortLabel: 'Noon GCC',
+      name: 'Noon Marketplace',
+      sub: 'GCC Seller Lab & FBN Express',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -87,20 +94,21 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       link: '/marketplace-management/noon',
       metrics: {
         highlight: '6.85x ROAS',
-        sub: 'Creative Things Noon Performance',
+        sub: 'Creative Things Noon',
         volume: 'SAR 208.5K GMV'
       },
       features: [
-        'Fulfilled by Noon (FBN) Express Badge & Priority Delivery',
-        'Yellow Friday, Ramadan, and Monthly Mega-Sale Execution',
+        'Fulfilled by Noon (FBN) Express Priority Badge',
+        'Yellow Friday, Ramadan, and Monthly Mega-Sales',
         'Noon Ad Boost Bidding & Keyword Target Optimization',
-        'Cross-Docking & GCC Customs Clearance Coordination'
+        'Cross-Docking & GCC Customs Logistics Support'
       ]
     },
     {
       id: 'trendyol',
-      name: 'Trendyol Cross-Border Hub',
-      sub: 'Turkey & Europe to Saudi Arabia & UAE Fast-Growth Corridor',
+      shortLabel: 'Trendyol',
+      name: 'Trendyol Hub',
+      sub: 'Turkey & Europe to GCC Corridor',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -114,35 +122,142 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       link: '/marketplace-management/trendyol',
       metrics: {
         highlight: '7.80x ROAS',
-        sub: 'Eurasia Lifestyle Direct',
+        sub: 'Eurasia Lifestyle',
         volume: 'SAR 145K/mo'
       },
       features: [
-        'Cross-Border SKU Onboarding & Localized Arabic Attribute Mapping',
-        'Flash Sale Participation & Trendyol Sponsored Promotions',
-        'GCC Customs, Tax & Localized Duty Reconciliation',
-        'Fast-Track Fulfillment Routing with < 72h Delivery SLAs'
+        'Cross-Border SKU Onboarding & Arabic Attribute Mapping',
+        'Flash Sale Participation & Trendyol Promotions',
+        'GCC Customs, Tax & Duty Reconciliation',
+        'Fast-Track Fulfillment with < 72h Delivery SLAs'
       ]
     }
   ];
 
+  const handlePrev = () => {
+    setMobileIdx((prev) => (prev - 1 + platforms.length) % platforms.length);
+  };
+
+  const handleNext = () => {
+    setMobileIdx((prev) => (prev + 1) % platforms.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+  };
+
+  const renderPlatformCard = (p) => (
+    <div className="platform-detail-card" key={p.id}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+        <div className="platform-detail-icon">{p.icon}</div>
+        <span className="growth-badge">{p.badge}</span>
+      </div>
+
+      {/* Light-theme verified console preview */}
+      <div 
+        className="dashboard-img-container" 
+        style={{ marginBottom: '16px', cursor: 'pointer', aspectRatio: '16 / 9.5', minHeight: 'auto' }}
+        onClick={() => onOpenModal && onOpenModal(p.image, `${p.name} Verified Console`)}
+        title="Click to inspect verified console"
+      >
+        <img src={p.image} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+
+      <h3 className="platform-detail-title">{p.name}</h3>
+      <p style={{ fontSize: '0.82rem', color: 'var(--neon-cyan)', marginBottom: '10px', fontWeight: 600 }}>{p.sub}</p>
+      <p className="platform-detail-desc">{p.desc}</p>
+
+      {/* Live Verified Metric Box */}
+      <div style={{
+        background: 'rgba(255, 255, 255, 0.02)',
+        border: '1px solid rgba(255, 255, 255, 0.06)',
+        borderRadius: 'var(--radius-sm)',
+        padding: '12px 14px',
+        marginBottom: '16px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }}>
+        <div>
+          <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>
+            {formatDynamicText(p.metrics.highlight)}
+          </div>
+          <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{p.metrics.sub}</div>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-heading)' }}>
+            {formatDynamicText(p.metrics.volume)}
+          </div>
+          <div style={{ fontSize: '0.70rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Verified Metric</div>
+        </div>
+      </div>
+
+      <ul className="platform-checklist">
+        {p.features.map((feat, idx) => (
+          <li key={idx} className="platform-checklist-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>{feat}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
+        <Link 
+          to={p.link} 
+          className="btn btn-secondary" 
+          style={{ 
+            width: '100%', 
+            justifyContent: 'center', 
+            whiteSpace: 'normal', 
+            textAlign: 'center', 
+            padding: '12px 16px', 
+            fontSize: '0.88rem',
+            lineHeight: '1.3'
+          }}
+        >
+          <span>{p.buttonText}</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0 }}>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge="Institutional Division"
+        badge="Marketplaces"
         title="Marketplaces"
-        highlight="Growth Division"
-        subtitle="End-to-end marketplace management, catalog syndication, sponsored advertising, and algorithmic Buy Box defense across Amazon, Noon, and Trendyol in Saudi Arabia, UAE, USA, and the UK."
-        breadcrumbs={[{ label: 'Marketplaces Division' }]}
+        highlight="Growth"
+        subtitle="Full-service marketplace management, advertising, and Buy Box growth across Amazon, Noon, and Trendyol in the GCC, USA, and UK."
+        breadcrumbs={[{ label: 'Marketplaces' }]}
         primaryCtaText="Book Marketplace Audit"
         primaryCtaLink="/book-audit"
         secondaryCtaText="Explore Case Studies"
         secondaryCtaLink="/case-studies"
         metrics={[
           { val: formatDynamicText('$142.8M+'), label: 'Marketplace GMV', sub: 'Managed across portfolios' },
-          { val: '93.4%', label: 'Avg. Buy Box Rate', sub: 'Algorithmic pricing & suppression defense' },
-          { val: '3 Premier Corridors', label: 'GCC • USA • UK', sub: 'Unified multi-region ops' },
-          { val: '100% Turnkey', label: 'A-to-Z Execution', sub: 'From catalog to ad scaling' }
+          { val: '93.4%', label: 'Buy Box Rate', sub: 'Algorithmic defense' },
+          { val: '3 Regions', label: 'GCC • USA • UK', sub: 'Unified regional ops' },
+          { val: '100%', label: 'Turnkey Growth', sub: 'Catalog to ad scale' }
         ]}
       />
 
@@ -152,167 +267,142 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
           <div className="division-split-header">
             <div>
               <span style={{ fontSize: '0.78rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Operational Division
+                Platform Tracks
               </span>
-              <h3 style={{ fontSize: '1.25rem', color: 'var(--text-heading)', margin: '4px 0 0' }}>
-                Division 1: Marketplaces vs Division 2: Shopify & D2C
+              <h3 style={{ fontSize: '1.2rem', color: 'var(--text-heading)', margin: '4px 0 0' }}>
+                Marketplaces & Online Stores
               </h3>
             </div>
             <div className="division-toggle-group">
-              <span className="division-nav-btn active">Marketplaces Division</span>
-              <Link to="/shopify-dtc" className="division-nav-btn">Shopify & D2C Division</Link>
+              <span className="division-nav-btn active">Marketplaces</span>
+              <Link to="/shopify-dtc" className="division-nav-btn">Shopify & D2C</Link>
             </div>
           </div>
 
-          <div className="section-header" style={{ textAlign: 'left', margin: '40px 0 20px' }}>
+          <div className="section-header" style={{ textAlign: 'left', margin: '36px 0 20px' }}>
             <h2>Marketplaces We Scale</h2>
-            <p>
+            <p className="desktop-only">
               Select a dedicated platform hub below for platform-specific capabilities, case studies, and execution systems:
+            </p>
+            <p className="mobile-only">
+              Select or swipe across platforms to view capabilities and performance:
             </p>
           </div>
 
-          {/* 4 Dedicated Platform Cards with Console Dashboards & Clean Buttons */}
-          <div className="platform-detail-grid">
-            {platforms.map((p) => (
-              <div className="platform-detail-card" key={p.id}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                  <div className="platform-detail-icon">{p.icon}</div>
-                  <span className="growth-badge">{p.badge}</span>
-                </div>
-
-                {/* Light-theme verified console preview */}
-                <div 
-                  className="dashboard-img-container" 
-                  style={{ marginBottom: '18px', cursor: 'pointer', aspectRatio: '16 / 9.5', minHeight: 'auto' }}
-                  onClick={() => onOpenModal && onOpenModal(p.image, `${p.name} Verified Console`)}
-                  title="Click to inspect verified console"
+          {/* Mobile Interactive Slideshow Carousel */}
+          <div className="mobile-platform-carousel-wrap">
+            <div className="mobile-platform-tabs-bar">
+              {platforms.map((p, idx) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  className={`mobile-platform-tab-btn ${mobileIdx === idx ? 'active' : ''}`}
+                  onClick={() => setMobileIdx(idx)}
                 >
-                  <img src={p.image} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
+                  {p.shortLabel}
+                </button>
+              ))}
+            </div>
 
-                <h3 className="platform-detail-title">{p.name}</h3>
-                <p style={{ fontSize: '0.82rem', color: 'var(--neon-cyan)', marginBottom: '12px', fontWeight: 600 }}>{p.sub}</p>
-                <p className="platform-detail-desc">{p.desc}</p>
-
-                {/* Live Verified Metric Box */}
-                <div style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  border: '1px solid rgba(255, 255, 255, 0.06)',
-                  borderRadius: 'var(--radius-sm)',
-                  padding: '14px',
-                  marginBottom: '20px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
-                  <div>
-                    <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>
-                      {formatDynamicText(p.metrics.highlight)}
-                    </div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{p.metrics.sub}</div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-heading)' }}>
-                      {formatDynamicText(p.metrics.volume)}
-                    </div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Verified Metric</div>
-                  </div>
-                </div>
-
-                <ul className="platform-checklist">
-                  {p.features.map((feat, idx) => (
-                    <li key={idx} className="platform-checklist-item">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <Link 
-                    to={p.link} 
-                    className="btn btn-secondary" 
-                    style={{ 
-                      width: '100%', 
-                      justifyContent: 'center', 
-                      whiteSpace: 'normal', 
-                      textAlign: 'center', 
-                      padding: '12px 16px', 
-                      fontSize: '0.88rem',
-                      lineHeight: '1.3'
-                    }}
-                  >
-                    <span>{p.buttonText}</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink: 0 }}>
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </Link>
-                </div>
+            <div 
+              className="mobile-platform-slide-wrap"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className="mobile-carousel-slide">
+                {renderPlatformCard(platforms[mobileIdx])}
               </div>
-            ))}
+
+              <div className="mobile-carousel-controls">
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn prev" 
+                  onClick={handlePrev} 
+                  aria-label="Previous Marketplace"
+                >
+                  ‹
+                </button>
+                <div className="carousel-dots">
+                  {platforms.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className={`carousel-dot ${mobileIdx === idx ? 'active' : ''}`}
+                      onClick={() => setMobileIdx(idx)}
+                      aria-label={`Go to ${platforms[idx].shortLabel}`}
+                    />
+                  ))}
+                </div>
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn next" 
+                  onClick={handleNext} 
+                  aria-label="Next Marketplace"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop 2x2 Dedicated Platform Grid */}
+          <div className="desktop-platform-grid platform-detail-grid">
+            {platforms.map((p) => renderPlatformCard(p))}
           </div>
 
           {/* Operational Systems Matrix */}
-          <div style={{
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border-card)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '40px',
-            marginTop: '60px'
-          }}>
+          <div className="marketplaces-matrix-container">
             <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
               <h2>How We Manage Your Brand</h2>
               <p>
-                We do not use cookie-cutter software bots. Every marketplace account is steered by dedicated brand managers, Arabic native listing copywriters, PPC optimization specialists, and account health guardians.
+                Every marketplace account is steered by dedicated brand managers, native Arabic listing copywriters, PPC optimization specialists, and account health guardians.
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginTop: '30px' }}>
-              <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+            <div className="marketplaces-systems-grid">
+              <div className="marketplaces-system-card">
+                <div className="system-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                 </div>
-                <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>Buy Box & IP Defense</h4>
-                <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
+                <h4>Buy Box & IP Defense</h4>
+                <p>
                   Automated scraping of unauthorized third-party sellers, proactive brand registry enforcement, and algorithmic dynamic repricing maintaining &gt;90% Buy Box occupancy.
                 </p>
               </div>
 
-              <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+              <div className="marketplaces-system-card">
+                <div className="system-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" />
                     <circle cx="12" cy="12" r="6" />
                     <circle cx="12" cy="12" r="2" />
                   </svg>
                 </div>
-                <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>PPC Campaign Structuring</h4>
-                <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
+                <h4>PPC Campaign Structuring</h4>
+                <p>
                   Exact, phrase, and broad keyword segmentation, dayparting, negative keyword harvesting, and Sponsored Brands video units delivering sub-15% ACOS.
                 </p>
               </div>
 
-              <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+              <div className="marketplaces-system-card">
+                <div className="system-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" />
                     <line x1="2" y1="12" x2="22" y2="12" />
                     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                   </svg>
                 </div>
-                <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>Arabic Localization</h4>
-                <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
+                <h4>Arabic Localization</h4>
+                <p>
                   Native GCC Arabic dialect keyword search volume indexing, cultural compliance, and high-conversion Arabic A+ infographic storytelling.
                 </p>
               </div>
 
-              <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '20px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                <div style={{ marginBottom: '12px', color: 'var(--neon-mint)' }}>
+              <div className="marketplaces-system-card">
+                <div className="system-card-icon">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="1" y="3" width="15" height="13" />
                     <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
@@ -320,16 +410,16 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
                     <circle cx="18.5" cy="18.5" r="2.5" />
                   </svg>
                 </div>
-                <h4 style={{ color: 'var(--text-heading)', marginBottom: '8px' }}>FBA / FBN Logistics</h4>
-                <p style={{ fontSize: '0.84rem', color: 'var(--text-body)', lineHeight: 1.6 }}>
+                <h4>FBA / FBN Logistics</h4>
+                <p>
                   Warehouse routing into Riyadh, Jeddah, and Dubai fulfillment nodes, avoiding stockouts during Ramadan and White/Yellow Friday mega-sales.
                 </p>
               </div>
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '40px' }}>
-              <Link to="/book-audit" className="btn btn-primary" style={{ padding: '14px 32px' }}>
-                <span>Schedule Free Marketplace Strategy Audit</span>
+            <div className="marketplaces-matrix-cta">
+              <Link to="/book-audit" className="btn btn-primary marketplaces-cta-btn">
+                <span>Book Marketplace Audit</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
