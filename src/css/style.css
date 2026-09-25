@@ -2187,7 +2187,8 @@ div.desktop-only,
 
 @media (max-width: 580px) {
   .channel-checkboxes {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 }
 
@@ -2378,8 +2379,97 @@ div.desktop-only,
 }
 
 /* ==========================================================================
-   Section: Testimonials & Executive Proof
-   ========================================================================== */
+/* Trust Platforms Ribbon */
+.trust-platforms-ribbon {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.trust-ribbon-card {
+  background: rgba(11, 17, 29, 0.85);
+  border: 1px solid rgba(0, 245, 155, 0.3);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform var(--transition-fast);
+}
+
+.trust-ribbon-card.ribbon-clutch {
+  border-color: rgba(0, 210, 255, 0.3);
+}
+
+.trust-ribbon-card.ribbon-google {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.trust-ribbon-card:hover {
+  transform: translateY(-2px);
+}
+
+.trust-ribbon-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 800;
+}
+
+.trust-ribbon-avatar.avatar-mint {
+  background: rgba(0, 245, 155, 0.15);
+  color: var(--neon-mint);
+  font-size: 1.15rem;
+}
+
+.trust-ribbon-avatar.avatar-cyan {
+  background: rgba(0, 210, 255, 0.15);
+  color: var(--neon-cyan);
+}
+
+.trust-ribbon-avatar.avatar-white {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.trust-ribbon-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.trust-ribbon-score-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.trust-ribbon-score {
+  font-weight: 800;
+  color: var(--text-pure);
+  font-size: 1.05rem;
+}
+
+.trust-ribbon-stars.stars-mint {
+  color: var(--neon-mint);
+  font-size: 0.82rem;
+}
+
+.trust-ribbon-stars.stars-cyan {
+  color: var(--neon-cyan);
+  font-size: 0.82rem;
+}
+
+.trust-ribbon-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -7241,6 +7331,13 @@ div.desktop-only,
 }
 
 /* Base Desktop Defaults for Mobile-First Toggled Sections */
+.desktop-only {
+  display: block;
+}
+span.desktop-only {
+  display: inline;
+}
+
 .mobile-mkt-tabs-bar,
 .mobile-mkt-single-card-wrap,
 .mobile-services-tabs-bar,
@@ -7248,6 +7345,7 @@ div.desktop-only,
 .mobile-services-accordion,
 .mobile-cases-carousel-wrap,
 .mobile-programs-slideshow-wrap,
+.mobile-testi-carousel-wrap,
 .mobile-sticky-bottom-nav {
   display: none;
 }
@@ -7255,7 +7353,8 @@ div.desktop-only,
 .desktop-marketplace-grid,
 .desktop-services-grid,
 .desktop-cases-grid,
-.desktop-programs-grid {
+.desktop-programs-grid,
+.desktop-testimonials-grid {
   display: grid;
 }
 
@@ -7489,6 +7588,15 @@ div.desktop-only,
 @media (max-width: 768px) {
   body {
     padding-bottom: 58px !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Hide Strategic Advantage completely on mobile */
+  #why-trust {
+    display: none !important;
   }
 
   .mobile-sticky-bottom-nav {
@@ -8745,6 +8853,308 @@ div.desktop-only,
   /* Store-Specific Verified Impact Card - Hidden on mobile, shown on laptop */
   .store-metrics-panel {
     display: none !important;
+  }
+
+  /* ==========================================================================
+     THIRD-PARTY VERIFIED PROOF - MOBILE CAROUSEL SLIDESHOW & COMPACT RIBBON
+     ========================================================================== */
+  #testimonials {
+    padding-top: 20px !important;
+    padding-bottom: 26px !important;
+  }
+
+  #testimonials .section-header {
+    margin-bottom: 14px !important;
+    text-align: center !important;
+  }
+
+  #testimonials .section-header h2 {
+    font-size: clamp(1.15rem, 4.4vw, 1.30rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 4px !important;
+    text-align: center !important;
+  }
+
+  /* Compact Horizontal Swipable Ribbon for Verified Platforms */
+  .trust-platforms-ribbon {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+    overflow-x: auto !important;
+    padding-bottom: 4px !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+  }
+
+  .trust-platforms-ribbon::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .trust-ribbon-card {
+    flex: 1 1 0 !important;
+    min-width: 125px !important;
+    padding: 8px 10px !important;
+    gap: 8px !important;
+    border-radius: 10px !important;
+    background: rgba(11, 17, 29, 0.9) !important;
+  }
+
+  .trust-ribbon-avatar {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .trust-ribbon-avatar.avatar-mint {
+    font-size: 0.95rem !important;
+  }
+
+  .trust-ribbon-avatar.avatar-cyan svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .trust-ribbon-avatar.avatar-white {
+    font-size: 0.85rem !important;
+  }
+
+  .trust-ribbon-score {
+    font-size: 0.82rem !important;
+  }
+
+  .trust-ribbon-stars {
+    font-size: 0.65rem !important;
+  }
+
+  .trust-ribbon-sub {
+    font-size: 0.58rem !important;
+    white-space: nowrap !important;
+  }
+
+  .desktop-testimonials-grid {
+    display: none !important;
+  }
+
+  .mobile-testi-carousel-wrap {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  .mobile-testi-slide {
+    animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  #testimonials .testi-card {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+  }
+
+  #testimonials .testi-rating {
+    font-size: 0.88rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  #testimonials .testi-quote {
+    font-size: 0.78rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
+    color: var(--text-heading) !important;
+  }
+
+  #testimonials .testi-author-row {
+    gap: 10px !important;
+  }
+
+  #testimonials .testi-avatar {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.78rem !important;
+  }
+
+  #testimonials .testi-name {
+    font-size: 0.85rem !important;
+  }
+
+  #testimonials .testi-role {
+    font-size: 0.70rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* ==========================================================================
+     INTERACTIVE REVENUE SIMULATOR MOBILE OVERHAUL
+     ========================================================================== */
+  #calculator {
+    padding-top: 20px !important;
+    padding-bottom: 26px !important;
+  }
+
+  #calculator .section-header {
+    margin-bottom: 14px !important;
+    text-align: center !important;
+  }
+
+  #calculator .section-header h2 {
+    font-size: clamp(1.15rem, 4.4vw, 1.30rem) !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.01em !important;
+    margin-bottom: 4px !important;
+    text-align: center !important;
+  }
+
+  .calc-card,
+  .calculator-wrap {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .calc-controls-col {
+    gap: 12px !important;
+  }
+
+  .calc-control-group {
+    gap: 5px !important;
+  }
+
+  .calc-label-row .input-label {
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    color: var(--text-pure) !important;
+  }
+
+  .calc-label-row .input-val {
+    font-size: 1.05rem !important;
+    font-weight: 800 !important;
+  }
+
+  .custom-range {
+    height: 6px !important;
+    margin: 3px 0 5px !important;
+  }
+
+  .custom-range::-webkit-slider-thumb {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .channels-select-group {
+    margin-top: 2px !important;
+  }
+
+  .channels-select-group .input-label {
+    font-size: 0.76rem !important;
+    font-weight: 600 !important;
+    color: var(--text-pure) !important;
+  }
+
+  .channel-checkboxes {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+  }
+
+  .channel-check-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 7px 8px !important;
+    font-size: 0.70rem !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .channel-check-btn .check-icon {
+    font-size: 0.76rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .channel-check-btn .channel-btn-text {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .calc-synergy-hint {
+    padding: 8px 10px !important;
+    font-size: 0.70rem !important;
+    line-height: 1.35 !important;
+    border-radius: 8px !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .calc-results-col {
+    padding: 16px 12px !important;
+    border-radius: 14px !important;
+    gap: 12px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  .res-header {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+    margin-bottom: 3px !important;
+    color: var(--text-muted) !important;
+  }
+
+  .projected-rev-big {
+    font-size: 1.85rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .growth-increment-tag {
+    font-size: 0.76rem !important;
+    margin-bottom: 12px !important;
+    gap: 4px !important;
+  }
+
+  .res-metrics-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .res-metric-item {
+    padding: 8px 8px !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .res-metric-label {
+    font-size: 0.60rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .res-metric-val {
+    font-size: 0.92rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .calc-results-col .btn {
+    padding: 10px 14px !important;
+    font-size: 0.82rem !important;
+    border-radius: 10px !important;
+    width: 100% !important;
+    justify-content: center !important;
   }
 }
 

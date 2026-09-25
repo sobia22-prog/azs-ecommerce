@@ -58,7 +58,7 @@ export default function GrowthCalculator() {
         <div className="section-header">
           <div className="badge-pill badge-pill-cyan">Interactive Revenue Simulator</div>
           <h2>Forecast Your Multi-Marketplace Growth Potential</h2>
-          <p>
+          <p className="desktop-only">
             Estimate your 6-month scale across KSA, Trendyol, USA, and UK marketplaces with synchronized performance media.
           </p>
         </div>
@@ -112,11 +112,12 @@ export default function GrowthCalculator() {
                 ].map(c => (
                   <button
                     key={c.id}
+                    type="button"
                     className={`channel-check-btn ${channels.includes(c.id) ? 'checked' : ''}`}
                     onClick={() => toggleChannel(c.id)}
                   >
-                    <span style={{ color: channels.includes(c.id) ? 'var(--neon-mint)' : 'var(--text-muted)', fontWeight: 800, marginRight: '6px' }}>✓</span>
-                    {c.label}
+                    <span className="check-icon" style={{ color: channels.includes(c.id) ? 'var(--neon-mint)' : 'var(--text-muted)', fontWeight: 800, marginRight: '4px' }}>✓</span>
+                    <span className="channel-btn-text">{c.label}</span>
                   </button>
                 ))}
               </div>
@@ -126,7 +127,7 @@ export default function GrowthCalculator() {
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ color: 'var(--neon-mint)', flexShrink: 0, marginTop: '2px' }}>
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
               </svg>
-              <span><strong>Cross-Market Synergy:</strong> Expanding across KSA, USA, and UK unlocks blended ad efficiency and reduces customer acquisition cost by up to 38%.</span>
+              <span><strong>Cross-Market Synergy:</strong> Expanding across KSA, USA, and UK unlocks blended ad efficiency and reduces CAC by up to 38%.</span>
             </div>
           </div>
 

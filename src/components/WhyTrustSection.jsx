@@ -76,7 +76,7 @@ export default function WhyTrustSection({ onOpenModal }) {
   ];
 
   return (
-    <section className="section section-alt" id="why-trust">
+    <section className="section section-alt desktop-only" id="why-trust">
       <div className="container">
         <div className="section-header">
           <div className="deck-eyebrow-pill">
