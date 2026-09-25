@@ -173,8 +173,8 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
 
           {/* 4 Pillars of Trendyol Expansion */}
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <div className="badge-pill">Turnkey Systems</div>
-            <h2>The AZS Trendyol Expansion Architecture</h2>
+            <div className="badge-pill">Our Services</div>
+            <h2>How We Scale On Trendyol</h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>

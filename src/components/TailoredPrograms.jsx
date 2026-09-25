@@ -128,9 +128,9 @@ export default function TailoredPrograms() {
         <div className="section-header">
           <div className="deck-eyebrow-pill">
             <span className="deck-num">09</span>
-            <span>ENGAGEMENT MODELS</span>
+            <span>PROGRAMS</span>
           </div>
-          <h2>Tailored Programs for High-Yield Acceleration</h2>
+          <h2>Programs &amp; Pricing</h2>
           <p className="desktop-only">
             Choose the operational partnership that aligns with your scale, channel mix, and GCC expansion timeline. Transparent indicative pricing to fast-track your qualification.
           </p>

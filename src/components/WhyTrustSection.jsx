@@ -81,11 +81,11 @@ export default function WhyTrustSection({ onOpenModal }) {
         <div className="section-header">
           <div className="deck-eyebrow-pill">
             <span className="deck-num">10</span>
-            <span>STRATEGIC ADVANTAGE</span>
+            <span>WHY CHOOSE US</span>
           </div>
-          <h2>Why Eight-Figure Brands Trust AZS Solutions</h2>
+          <h2>Why Brands Trust AZS</h2>
           <p>
-            Marketplace operations across KSA, USA, and UK, built on institutional discipline.
+            Marketplace operations across KSA, USA, and UK, built on real results.
           </p>
         </div>
 
@@ -100,9 +100,9 @@ export default function WhyTrustSection({ onOpenModal }) {
           </div>
 
           <div>
-            <div className="badge-pill badge-pill-cyan">Institutional Discipline</div>
+            <div className="badge-pill badge-pill-cyan">Proven Experience</div>
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginTop: '8px', marginBottom: '10px', color: 'var(--text-pure)' }}>
-              Certified Dominance Across KSA, USA & UK Corridors
+              Proven Across KSA, USA & UK
             </h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', lineHeight: '1.5', marginBottom: '16px' }}>
               We deploy battle-tested Playbooks developed across hundreds of multi-region catalogs in Saudi Arabia, the United States, and the United Kingdom, ensuring maximum capital efficiency.

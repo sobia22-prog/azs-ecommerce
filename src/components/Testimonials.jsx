@@ -71,10 +71,10 @@ export default function Testimonials() {
     <section className="section" id="testimonials">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill">Third-Party Verified Proof</div>
-          <h2>Trusted by Ecommerce Leaders Worldwide</h2>
+          <div className="badge-pill">Client Reviews</div>
+          <h2>What Our Clients Say</h2>
           <p className="desktop-only">
-            Real feedback and audited ratings from enterprise and scaling brand founders across the GCC and internationally.
+            Real feedback and ratings from brand founders across the GCC and internationally.
           </p>
         </div>
 

@@ -117,11 +117,11 @@ export default function ChallengeSolutionMatrix({ onOpenModal }) {
         <div className="section-header">
           <div className="deck-eyebrow-pill">
             <span className="deck-num">03</span>
-            <span>CHALLENGES & SOLUTIONS</span>
+            <span>HOW WE HELP</span>
           </div>
-          <h2>Marketplace Bottlenecks vs AZS Systems</h2>
+          <h2>Problems We Solve</h2>
           <p>
-            Institutional systems that turn marketplace friction into compounding revenue.
+            Proven solutions that fix roadblocks and grow your revenue.
           </p>
 
           <div className="matrix-filter-wrapper">

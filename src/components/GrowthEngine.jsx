@@ -33,10 +33,10 @@ export default function GrowthEngine() {
     <section className="section section-alt desktop-only" id="process">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill">Repeatable Growth</div>
-          <h2>The 5-Stage Growth Engine</h2>
+          <div className="badge-pill">Our Process</div>
+          <h2>Our 5-Step Process</h2>
           <p>
-            A practical, repeatable path from initial setup to sustained multi-channel dominance.
+            A practical, proven path from initial setup to sustained multi-channel growth.
           </p>
         </div>
 

@@ -91,7 +91,7 @@ const MARKETPLACE_LIST = [
 
 const DASHBOARDS = {
   ksa: {
-    title: 'KSA Marketplace Growth Console (Amazon.sa & Noon KSA)',
+    title: 'Amazon & Noon Growth (KSA)',
     desc: 'Seller Lab & Fulfilled By Noon (FBN) promotional push showing massive conversion and volume scaling in Saudi Arabia.',
     img: '/assets/noon_ads_full_card.png',
     stat1Label: 'KSA Revenue',
@@ -104,7 +104,7 @@ const DASHBOARDS = {
     stat4Val: '522 Units'
   },
   trendyol: {
-    title: 'Trendyol GCC Cross-Border Expansion Gateway',
+    title: 'Trendyol Expansion (GCC)',
     desc: 'Automated product attribute translation, localized pricing, flash sale marketing, and high-margin GCC volume on Trendyol.',
     img: '/assets/trendyol_light_dashboard.svg',
     stat1Label: 'GCC Run-Rate',
@@ -117,7 +117,7 @@ const DASHBOARDS = {
     stat4Val: '350+ Live'
   },
   usa: {
-    title: 'USA Marketplace Advertising Engine (Amazon.com)',
+    title: 'Amazon Growth (USA)',
     desc: 'Verified Sponsored Products (SP), Sponsored Brands (SB), and Sponsored Display (SD) campaign scaling in the United States.',
     img: '/assets/usa_amazon_light_dashboard.svg',
     stat1Label: 'Total Ad Sales',
@@ -130,7 +130,7 @@ const DASHBOARDS = {
     stat4Val: '$4,360.00'
   },
   uk: {
-    title: 'UK Marketplace Cross-Border Gateway (Amazon.co.uk)',
+    title: 'Amazon Growth (UK)',
     desc: 'High-margin British expansion, localized SEO, VAT compliance, Prime fulfillment, and consumer acquisition.',
     img: '/assets/uk_amazon_light_dashboard.svg',
     stat1Label: 'UK Revenue Lift',
@@ -143,7 +143,7 @@ const DASHBOARDS = {
     stat4Val: '480 Units'
   },
   consolidated: {
-    title: 'Consolidated Executive Reporting (GCC, USA, UK & Cross-Border)',
+    title: 'Performance Overview',
     desc: 'Unified multi-region operational reporting dashboard comparing Amazon, Noon, Trendyol, and Shopify in a single accountable view.',
     img: '/assets/consolidated_light_dashboard.svg',
     stat1Label: 'Total Portfolio GMV',
@@ -236,8 +236,8 @@ export default function Marketplaces({ onOpenModal }) {
     <section className="section" id="marketplaces">
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill desktop-only">The 4 Core Marketplaces</div>
-            <h2>Dominating KSA, Trendyol, USA & UK Marketplaces</h2>
+            <div className="badge-pill desktop-only">Marketplaces</div>
+            <h2>Marketplaces We Manage</h2>
             <p className="desktop-only">
               One operating team for marketplace growth across the regions that matter.
             </p>

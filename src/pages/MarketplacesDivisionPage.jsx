@@ -165,8 +165,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
           </div>
 
           <div className="section-header" style={{ textAlign: 'left', margin: '40px 0 20px' }}>
-            <div className="badge-pill">Covered Platforms</div>
-            <h2>Dominating Global & Regional Corridors</h2>
+            <div className="badge-pill">Platforms</div>
+            <h2>Marketplaces We Scale</h2>
             <p>
               Select a dedicated platform hub below for platform-specific capabilities, case studies, and execution systems:
             </p>
@@ -265,8 +265,8 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
             marginTop: '60px'
           }}>
             <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-              <div className="badge-pill">Institutional Infrastructure</div>
-              <h2>How AZS Executes Marketplace Dominance</h2>
+              <div className="badge-pill">Our Approach</div>
+              <h2>How We Manage Your Brand</h2>
               <p>
                 We do not use cookie-cutter software bots. Every marketplace account is steered by dedicated brand managers, Arabic native listing copywriters, PPC optimization specialists, and account health guardians.
               </p>

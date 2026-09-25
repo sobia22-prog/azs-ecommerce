@@ -189,8 +189,8 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
 
           {/* Paid Media & Growth Channels Grid */}
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <div className="badge-pill">Paid Media Engine</div>
-            <h2>Full-Funnel Acquisition Architecture</h2>
+            <div className="badge-pill">Paid Ads</div>
+            <h2>How We Drive Sales</h2>
             <p>
               We drive qualified, purchase-ready traffic from the platforms where modern consumers discover products:
             </p>
@@ -223,8 +223,8 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
             padding: '40px'
           }}>
             <div className="section-header" style={{ textAlign: 'left', marginBottom: '20px' }}>
-              <div className="badge-pill">GCC Checkout Optimization</div>
-              <h2>Removing Friction in Saudi & UAE Checkout</h2>
+              <div className="badge-pill">GCC Checkout</div>
+              <h2>Frictionless Saudi & UAE Checkout</h2>
               <p>
                 Over 68% of GCC shopping carts are abandoned if local payment methods are missing. AZS configures your checkout stack with the trusted payment rails Gulf consumers demand:
               </p>

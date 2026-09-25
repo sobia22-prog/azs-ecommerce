@@ -7,9 +7,9 @@ export default function PageHeader({
   highlight,
   subtitle,
   breadcrumbs = [],
-  primaryCtaText = 'Schedule Growth Discovery',
+  primaryCtaText = 'Book Free Audit',
   primaryCtaLink = '/book-audit',
-  secondaryCtaText = 'View Proof & Dashboards',
+  secondaryCtaText = 'View Case Studies',
   secondaryCtaLink = '/case-studies',
   metrics = []
 }) {

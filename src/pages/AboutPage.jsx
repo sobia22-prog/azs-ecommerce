@@ -154,8 +154,8 @@ export default function AboutPage() {
       <section className="subpage-section" style={{ background: 'rgba(255, 255, 255, 0.015)', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Principles & Governance</div>
-            <h2>The Operating Principles Behind Our Alpha</h2>
+            <div className="badge-pill">Core Principles</div>
+            <h2>Our Core Principles</h2>
             <p>
               Built for discerning enterprise brand owners who value transparency, audited results, and meticulous operational execution.
             </p>

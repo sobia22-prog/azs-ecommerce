@@ -195,7 +195,7 @@ export default function WhatWeManage({ onOpenModal }) {
         <div className="section-header">
           <div className="deck-eyebrow-pill">
             <span className="deck-num">04</span>
-            <span>SERVICE COVERAGE</span>
+            <span>SERVICES</span>
           </div>
           <h2>What We Manage</h2>
           <p className="desktop-only">
@@ -217,7 +217,7 @@ export default function WhatWeManage({ onOpenModal }) {
             <div className="coverage-hero-content">
               <div className="badge-pill badge-pill-cyan desktop-only">KSA, USA & UK Infrastructure</div>
               <h3 className="coverage-hero-title">
-                Fulfillment, Advertising & Operations Synchronized
+                Fulfillment, Ads & Operations
               </h3>
               <p className="coverage-hero-desc">
                 We eliminate operational fragmentation by bridging factory supply lines directly to marketplace fulfillment (FBA, FBN, 3PL) and algorithmic ad acceleration.
@@ -302,7 +302,7 @@ export default function WhatWeManage({ onOpenModal }) {
                       to={`/services/${srv.slug}`} 
                       className="mobile-srv-acc-link"
                     >
-                      <span>Explore Module SLA & Deliverables</span>
+                      <span>View Service Details</span>
                       <span>➔</span>
                     </Link>
                   </div>
@@ -320,7 +320,7 @@ export default function WhatWeManage({ onOpenModal }) {
         {/* Explore All 6 Services Hub Link */}
         <div className="services-hub-link-wrap">
           <Link to="/services" className="btn btn-secondary services-hub-btn">
-            Explore All 6 Core Service Specifications &amp; SLAs ➔
+            Explore All Services ➔
           </Link>
         </div>
       </div>

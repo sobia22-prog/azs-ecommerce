@@ -80,8 +80,8 @@ export default function AccountHealthPage() {
       <section className="subpage-section">
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Compliance Protocols</div>
-            <h2>Institutional Defense Mechanisms</h2>
+            <div className="badge-pill">Account Protection</div>
+            <h2>How We Protect Your Account</h2>
             <p>
               We treat account health as mission-critical infrastructure, deploying proactive guardrails rather than reactive crisis management.
             </p>

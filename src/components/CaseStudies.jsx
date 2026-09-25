@@ -173,8 +173,8 @@ export default function CaseStudies({ onOpenModal }) {
     <section className="section" id="case-studies">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill">Proven Results</div>
-          <h2>Documented Client Scale Case Studies</h2>
+          <div className="badge-pill">Case Studies</div>
+          <h2>Client Case Studies</h2>
           <p className="desktop-only">
             Real sales, advertising, and operational reporting from brands managed by AZS Solutions.
           </p>
@@ -213,7 +213,7 @@ export default function CaseStudies({ onOpenModal }) {
 
         <div style={{ textAlign: 'center', marginTop: '36px' }}>
           <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '12px 32px' }}>
-            <span>View All Case Studies & 4K Proof</span>
+            <span>View All Case Studies</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>

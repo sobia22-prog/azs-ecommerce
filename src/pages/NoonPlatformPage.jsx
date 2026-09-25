@@ -129,8 +129,8 @@ export default function NoonPlatformPage({ onOpenModal }) {
 
           {/* 4 Pillars of Noon Growth */}
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <div className="badge-pill">Noon Operational Stack</div>
-            <h2>End-to-End Noon Capabilities</h2>
+            <div className="badge-pill">Our Services</div>
+            <h2>What We Manage on Noon</h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>

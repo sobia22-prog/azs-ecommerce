@@ -56,8 +56,8 @@ export default function GrowthCalculator() {
     <section className="section section-alt" id="calculator">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill badge-pill-cyan">Interactive Revenue Simulator</div>
-          <h2>Forecast Your Multi-Marketplace Growth Potential</h2>
+          <div className="badge-pill badge-pill-cyan">Growth Calculator</div>
+          <h2>Forecast Your Growth</h2>
           <p className="desktop-only">
             Estimate your 6-month scale across KSA, Trendyol, USA, and UK marketplaces with synchronized performance media.
           </p>
@@ -167,7 +167,7 @@ export default function GrowthCalculator() {
             </div>
 
             <a href="#book-audit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              Lock In Your Tailored Growth Plan
+              Get Your Growth Plan
             </a>
           </div>
         </div>

@@ -50,10 +50,10 @@ export default function AuditBooking() {
       <div className="container">
         <div className="booking-card">
           <div className="booking-info">
-            <div className="badge-pill">Ready to Scale?</div>
-            <h2>Let's Grow Your Ecommerce Business</h2>
+            <div className="badge-pill">Free Audit</div>
+            <h2>Book Your Free Audit</h2>
             <p>
-              Request a comprehensive 360° Marketplace & Storefront Growth Audit. We'll analyze your listings, advertising efficiency, unit economics, and untapped GCC expansion opportunities.
+              Request a comprehensive Growth Audit. We'll analyze your listings, ad spend, margins, and regional expansion opportunities.
             </p>
 
             <ul className="booking-guarantees">
@@ -180,11 +180,11 @@ export default function AuditBooking() {
                       onChange={handleChange}
                       className="form-select"
                     >
-                      <option value="KSA Marketplace (Amazon.sa & Noon)">KSA Marketplace (Amazon.sa & Noon)</option>
-                      <option value="USA Marketplace (Amazon.com)">USA Marketplace (Amazon.com)</option>
-                      <option value="UK Marketplace (Amazon.co.uk)">UK Marketplace (Amazon.co.uk)</option>
-                      <option value="All 3 Marketplaces (KSA, USA, UK)">All 3 Marketplaces (KSA, USA, UK)</option>
-                      <option value="Shopify & Paid Social (Meta/TikTok/Google)">Shopify & Paid Social (Meta/TikTok/Google)</option>
+                      <option value="KSA Marketplaces (Amazon & Noon)">KSA (Amazon &amp; Noon)</option>
+                      <option value="USA Marketplace (Amazon.com)">USA (Amazon)</option>
+                      <option value="UK Marketplace (Amazon.co.uk)">UK (Amazon)</option>
+                      <option value="All Marketplaces (KSA, USA, UK)">All Marketplaces</option>
+                      <option value="Shopify & Paid Ads">Shopify &amp; Paid Ads</option>
                     </select>
                   </div>
                 </div>
@@ -200,7 +200,7 @@ export default function AuditBooking() {
                   className="btn btn-primary form-submit-btn"
                   disabled={loading}
                 >
-                  {loading ? 'Securing Your Strategy Slot...' : 'Claim Your Free Growth Audit & Strategy Call'}
+                  {loading ? 'Submitting Request...' : 'Claim Your Free Audit'}
                 </button>
               </form>
             )}

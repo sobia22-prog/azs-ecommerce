@@ -147,8 +147,8 @@ export default function InsightsPage() {
       <section className="section">
         <div className="container">
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '10px' }}>
-            <div className="badge-pill">Published Playbooks</div>
-            <h2>Latest Intelligence & Strategic Briefings</h2>
+            <div className="badge-pill">Articles & Guides</div>
+            <h2>Latest Articles & Guides</h2>
             <p>
               In-depth analyses addressing the critical execution questions brands face when expanding in the GCC and Western corridors:
             </p>

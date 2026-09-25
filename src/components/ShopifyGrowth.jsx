@@ -62,8 +62,8 @@ export default function ShopifyGrowth({ onOpenModal }) {
     <section className="section section-alt" id="shopify-d2c">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill badge-pill-cyan">Storefronts & Paid Traffic</div>
-          <h2>Shopify Mastery & Direct-to-Consumer Performance</h2>
+          <div className="badge-pill badge-pill-cyan">Shopify & DTC</div>
+          <h2>Shopify & Online Stores</h2>
           <p>
             High-converting storefronts and paid acquisition built for GCC shoppers.
           </p>
