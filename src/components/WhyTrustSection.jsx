@@ -79,10 +79,6 @@ export default function WhyTrustSection({ onOpenModal }) {
     <section className="section section-alt desktop-only" id="why-trust">
       <div className="container">
         <div className="section-header">
-          <div className="deck-eyebrow-pill">
-            <span className="deck-num">10</span>
-            <span>WHY CHOOSE US</span>
-          </div>
           <h2>Why Brands Trust AZS</h2>
           <p>
             Marketplace operations across KSA, USA, and UK, built on real results.
@@ -100,7 +96,6 @@ export default function WhyTrustSection({ onOpenModal }) {
           </div>
 
           <div>
-            <div className="badge-pill badge-pill-cyan">Proven Experience</div>
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginTop: '8px', marginBottom: '10px', color: 'var(--text-pure)' }}>
               Proven Across KSA, USA & UK
             </h3>
@@ -151,7 +146,6 @@ export default function WhyTrustSection({ onOpenModal }) {
           {/* Direct Executive Action Box */}
           <div className="direct-action-card">
             <div className="action-card-glow"></div>
-            <div className="badge-pill badge-pill-cyan">Direct Executive Access</div>
             <h3>Let's Build What's Next, Together</h3>
             <p>
               Whether expanding your catalog into Saudi Arabia (KSA), scaling in the USA, or launching in the UK, our partners are ready to evaluate your growth trajectory.

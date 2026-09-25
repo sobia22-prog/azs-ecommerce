@@ -56,7 +56,6 @@ export default function GrowthCalculator() {
     <section className="section section-alt" id="calculator">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill badge-pill-cyan">Growth Calculator</div>
           <h2>Forecast Your Growth</h2>
           <p className="desktop-only">
             Estimate your 6-month scale across KSA, Trendyol, USA, and UK marketplaces with synchronized performance media.

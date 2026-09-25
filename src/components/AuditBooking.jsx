@@ -50,7 +50,6 @@ export default function AuditBooking() {
       <div className="container">
         <div className="booking-card">
           <div className="booking-info">
-            <div className="badge-pill">Free Audit</div>
             <h2>Book Your Free Audit</h2>
             <p>
               Request a comprehensive Growth Audit. We'll analyze your listings, ad spend, margins, and regional expansion opportunities.

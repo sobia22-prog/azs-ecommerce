@@ -17,7 +17,6 @@ export default function ProofModal({ isOpen, imgSrc, title, onClose }) {
         <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">
           ✕
         </button>
-        <div className="badge-pill badge-pill-cyan">Verified 4K Reporting Asset</div>
         <h3 style={{ fontSize: '1.5rem', marginTop: '4px', color: 'var(--text-pure)' }}>
           {title || 'Verified Metric Inspection'}
         </h3>

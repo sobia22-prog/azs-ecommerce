@@ -173,7 +173,6 @@ export default function CaseStudies({ onOpenModal }) {
     <section className="section" id="case-studies">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill">Case Studies</div>
           <h2>Client Case Studies</h2>
           <p className="desktop-only">
             Real sales, advertising, and operational reporting from brands managed by AZS Solutions.

@@ -62,7 +62,6 @@ export default function ShopifyGrowth({ onOpenModal }) {
     <section className="section section-alt" id="shopify-d2c">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill badge-pill-cyan">Shopify & DTC</div>
           <h2>Shopify & Online Stores</h2>
           <p>
             High-converting storefronts and paid acquisition built for GCC shoppers.
@@ -115,7 +114,6 @@ export default function ShopifyGrowth({ onOpenModal }) {
 
           {/* Capabilities Column */}
           <div className="shopify-features-col">
-            <div className="badge-pill desktop-only" style={{ marginBottom: '12px' }}>High-Conversion UX</div>
             <div className="shopify-store-header">
               <h3 className="shopify-store-title">{store.name}</h3>
               <p className="shopify-store-category">{store.category}</p>

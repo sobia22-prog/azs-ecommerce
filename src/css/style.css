@@ -209,27 +209,12 @@ div.desktop-only,
   border-bottom: 1px solid var(--border-subtle);
 }
 
-/* Pill Badges */
-.badge-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: rgba(0, 245, 155, 0.08);
-  border: 1px solid rgba(0, 245, 155, 0.28);
-  border-radius: var(--radius-full);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--neon-mint);
-  margin-bottom: 20px;
-}
-
-.badge-pill-cyan {
-  background: rgba(0, 210, 255, 0.08);
-  border-color: rgba(0, 210, 255, 0.28);
-  color: var(--neon-cyan);
+/* Pill Badges - Removed throughout website */
+.badge-pill,
+.deck-eyebrow-pill,
+.deck-snapshot-badge,
+.deck-showcase-badge-row {
+  display: none !important;
 }
 
 .hero-badge-group {

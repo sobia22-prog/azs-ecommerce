@@ -115,7 +115,6 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
             marginTop: '20px',
             position: 'relative'
           }}>
-            <div className="badge-pill" style={{ marginBottom: '12px' }}>Verified D2C Proof Deep Dive</div>
             <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
               LIVORA Modern Essentials: <span className="gradient-text">$50.4K/mo D2C Scale</span>
             </h2>
@@ -189,7 +188,6 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
 
           {/* Paid Media & Growth Channels Grid */}
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <div className="badge-pill">Paid Ads</div>
             <h2>How We Drive Sales</h2>
             <p>
               We drive qualified, purchase-ready traffic from the platforms where modern consumers discover products:
@@ -223,7 +221,6 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
             padding: '40px'
           }}>
             <div className="section-header" style={{ textAlign: 'left', marginBottom: '20px' }}>
-              <div className="badge-pill">GCC Checkout</div>
               <h2>Frictionless Saudi & UAE Checkout</h2>
               <p>
                 Over 68% of GCC shopping carts are abandoned if local payment methods are missing. AZS configures your checkout stack with the trusted payment rails Gulf consumers demand:

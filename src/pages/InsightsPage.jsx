@@ -147,7 +147,6 @@ export default function InsightsPage() {
       <section className="section">
         <div className="container">
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '10px' }}>
-            <div className="badge-pill">Articles & Guides</div>
             <h2>Latest Articles & Guides</h2>
             <p>
               In-depth analyses addressing the critical execution questions brands face when expanding in the GCC and Western corridors:
@@ -274,7 +273,6 @@ export default function InsightsPage() {
             gap: '24px'
           }}>
             <div style={{ maxWidth: '640px' }}>
-              <span className="badge-pill" style={{ marginBottom: '10px' }}>Custom Brand Playbook</span>
               <h3 style={{ fontSize: '1.6rem', color: 'var(--text-heading)', margin: '8px 0 12px' }}>
                 Need a Custom Roadmap for Your SKU Catalog?
               </h3>

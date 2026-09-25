@@ -71,7 +71,6 @@ export default function Testimonials() {
     <section className="section" id="testimonials">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill">Client Reviews</div>
           <h2>What Our Clients Say</h2>
           <p className="desktop-only">
             Real feedback and ratings from brand founders across the GCC and internationally.

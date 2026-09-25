@@ -30,7 +30,6 @@ export default function FaqSection() {
     <section className="section section-alt" id="faqs">
       <div className="container">
         <div className="section-header">
-          <div className="badge-pill">FAQ</div>
           <h2>Frequently Asked Questions</h2>
           <p className="desktop-only">Everything you need to know about partnering with AZS Solutions.</p>
         </div>

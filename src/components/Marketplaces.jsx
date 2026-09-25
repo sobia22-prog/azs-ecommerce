@@ -236,7 +236,6 @@ export default function Marketplaces({ onOpenModal }) {
     <section className="section" id="marketplaces">
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill desktop-only">Marketplaces</div>
             <h2>Marketplaces We Manage</h2>
             <p className="desktop-only">
               One operating team for marketplace growth across the regions that matter.
@@ -270,13 +269,6 @@ export default function Marketplaces({ onOpenModal }) {
           <div className="deck-showcase-wrapper" id="dashboards-proof">
             <div className="deck-showcase-header">
               <div>
-                <div className="deck-showcase-badge-row">
-                  <div className="badge-pill badge-pill-cyan">Multi-Marketplace Proof</div>
-                  <span className="deck-snapshot-badge desktop-only">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    Audited Partner Console Snapshot
-                  </span>
-                </div>
                 <h3 className="deck-showcase-title">Live Marketplace & Ad Performance Console</h3>
               </div>
             </div>

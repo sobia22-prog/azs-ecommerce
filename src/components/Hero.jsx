@@ -33,15 +33,6 @@ export default function Hero({ onOpenModal }) {
   return (
     <section className="section hero-section">
       <div className="container">
-        {/* Single Unified Eyebrow Badge */}
-        <div className="hero-eyebrow-row">
-          <div className="hero-single-eyebrow">
-            <span className="punchy-tag-dot"></span>
-            <span className="eyebrow-lead">GCC COMMERCE</span>
-            <span className="eyebrow-channels">Amazon • Noon • Shopify</span>
-          </div>
-        </div>
-
         <div className="hero-grid">
           {/* Left Column: Value Proposition (50%) */}
           <div className="hero-content">

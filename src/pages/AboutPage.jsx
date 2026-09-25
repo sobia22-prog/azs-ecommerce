@@ -118,7 +118,6 @@ export default function AboutPage() {
       <section className="subpage-section">
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Global Presence</div>
             <h2>Our 5 Regional Operational Hubs</h2>
             <p>
               Local expertise in key financial and logistics capitals ensures seamless execution across customs, taxes, and customer preferences.
@@ -154,7 +153,6 @@ export default function AboutPage() {
       <section className="subpage-section" style={{ background: 'rgba(255, 255, 255, 0.015)', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Core Principles</div>
             <h2>Our Core Principles</h2>
             <p>
               Built for discerning enterprise brand owners who value transparency, audited results, and meticulous operational execution.

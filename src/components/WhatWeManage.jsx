@@ -193,10 +193,6 @@ export default function WhatWeManage({ onOpenModal }) {
     <section className="section" id="service-coverage">
       <div className="container">
         <div className="section-header">
-          <div className="deck-eyebrow-pill">
-            <span className="deck-num">04</span>
-            <span>SERVICES</span>
-          </div>
           <h2>What We Manage</h2>
           <p className="desktop-only">
             An accountable end-to-end service stack delivering operational excellence across KSA, USA, and UK.
@@ -215,7 +211,6 @@ export default function WhatWeManage({ onOpenModal }) {
             </div>
 
             <div className="coverage-hero-content">
-              <div className="badge-pill badge-pill-cyan desktop-only">KSA, USA & UK Infrastructure</div>
               <h3 className="coverage-hero-title">
                 Fulfillment, Ads & Operations
               </h3>

@@ -178,7 +178,6 @@ export default function ShopifySubservicePage() {
       <section className="subpage-section">
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Execution Deliverables</div>
             <h2>What We Execute & Deliver</h2>
             <p>
               Every engagement is backed by institutional SLAs, weekly partner standups, and direct Slack access to our senior growth engineering team.

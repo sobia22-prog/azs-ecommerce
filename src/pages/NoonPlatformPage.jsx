@@ -55,7 +55,6 @@ export default function NoonPlatformPage({ onOpenModal }) {
             marginBottom: '60px',
             marginTop: '10px'
           }}>
-            <div className="badge-pill" style={{ marginBottom: '12px' }}>Verified Noon Proof Deep Dive</div>
             <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
               Creative Things Studio Gear: <span className="gradient-text">SAR 208.5K on Noon KSA</span>
             </h2>
@@ -129,7 +128,6 @@ export default function NoonPlatformPage({ onOpenModal }) {
 
           {/* 4 Pillars of Noon Growth */}
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <div className="badge-pill">Our Services</div>
             <h2>What We Manage on Noon</h2>
           </div>
 

@@ -46,7 +46,6 @@ export default function CalculatorPage() {
       <section className="section" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Methodology</div>
             <h2>How The Calculator Works</h2>
             <p>
               Our econometric growth models synthesize historical category baselines, ad elasticity curves, and cross-channel margin synergy.

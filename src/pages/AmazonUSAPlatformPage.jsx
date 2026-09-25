@@ -86,7 +86,6 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
       <section className="subpage-section">
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Operational Architecture</div>
             <h2>How We Win on Amazon.com USA</h2>
             <p>
               Moving from regional selling to US dominance requires institutional Amazon DSP media buying, continuous catalog indexing, and flawless logistics governance.
@@ -126,7 +125,6 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
             marginTop: '60px',
             marginBottom: '40px'
           }}>
-            <div className="badge-pill" style={{ marginBottom: '12px' }}>Verified USA Amazon Console</div>
             <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
               NuvoAura Beauty & Wellness: <span className="gradient-text">11.20x ROAS on Amazon.com</span>
             </h2>

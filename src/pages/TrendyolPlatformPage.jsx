@@ -99,7 +99,6 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
             marginBottom: '60px',
             marginTop: '10px'
           }}>
-            <div className="badge-pill" style={{ marginBottom: '12px' }}>Verified Cross-Border Dashboard</div>
             <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
               Trendyol GCC: <span className="gradient-text">Unlocking Saudi & UAE Shoppers</span>
             </h2>
@@ -173,7 +172,6 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
 
           {/* 4 Pillars of Trendyol Expansion */}
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <div className="badge-pill">Our Services</div>
             <h2>How We Scale On Trendyol</h2>
           </div>
 

@@ -33,13 +33,6 @@ export default function PageHeader({
 
         {/* Header Content */}
         <div className="subpage-header-content">
-          {badge && (
-            <div className="badge-pill" style={{ marginBottom: '16px' }}>
-              <span className="pulse-dot"></span>
-              <span>{badge}</span>
-            </div>
-          )}
-
           <h1 className="subpage-title">
             {title} {highlight && <span className="gradient-text">{highlight}</span>}
           </h1>

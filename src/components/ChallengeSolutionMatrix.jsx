@@ -115,10 +115,6 @@ export default function ChallengeSolutionMatrix({ onOpenModal }) {
     <section className="section section-matrix" id="challenges-solutions">
       <div className="container">
         <div className="section-header">
-          <div className="deck-eyebrow-pill">
-            <span className="deck-num">03</span>
-            <span>HOW WE HELP</span>
-          </div>
           <h2>Problems We Solve</h2>
           <p>
             Proven solutions that fix roadblocks and grow your revenue.

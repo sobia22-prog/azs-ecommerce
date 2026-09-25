@@ -72,7 +72,6 @@ export default function ProgramsPricingPage() {
       <section className="subpage-section" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="container">
           <div className="section-header">
-            <div className="badge-pill">Governance & SLAs</div>
             <h2>How Our Partnerships Work</h2>
             <p>
               Clear boundaries, transparent communication cadences, and senior executive access on every tier.

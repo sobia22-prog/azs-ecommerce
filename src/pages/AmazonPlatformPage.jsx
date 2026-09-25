@@ -75,7 +75,6 @@ export default function AmazonPlatformPage({ onOpenModal }) {
 
           {/* Regional Corridors Grid */}
           <div className="section-header" style={{ textAlign: 'left', marginTop: '10px' }}>
-            <div className="badge-pill">Multi-Region Execution</div>
             <h2>Amazon Marketplaces We Scale</h2>
             <p>
               We manage unified brand accounts across the primary Gulf corridors and Western anchor markets:
@@ -112,7 +111,6 @@ export default function AmazonPlatformPage({ onOpenModal }) {
             marginBottom: '60px',
             position: 'relative'
           }}>
-            <div className="badge-pill" style={{ marginBottom: '12px' }}>Verified Case Study Deep Dive</div>
             <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
               HomeMaster Appliances: <span className="gradient-text">+11,963% Amazon Scale</span>
             </h2>
@@ -188,7 +186,6 @@ export default function AmazonPlatformPage({ onOpenModal }) {
 
           {/* 6 Core Amazon Deliverables */}
           <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <div className="badge-pill">Turnkey Deliverables</div>
             <h2>What We Manage on Your Amazon Account</h2>
           </div>
 
