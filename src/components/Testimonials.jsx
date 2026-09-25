@@ -46,11 +46,8 @@ export default function Testimonials() {
 
   const renderReviewCard = (r, idx) => (
     <div className="testi-card" key={idx} style={{ position: 'relative' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontWeight: 800, color: 'var(--text-pure)', fontSize: '0.96rem' }}>{r.score}</span>
-          <div className="testi-rating" style={{ margin: 0 }}>{r.stars}</div>
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+        <div className="testi-rating">{r.stars}</div>
         <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.08)', border: '1px solid rgba(0, 245, 155, 0.25)', padding: '2px 8px', borderRadius: '12px' }}>
           ✓ {r.platform}
         </span>
@@ -81,42 +78,46 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Live Verified Review Platforms Ribbon - Desktop Only to prevent fighting on mobile */}
-        <div className="trust-platforms-ribbon desktop-only">
-          <div className="trust-ribbon-card ribbon-trustpilot">
-            <div className="trust-ribbon-avatar avatar-mint">★</div>
-            <div className="trust-ribbon-info">
-              <div className="trust-ribbon-score-row">
-                <span className="trust-ribbon-score">4.9 / 5.0</span>
-                <span className="trust-ribbon-stars stars-mint">★★★★★</span>
+        {/* Live Verified Review Platforms Ribbon - Exactly as original on laptop */}
+        <div className="trust-platforms-ribbon desktop-only" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginBottom: '32px' }}>
+          <div style={{ background: 'rgba(11, 17, 29, 0.85)', border: '1px solid rgba(0, 245, 155, 0.3)', borderRadius: 'var(--radius-md)', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(0, 245, 155, 0.15)', color: 'var(--neon-mint)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.2rem', fontWeight: 800 }}>
+              ★
+            </div>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ fontWeight: 800, color: 'var(--text-pure)', fontSize: '1.1rem' }}>4.9 / 5.0</span>
+                <span style={{ color: 'var(--neon-mint)', fontSize: '0.85rem' }}>★★★★★</span>
               </div>
-              <div className="trust-ribbon-sub">Trustpilot Verified (42 Reviews)</div>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>Trustpilot Verified (42 Reviews)</div>
             </div>
           </div>
 
-          <div className="trust-ribbon-card ribbon-clutch">
-            <div className="trust-ribbon-avatar avatar-cyan">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <div style={{ background: 'rgba(11, 17, 29, 0.85)', border: '1px solid rgba(0, 210, 255, 0.3)', borderRadius: 'var(--radius-md)', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(0, 210, 255, 0.15)', color: 'var(--neon-cyan)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
               </svg>
             </div>
-            <div className="trust-ribbon-info">
-              <div className="trust-ribbon-score-row">
-                <span className="trust-ribbon-score">5.0 / 5.0</span>
-                <span className="trust-ribbon-stars stars-cyan">★★★★★</span>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ fontWeight: 800, color: 'var(--text-pure)', fontSize: '1.1rem' }}>5.0 / 5.0</span>
+                <span style={{ color: 'var(--neon-cyan)', fontSize: '0.85rem' }}>★★★★★</span>
               </div>
-              <div className="trust-ribbon-sub">Clutch Top GCC Agency 2026</div>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>Clutch Top GCC Agency 2026</div>
             </div>
           </div>
 
-          <div className="trust-ribbon-card ribbon-google">
-            <div className="trust-ribbon-avatar avatar-white">G</div>
-            <div className="trust-ribbon-info">
-              <div className="trust-ribbon-score-row">
-                <span className="trust-ribbon-score">4.9 / 5.0</span>
-                <span className="trust-ribbon-stars stars-mint">★★★★★</span>
+          <div style={{ background: 'rgba(11, 17, 29, 0.85)', border: '1px solid rgba(255, 255, 255, 0.12)', borderRadius: 'var(--radius-md)', padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.08)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.1rem', fontWeight: 800 }}>
+              G
+            </div>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ fontWeight: 800, color: 'var(--text-pure)', fontSize: '1.1rem' }}>4.9 / 5.0</span>
+                <span style={{ color: 'var(--neon-mint)', fontSize: '0.85rem' }}>★★★★★</span>
               </div>
-              <div className="trust-ribbon-sub">Google Verified Partner Rating</div>
+              <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>Google Verified Partner Rating</div>
             </div>
           </div>
         </div>

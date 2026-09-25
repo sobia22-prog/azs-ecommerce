@@ -2379,97 +2379,8 @@ div.desktop-only,
 }
 
 /* ==========================================================================
-/* Trust Platforms Ribbon */
-.trust-platforms-ribbon {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
-}
-
-.trust-ribbon-card {
-  background: rgba(11, 17, 29, 0.85);
-  border: 1px solid rgba(0, 245, 155, 0.3);
-  border-radius: var(--radius-md);
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: transform var(--transition-fast);
-}
-
-.trust-ribbon-card.ribbon-clutch {
-  border-color: rgba(0, 210, 255, 0.3);
-}
-
-.trust-ribbon-card.ribbon-google {
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.trust-ribbon-card:hover {
-  transform: translateY(-2px);
-}
-
-.trust-ribbon-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  font-weight: 800;
-}
-
-.trust-ribbon-avatar.avatar-mint {
-  background: rgba(0, 245, 155, 0.15);
-  color: var(--neon-mint);
-  font-size: 1.15rem;
-}
-
-.trust-ribbon-avatar.avatar-cyan {
-  background: rgba(0, 210, 255, 0.15);
-  color: var(--neon-cyan);
-}
-
-.trust-ribbon-avatar.avatar-white {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-  font-size: 1.05rem;
-}
-
-.trust-ribbon-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.trust-ribbon-score-row {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.trust-ribbon-score {
-  font-weight: 800;
-  color: var(--text-pure);
-  font-size: 1.05rem;
-}
-
-.trust-ribbon-stars.stars-mint {
-  color: var(--neon-mint);
-  font-size: 0.82rem;
-}
-
-.trust-ribbon-stars.stars-cyan {
-  color: var(--neon-cyan);
-  font-size: 0.82rem;
-}
-
-.trust-ribbon-sub {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-}
-
+   Section: Testimonials & Executive Proof
+   ========================================================================== */
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -7331,13 +7242,6 @@ div.desktop-only,
 }
 
 /* Base Desktop Defaults for Mobile-First Toggled Sections */
-.desktop-only {
-  display: block;
-}
-span.desktop-only {
-  display: inline;
-}
-
 .mobile-mkt-tabs-bar,
 .mobile-mkt-single-card-wrap,
 .mobile-services-tabs-bar,
