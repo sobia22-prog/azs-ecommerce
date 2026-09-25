@@ -32,7 +32,7 @@ export default function FaqSection() {
         <div className="section-header">
           <div className="badge-pill">Clarity & Confidence</div>
           <h2>Frequently Asked Questions</h2>
-          <p>Everything you need to know about partnering with AZS Solutions.</p>
+          <p className="desktop-only">Everything you need to know about partnering with AZS Solutions.</p>
         </div>
 
         <div className="faq-wrap">
