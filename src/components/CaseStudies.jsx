@@ -69,16 +69,20 @@ export default function CaseStudies({ onOpenModal }) {
       .then(res => res.json())
       .then(data => {
         if (data.success && data.data) {
-          const formatted = data.data.map(item => ({
-            ...item,
-            image: CASE_STUDY_IMAGES[item.id] || item.image,
-            metrics: {
-              ...item.metrics,
-              salesGrowth: item.metrics?.salesGrowth || item.metrics?.salesLift || item.metrics?.ordersGrowth || '+100%',
-              sevenDayRevenue: item.metrics?.sevenDayRevenue || item.metrics?.monthlySales || item.metrics?.noonRevenue || '$32.2K',
-              roas: item.metrics?.roas || '4.5x'
-            }
-          }));
+          const formatted = data.data.map((item, idx) => {
+            const caseId = item.id || item.slug || item._id || `case-${idx}`;
+            return {
+              ...item,
+              id: caseId,
+              image: CASE_STUDY_IMAGES[caseId] || CASE_STUDY_IMAGES[item.slug] || item.image,
+              metrics: {
+                ...item.metrics,
+                salesGrowth: item.metrics?.salesGrowth || item.metrics?.salesLift || item.metrics?.ordersGrowth || '+100%',
+                sevenDayRevenue: item.metrics?.sevenDayRevenue || item.metrics?.monthlySales || item.metrics?.noonRevenue || '$32.2K',
+                roas: item.metrics?.roas || '4.5x'
+              }
+            };
+          });
           setCases(formatted);
         }
       })
@@ -120,15 +124,16 @@ export default function CaseStudies({ onOpenModal }) {
     }
   };
 
-  const renderCaseCard = (cs) => {
+  const renderCaseCard = (cs, cardKey) => {
     const rawVolume = cs.metrics?.sevenDayRevenue || cs.metrics?.monthlySales || cs.metrics?.noonRevenue || '$32.2K';
     const formattedVolume = formatDynamicText(rawVolume);
     const parenMatch = formattedVolume.match(/^([^(]+)(?:\(([^)]+)\))?$/);
     const mainVol = parenMatch ? parenMatch[1].trim() : formattedVolume;
     const subVol = parenMatch && parenMatch[2] ? parenMatch[2].trim() : null;
+    const resolvedKey = cardKey || cs.id || cs.slug || cs._id;
 
     return (
-      <div className="mkt-card case-study-card" key={cs.id}>
+      <div className="mkt-card case-study-card" key={resolvedKey}>
         <div 
           className="dashboard-img-container" 
           onClick={() => onOpenModal(cs.image, `${cs.title} Verified Dashboard`)}
@@ -209,7 +214,7 @@ export default function CaseStudies({ onOpenModal }) {
           onTouchEnd={handleTouchEnd}
         >
           <div className="mobile-carousel-slide">
-            {renderCaseCard(currentCase)}
+            {renderCaseCard(currentCase, `mobile-case-${currentCase?.id || mobileIdx}`)}
           </div>
 
           <div className="mobile-carousel-controls">
@@ -234,7 +239,7 @@ export default function CaseStudies({ onOpenModal }) {
 
         {/* Desktop 3-Card Grid */}
         <div className="desktop-cases-grid case-studies-grid">
-          {activeCases.map((cs) => renderCaseCard(cs))}
+          {activeCases.map((cs, idx) => renderCaseCard(cs, cs.id || cs.slug || cs._id || `grid-case-${idx}`))}
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '36px' }}>

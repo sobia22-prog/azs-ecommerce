@@ -4,20 +4,6 @@ import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 
 export default function ShopifyDivisionPage({ onOpenModal }) {
-  const [mobileIdx, setMobileIdx] = useState(0);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Automatic slideshow rotation for channels every 4 seconds
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setMobileIdx((prev) => (prev + 1) % channels.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [isPaused, channels.length]);
-
   useSEO({
     title: 'Shopify & DTC Growth Agency — Meta, TikTok & Google Ads | AZS Solutions',
     description: 'Scale DTC brands with high-converting Shopify Plus stores, Tabby/Tamara BNPL integration, and high-ROAS Meta, TikTok & Google performance marketing.',
@@ -129,6 +115,20 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
       )
     }
   ];
+
+  const [mobileIdx, setMobileIdx] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Automatic slideshow rotation for channels every 4 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setMobileIdx((prev) => (prev + 1) % channels.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused, channels.length]);
 
   const handlePrev = () => {
     setMobileIdx((prev) => (prev - 1 + channels.length) % channels.length);
