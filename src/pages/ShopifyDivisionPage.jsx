@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
@@ -7,6 +7,16 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
   const [mobileIdx, setMobileIdx] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Automatic slideshow rotation for channels every 4 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setMobileIdx((prev) => (prev + 1) % channels.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPaused, channels.length]);
 
   useSEO({
     title: 'Shopify & DTC Growth Agency — Meta, TikTok & Google Ads | AZS Solutions',
@@ -129,6 +139,7 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
   };
 
   const handleTouchStart = (e) => {
+    setIsPaused(true);
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -138,12 +149,16 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
   };
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    if (!touchStart || !touchEnd) {
+      setTimeout(() => setIsPaused(false), 3500);
+      return;
+    }
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 45;
     const isRightSwipe = distance < -45;
     if (isLeftSwipe) handleNext();
     if (isRightSwipe) handlePrev();
+    setTimeout(() => setIsPaused(false), 3500);
   };
 
   const renderChannelCard = (ch) => (
@@ -274,6 +289,8 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
             >
               <div className="mobile-carousel-slide">
                 {renderChannelCard(channels[mobileIdx])}

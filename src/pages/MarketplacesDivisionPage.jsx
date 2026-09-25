@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
@@ -9,6 +9,12 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
   const [mobileIdx, setMobileIdx] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+
+  // Auto-slideshow state for Management Pillars
+  const [pillarIdx, setPillarIdx] = useState(0);
+  const [pillarTouchStart, setPillarTouchStart] = useState(null);
+  const [pillarTouchEnd, setPillarTouchEnd] = useState(null);
+  const [isPillarPaused, setIsPillarPaused] = useState(false);
 
   useSEO({
     title: 'Amazon, Noon & Trendyol Marketplace Management Agency | KSA & USA — AZS Solutions',
@@ -52,7 +58,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10"></circle>
           <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path>
         </svg>
       ),
       badge: 'Global Scale',
@@ -113,6 +119,104 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       ]
     }
   ];
+
+  const managementPillars = [
+    {
+      id: 'buy-box',
+      num: '01',
+      title: 'Buy Box & IP Defense',
+      desc: 'Automated scraping of unauthorized third-party sellers, proactive brand registry enforcement, and algorithmic dynamic repricing maintaining >90% Buy Box occupancy.',
+      tag: '100% Brand Shield',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        </svg>
+      )
+    },
+    {
+      id: 'ppc-structuring',
+      num: '02',
+      title: 'PPC Campaign Structuring',
+      desc: 'Exact, phrase, and broad keyword segmentation, dayparting, negative keyword harvesting, and Sponsored Brands video units delivering sub-15% ACOS.',
+      tag: 'Sub-15% Target ACOS',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      )
+    },
+    {
+      id: 'arabic-localization',
+      num: '03',
+      title: 'Arabic Localization',
+      desc: 'Native GCC Arabic dialect keyword search volume indexing, cultural compliance, and high-conversion Arabic A+ infographic storytelling.',
+      tag: 'Bilingual Storefronts',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z" />
+        </svg>
+      )
+    },
+    {
+      id: 'fba-logistics',
+      num: '04',
+      title: 'FBA / FBN Logistics',
+      desc: 'Warehouse routing into Riyadh, Jeddah, and Dubai fulfillment nodes, avoiding stockouts during Ramadan and White/Yellow Friday mega-sales.',
+      tag: '99.8% On-Time SLA',
+      icon: (
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="1" y="3" width="15" height="13" />
+          <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
+          <circle cx="5.5" cy="18.5" r="2.5" />
+          <circle cx="18.5" cy="18.5" r="2.5" />
+        </svg>
+      )
+    }
+  ];
+
+  // Automatic slideshow rotation for Management Pillars every 4 seconds
+  useEffect(() => {
+    if (isPillarPaused) return;
+    const timer = setInterval(() => {
+      setPillarIdx((prev) => (prev + 1) % managementPillars.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [isPillarPaused, managementPillars.length]);
+
+  const handlePillarPrev = () => {
+    setPillarIdx((prev) => (prev - 1 + managementPillars.length) % managementPillars.length);
+  };
+
+  const handlePillarNext = () => {
+    setPillarIdx((prev) => (prev + 1) % managementPillars.length);
+  };
+
+  const handlePillarTouchStart = (e) => {
+    setIsPillarPaused(true);
+    setPillarTouchEnd(null);
+    setPillarTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handlePillarTouchMove = (e) => {
+    setPillarTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handlePillarTouchEnd = () => {
+    if (!pillarTouchStart || !pillarTouchEnd) {
+      setTimeout(() => setIsPillarPaused(false), 3500);
+      return;
+    }
+    const distance = pillarTouchStart - pillarTouchEnd;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+    if (isLeftSwipe) handlePillarNext();
+    if (isRightSwipe) handlePillarPrev();
+    setTimeout(() => setIsPillarPaused(false), 3500);
+  };
 
   const handlePrev = () => {
     setMobileIdx((prev) => (prev - 1 + platforms.length) % platforms.length);
@@ -193,6 +297,17 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
           </svg>
         </Link>
       </div>
+    </div>
+  );
+
+  const renderPillarCard = (p) => (
+    <div className="manage-pillar-card" key={p.id}>
+      <div className="manage-pillar-header">
+        <div className="manage-pillar-icon">{p.icon}</div>
+        <div className="manage-pillar-badge">{p.tag}</div>
+      </div>
+      <h3 className="manage-pillar-title">{p.title}</h3>
+      <p className="manage-pillar-desc">{p.desc}</p>
     </div>
   );
 
@@ -303,78 +418,63 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
             {platforms.map((p) => renderPlatformCard(p))}
           </div>
 
-          {/* Operational Systems Matrix (Clean Unboxed Layout, No Card Box Styles) */}
+          {/* Operational Systems: "How We Manage Your Brand" */}
           <div className="marketplaces-matrix-container">
-            <div className="section-header" style={{ textAlign: 'left', marginBottom: '20px' }}>
+            <div className="section-header" style={{ textAlign: 'left', marginBottom: '18px' }}>
               <h2>How We Manage Your Brand</h2>
               <p>
                 Every marketplace account is steered by dedicated brand managers, native Arabic listing copywriters, PPC optimization specialists, and account health guardians.
               </p>
             </div>
 
-            <div className="marketplaces-systems-grid">
-              <div className="marketplaces-system-card">
-                <div className="system-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                </div>
-                <div className="system-card-body">
-                  <h4>Buy Box & IP Defense</h4>
-                  <p>
-                    Automated scraping of unauthorized third-party sellers, proactive brand registry enforcement, and algorithmic dynamic repricing maintaining &gt;90% Buy Box occupancy.
-                  </p>
-                </div>
+            {/* Mobile Automatic Slideshow in Card Style with Unified Controls */}
+            <div 
+              className="mobile-manage-carousel-wrap"
+              onTouchStart={handlePillarTouchStart}
+              onTouchMove={handlePillarTouchMove}
+              onTouchEnd={handlePillarTouchEnd}
+              onMouseEnter={() => setIsPillarPaused(true)}
+              onMouseLeave={() => setIsPillarPaused(false)}
+            >
+              <div className="mobile-carousel-slide">
+                {renderPillarCard(managementPillars[pillarIdx])}
               </div>
 
-              <div className="marketplaces-system-card">
-                <div className="system-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <circle cx="12" cy="12" r="6" />
-                    <circle cx="12" cy="12" r="2" />
-                  </svg>
+              {/* Consistent Home Page Style Carousel Controls */}
+              <div className="mobile-carousel-controls">
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn prev" 
+                  onClick={handlePillarPrev} 
+                  aria-label="Previous management pillar"
+                >
+                  ‹
+                </button>
+                <div className="carousel-dots">
+                  {managementPillars.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className={`carousel-dot ${pillarIdx === idx ? 'active' : ''}`}
+                      onClick={() => setPillarIdx(idx)}
+                      aria-label={`Go to ${managementPillars[idx].title}`}
+                    />
+                  ))}
                 </div>
-                <div className="system-card-body">
-                  <h4>PPC Campaign Structuring</h4>
-                  <p>
-                    Exact, phrase, and broad keyword segmentation, dayparting, negative keyword harvesting, and Sponsored Brands video units delivering sub-15% ACOS.
-                  </p>
-                </div>
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn next" 
+                  onClick={handlePillarNext} 
+                  aria-label="Next management pillar"
+                >
+                  ›
+                </button>
               </div>
+            </div>
 
-              <div className="marketplaces-system-card">
-                <div className="system-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                </div>
-                <div className="system-card-body">
-                  <h4>Arabic Localization</h4>
-                  <p>
-                    Native GCC Arabic dialect keyword search volume indexing, cultural compliance, and high-conversion Arabic A+ infographic storytelling.
-                  </p>
-                </div>
-              </div>
-
-              <div className="marketplaces-system-card">
-                <div className="system-card-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="1" y="3" width="15" height="13" />
-                    <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
-                    <circle cx="5.5" cy="18.5" r="2.5" />
-                    <circle cx="18.5" cy="18.5" r="2.5" />
-                  </svg>
-                </div>
-                <div className="system-card-body">
-                  <h4>FBA / FBN Logistics</h4>
-                  <p>
-                    Warehouse routing into Riyadh, Jeddah, and Dubai fulfillment nodes, avoiding stockouts during Ramadan and White/Yellow Friday mega-sales.
-                  </p>
-                </div>
-              </div>
+            {/* Desktop Grid Layout */}
+            <div className="desktop-manage-grid">
+              {managementPillars.map((p) => renderPillarCard(p))}
             </div>
 
             <div className="marketplaces-matrix-cta">

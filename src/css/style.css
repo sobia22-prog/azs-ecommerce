@@ -7241,6 +7241,7 @@ div.desktop-only,
 .mobile-testi-carousel-wrap,
 .mobile-platform-carousel-wrap,
 .mobile-channels-carousel-wrap,
+.mobile-manage-carousel-wrap,
 .mobile-sticky-bottom-nav {
   display: none;
 }
@@ -7251,7 +7252,8 @@ div.desktop-only,
 .desktop-programs-grid,
 .desktop-testimonials-grid,
 .desktop-platform-grid,
-.desktop-channels-grid {
+.desktop-channels-grid,
+.desktop-manage-grid {
   display: grid;
 }
 
@@ -7268,6 +7270,77 @@ div.desktop-only,
   grid-template-columns: repeat(2, 1fr);
   gap: 26px;
   margin-top: 28px;
+}
+
+.desktop-manage-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.manage-pillar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.manage-pillar-card:hover {
+  border-color: rgba(0, 245, 155, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 245, 155, 0.1);
+}
+
+.manage-pillar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.manage-pillar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(0, 245, 155, 0.08);
+  border: 1px solid rgba(0, 245, 155, 0.22);
+  color: var(--neon-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.manage-pillar-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(0, 245, 155, 0.1);
+  color: var(--neon-mint);
+  border: 1px solid rgba(0, 245, 155, 0.25);
+}
+
+.manage-pillar-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.manage-pillar-desc {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.55;
+  margin: 0;
 }
 
 .marketplaces-system-card {
@@ -9638,6 +9711,77 @@ div.desktop-only,
     justify-content: center !important;
     text-align: center !important;
     box-sizing: border-box !important;
+  }
+
+  /* Marketplaces Manage Pillars Mobile Slideshow */
+  .desktop-manage-grid {
+    display: none !important;
+  }
+
+  .mobile-manage-carousel-wrap {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  .mobile-manage-carousel-wrap .manage-pillar-card {
+    padding: 20px 18px !important;
+    border-radius: 16px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    min-height: 180px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-manage-carousel-wrap .manage-pillar-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 12px !important;
+  }
+
+  .mobile-manage-carousel-wrap .manage-pillar-icon {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 10px !important;
+    background: rgba(0, 245, 155, 0.08) !important;
+    border: 1px solid rgba(0, 245, 155, 0.22) !important;
+    color: var(--neon-mint) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-manage-carousel-wrap .manage-pillar-badge {
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    padding: 3px 8px !important;
+    border-radius: 12px !important;
+    background: rgba(0, 245, 155, 0.1) !important;
+    color: var(--neon-mint) !important;
+    border: 1px solid rgba(0, 245, 155, 0.25) !important;
+  }
+
+  .mobile-manage-carousel-wrap .manage-pillar-title {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: var(--text-heading) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .mobile-manage-carousel-wrap .manage-pillar-desc {
+    font-size: 0.78rem !important;
+    color: var(--text-body) !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
   }
 
   /* ==========================================================================
