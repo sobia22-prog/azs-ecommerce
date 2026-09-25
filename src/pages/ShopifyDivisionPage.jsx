@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 
 export default function ShopifyDivisionPage({ onOpenModal }) {
+  const [mobileIdx, setMobileIdx] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   useSEO({
     title: 'Shopify & DTC Growth Agency — Meta, TikTok & Google Ads | AZS Solutions',
     description: 'Scale DTC brands with high-converting Shopify Plus stores, Tabby/Tamara BNPL integration, and high-ROAS Meta, TikTok & Google performance marketing.',
@@ -15,6 +19,8 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
 
   const channels = [
     {
+      id: 'meta',
+      shortLabel: 'Meta',
       name: 'Meta Ads (Instagram & Facebook)',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -27,136 +33,193 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
       ),
       badge: 'Acquisition Engine',
       desc: 'Broad targeting with dynamic creative testing (DCT). High-impact founder videos, UGC unboxings, and localized Arabic carousels delivering predictable customer acquisition cost (CAC).',
-      metric: '4.85x Top Campaign ROAS'
+      metric: '4.85x Campaign ROAS'
     },
     {
-      name: 'TikTok Shop & Creator Spark Ads',
+      id: 'tiktok',
+      shortLabel: 'TikTok',
+      name: 'TikTok Shop & Spark Ads',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polygon points="23 7 16 12 23 17 23 7" />
           <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
         </svg>
       ),
-      badge: 'High-Velocity Viral',
+      badge: 'Viral Velocity',
       desc: 'GCC creator seeding and native TikTok Spark Ads. High-conversion micro-influencer product demos in Saudi & Emirati dialects converting mobile shoppers directly in-app.',
       metric: '+188% Gen-Z Order Lift'
     },
     {
-      name: 'Google Performance Max & Search',
+      id: 'google',
+      shortLabel: 'Google',
+      name: 'Google PMax & Search',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10" />
           <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
         </svg>
       ),
-      badge: 'High-Intent Capture',
+      badge: 'Intent Capture',
       desc: 'Full-funnel Google Shopping, Search, and P-Max asset groups. Dominating brand keywords and high-intent transactional search queries across Saudi Arabia, UAE, and the UK.',
       metric: '5.20x Search ROAS'
     },
     {
-      name: 'GCC Checkout & BNPL Optimization',
+      id: 'checkout',
+      shortLabel: 'Checkout',
+      name: 'Checkout & BNPL Optimization',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
           <line x1="1" y1="10" x2="23" y2="10" />
         </svg>
       ),
-      badge: 'Conversion Multiplier',
+      badge: 'Conversion Rate',
       desc: 'One-click frictionless checkout integrated with Tamara, Tabby (Buy Now Pay Later), Mada cards, Apple Pay, and automated cash-on-delivery (COD) fraud verification.',
-      metric: '+38% Checkout Completion'
+      metric: '+38% Checkout CVR'
     }
   ];
+
+  const paymentRails = [
+    {
+      title: 'Mada Debit Cards',
+      desc: 'Over 80% of online card transactions in Saudi Arabia happen via Mada.',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+          <line x1="1" y1="10" x2="23" y2="10" />
+        </svg>
+      )
+    },
+    {
+      title: 'Tamara (BNPL)',
+      desc: 'Splitting payments into 4 interest-free installments boosts AOV by +42%.',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 6v6l4 2" />
+        </svg>
+      )
+    },
+    {
+      title: 'Tabby (BNPL)',
+      desc: 'The premier Buy Now Pay Later network across the UAE and Saudi Arabia.',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+        </svg>
+      )
+    },
+    {
+      title: 'Apple Pay',
+      desc: '1-touch biometric mobile checkout eliminating address entry friction.',
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12z" />
+        </svg>
+      )
+    }
+  ];
+
+  const handlePrev = () => {
+    setMobileIdx((prev) => (prev - 1 + channels.length) % channels.length);
+  };
+
+  const handleNext = () => {
+    setMobileIdx((prev) => (prev + 1) % channels.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+  };
+
+  const renderChannelCard = (ch) => (
+    <div className="platform-detail-card" key={ch.id}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+        <div className="platform-detail-icon">{ch.icon}</div>
+        <span className="growth-badge">{ch.badge}</span>
+      </div>
+      <h3 className="platform-detail-title">{ch.name}</h3>
+      <p className="platform-detail-desc">{ch.desc}</p>
+      <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', fontSize: '0.85rem', color: 'var(--neon-mint)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+        {ch.metric}
+      </div>
+    </div>
+  );
 
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge="Institutional Division"
+        badge="Shopify & D2C"
         title="Shopify & D2C"
-        highlight="Performance Division"
-        subtitle="Bespoke high-converting storefronts, paid media acquisition on Meta, TikTok & Google, and frictionless GCC localization. We turn direct-to-consumer stores into profitable eight-figure growth engines."
-        breadcrumbs={[{ label: 'Shopify & D2C Division' }]}
-        primaryCtaText="Book Shopify Growth Audit"
+        highlight="Growth"
+        subtitle="High-converting storefronts, performance advertising on Meta, TikTok & Google, and frictionless GCC checkout localization."
+        breadcrumbs={[{ label: 'Shopify & D2C' }]}
+        primaryCtaText="Book Shopify Audit"
         primaryCtaLink="/book-audit"
-        secondaryCtaText="Inspect LIVORA Case Study"
-        secondaryCtaLink="#livora-proof"
+        secondaryCtaText="View Case Studies"
+        secondaryCtaLink="/case-studies"
         metrics={[
-          { val: '$50.4K/mo', label: 'Flagship D2C Rev', sub: 'LIVORA Modern Essentials' },
-          { val: '4.62x', label: 'Blended Paid ROAS', sub: 'Meta + TikTok + Google' },
-          { val: '+104%', label: '60-Day Sales Lift', sub: 'Post-storefront overhaul' },
-          { val: '1.2s', label: 'Mobile Page Speed', sub: 'Sub-second GCC CDN' }
+          { val: '$50.4K/mo', label: 'Flagship Sales', sub: 'LIVORA Essentials' },
+          { val: '4.62x', label: 'Blended ROAS', sub: 'Meta, TikTok & Google' },
+          { val: '+104%', label: 'Sales Lift', sub: '60-Day sprint' },
+          { val: '1.2s', label: 'Page Speed', sub: 'Sub-second GCC CDN' }
         ]}
       />
 
       <section className="section">
         <div className="container">
-          {/* Division Switcher Ribbon */}
+          {/* Division Switcher Ribbon (Clean Borderless & Padding-free) */}
           <div className="division-split-header">
             <div>
               <span style={{ fontSize: '0.78rem', color: 'var(--neon-cyan)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                Operational Division
+                Platform Tracks
               </span>
-              <h3 style={{ fontSize: '1.25rem', color: 'var(--text-heading)', margin: '4px 0 0' }}>
-                Division 2: Shopify & D2C vs Division 1: Marketplaces
+              <h3 style={{ fontSize: '1.2rem', color: 'var(--text-heading)', margin: '4px 0 0' }}>
+                Marketplaces & Online Stores
               </h3>
             </div>
             <div className="division-toggle-group">
-              <Link to="/marketplaces" className="division-nav-btn">Marketplaces Division</Link>
-              <span className="division-nav-btn active">Shopify & D2C Division</span>
+              <Link to="/marketplaces" className="division-nav-btn">Marketplaces</Link>
+              <span className="division-nav-btn active">Shopify & D2C</span>
             </div>
           </div>
 
           {/* Flagship Case Study Showcase: LIVORA Modern Essentials */}
-          <div id="livora-proof" style={{
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border-card)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '40px',
-            marginBottom: '60px',
-            marginTop: '20px',
-            position: 'relative'
-          }}>
-            <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
+          <div id="livora-proof" className="shopify-showcase-container">
+            <h2 style={{ fontSize: '1.75rem', color: 'var(--text-heading)', marginBottom: '8px' }}>
               LIVORA Modern Essentials: <span className="gradient-text">$50.4K/mo D2C Scale</span>
             </h2>
-            <p style={{ color: 'var(--text-body)', maxWidth: '780px', marginBottom: '30px' }}>
+            <p style={{ color: 'var(--text-body)', maxWidth: '780px', marginBottom: '24px' }}>
               How AZS overhauled an apparel brand’s sluggish web shop into an ultra-fast mobile storefront, launched creator-led Meta and TikTok acquisition campaigns, and integrated Tamara/Tabby BNPL for a 104% revenue surge.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'center' }}>
+            <div className="shopify-showcase-grid-layout">
               <div 
                 style={{ cursor: 'pointer', position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(0, 210, 255, 0.25)' }}
-                onClick={() => onOpenModal('/assets/livora_shopify_dashboard.svg', 'LIVORA Modern Essentials Verified Shopify Dashboard ($50,461.90/mo)')}
+                onClick={() => onOpenModal && onOpenModal('/assets/livora_shopify_dashboard.svg', 'LIVORA Modern Essentials Verified Shopify Dashboard ($50,461.90/mo)')}
+                title="Click to zoom verified Shopify dashboard"
               >
                 <img src="/assets/livora_shopify_dashboard.svg" alt="LIVORA Shopify Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
               </div>
 
               <div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px', marginBottom: '24px' }}>
-                  <div style={{ background: 'rgba(0, 245, 155, 0.05)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 245, 155, 0.2)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Monthly Sales</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>$50,461.90</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>SAR 189,200/mo</div>
-                  </div>
-
-                  <div style={{ background: 'rgba(0, 210, 255, 0.05)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 210, 255, 0.2)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Blended ROAS</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--neon-cyan)', fontFamily: 'var(--font-mono)' }}>4.62x</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>Meta + TikTok Ads</div>
-                  </div>
-
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Dispatched Units</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-heading)' }}>1,680 Units</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>+104% Monthly Lift</div>
-                  </div>
-
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Repeat Rate</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-heading)' }}>42.1%</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>Klaviyo Lifecycle Retention</div>
-                  </div>
-                </div>
-
                 <blockquote style={{
                   borderLeft: '3px solid var(--neon-cyan)',
                   paddingLeft: '16px',
@@ -169,57 +232,92 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
                   "Doubled monthly revenue within 60 days of storefront redesign, creator ad scaling, and local GCC payment gateway optimization."
                 </blockquote>
 
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                <div className="shopify-showcase-actions">
                   <Link to="/book-audit" className="btn btn-primary">
                     <span>Scale Your Shopify Brand</span>
                   </Link>
                   <Link to="/case-studies/livora" className="btn btn-secondary">
-                    <span>Read Full LIVORA DTC Case Study ➔</span>
+                    <span>Read LIVORA Case Study ➔</span>
                   </Link>
                 </div>
                 <div style={{ marginTop: '14px' }}>
                   <Link to="/programs-pricing" style={{ fontSize: '0.84rem', color: 'var(--neon-mint)', fontWeight: 700, textDecoration: 'none' }}>
-                    View Shopify & DTC Program Tiers & Indicative Pricing ➔
+                    View Program Tiers & Pricing ➔
                   </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Paid Media & Growth Channels Grid */}
-          <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
+          {/* Paid Media & Growth Channels */}
+          <div className="section-header" style={{ textAlign: 'left', margin: '30px 0 16px' }}>
             <h2>How We Drive Sales</h2>
-            <p>
-              We drive qualified, purchase-ready traffic from the platforms where modern consumers discover products:
-            </p>
           </div>
 
-          <div className="platform-detail-grid" style={{ marginBottom: '60px' }}>
-            {channels.map((ch, i) => (
-              <div className="platform-detail-card" key={i}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-                  <div className="platform-detail-icon">{ch.icon}</div>
-                  <span className="growth-badge">{ch.badge}</span>
-                </div>
-                <h3 className="platform-detail-title">{ch.name}</h3>
-                <p className="platform-detail-desc">{ch.desc}</p>
-                <div style={{ marginTop: 'auto', paddingTop: '12px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', fontSize: '0.85rem', color: 'var(--neon-mint)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                  </svg>
-                  {ch.metric}
-                </div>
+          {/* Mobile Interactive Slideshow Carousel (No Horizontal Scroll on Tabs) */}
+          <div className="mobile-channels-carousel-wrap">
+            <div className="mobile-channels-tabs-bar">
+              {channels.map((ch, idx) => (
+                <button
+                  key={ch.id}
+                  type="button"
+                  className={`mobile-channels-tab-btn ${mobileIdx === idx ? 'active' : ''}`}
+                  onClick={() => setMobileIdx(idx)}
+                >
+                  {ch.shortLabel}
+                </button>
+              ))}
+            </div>
+
+            <div 
+              className="mobile-channels-slide-wrap"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className="mobile-carousel-slide">
+                {renderChannelCard(channels[mobileIdx])}
               </div>
-            ))}
+
+              <div className="mobile-carousel-controls">
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn prev" 
+                  onClick={handlePrev} 
+                  aria-label="Previous Channel"
+                >
+                  ‹
+                </button>
+                <div className="carousel-dots">
+                  {channels.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      className={`carousel-dot ${mobileIdx === idx ? 'active' : ''}`}
+                      onClick={() => setMobileIdx(idx)}
+                      aria-label={`Go to ${channels[idx].name}`}
+                    />
+                  ))}
+                </div>
+                <button 
+                  type="button" 
+                  className="carousel-nav-btn next" 
+                  onClick={handleNext} 
+                  aria-label="Next Channel"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
           </div>
 
-          {/* GCC Localized Checkout Showcase */}
-          <div style={{
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '40px'
-          }}>
+          {/* Desktop Acquisition Channels Grid */}
+          <div className="desktop-channels-grid platform-detail-grid">
+            {channels.map((ch) => renderChannelCard(ch))}
+          </div>
+
+          {/* GCC Localized Checkout Showcase (Clean Unboxed Flow, No Card Styles) */}
+          <div className="shopify-checkout-container">
             <div className="section-header" style={{ textAlign: 'left', marginBottom: '20px' }}>
               <h2>Frictionless Saudi & UAE Checkout</h2>
               <p>
@@ -227,31 +325,23 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginTop: '24px' }}>
-              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-heading)', marginBottom: '4px' }}>Mada Debit Cards</div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>Over 80% of online card transactions in Saudi Arabia happen via Mada.</p>
-              </div>
-
-              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--neon-mint)', marginBottom: '4px' }}>Tamara (BNPL)</div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>Splitting payments into 4 interest-free installments boosts AOV by +42%.</p>
-              </div>
-
-              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--neon-cyan)', marginBottom: '4px' }}>Tabby (BNPL)</div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>The premier Buy Now Pay Later network across UAE and Saudi Arabia.</p>
-              </div>
-
-              <div style={{ background: 'rgba(0, 0, 0, 0.3)', padding: '18px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                <div style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-heading)', marginBottom: '4px' }}>Apple Pay</div>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-body)' }}>1-touch biometric mobile checkout eliminating address entry friction.</p>
-              </div>
+            <div className="shopify-checkout-grid">
+              {paymentRails.map((rail, idx) => (
+                <div className="shopify-checkout-item" key={idx}>
+                  <div className="checkout-item-icon">
+                    {rail.icon}
+                  </div>
+                  <div className="checkout-item-body">
+                    <h4>{rail.title}</h4>
+                    <p>{rail.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div style={{ textAlign: 'center', marginTop: '36px' }}>
-              <Link to="/book-audit" className="btn btn-primary" style={{ padding: '14px 32px' }}>
-                <span>Request Shopify Storefront Audit</span>
+            <div className="shopify-checkout-cta">
+              <Link to="/book-audit" className="btn btn-primary shopify-cta-btn">
+                <span>Book Shopify Audit</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
