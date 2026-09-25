@@ -5,6 +5,7 @@ export default function Testimonials() {
 
   const reviews = [
     {
+      score: '4.9 / 5.0',
       stars: '★★★★★',
       quote: 'AZS Solutions transformed our Amazon GCC operations. In less than 90 days, our ACOS dropped from 34% down to 6.93% while sales skyrocketed past SAR 180K/month. Their team handles everything from listings to inventory sync seamlessly.',
       name: 'Tariq Al-Mansoor',
@@ -14,6 +15,7 @@ export default function Testimonials() {
       verifiedDate: 'November 2025'
     },
     {
+      score: '5.0 / 5.0',
       stars: '★★★★★',
       quote: 'Expanding onto Noon and Trendyol was completely overwhelming for our internal team. AZS brought the exact playbook, onboarded our 400+ SKUs, and produced over 500 orders in month one with a 7.80x flash sale ROAS on Trendyol.',
       name: 'Sara Mitchell',
@@ -23,6 +25,7 @@ export default function Testimonials() {
       verifiedDate: 'January 2026'
     },
     {
+      score: '4.9 / 5.0',
       stars: '★★★★★',
       quote: 'Their bilingual Arabic/English team is unmatched. They revamped our Shopify storefront, integrated Meta and TikTok ads, and delivered a +104% revenue jump with a 4.8/5 store health score. AZS is our most valuable partner.',
       name: 'Rashid Khan',
@@ -43,8 +46,11 @@ export default function Testimonials() {
 
   const renderReviewCard = (r, idx) => (
     <div className="testi-card" key={idx} style={{ position: 'relative' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-        <div className="testi-rating">{r.stars}</div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{ fontWeight: 800, color: 'var(--text-pure)', fontSize: '0.96rem' }}>{r.score}</span>
+          <div className="testi-rating" style={{ margin: 0 }}>{r.stars}</div>
+        </div>
         <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--neon-mint)', background: 'rgba(0, 245, 155, 0.08)', border: '1px solid rgba(0, 245, 155, 0.25)', padding: '2px 8px', borderRadius: '12px' }}>
           ✓ {r.platform}
         </span>
@@ -75,8 +81,8 @@ export default function Testimonials() {
           </p>
         </div>
 
-        {/* Live Verified Review Platforms Ribbon */}
-        <div className="trust-platforms-ribbon">
+        {/* Live Verified Review Platforms Ribbon - Desktop Only to prevent fighting on mobile */}
+        <div className="trust-platforms-ribbon desktop-only">
           <div className="trust-ribbon-card ribbon-trustpilot">
             <div className="trust-ribbon-avatar avatar-mint">★</div>
             <div className="trust-ribbon-info">

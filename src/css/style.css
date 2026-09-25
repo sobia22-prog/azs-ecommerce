@@ -8876,61 +8876,9 @@ span.desktop-only {
     text-align: center !important;
   }
 
-  /* Compact Horizontal Swipable Ribbon for Verified Platforms */
+  /* Hide the 3 static platform rating cards on mobile so they don't fight with each other */
   .trust-platforms-ribbon {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 8px !important;
-    margin-bottom: 16px !important;
-    overflow-x: auto !important;
-    padding-bottom: 4px !important;
-    scrollbar-width: none !important;
-    -webkit-overflow-scrolling: touch !important;
-    width: 100% !important;
-  }
-
-  .trust-platforms-ribbon::-webkit-scrollbar {
     display: none !important;
-  }
-
-  .trust-ribbon-card {
-    flex: 1 1 0 !important;
-    min-width: 125px !important;
-    padding: 8px 10px !important;
-    gap: 8px !important;
-    border-radius: 10px !important;
-    background: rgba(11, 17, 29, 0.9) !important;
-  }
-
-  .trust-ribbon-avatar {
-    width: 28px !important;
-    height: 28px !important;
-  }
-
-  .trust-ribbon-avatar.avatar-mint {
-    font-size: 0.95rem !important;
-  }
-
-  .trust-ribbon-avatar.avatar-cyan svg {
-    width: 14px !important;
-    height: 14px !important;
-  }
-
-  .trust-ribbon-avatar.avatar-white {
-    font-size: 0.85rem !important;
-  }
-
-  .trust-ribbon-score {
-    font-size: 0.82rem !important;
-  }
-
-  .trust-ribbon-stars {
-    font-size: 0.65rem !important;
-  }
-
-  .trust-ribbon-sub {
-    font-size: 0.58rem !important;
-    white-space: nowrap !important;
   }
 
   .desktop-testimonials-grid {
@@ -8984,7 +8932,7 @@ span.desktop-only {
   }
 
   /* ==========================================================================
-     INTERACTIVE REVENUE SIMULATOR MOBILE OVERHAUL
+     INTERACTIVE REVENUE SIMULATOR MOBILE OVERHAUL (Frameless / No Card Borders)
      ========================================================================== */
   #calculator {
     padding-top: 20px !important;
@@ -9004,12 +8952,15 @@ span.desktop-only {
     text-align: center !important;
   }
 
+  /* Seamless, borderless calculator on mobile per user instruction */
   .calc-card,
   .calculator-wrap {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
     grid-template-columns: 1fr !important;
-    gap: 14px !important;
-    padding: 14px 12px !important;
-    border-radius: 14px !important;
+    gap: 16px !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -9065,40 +9016,43 @@ span.desktop-only {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 7px 8px !important;
-    font-size: 0.70rem !important;
+    padding: 7px 6px !important;
+    font-size: 0.68rem !important;
     font-weight: 600 !important;
     border-radius: 8px !important;
     width: 100% !important;
     box-sizing: border-box !important;
     min-width: 0 !important;
     gap: 4px !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    line-height: 1.2 !important;
   }
 
   .channel-check-btn .check-icon {
-    font-size: 0.76rem !important;
+    font-size: 0.72rem !important;
     flex-shrink: 0 !important;
+    margin-right: 2px !important;
   }
 
   .channel-check-btn .channel-btn-text {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    font-size: 0.67rem !important;
+    line-height: 1.15 !important;
   }
 
-  .calc-synergy-hint {
-    padding: 8px 10px !important;
-    font-size: 0.70rem !important;
-    line-height: 1.35 !important;
-    border-radius: 8px !important;
-    margin-top: 4px !important;
-    margin-bottom: 0 !important;
+  /* Completely remove Cross-Market Synergy box on mobile per user instruction */
+  .calc-synergy-hint,
+  #calculator .calc-synergy-hint {
+    display: none !important;
   }
 
+  /* Borderless Results Column on mobile */
   .calc-results-col {
+    background: rgba(14, 22, 38, 0.75) !important;
+    border: none !important;
+    box-shadow: none !important;
     padding: 16px 12px !important;
     border-radius: 14px !important;
     gap: 12px !important;
@@ -9135,6 +9089,8 @@ span.desktop-only {
   .res-metric-item {
     padding: 8px 8px !important;
     border-radius: 8px !important;
+    border: none !important;
+    background: rgba(255, 255, 255, 0.03) !important;
     box-sizing: border-box !important;
   }
 
