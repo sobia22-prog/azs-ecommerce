@@ -22,7 +22,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
   const platforms = [
     {
       id: 'amazon-ksa',
-      shortLabel: 'Amazon KSA',
+      shortLabel: 'KSA',
       name: 'Amazon Saudi Arabia',
       sub: 'KSA Flagship & FBA Logistics',
       icon: (
@@ -36,11 +36,6 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       buttonText: 'Explore Amazon KSA Hub',
       desc: 'Complete Seller Central & Vendor Central management, algorithmic Buy Box defense, Arabic/English A+ Brand Story design, and Sponsored Products/Brands/Display campaign scaling.',
       link: '/marketplace-management/amazon-ksa',
-      metrics: {
-        highlight: '14.43x ROAS',
-        sub: 'HomeMaster Flagship',
-        volume: 'SAR 120.8K/wk'
-      },
       features: [
         'Sponsored Products, Brands & Display PPC Architecture',
         'Riyadh & Jeddah FBA Inbound Shipment Routing',
@@ -50,7 +45,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
     },
     {
       id: 'amazon-usa',
-      shortLabel: 'Amazon USA',
+      shortLabel: 'USA',
       name: 'Amazon USA',
       sub: 'DSP Media & Nationwide FBA',
       icon: (
@@ -65,11 +60,6 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       buttonText: 'Explore Amazon USA Hub',
       desc: 'High-velocity expansion into Amazon.com USA. Programmatic Amazon DSP, multi-touch AMC attribution, nationwide FBA inventory distribution, and customs/tariff compliance.',
       link: '/marketplace-management/amazon-usa',
-      metrics: {
-        highlight: '11.20x ROAS',
-        sub: 'NuvoAura Beauty',
-        volume: '$48.9K Ad Sales'
-      },
       features: [
         'Programmatic Amazon DSP Advertising',
         'Amazon Marketing Cloud (AMC) Attribution',
@@ -79,7 +69,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
     },
     {
       id: 'noon',
-      shortLabel: 'Noon GCC',
+      shortLabel: 'Noon',
       name: 'Noon Marketplace',
       sub: 'GCC Seller Lab & FBN Express',
       icon: (
@@ -92,11 +82,6 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       buttonText: 'Explore Noon GCC Hub',
       desc: 'Noon Seller Lab onboarding, Fulfilled By Noon (FBN) direct warehouse routing, Yellow Friday mega-campaign execution, and localized GCC promotions.',
       link: '/marketplace-management/noon',
-      metrics: {
-        highlight: '6.85x ROAS',
-        sub: 'Creative Things Noon',
-        volume: 'SAR 208.5K GMV'
-      },
       features: [
         'Fulfilled by Noon (FBN) Express Priority Badge',
         'Yellow Friday, Ramadan, and Monthly Mega-Sales',
@@ -120,11 +105,6 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       buttonText: 'Explore Trendyol Hub',
       desc: 'Strategic expansion onto the GCC’s fastest growing cross-border platform. Turnkey catalog translation, automated pricing harmonization, and localized fulfillment routing.',
       link: '/marketplace-management/trendyol',
-      metrics: {
-        highlight: '7.80x ROAS',
-        sub: 'Eurasia Lifestyle',
-        volume: 'SAR 145K/mo'
-      },
       features: [
         'Cross-Border SKU Onboarding & Arabic Attribute Mapping',
         'Flash Sale Participation & Trendyol Promotions',
@@ -180,31 +160,6 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
       <h3 className="platform-detail-title">{p.name}</h3>
       <p style={{ fontSize: '0.82rem', color: 'var(--neon-cyan)', marginBottom: '10px', fontWeight: 600 }}>{p.sub}</p>
       <p className="platform-detail-desc">{p.desc}</p>
-
-      {/* Live Verified Metric Box */}
-      <div style={{
-        background: 'rgba(255, 255, 255, 0.02)',
-        border: '1px solid rgba(255, 255, 255, 0.06)',
-        borderRadius: 'var(--radius-sm)',
-        padding: '12px 14px',
-        marginBottom: '16px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}>
-        <div>
-          <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>
-            {formatDynamicText(p.metrics.highlight)}
-          </div>
-          <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{p.metrics.sub}</div>
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <div style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-heading)' }}>
-            {formatDynamicText(p.metrics.volume)}
-          </div>
-          <div style={{ fontSize: '0.70rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>Verified Metric</div>
-        </div>
-      </div>
 
       <ul className="platform-checklist">
         {p.features.map((feat, idx) => (
@@ -263,7 +218,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
 
       <section className="section">
         <div className="container">
-          {/* Division Switcher Ribbon */}
+          {/* Division Switcher Ribbon (Clean Borderless & Padding-free) */}
           <div className="division-split-header">
             <div>
               <span style={{ fontSize: '0.78rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -279,17 +234,14 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
             </div>
           </div>
 
-          <div className="section-header" style={{ textAlign: 'left', margin: '36px 0 20px' }}>
+          <div className="section-header" style={{ textAlign: 'left', margin: '28px 0 16px' }}>
             <h2>Marketplaces We Scale</h2>
             <p className="desktop-only">
               Select a dedicated platform hub below for platform-specific capabilities, case studies, and execution systems:
             </p>
-            <p className="mobile-only">
-              Select or swipe across platforms to view capabilities and performance:
-            </p>
           </div>
 
-          {/* Mobile Interactive Slideshow Carousel */}
+          {/* Mobile Interactive Slideshow Carousel (All 4 tabs fit on page with zero horizontal scroll) */}
           <div className="mobile-platform-carousel-wrap">
             <div className="mobile-platform-tabs-bar">
               {platforms.map((p, idx) => (
@@ -330,7 +282,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
                       type="button"
                       className={`carousel-dot ${mobileIdx === idx ? 'active' : ''}`}
                       onClick={() => setMobileIdx(idx)}
-                      aria-label={`Go to ${platforms[idx].shortLabel}`}
+                      aria-label={`Go to ${platforms[idx].name}`}
                     />
                   ))}
                 </div>
@@ -351,9 +303,9 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
             {platforms.map((p) => renderPlatformCard(p))}
           </div>
 
-          {/* Operational Systems Matrix */}
+          {/* Operational Systems Matrix (Clean Unboxed Layout, No Card Box Styles) */}
           <div className="marketplaces-matrix-container">
-            <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
+            <div className="section-header" style={{ textAlign: 'left', marginBottom: '20px' }}>
               <h2>How We Manage Your Brand</h2>
               <p>
                 Every marketplace account is steered by dedicated brand managers, native Arabic listing copywriters, PPC optimization specialists, and account health guardians.
@@ -363,57 +315,65 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
             <div className="marketplaces-systems-grid">
               <div className="marketplaces-system-card">
                 <div className="system-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                 </div>
-                <h4>Buy Box & IP Defense</h4>
-                <p>
-                  Automated scraping of unauthorized third-party sellers, proactive brand registry enforcement, and algorithmic dynamic repricing maintaining &gt;90% Buy Box occupancy.
-                </p>
+                <div className="system-card-body">
+                  <h4>Buy Box & IP Defense</h4>
+                  <p>
+                    Automated scraping of unauthorized third-party sellers, proactive brand registry enforcement, and algorithmic dynamic repricing maintaining &gt;90% Buy Box occupancy.
+                  </p>
+                </div>
               </div>
 
               <div className="marketplaces-system-card">
                 <div className="system-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" />
                     <circle cx="12" cy="12" r="6" />
                     <circle cx="12" cy="12" r="2" />
                   </svg>
                 </div>
-                <h4>PPC Campaign Structuring</h4>
-                <p>
-                  Exact, phrase, and broad keyword segmentation, dayparting, negative keyword harvesting, and Sponsored Brands video units delivering sub-15% ACOS.
-                </p>
+                <div className="system-card-body">
+                  <h4>PPC Campaign Structuring</h4>
+                  <p>
+                    Exact, phrase, and broad keyword segmentation, dayparting, negative keyword harvesting, and Sponsored Brands video units delivering sub-15% ACOS.
+                  </p>
+                </div>
               </div>
 
               <div className="marketplaces-system-card">
                 <div className="system-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="10" />
                     <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z" />
                   </svg>
                 </div>
-                <h4>Arabic Localization</h4>
-                <p>
-                  Native GCC Arabic dialect keyword search volume indexing, cultural compliance, and high-conversion Arabic A+ infographic storytelling.
-                </p>
+                <div className="system-card-body">
+                  <h4>Arabic Localization</h4>
+                  <p>
+                    Native GCC Arabic dialect keyword search volume indexing, cultural compliance, and high-conversion Arabic A+ infographic storytelling.
+                  </p>
+                </div>
               </div>
 
               <div className="marketplaces-system-card">
                 <div className="system-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="1" y="3" width="15" height="13" />
-                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 8" />
                     <circle cx="5.5" cy="18.5" r="2.5" />
                     <circle cx="18.5" cy="18.5" r="2.5" />
                   </svg>
                 </div>
-                <h4>FBA / FBN Logistics</h4>
-                <p>
-                  Warehouse routing into Riyadh, Jeddah, and Dubai fulfillment nodes, avoiding stockouts during Ramadan and White/Yellow Friday mega-sales.
-                </p>
+                <div className="system-card-body">
+                  <h4>FBA / FBN Logistics</h4>
+                  <p>
+                    Warehouse routing into Riyadh, Jeddah, and Dubai fulfillment nodes, avoiding stockouts during Ramadan and White/Yellow Friday mega-sales.
+                  </p>
+                </div>
               </div>
             </div>
 
