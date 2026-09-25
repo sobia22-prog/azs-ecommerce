@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from '../Router';
 
 export default function WhatWeManage({ onOpenModal }) {
-  const [activeService, setActiveService] = useState(0);
+  const [activeService, setActiveService] = useState(-1);
 
   const services = [
     {

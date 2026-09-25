@@ -122,6 +122,36 @@ export default function TailoredPrograms() {
     </div>
   );
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const handlePrev = () => {
+    setMobileIdx((prev) => (prev === 0 ? programs.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setMobileIdx((prev) => (prev === programs.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      handleNext();
+    } else if (distance < -45) {
+      handlePrev();
+    }
+  };
+
   return (
     <section className="section" id="programs">
       <div className="container">
@@ -137,44 +167,35 @@ export default function TailoredPrograms() {
           {programs.map(prog => renderProgramCard(prog))}
         </div>
 
-        {/* Mobile Interactive Slideshow with Conditional Arrows */}
-        <div className="mobile-programs-slideshow-wrap">
-          <div className="prog-slide-card-container">
-            {mobileIdx > 0 && (
-              <button 
-                type="button" 
-                className="prog-slide-arrow prev" 
-                onClick={() => setMobileIdx(prev => prev - 1)} 
-                aria-label="Previous Program"
-              >
-                ‹
-              </button>
-            )}
-
+        {/* Mobile Interactive Slideshow with Unified Carousel Controls */}
+        <div 
+          className="mobile-programs-slideshow-wrap"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="mobile-carousel-slide">
             {renderProgramCard(programs[mobileIdx])}
-
-            {mobileIdx < programs.length - 1 && (
-              <button 
-                type="button" 
-                className="prog-slide-arrow next" 
-                onClick={() => setMobileIdx(prev => prev + 1)} 
-                aria-label="Next Program"
-              >
-                ›
-              </button>
-            )}
           </div>
 
-          <div className="carousel-dots" style={{ marginTop: '14px' }}>
-            {programs.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`carousel-dot ${mobileIdx === i ? 'active' : ''}`}
-                onClick={() => setMobileIdx(i)}
-                aria-label={`Go to program ${i + 1}`}
-              />
-            ))}
+          <div className="mobile-carousel-controls">
+            <button className="carousel-nav-btn prev" onClick={handlePrev} aria-label="Previous Program">
+              ‹
+            </button>
+            <div className="carousel-dots">
+              {programs.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`carousel-dot ${mobileIdx === i ? 'active' : ''}`}
+                  onClick={() => setMobileIdx(i)}
+                  aria-label={`Go to program ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button className="carousel-nav-btn next" onClick={handleNext} aria-label="Next Program">
+              ›
+            </button>
           </div>
         </div>
       </div>

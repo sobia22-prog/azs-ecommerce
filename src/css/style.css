@@ -8210,46 +8210,6 @@ div.desktop-only,
     padding: 0 4px !important;
   }
 
-  .prog-slide-card-container {
-    position: relative !important;
-    width: 100% !important;
-  }
-
-  .prog-slide-arrow {
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 50% !important;
-    background: rgba(16, 25, 42, 0.95) !important;
-    border: 1px solid rgba(0, 245, 155, 0.4) !important;
-    color: var(--neon-mint) !important;
-    font-size: 1.4rem !important;
-    line-height: 1 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer !important;
-    z-index: 10 !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 10px rgba(0, 245, 155, 0.25) !important;
-    transition: all 0.2s ease !important;
-  }
-
-  .prog-slide-arrow:active {
-    transform: translateY(-50%) scale(0.92) !important;
-    background: var(--neon-mint) !important;
-    color: #04070b !important;
-  }
-
-  .prog-slide-arrow.prev {
-    left: -12px !important;
-  }
-
-  .prog-slide-arrow.next {
-    right: -12px !important;
-  }
-
   .program-card-elevated {
     padding: 16px 14px !important;
     border-radius: 14px !important;

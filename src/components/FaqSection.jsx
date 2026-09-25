@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function FaqSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const faqs = [
     {

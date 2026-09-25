@@ -160,8 +160,41 @@ const DASHBOARDS = {
 export default function Marketplaces({ onOpenModal }) {
   const [activeMobileMkt, setActiveMobileMkt] = useState('ksa');
   const [activeDash, setActiveDash] = useState('ksa');
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   const current = DASHBOARDS[activeDash] || DASHBOARDS.ksa;
   const activeMktData = MARKETPLACE_LIST.find(m => m.id === activeMobileMkt) || MARKETPLACE_LIST[0];
+
+  const handlePrev = () => {
+    const currentIdx = MARKETPLACE_LIST.findIndex(m => m.id === activeMobileMkt);
+    const prevIdx = (currentIdx - 1 + MARKETPLACE_LIST.length) % MARKETPLACE_LIST.length;
+    setActiveMobileMkt(MARKETPLACE_LIST[prevIdx].id);
+  };
+
+  const handleNext = () => {
+    const currentIdx = MARKETPLACE_LIST.findIndex(m => m.id === activeMobileMkt);
+    const nextIdx = (currentIdx + 1) % MARKETPLACE_LIST.length;
+    setActiveMobileMkt(MARKETPLACE_LIST[nextIdx].id);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+  };
 
   const renderCardContent = (mkt) => (
     <div className="mkt-card" key={mkt.id} style={mkt.id === 'trendyol' ? { borderColor: 'rgba(245, 158, 11, 0.25)' } : {}}>
@@ -255,9 +288,46 @@ export default function Marketplaces({ onOpenModal }) {
             ))}
           </div>
 
-          {/* Mobile Single Active Card View */}
-          <div className="mobile-mkt-single-card-wrap">
-            {renderCardContent(activeMktData)}
+          {/* Mobile Single Active Card View with Swipe & Unified Carousel Controls */}
+          <div 
+            className="mobile-mkt-single-card-wrap"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div className="mobile-carousel-slide">
+              {renderCardContent(activeMktData)}
+            </div>
+
+            <div className="mobile-carousel-controls">
+              <button 
+                type="button" 
+                className="carousel-nav-btn prev" 
+                onClick={handlePrev} 
+                aria-label="Previous marketplace"
+              >
+                ‹
+              </button>
+              <div className="carousel-dots">
+                {MARKETPLACE_LIST.map((m) => (
+                  <button
+                    key={m.id}
+                    type="button"
+                    className={`carousel-dot ${activeMobileMkt === m.id ? 'active' : ''}`}
+                    onClick={() => setActiveMobileMkt(m.id)}
+                    aria-label={`Go to ${m.tabLabel}`}
+                  />
+                ))}
+              </div>
+              <button 
+                type="button" 
+                className="carousel-nav-btn next" 
+                onClick={handleNext} 
+                aria-label="Next marketplace"
+              >
+                ›
+              </button>
+            </div>
           </div>
 
           {/* Desktop 2x2 Marketplace Grid */}

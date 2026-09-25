@@ -36,12 +36,34 @@ export default function Testimonials() {
     }
   ];
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   const handlePrev = () => {
     setMobileIdx((prev) => (prev === 0 ? reviews.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
     setMobileIdx((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      handleNext();
+    } else if (distance < -45) {
+      handlePrev();
+    }
   };
 
   const renderReviewCard = (r, idx) => (
@@ -127,7 +149,12 @@ export default function Testimonials() {
         </div>
 
         {/* Mobile Interactive Slideshow Carousel */}
-        <div className="mobile-testi-carousel-wrap">
+        <div 
+          className="mobile-testi-carousel-wrap"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="mobile-testi-slide">
             {renderReviewCard(reviews[mobileIdx], mobileIdx)}
           </div>

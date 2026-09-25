@@ -90,12 +90,34 @@ export default function CaseStudies({ onOpenModal }) {
   const activeCases = cases.slice(0, 3);
   const currentCase = activeCases[mobileIdx] || activeCases[0];
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   const handlePrev = () => {
     setMobileIdx((prev) => (prev === 0 ? activeCases.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
     setMobileIdx((prev) => (prev === activeCases.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 45) {
+      handleNext();
+    } else if (distance < -45) {
+      handlePrev();
+    }
   };
 
   const renderCaseCard = (cs) => {
@@ -180,7 +202,12 @@ export default function CaseStudies({ onOpenModal }) {
         </div>
 
         {/* Mobile Interactive Swipeable Carousel */}
-        <div className="mobile-cases-carousel-wrap">
+        <div 
+          className="mobile-cases-carousel-wrap"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="mobile-carousel-slide">
             {renderCaseCard(currentCase)}
           </div>

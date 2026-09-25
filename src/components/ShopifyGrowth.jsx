@@ -37,9 +37,44 @@ const STORES = {
   }
 };
 
+const STORE_KEYS = ['homemaster', 'livora', 'creativethings'];
+
 export default function ShopifyGrowth({ onOpenModal }) {
   const [activeStore, setActiveStore] = useState('homemaster');
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
   const store = STORES[activeStore];
+
+  const handlePrev = () => {
+    const currentIdx = STORE_KEYS.indexOf(activeStore);
+    const prevIdx = (currentIdx - 1 + STORE_KEYS.length) % STORE_KEYS.length;
+    setActiveStore(STORE_KEYS[prevIdx]);
+  };
+
+  const handleNext = () => {
+    const currentIdx = STORE_KEYS.indexOf(activeStore);
+    const nextIdx = (currentIdx + 1) % STORE_KEYS.length;
+    setActiveStore(STORE_KEYS[nextIdx]);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 45;
+    const isRightSwipe = distance < -45;
+    if (isLeftSwipe) handleNext();
+    if (isRightSwipe) handlePrev();
+  };
 
   const storeVisuals = {
     homemaster: {
@@ -97,10 +132,13 @@ export default function ShopifyGrowth({ onOpenModal }) {
               </div>
             </div>
 
-            {/* Clean Visual Storefront Architecture Graphic */}
+            {/* Clean Visual Storefront Architecture Graphic with Touch Swipe */}
             <div
               className="mockup-media-wrapper"
               onClick={() => onOpenModal(currentVisual.img, `${store.name} — Storefront Architecture`)}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
               style={{ cursor: 'pointer' }}
               title="Click to zoom high-resolution storefront architecture"
             >
