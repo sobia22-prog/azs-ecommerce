@@ -75,47 +75,6 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
     }
   ];
 
-  const paymentRails = [
-    {
-      title: 'Mada Debit Cards',
-      desc: 'Over 80% of online card transactions in Saudi Arabia happen via Mada.',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
-          <line x1="1" y1="10" x2="23" y2="10" />
-        </svg>
-      )
-    },
-    {
-      title: 'Tamara (BNPL)',
-      desc: 'Splitting payments into 4 interest-free installments boosts AOV by +42%.',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 6v6l4 2" />
-        </svg>
-      )
-    },
-    {
-      title: 'Tabby (BNPL)',
-      desc: 'The premier Buy Now Pay Later network across the UAE and Saudi Arabia.',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        </svg>
-      )
-    },
-    {
-      title: 'Apple Pay',
-      desc: '1-touch biometric mobile checkout eliminating address entry friction.',
-      icon: (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 4a6 6 0 1 0 0 12 6 6 0 0 0 0-12z" />
-        </svg>
-      )
-    }
-  ];
-
   const [mobileIdx, setMobileIdx] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -333,38 +292,15 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
             {channels.map((ch) => renderChannelCard(ch))}
           </div>
 
-          {/* GCC Localized Checkout Showcase (Clean Unboxed Flow, No Card Styles) */}
-          <div className="shopify-checkout-container">
-            <div className="section-header" style={{ textAlign: 'left', marginBottom: '20px' }}>
-              <h2>Frictionless Saudi & UAE Checkout</h2>
-              <p>
-                Over 68% of GCC shopping carts are abandoned if local payment methods are missing. AZS configures your checkout stack with the trusted payment rails Gulf consumers demand:
-              </p>
-            </div>
-
-            <div className="shopify-checkout-grid">
-              {paymentRails.map((rail, idx) => (
-                <div className="shopify-checkout-item" key={idx}>
-                  <div className="checkout-item-icon">
-                    {rail.icon}
-                  </div>
-                  <div className="checkout-item-body">
-                    <h4>{rail.title}</h4>
-                    <p>{rail.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="shopify-checkout-cta">
-              <Link to="/book-audit" className="btn btn-primary shopify-cta-btn">
-                <span>Book Shopify Audit</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </Link>
-            </div>
+          {/* Bottom Audit CTA */}
+          <div className="shopify-channels-cta" style={{ textAlign: 'center', marginTop: '36px' }}>
+            <Link to="/book-audit" className="btn btn-primary shopify-cta-btn">
+              <span>Book Shopify Audit</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </Link>
           </div>
         </div>
       </section>

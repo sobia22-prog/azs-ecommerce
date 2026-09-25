@@ -7419,62 +7419,12 @@ div.desktop-only,
   margin-bottom: 60px;
 }
 
-.shopify-checkout-container {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin-top: 40px;
-}
-
-.shopify-checkout-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
-}
-
-.shopify-checkout-item {
-  background: transparent;
-  border: none;
-  padding: 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.shopify-checkout-item .checkout-item-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(0, 245, 155, 0.08);
-  border: 1px solid rgba(0, 245, 155, 0.2);
-  color: var(--neon-mint);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.shopify-checkout-item .checkout-item-body h4 {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--text-heading);
-  margin-bottom: 4px;
-}
-
-.shopify-checkout-item .checkout-item-body p {
-  font-size: 0.85rem;
-  color: var(--text-body);
-  line-height: 1.55;
-  margin: 0;
-}
-
-.shopify-checkout-cta {
+.shopify-channels-cta {
   text-align: center;
   margin-top: 36px;
 }
 
-.shopify-checkout-cta .btn {
+.shopify-cta-btn {
   padding: 14px 32px;
 }
 
@@ -9893,77 +9843,13 @@ div.desktop-only,
     margin-bottom: 12px !important;
   }
 
-  /* Checkout Section Mobile - Clean Unboxed Flow (No Card Styles) */
-  .shopify-checkout-container {
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    margin-top: 24px !important;
-  }
-
-  .shopify-checkout-container .section-header {
-    margin-bottom: 14px !important;
-  }
-
-  .shopify-checkout-container .section-header h2 {
-    font-size: 1.2rem !important;
-    line-height: 1.25 !important;
-    margin-bottom: 4px !important;
-  }
-
-  .shopify-checkout-container .section-header p {
-    font-size: 0.76rem !important;
-    line-height: 1.38 !important;
-  }
-
-  .shopify-checkout-grid {
-    grid-template-columns: 1fr !important;
-    gap: 14px !important;
-    margin-top: 14px !important;
-  }
-
-  .shopify-checkout-item {
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
-    display: flex !important;
-    align-items: flex-start !important;
-    gap: 12px !important;
-  }
-
-  .shopify-checkout-item .checkout-item-icon {
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 10px !important;
-    background: rgba(0, 245, 155, 0.08) !important;
-    border: 1px solid rgba(0, 245, 155, 0.2) !important;
-    color: var(--neon-mint) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0 !important;
-  }
-
-  .shopify-checkout-item .checkout-item-body h4 {
-    font-size: 0.94rem !important;
-    line-height: 1.25 !important;
-    margin-bottom: 3px !important;
-    color: var(--text-heading) !important;
-  }
-
-  .shopify-checkout-item .checkout-item-body p {
-    font-size: 0.76rem !important;
-    line-height: 1.4 !important;
-    color: var(--text-body) !important;
-    margin: 0 !important;
-  }
-
-  .shopify-checkout-cta {
+  /* Shopify Channels CTA Mobile */
+  .shopify-channels-cta {
     margin-top: 20px !important;
     width: 100% !important;
   }
 
-  .shopify-checkout-cta .btn {
+  .shopify-channels-cta .btn {
     width: 100% !important;
     max-width: 100% !important;
     padding: 12px 16px !important;
