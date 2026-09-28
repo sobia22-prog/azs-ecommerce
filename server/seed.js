@@ -116,7 +116,8 @@ export const SEED_DATA = {
         salesGrowth: '+11,963%',
         sevenDayRevenue: '$32.2K (SAR 120.8K)',
         roas: '14.43x',
-        acos: '6.93%'
+        acos: '6.93% ACOS',
+        efficiencySub: '6.93% ACOS'
       },
       summary: 'Turnkey catalog restructuring, Buy Box protection, Arabic SEO, and Sponsored Ads optimization across GCC marketplaces.',
       highlightQuote: 'Reduced ACOS from 34% down to 6.93% while scaling weekly revenue by +11,963%.',
@@ -133,7 +134,8 @@ export const SEED_DATA = {
         salesGrowth: '+104%',
         sevenDayRevenue: '$50.4K/mo',
         roas: '4.62x',
-        acos: '1,680 Units'
+        acos: '1,680 Dispatched Units',
+        efficiencySub: '1,680 Dispatched Units'
       },
       summary: 'Bespoke mobile-first Shopify storefront, UGC video acquisition on Meta and TikTok, and localized GCC checkout.',
       highlightQuote: 'Doubled monthly revenue within 60 days of storefront redesign, creator ad scaling, and local GCC payment gateway optimization.',
@@ -150,7 +152,8 @@ export const SEED_DATA = {
         salesGrowth: '+311.02%',
         sevenDayRevenue: 'SAR 208.5K',
         roas: '6.85x',
-        acos: '522 Units'
+        acos: '522 Units Dispatched',
+        efficiencySub: '522 Units Dispatched'
       },
       summary: 'Noon Seller Lab onboarding, FBN warehouse routing, Yellow Friday mega-campaign execution, and category dominance.',
       highlightQuote: 'Exceeded 520 units in initial campaign push with a blended 6.85x ROAS and seamless FBN Express delivery.',

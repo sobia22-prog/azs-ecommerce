@@ -469,8 +469,8 @@ export default function CaseStudiesPage({ onOpenModal }) {
                 className={`case-study-tab-btn ${activeFilter === f.id ? 'active' : ''}`}
                 onClick={() => setActiveFilter(f.id)}
               >
-                <span className="desktop-only">{f.label}</span>
-                <span className="mobile-only">{f.shortLabel}</span>
+                <span className="case-study-tab-label-desktop desktop-only">{f.label}</span>
+                <span className="case-study-tab-label-mobile mobile-only">{f.shortLabel}</span>
               </button>
             ))}
           </div>

@@ -14,7 +14,7 @@ const FALLBACK_CASES = [
       salesGrowth: '+11,963%',
       sevenDayRevenue: '$32.2K (SAR 120.8K)',
       roas: '14.43x',
-      acos: '6.93%'
+      efficiencySub: '6.93% ACOS'
     },
     summary: 'Catalog restructuring, Buy Box defense and Sponsored Ads scale across GCC.',
     highlightQuote: 'Reduced ACOS from 34% down to 6.93% while scaling weekly revenue by +11,963%.'
@@ -30,7 +30,7 @@ const FALLBACK_CASES = [
       salesGrowth: '+104%',
       sevenDayRevenue: '$50.4K/mo',
       roas: '4.62x',
-      acos: '1,680 Units'
+      efficiencySub: '1,680 Dispatched Units'
     },
     summary: 'Bespoke mobile-first Shopify storefront, creator video ads & localized checkout.',
     highlightQuote: 'Doubled monthly revenue in 60 days with creator scaling and localized checkout.'
@@ -46,7 +46,7 @@ const FALLBACK_CASES = [
       salesGrowth: '+311.02%',
       sevenDayRevenue: 'SAR 208.5K',
       roas: '6.85x',
-      acos: '522 Units'
+      efficiencySub: '522 Units Dispatched'
     },
     summary: 'Noon Seller Lab onboarding, FBN warehouse routing & mega campaign execution.',
     highlightQuote: 'Exceeded 520 units in initial campaign push with blended 6.85x ROAS.'
@@ -57,6 +57,26 @@ const CASE_STUDY_IMAGES = {
   homemaster: '/assets/homemaster_case_study.jpg',
   livora: '/assets/livora_case_study.jpg',
   'creative-things': '/assets/creativethings_case_study.jpg'
+};
+
+const formatRoas = (roas) => {
+  if (!roas) return '4.5x ROAS';
+  const str = String(roas).trim();
+  return str.toLowerCase().includes('roas') ? str : `${str} ROAS`;
+};
+
+const formatEfficiencySub = (metrics) => {
+  if (!metrics) return null;
+  const val = metrics.efficiencySub || metrics.efficiency || metrics.subMetric || metrics.acos;
+  if (!val) return null;
+  const str = String(val).trim();
+  if (/acos|unit|order|sku|roas/i.test(str)) {
+    return str;
+  }
+  if (str.includes('%')) {
+    return `${str} ACOS`;
+  }
+  return str;
 };
 
 export default function CaseStudies({ onOpenModal }) {
@@ -79,7 +99,8 @@ export default function CaseStudies({ onOpenModal }) {
                 ...item.metrics,
                 salesGrowth: item.metrics?.salesGrowth || item.metrics?.salesLift || item.metrics?.ordersGrowth || '+100%',
                 sevenDayRevenue: item.metrics?.sevenDayRevenue || item.metrics?.monthlySales || item.metrics?.noonRevenue || '$32.2K',
-                roas: item.metrics?.roas || '4.5x'
+                roas: item.metrics?.roas || '4.5x',
+                efficiencySub: item.metrics?.efficiencySub || item.metrics?.efficiency || item.metrics?.subMetric || item.metrics?.acos
               }
             };
           });
@@ -177,11 +198,11 @@ export default function CaseStudies({ onOpenModal }) {
           <div>
             <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Efficiency</div>
             <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-heading)', lineHeight: 1.2 }}>
-              {cs.metrics?.roas} ROAS
+              {formatRoas(cs.metrics?.roas)}
             </div>
-            {cs.metrics?.acos && (
+            {formatEfficiencySub(cs.metrics) && (
               <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '2px', lineHeight: 1.1 }}>
-                {cs.metrics.acos} ACOS
+                {formatEfficiencySub(cs.metrics)}
               </div>
             )}
           </div>

@@ -180,7 +180,10 @@ img {
 }
 
 /* Responsive Visibility Helpers */
-.mobile-only-txt {
+.mobile-only,
+.mobile-only-txt,
+span.mobile-only,
+div.mobile-only {
   display: none !important;
 }
 .desktop-only-txt,
@@ -4060,11 +4063,18 @@ div.desktop-only,
     font-size: 0.80rem !important;
   }
 
-  .mobile-only-txt {
+  .mobile-only-txt,
+  span.mobile-only {
     display: inline !important;
   }
+  div.mobile-only,
+  .mobile-only {
+    display: block !important;
+  }
   .desktop-only-txt,
-  .desktop-only {
+  .desktop-only,
+  span.desktop-only,
+  div.desktop-only {
     display: none !important;
   }
 
@@ -7507,6 +7517,23 @@ div.desktop-only,
   color: var(--neon-mint);
   border-color: rgba(0, 245, 155, 0.4);
   box-shadow: 0 0 12px rgba(0, 245, 155, 0.15);
+}
+
+.case-study-tab-label-desktop {
+  display: inline !important;
+}
+
+.case-study-tab-label-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .case-study-tab-label-desktop {
+    display: none !important;
+  }
+  .case-study-tab-label-mobile {
+    display: inline !important;
+  }
 }
 
 .case-studies-bottom-cta {
