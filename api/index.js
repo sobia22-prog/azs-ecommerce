@@ -8,14 +8,23 @@ let isInitialized = false;
 export default async function handler(req, res) {
   if (!isInitialized) {
     try {
-      await connectDB();
-      await seedDatabase();
+      await Promise.race([
+        (async () => {
+          await connectDB();
+          await seedDatabase();
+        })(),
+        new Promise((resolve) => setTimeout(resolve, 2000))
+      ]);
     } catch (err) {
       console.warn('[Vercel Serverless Init Notice]:', err.message);
     }
     isInitialized = true;
   }
 
-  // Handle request through Express app
-  return app(req, res);
+  // Handle request through Express app and wait for response to finish in serverless
+  return new Promise((resolve) => {
+    res.on('finish', resolve);
+    res.on('close', resolve);
+    app(req, res);
+  });
 }

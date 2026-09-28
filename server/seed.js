@@ -2,6 +2,7 @@ import AdminUser from './models/AdminUser.js';
 import Marketplace from './models/Marketplace.js';
 import CaseStudy from './models/CaseStudy.js';
 import Blog from './models/Blog.js';
+import { getIsConnected } from './config/db.js';
 
 export const SEED_DATA = {
   superAdmin: {
@@ -272,6 +273,9 @@ export const SEED_DATA = {
 };
 
 export async function seedDatabase() {
+  if (!getIsConnected()) {
+    return;
+  }
   try {
     // 1. Seed Super Admin
     const adminCount = await AdminUser.countDocuments();

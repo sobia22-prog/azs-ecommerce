@@ -12,17 +12,25 @@ let memoryBlogs = [...SEED_DATA.blogs];
 router.get('/', async (req, res) => {
   try {
     if (getIsConnected()) {
-      let items = await Blog.find().sort({ sortOrder: 1 });
-      if (items.length === 0) {
-        await Blog.insertMany(SEED_DATA.blogs);
-        items = await Blog.find().sort({ sortOrder: 1 });
+      try {
+        let items = await Blog.find().sort({ sortOrder: 1 }).maxTimeMS(2500).lean();
+        if (items && items.length > 0) {
+          return res.json({ success: true, count: items.length, data: items });
+        }
+      } catch (dbErr) {
+        console.warn('[Blogs API] Live DB query failed, serving resilient fallback store:', dbErr.message);
       }
-      return res.json({ success: true, count: items.length, data: items });
-    } else {
-      return res.json({ success: true, count: memoryBlogs.length, data: memoryBlogs });
     }
+
+    const fallbackList = (memoryBlogs && memoryBlogs.length > 0)
+      ? memoryBlogs
+      : SEED_DATA.blogs;
+
+    return res.json({ success: true, count: fallbackList.length, data: fallbackList });
   } catch (err) {
-    return res.status(500).json({ success: false, error: err.message, data: memoryBlogs });
+    console.error('[Blogs API Route Error]:', err.message);
+    const fallbackList = SEED_DATA.blogs || [];
+    return res.json({ success: true, count: fallbackList.length, data: fallbackList, fallback: true });
   }
 });
 

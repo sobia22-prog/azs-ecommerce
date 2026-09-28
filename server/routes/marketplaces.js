@@ -13,17 +13,25 @@ let memoryMarketplaces = [...SEED_DATA.marketplaces];
 router.get('/', async (req, res) => {
   try {
     if (getIsConnected()) {
-      let items = await Marketplace.find().sort({ sortOrder: 1 });
-      if (items.length === 0) {
-        await Marketplace.insertMany(SEED_DATA.marketplaces);
-        items = await Marketplace.find().sort({ sortOrder: 1 });
+      try {
+        let items = await Marketplace.find().sort({ sortOrder: 1 }).maxTimeMS(2500).lean();
+        if (items && items.length > 0) {
+          return res.json({ success: true, count: items.length, data: items });
+        }
+      } catch (dbErr) {
+        console.warn('[Marketplaces API] Live DB query failed, serving resilient fallback store:', dbErr.message);
       }
-      return res.json({ success: true, count: items.length, data: items });
-    } else {
-      return res.json({ success: true, count: memoryMarketplaces.length, data: memoryMarketplaces });
     }
+
+    const fallbackList = (memoryMarketplaces && memoryMarketplaces.length > 0)
+      ? memoryMarketplaces
+      : SEED_DATA.marketplaces;
+
+    return res.json({ success: true, count: fallbackList.length, data: fallbackList });
   } catch (err) {
-    return res.status(500).json({ success: false, error: err.message, data: memoryMarketplaces });
+    console.error('[Marketplaces API Route Error]:', err.message);
+    const fallbackList = SEED_DATA.marketplaces || [];
+    return res.json({ success: true, count: fallbackList.length, data: fallbackList, fallback: true });
   }
 });
 

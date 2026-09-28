@@ -12,17 +12,25 @@ let memoryCaseStudies = [...SEED_DATA.caseStudies];
 router.get('/', async (req, res) => {
   try {
     if (getIsConnected()) {
-      let items = await CaseStudy.find().sort({ sortOrder: 1 });
-      if (items.length === 0) {
-        await CaseStudy.insertMany(SEED_DATA.caseStudies);
-        items = await CaseStudy.find().sort({ sortOrder: 1 });
+      try {
+        let items = await CaseStudy.find().sort({ sortOrder: 1 }).maxTimeMS(2500).lean();
+        if (items && items.length > 0) {
+          return res.json({ success: true, count: items.length, data: items });
+        }
+      } catch (dbErr) {
+        console.warn('[CaseStudies API] Live DB query failed, serving resilient fallback store:', dbErr.message);
       }
-      return res.json({ success: true, count: items.length, data: items });
-    } else {
-      return res.json({ success: true, count: memoryCaseStudies.length, data: memoryCaseStudies });
     }
+
+    const fallbackList = (memoryCaseStudies && memoryCaseStudies.length > 0)
+      ? memoryCaseStudies
+      : SEED_DATA.caseStudies;
+
+    return res.json({ success: true, count: fallbackList.length, data: fallbackList });
   } catch (err) {
-    return res.status(500).json({ success: false, error: err.message, data: memoryCaseStudies });
+    console.error('[CaseStudies API Route Error]:', err.message);
+    const fallbackList = SEED_DATA.caseStudies || [];
+    return res.json({ success: true, count: fallbackList.length, data: fallbackList, fallback: true });
   }
 });
 
