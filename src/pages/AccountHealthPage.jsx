@@ -21,7 +21,7 @@ export default function AccountHealthPage() {
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
       ),
-      desc: 'Real-time telemetry tracking Order Defect Rate (ODR < 1%), Late Shipment Rate (LSR < 4%), and Pre-fulfillment Cancel Rate before policy warnings trigger.'
+      desc: 'Real-time telemetry tracking Order Defect Rate (ODR < 1%) and Late Shipment Rate before policy warnings trigger.'
     },
     {
       title: 'Instant Plan of Action (POA) Escalation',
@@ -30,7 +30,7 @@ export default function AccountHealthPage() {
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
         </svg>
       ),
-      desc: 'Institutional legal and compliance documentation drafting customized Plans of Action (POAs) submitted through internal partner escalation channels for rapid reinstatement.'
+      desc: 'Legal and compliance documentation drafting customized Plans of Action submitted through escalation channels.'
     },
     {
       title: 'Brand Registry & IP Hijacking Defense',
@@ -40,7 +40,7 @@ export default function AccountHealthPage() {
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
       ),
-      desc: 'Project Zero, Transparency code integration, and automated counterfeit seller takedowns guarding your trademark rights across GCC and US marketplaces.'
+      desc: 'Project Zero and Transparency code integration guarding your trademark rights across GCC and US marketplaces.'
     },
     {
       title: 'Buy Box Suppression & Listing Hygiene',
@@ -50,75 +50,67 @@ export default function AccountHealthPage() {
           <polyline points="17 6 23 6 23 12" />
         </svg>
       ),
-      desc: 'Continuous scanning for price parity algorithmic suppressions, title truncation violations, and missing backend compliance certifications.'
+      desc: 'Continuous scanning for price parity suppressions, title truncation violations, and missing certifications.'
     }
   ];
 
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge="Governance & Risk Mitigation"
-        title="Marketplace Account Health &"
-        highlight="Suspension Defense"
-        subtitle="Unchecked policy infractions, unauthorized resellers, and metric drops can decimate millions in recurring GMV overnight. Our dedicated compliance desk safeguards your selling privileges 24/7."
+        badge="Account Protection"
+        title="Account Health &"
+        highlight="Defense"
+        subtitle="24/7 account protection across Amazon and Noon. Metric monitoring, policy compliance, and Buy Box protection."
         breadcrumbs={[
           { label: 'Marketplace Management', link: '/marketplace-management' },
           { label: 'Account Health' }
         ]}
-        primaryCtaText="Request Account Health Audit"
+        primaryCtaText="Request Health Audit"
         primaryCtaLink="/book-audit"
         secondaryCtaText="Explore Programs & Pricing"
         secondaryCtaLink="/programs-pricing"
         metrics={[
-          { val: '100%', label: 'Account Safety Rate', sub: 'Zero unrecovered suspensions' },
-          { val: '< 0.2%', label: 'Average ODR', sub: 'Well below 1.0% threshold' },
-          { val: '15 Min', label: 'Alert Latency', sub: 'Instant risk mitigation response' },
-          { val: '24/7', label: 'Active Coverage', sub: 'Riyadh, Dubai & London monitoring' }
+          { val: '100%', label: 'Safety Rate', sub: 'Active protection' },
+          { val: '< 0.2%', label: 'Average ODR', sub: 'Below threshold' },
+          { val: '15 Min', label: 'Response Time', sub: 'Instant risk mitigation' },
+          { val: '24/7', label: 'Live Monitoring', sub: 'Continuous coverage' }
         ]}
       />
 
-      <section className="subpage-section">
+      <section className="section">
         <div className="container">
-          <div className="section-header">
-            <h2>How We Protect Your Account</h2>
-            <p>
-              We treat account health as mission-critical infrastructure, deploying proactive guardrails rather than reactive crisis management.
-            </p>
+          <Link to="/marketplaces" className="back-overview-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Marketplaces Division</span>
+          </Link>
+
+          <div className="section-header" style={{ textAlign: 'left', marginTop: '10px', marginBottom: '18px' }}>
+            <h2 style={{ fontSize: 'clamp(1.2rem, 4.4vw, 1.45rem)', margin: 0 }}>How We Protect Your Account</h2>
           </div>
 
-          <div className="platform-detail-grid">
+          <div className="marketplaces-systems-grid">
             {healthSystems.map((s, idx) => (
-              <div key={idx} className="platform-detail-card">
-                <div className="platform-detail-icon">{s.icon}</div>
-                <h3 className="platform-detail-title">{s.title}</h3>
-                <p className="platform-detail-desc">{s.desc}</p>
-                <ul className="platform-checklist">
-                  <li className="platform-checklist-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>Full Policy Compliance Protocol</span>
-                  </li>
-                  <li className="platform-checklist-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>Amazon & Noon Dedicated Desk</span>
-                  </li>
-                </ul>
+              <div key={idx} className="marketplaces-system-card">
+                <div className="system-card-icon">
+                  {s.icon}
+                </div>
+                <div className="system-card-body">
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-heading)', margin: '0 0 4px' }}>{s.title}</h4>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--text-body)', lineHeight: 1.4, margin: 0 }}>{s.desc}</p>
+                </div>
               </div>
             ))}
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '50px' }}>
-            <Link to="/book-audit" className="btn btn-primary" style={{ marginRight: '14px' }}>
-              Schedule Compliance Audit ➔
+          <div className="subpage-bottom-actions" style={{ marginTop: '28px' }}>
+            <Link to="/book-audit" className="btn btn-primary" style={{ padding: '11px 22px', fontSize: '0.86rem' }}>
+              Schedule Audit ➔
             </Link>
-            <Link to="/programs-pricing" className="btn btn-secondary" style={{ marginRight: '14px' }}>
-              View Protection Retainers & Pricing
-            </Link>
-            <Link to="/marketplace-management" className="btn btn-secondary">
-              Back to Marketplaces Hub
+            <Link to="/programs-pricing" className="btn btn-secondary" style={{ padding: '11px 22px', fontSize: '0.86rem' }}>
+              View Retainers & Pricing
             </Link>
           </div>
         </div>

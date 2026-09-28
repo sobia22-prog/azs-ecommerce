@@ -33,25 +33,60 @@ export default function useSEO({
       kwEl.setAttribute('content', keywords);
     }
 
-    if (ogTitle) {
+    if (ogTitle || title) {
       let ogTitleEl = document.querySelector('meta[property="og:title"]');
-      if (ogTitleEl) ogTitleEl.setAttribute('content', ogTitle);
+      if (!ogTitleEl) {
+        ogTitleEl = document.createElement('meta');
+        ogTitleEl.setAttribute('property', 'og:title');
+        document.head.appendChild(ogTitleEl);
+      }
+      ogTitleEl.setAttribute('content', ogTitle || title);
     }
 
-    if (ogDescription) {
+    if (ogDescription || description) {
       let ogDescEl = document.querySelector('meta[property="og:description"]');
-      if (ogDescEl) ogDescEl.setAttribute('content', ogDescription);
+      if (!ogDescEl) {
+        ogDescEl = document.createElement('meta');
+        ogDescEl.setAttribute('property', 'og:description');
+        document.head.appendChild(ogDescEl);
+      }
+      ogDescEl.setAttribute('content', ogDescription || description);
     }
+
+    // Determine current path & self-referencing canonical URL
+    const currentPathname = typeof window !== 'undefined' ? window.location.pathname : '';
+    const normalizedCurrent = currentPathname.length > 1 && currentPathname.endsWith('/')
+      ? currentPathname.slice(0, -1)
+      : (currentPathname || '/');
+
+    // Use canonicalPath if specified, else active route pathname
+    const finalPath = canonicalPath !== undefined && canonicalPath !== null ? canonicalPath : normalizedCurrent;
+    const cleanFinalPath = finalPath.length > 1 && finalPath.endsWith('/')
+      ? finalPath.slice(0, -1)
+      : (finalPath || '/');
+
+    const canonicalHref = cleanFinalPath === '/'
+      ? 'https://azs-ecommerce.vercel.app/'
+      : `https://azs-ecommerce.vercel.app${cleanFinalPath}`;
 
     // Canonical Link
-    if (canonicalPath) {
-      let canonicalEl = document.querySelector('link[rel="canonical"]');
-      if (!canonicalEl) {
-        canonicalEl = document.createElement('link');
-        canonicalEl.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonicalEl);
-      }
-      canonicalEl.setAttribute('href', `https://azs-ecommerce.vercel.app${canonicalPath}`);
+    let canonicalEl = document.querySelector('link[rel="canonical"]');
+    if (!canonicalEl) {
+      canonicalEl = document.createElement('link');
+      canonicalEl.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalEl);
     }
+    canonicalEl.setAttribute('href', canonicalHref);
+
+    // OpenGraph URL
+    let ogUrlEl = document.querySelector('meta[property="og:url"]');
+    if (!ogUrlEl) {
+      ogUrlEl = document.createElement('meta');
+      ogUrlEl.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrlEl);
+    }
+    ogUrlEl.setAttribute('content', canonicalHref);
+
   }, [title, description, keywords, ogTitle, ogDescription, canonicalPath]);
 }
+

@@ -1,16 +1,19 @@
 import React from 'react';
-import { Link } from '../Router';
+import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 
 export default function TrendyolPlatformPage({ onOpenModal }) {
+  const { path } = useRouter();
+  const canonicalPath = path === '/trendyol' ? '/trendyol' : '/marketplace-management/trendyol';
+
   useSEO({
     title: 'Trendyol Seller Management Agency (KSA) | AZS Solutions',
     description: "As one of Trendyol's top partner agencies for GCC cross-border expansion, AZS Solutions delivers turnkey seller onboarding, Turkish catalog localization, and GCC marketplace management.",
     keywords: 'trendyol seller agency KSA, trendyol marketplace management, trendyol account management GCC, trendyol agency Saudi Arabia, trendyol Turkey UAE partner',
     ogTitle: 'Trendyol Seller Management Agency (KSA) | AZS Solutions',
     ogDescription: 'Expand onto Trendyol GCC with 350+ live SKUs, 7.80x verified ROAS, and automated catalog synchronization.',
-    canonicalPath: '/marketplace-management/trendyol'
+    canonicalPath
   });
 
   const expansionPillars = [
@@ -23,7 +26,7 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
           <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
         </svg>
       ),
-      desc: 'Seamless translation of Turkish or European catalogs into high-converting Gulf Arabic and English attributes, sizing conventions, and taxonomy.'
+      desc: 'Seamless translation of catalogs into Gulf Arabic and English attributes, sizing conventions, and taxonomy.'
     },
     {
       title: 'Localized GCC Pricing & VAT Compliance',
@@ -34,7 +37,7 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
           <line x1="8" y1="12" x2="16" y2="12" />
         </svg>
       ),
-      desc: 'Dynamic currency mapping into Saudi Riyals (SAR) and UAE Dirhams (AED) with automatic import duty and ZATCA / FTA tax reconciliation built-in.'
+      desc: 'Dynamic currency mapping into SAR and AED with automatic import duty and ZATCA / FTA tax reconciliation.'
     },
     {
       title: 'Trendyol Flash Promotions & Megasales',
@@ -43,7 +46,7 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
         </svg>
       ),
-      desc: 'Securing top-tier slot placements in Trendyol’s high-traffic flash sales, coupon drops, and seasonal promotional banners across GCC mobile apps.'
+      desc: 'Top-tier slot placements in Trendyol flash sales, coupon drops, and seasonal promotional banners.'
     },
     {
       title: 'Cross-Border Air Freight & 72h Fulfillment',
@@ -53,17 +56,17 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
           <polygon points="22 2 15 22 11 13 2 9 22 2" />
         </svg>
       ),
-      desc: 'Direct air-express routing from Istanbul/European hubs into Riyadh, Jeddah, and Dubai with integrated last-mile delivery tracking under 72 hours.'
+      desc: 'Direct air-express routing into Riyadh, Jeddah, and Dubai with integrated last-mile tracking under 72 hours.'
     }
   ];
 
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge="High-Growth Corridor: Trendyol GCC Expansion"
-        title="Trendyol Cross-Border"
-        highlight="Expansion Platform"
-        subtitle="The GCC is Trendyol’s fastest growing international corridor. We bridge European & Turkish manufacturers and global brands into high-spending Saudi Arabia and UAE consumer markets with turnkey operations."
+        badge="Trendyol GCC"
+        title="Trendyol Platform"
+        highlight="Expansion"
+        subtitle="Turnkey cross-border expansion into Saudi Arabia and UAE. Automated catalog translation, localized pricing, flash sales, and fast fulfillment."
         breadcrumbs={[
           { label: 'Marketplaces Division', link: '/marketplaces' },
           { label: 'Trendyol Platform' }
@@ -73,10 +76,10 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
         secondaryCtaText="Inspect Expansion Dashboard"
         secondaryCtaLink="#trendyol-proof"
         metrics={[
-          { val: 'SAR 145K', label: 'Monthly Run Rate', sub: 'Verified initial cohort' },
-          { val: '7.80x', label: 'Flash Sale ROAS', sub: 'Trendyol Onsite Ads' },
-          { val: '350+ SKUs', label: 'Active Catalog', sub: 'Arabic mapped & live' },
-          { val: '< 72 hrs', label: 'Delivery SLA', sub: 'GCC Doorstep Fulfillment' }
+          { val: 'SAR 145K', label: 'Monthly Run Rate', sub: 'Verified scale' },
+          { val: '7.80x', label: 'Flash Sale ROAS', sub: 'Onsite advertising' },
+          { val: '350+ SKUs', label: 'Active Catalog', sub: 'Arabic mapped' },
+          { val: '< 72 hrs', label: 'Delivery SLA', sub: 'Doorstep fulfillment' }
         ]}
       />
 
@@ -91,19 +94,12 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
           </Link>
 
           {/* Trendyol Expansion Showcase */}
-          <div id="trendyol-proof" style={{
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border-card)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '40px',
-            marginBottom: '60px',
-            marginTop: '10px'
-          }}>
-            <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
+          <div id="trendyol-proof" className="showcase-proof-card" style={{ marginTop: '10px' }}>
+            <h2 className="showcase-proof-title">
               Trendyol GCC: <span className="gradient-text">Unlocking Saudi & UAE Shoppers</span>
             </h2>
-            <p style={{ color: 'var(--text-body)', maxWidth: '780px', marginBottom: '30px' }}>
-              How AZS connects brands directly to the surging demand on Trendyol’s Gulf mobile app. From product feed compliance and Arabic attribute localization to sponsored ad scaling.
+            <p className="showcase-proof-subtitle">
+              Feed compliance, Arabic attribute localization, and sponsored ad scaling on Trendyol’s high-growth Gulf app.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'center' }}>
@@ -115,99 +111,92 @@ export default function TrendyolPlatformPage({ onOpenModal }) {
               </div>
 
               <div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px', marginBottom: '24px' }}>
-                  <div style={{ background: 'rgba(0, 245, 155, 0.05)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 245, 155, 0.2)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>GCC Run-Rate</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>SAR 145.0K</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>Monthly Scaled Pace</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '20px' }}>
+                  <div style={{ background: 'rgba(0, 245, 155, 0.05)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 245, 155, 0.2)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>GCC Run-Rate</div>
+                    <div style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>SAR 145.0K</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>Monthly Scaled Pace</div>
                   </div>
 
-                  <div style={{ background: 'rgba(0, 210, 255, 0.05)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 210, 255, 0.2)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Flash ROAS</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--neon-cyan)', fontFamily: 'var(--font-mono)' }}>7.80x</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>High-Margin Return</div>
+                  <div style={{ background: 'rgba(0, 210, 255, 0.05)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 210, 255, 0.2)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Flash ROAS</div>
+                    <div style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--neon-cyan)', fontFamily: 'var(--font-mono)' }}>7.80x</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>High-Margin Return</div>
                   </div>
 
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>SKUs Synced</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-heading)' }}>350+ Live</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>100% Arabic Mapped</div>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>SKUs Synced</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-heading)' }}>350+ Live</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>100% Arabic Mapped</div>
                   </div>
 
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Customs Clearance</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-heading)' }}>100% DDP</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>Duty Delivery Paid</div>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Customs Clearance</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-heading)' }}>100% DDP</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>Duty Delivery Paid</div>
                   </div>
                 </div>
 
                 <blockquote style={{
                   borderLeft: '3px solid var(--neon-mint)',
-                  paddingLeft: '16px',
+                  paddingLeft: '14px',
                   color: 'var(--text-heading)',
                   fontStyle: 'italic',
-                  fontSize: '0.92rem',
-                  lineHeight: 1.6,
-                  marginBottom: '20px'
+                  fontSize: '0.88rem',
+                  lineHeight: 1.55,
+                  marginBottom: '18px'
                 }}>
                   "Trendyol is expanding aggressively into Saudi Arabia and UAE. We built the complete pipeline so brands capture this incremental volume without operational friction."
                 </blockquote>
 
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
-                  <Link to="/book-audit" className="btn btn-primary">
-                    <span>Start Your Trendyol Expansion</span>
+                <div className="subpage-cta-group">
+                  <Link to="/book-audit" className="btn btn-primary" style={{ padding: '11px 20px', fontSize: '0.86rem' }}>
+                    <span>Start Trendyol Expansion ➔</span>
                   </Link>
-                  <Link to="/case-studies/trendyol-expansion" className="btn btn-secondary">
-                    <span>Read Eurasia Lifestyle Case Study ➔</span>
+                  <Link to="/case-studies/trendyol-expansion" className="btn btn-secondary" style={{ padding: '11px 20px', fontSize: '0.86rem' }}>
+                    <span>Read Trendyol Case Study ➔</span>
                   </Link>
                 </div>
-                <div style={{ marginTop: '14px' }}>
-                  <Link to="/programs-pricing" style={{ fontSize: '0.84rem', color: 'var(--neon-mint)', fontWeight: 700, textDecoration: 'none' }}>
-                    View Trendyol Marketplace Engagement Programs & Pricing ➔
+                <div style={{ marginTop: '12px' }}>
+                  <Link to="/programs-pricing" style={{ fontSize: '0.82rem', color: 'var(--neon-mint)', fontWeight: 700, textDecoration: 'none' }}>
+                    View Trendyol Programs & Pricing ➔
                   </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 4 Pillars of Trendyol Expansion */}
-          <div className="section-header" style={{ textAlign: 'left', marginBottom: '24px' }}>
-            <h2>How We Scale On Trendyol</h2>
+          {/* 4 Pillars of Trendyol Expansion - Clean Unboxed Flow */}
+          <div className="section-header" style={{ textAlign: 'left', marginBottom: '18px' }}>
+            <h2 style={{ fontSize: 'clamp(1.2rem, 4.4vw, 1.45rem)', margin: 0 }}>How We Scale On Trendyol</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-            {expansionPillars.map((p, i) => (
-              <div className="platform-detail-card" key={i}>
-                <div className="platform-detail-icon">{p.icon}</div>
-                <h3 className="platform-detail-title">{p.title}</h3>
-                <p className="platform-detail-desc">{p.desc}</p>
+          <div className="marketplaces-systems-grid">
+            {expansionPillars.map((p, idx) => (
+              <div key={idx} className="marketplaces-system-card">
+                <div className="system-card-icon">
+                  {p.icon}
+                </div>
+                <div className="system-card-body">
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-heading)', margin: '0 0 4px' }}>{p.title}</h4>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--text-body)', lineHeight: 1.4, margin: 0 }}>{p.desc}</p>
+                </div>
               </div>
             ))}
           </div>
 
           {/* Why Trendyol Now */}
-          <div style={{
-            marginTop: '60px',
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid var(--border-subtle)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '36px',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '24px'
-          }}>
+          <div className="subpage-feature-box" style={{ marginTop: '32px' }}>
             <div style={{ maxWidth: '650px' }}>
-              <h3 style={{ fontSize: '1.5rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
+              <h3 style={{ fontSize: '1.15rem', color: 'var(--text-heading)', marginBottom: '6px' }}>
                 Why Enter Trendyol GCC in 2026?
               </h3>
-              <p style={{ fontSize: '0.92rem', color: 'var(--text-body)', lineHeight: 1.65 }}>
-                Backed by Alibaba, Trendyol is investing hundreds of millions into subsidizing customer acquisition, shipping, and merchant promotions across Saudi Arabia and the UAE. Brands moving early capture category ranking and consumer loyalty with significantly lower CPCs than saturated legacy channels.
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-body)', lineHeight: 1.45, margin: 0 }}>
+                Backed by Alibaba, Trendyol is subsidizing shipping and promotions across Saudi Arabia and the UAE. Brands moving early capture category ranking with significantly lower CPCs.
               </p>
             </div>
-            <Link to="/book-audit" className="btn btn-primary">
-              <span>Schedule Trendyol Consultation</span>
+            <Link to="/book-audit" className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
+              <span>Book Consultation ➔</span>
             </Link>
           </div>
         </div>

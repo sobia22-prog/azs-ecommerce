@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from '../Router';
+import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 import { useCurrency } from '../context/CurrencyContext';
 
 export default function MarketplacesDivisionPage({ onOpenModal }) {
+  const { path } = useRouter();
+  const canonicalPath = path === '/marketplaces' ? '/marketplaces' : '/marketplace-management';
   const { formatDynamicText } = useCurrency();
   const [mobileIdx, setMobileIdx] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
@@ -22,7 +24,7 @@ export default function MarketplacesDivisionPage({ onOpenModal }) {
     keywords: 'Amazon agency KSA, Noon marketplace management, Trendyol GCC expansion, Amazon USA expansion, Buy Box protection, Arabic SEO, marketplace management agency',
     ogTitle: 'Amazon, Noon & Trendyol Marketplace Management Agency | AZS Solutions',
     ogDescription: 'End-to-end management for Amazon, Noon, Trendyol, and Amazon USA across GCC, USA, and UK.',
-    canonicalPath: '/marketplace-management'
+    canonicalPath
   });
 
   const platforms = [

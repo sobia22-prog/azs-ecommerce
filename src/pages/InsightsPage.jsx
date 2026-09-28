@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from '../Router';
+import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 
@@ -109,13 +109,16 @@ const INSIGHTS_ARTICLES = [
 ];
 
 export default function InsightsPage() {
+  const { path } = useRouter();
+  const canonicalPath = path === '/insights' ? '/insights' : '/blog';
+
   useSEO({
     title: 'E-Commerce Insights, Playbooks & Research | AZS Solutions',
     description: 'Expert industry playbooks on scaling across Amazon.sa, Amazon USA, Noon, Trendyol GCC, and high-converting Shopify storefronts in Saudi Arabia and the UAE.',
     keywords: 'amazon.sa seller agency, amazon USA seller agency, noon marketplace management, trendyol seller agency KSA, shopify agency Saudi Arabia, ecommerce conversion rate optimization agency',
     ogTitle: 'E-Commerce Insights & Market Playbooks | AZS Solutions',
     ogDescription: 'Strategic analysis and operational guides for scaling enterprise commerce across the Gulf, USA, and UK.',
-    canonicalPath: '/blog'
+    canonicalPath
   });
 
   const [expandedArticle, setExpandedArticle] = useState(null);
@@ -128,19 +131,19 @@ export default function InsightsPage() {
     <div className="subpage-wrapper">
       <PageHeader
         badge="Strategic Intelligence"
-        title="E-Commerce Insights &"
-        highlight="Market Playbooks"
-        subtitle="Operational research, regulatory breakdowns, and proven acquisition playbooks for e-commerce leaders scaling across Saudi Arabia, UAE, USA, and the UK."
+        title="E-Commerce Insights"
+        highlight="& Playbooks"
+        subtitle="Operational research and acquisition playbooks for e-commerce brands scaling across Saudi Arabia, UAE, USA, and UK."
         breadcrumbs={[{ label: 'Blog & Playbooks' }]}
-        primaryCtaText="Book a Strategic Consultation"
+        primaryCtaText="Book Strategic Call"
         primaryCtaLink="/book-audit"
         secondaryCtaText="Explore Case Studies"
         secondaryCtaLink="/case-studies"
         metrics={[
-          { val: '6 In-Depth Guides', label: 'Playbooks Published', sub: 'Indexable industry research' },
-          { val: '100% Practical', label: 'Field-Tested Data', sub: 'Derived from live brand accounts' },
-          { val: 'GCC Focus', label: 'KSA • UAE • Regional', sub: 'Localized regulatory nuances' },
-          { val: 'Zero Fluff', label: 'Actionable Systems', sub: 'For institutional sellers' }
+          { val: '6 Playbooks', label: 'Research Guides', sub: 'Actionable playbooks' },
+          { val: '100% Data', label: 'Field-Tested', sub: 'Verified consoles' },
+          { val: 'GCC Focus', label: 'KSA • UAE', sub: 'Regional expertise' },
+          { val: '4 Markets', label: 'Global Scope', sub: 'KSA, UAE, USA, UK' }
         ]}
       />
 
@@ -260,27 +263,16 @@ export default function InsightsPage() {
           </div>
 
           {/* Newsletter / Custom Playbook CTA */}
-          <div style={{
-            marginTop: '60px',
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border-card)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '40px',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '24px'
-          }}>
+          <div className="showcase-proof-card" style={{ marginTop: '40px' }}>
             <div style={{ maxWidth: '640px' }}>
-              <h3 style={{ fontSize: '1.6rem', color: 'var(--text-heading)', margin: '8px 0 12px' }}>
+              <h3 className="showcase-proof-title" style={{ margin: '4px 0 10px' }}>
                 Need a Custom Roadmap for Your SKU Catalog?
               </h3>
-              <p style={{ fontSize: '0.92rem', color: 'var(--text-body)', lineHeight: 1.65 }}>
+              <p className="showcase-proof-subtitle" style={{ marginBottom: '16px' }}>
                 Our senior e-commerce strategists will analyze your category competition, Buy Box opportunities, and advertising margins across Amazon, Noon, Trendyol, and Shopify.
               </p>
             </div>
-            <Link to="/book-audit" className="btn btn-primary" style={{ padding: '14px 28px' }}>
+            <Link to="/book-audit" className="btn btn-primary">
               <span>Request Free Custom Roadmap</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="5" y1="12" x2="19" y2="12"></line>

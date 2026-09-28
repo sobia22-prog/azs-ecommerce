@@ -45,6 +45,64 @@ import { CurrencyProvider } from './context/CurrencyContext';
 import AdminLoginPage from './pages/admin/AdminLoginPage';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 
+function HomeView({
+  onOpenModal,
+  currency,
+  activeTrack,
+  handleSelectTrack,
+  activePlatform,
+  handleSelectPlatform
+}) {
+  useSEO({
+    title: 'AZS Solutions | Ecommerce Growth & Performance Marketing Partner',
+    description: 'End-to-end marketplace management (Amazon, Noon, Trendyol) and Shopify performance marketing across Saudi Arabia, UAE, USA, and the UK.',
+    keywords: 'AZS Solutions, Amazon agency Saudi Arabia, Noon marketplace management, Trendyol GCC expansion, Shopify agency Dubai, Meta Ads UAE, ecommerce growth GCC',
+    ogTitle: 'AZS Solutions | Ecommerce & Performance Marketing Partner',
+    ogDescription: 'Scale across Amazon, Noon, Trendyol, and high-converting Shopify storefronts. Backed by verified client results and $142.8M+ GMV.',
+    canonicalPath: '/'
+  });
+
+  return (
+    <>
+      <Hero 
+        onOpenModal={onOpenModal} 
+        currency={currency} 
+      />
+      <StatsStrip 
+        currency={currency} 
+      />
+      <TrackSwitcher 
+        activeTrack={activeTrack} 
+        onSelectTrack={handleSelectTrack} 
+      />
+      <Marketplaces 
+        onOpenModal={onOpenModal} 
+      />
+      <ShopifyGrowth 
+        onOpenModal={onOpenModal} 
+      />
+      <ChallengeSolutionMatrix onOpenModal={onOpenModal} />
+      <WhatWeManage onOpenModal={onOpenModal} />
+      <PlatformTicker 
+        activePlatform={activePlatform} 
+        onSelectPlatform={handleSelectPlatform} 
+      />
+      <CaseStudies 
+        onOpenModal={onOpenModal} 
+      />
+      <TailoredPrograms currency={currency} />
+      <GrowthEngine />
+      <WhyTrustSection onOpenModal={onOpenModal} />
+      <Testimonials />
+      <GrowthCalculator 
+        currency={currency} 
+      />
+      <FaqSection />
+      <AuditBooking />
+    </>
+  );
+}
+
 export default function App() {
   const { path } = useRouter();
 
@@ -60,16 +118,6 @@ export default function App() {
 
   // Normalize path (handle trailing slashes: e.g. /about/ -> /about)
   const cleanPath = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
-
-  // Default SEO for root home route
-  useSEO({
-    title: 'AZS Solutions | Ecommerce Growth & Performance Marketing Partner',
-    description: 'End-to-end marketplace management (Amazon, Noon, Trendyol) and Shopify performance marketing across Saudi Arabia, UAE, USA, and the UK.',
-    keywords: 'AZS Solutions, Amazon agency Saudi Arabia, Noon marketplace management, Trendyol GCC expansion, Shopify agency Dubai, Meta Ads UAE, ecommerce growth GCC',
-    ogTitle: 'AZS Solutions | Ecommerce & Performance Marketing Partner',
-    ogDescription: 'Scale across Amazon, Noon, Trendyol, and high-converting Shopify storefronts. Backed by verified client results and $142.8M+ GMV.',
-    canonicalPath: '/'
-  });
 
   const handleToggleCurrency = () => {
     setCurrency(prev => prev === 'USD' ? 'GCC' : 'USD');
@@ -176,43 +224,14 @@ export default function App() {
       default:
         // Consolidated Home View
         return (
-          <>
-            <Hero 
-              onOpenModal={handleOpenModal} 
-              currency={currency} 
-            />
-            <StatsStrip 
-              currency={currency} 
-            />
-            <TrackSwitcher 
-              activeTrack={activeTrack} 
-              onSelectTrack={handleSelectTrack} 
-            />
-            <Marketplaces 
-              onOpenModal={handleOpenModal} 
-            />
-            <ShopifyGrowth 
-              onOpenModal={handleOpenModal} 
-            />
-            <ChallengeSolutionMatrix onOpenModal={handleOpenModal} />
-            <WhatWeManage onOpenModal={handleOpenModal} />
-            <PlatformTicker 
-              activePlatform={activePlatform} 
-              onSelectPlatform={handleSelectPlatform} 
-            />
-            <CaseStudies 
-              onOpenModal={handleOpenModal} 
-            />
-            <TailoredPrograms currency={currency} />
-            <GrowthEngine />
-            <WhyTrustSection onOpenModal={handleOpenModal} />
-            <Testimonials />
-            <GrowthCalculator 
-              currency={currency} 
-            />
-            <FaqSection />
-            <AuditBooking />
-          </>
+          <HomeView
+            onOpenModal={handleOpenModal}
+            currency={currency}
+            activeTrack={activeTrack}
+            handleSelectTrack={handleSelectTrack}
+            activePlatform={activePlatform}
+            handleSelectPlatform={handleSelectPlatform}
+          />
         );
     }
   };

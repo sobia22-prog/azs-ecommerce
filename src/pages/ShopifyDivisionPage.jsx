@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from '../Router';
+import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 
 export default function ShopifyDivisionPage({ onOpenModal }) {
+  const { path } = useRouter();
+  const canonicalPath = path === '/shopify' ? '/shopify' : '/shopify-dtc';
+
   useSEO({
     title: 'Shopify & DTC Growth Agency — Meta, TikTok & Google Ads | AZS Solutions',
     description: 'Scale DTC brands with high-converting Shopify Plus stores, Tabby/Tamara BNPL integration, and high-ROAS Meta, TikTok & Google performance marketing.',
     keywords: 'shopify agency Saudi Arabia, shopify DTC growth agency, shopify store management KSA, shopify agency Dubai, Meta ads ecommerce KSA, TikTok ads agency GCC, ecommerce conversion rate optimization agency',
     ogTitle: 'Shopify & DTC Growth Agency — Meta, TikTok & Google Ads | AZS Solutions',
     ogDescription: 'Scale your DTC brand with high-converting Shopify Plus storefronts, localized GCC checkout, and 4.62x blended ROAS across Meta, TikTok & Google.',
-    canonicalPath: '/shopify-dtc'
+    canonicalPath
   });
 
   const channels = [

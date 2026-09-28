@@ -1,11 +1,13 @@
 import React from 'react';
-import { Link } from '../Router';
+import { Link, useRouter } from '../Router';
 import PageHeader from '../components/PageHeader';
 import useSEO from '../hooks/useSEO';
 import GrowthCalculator from '../components/GrowthCalculator';
 import { useCurrency } from '../context/CurrencyContext';
 
 export default function CalculatorPage() {
+  const { path } = useRouter();
+  const canonicalPath = path === '/roi-simulator' ? '/roi-simulator' : '/calculator';
   const { isSAR } = useCurrency();
   useSEO({
     title: 'Interactive Ecommerce & Marketplace ROI Simulator | AZS Solutions',
@@ -13,80 +15,77 @@ export default function CalculatorPage() {
     keywords: 'Amazon revenue calculator, ecommerce ROI simulator, Noon seller GMV projection, Trendyol GCC revenue estimator, Shopify ad spend ROAS calculator',
     ogTitle: 'Interactive Multi-Marketplace Growth Simulator | AZS Solutions',
     ogDescription: 'Model your incremental revenue and blended ROAS scaling across Saudi Arabia, UAE, USA, and UK.',
-    canonicalPath: '/calculator'
+    canonicalPath
   });
+
+  const methods = [
+    {
+      badge: 'Channel Synergy',
+      title: 'Omnichannel Brand Halo Effect',
+      desc: 'Brands scaling simultaneously on Amazon, Noon, and Shopify experience an average +38% increase in organic search volume and lower blended CAC.'
+    },
+    {
+      badge: 'GCC Inbound',
+      title: 'Saudi & Gulf Conversion Power',
+      desc: 'Integrating Tabby, Tamara BNPL, and local fulfillment (FBA Riyadh & Noon FBN) elevates storefront conversion rates from 1.2% to 3.8%+.'
+    },
+    {
+      badge: 'Target ACOS',
+      title: 'TACoS-First Margin Governance',
+      desc: 'We govern ad spend against Total Advertising Cost of Sales (TACoS), ensuring paid volume scales net contribution profit without eroding unit margins.'
+    }
+  ];
 
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge="Interactive ROI Simulator"
-        title="Model Your 6-Month"
-        highlight="Revenue Run-Rate"
-        subtitle="Quantify your incremental revenue, blended advertising efficiency, and cross-border volume lift across Amazon (KSA, USA, UK), Noon, Trendyol GCC, and high-converting Shopify storefronts."
+        badge="ROI Simulator"
+        title="Revenue Run-Rate"
+        highlight="Simulator"
+        subtitle="Model your incremental revenue, blended advertising efficiency, and cross-border volume lift across Amazon, Noon, Trendyol, and Shopify."
         breadcrumbs={[
-          { label: 'Interactive Revenue Simulator' }
+          { label: 'Revenue Simulator' }
         ]}
         primaryCtaText="Simulate Projections Below"
         primaryCtaLink="#simulator-engine"
         secondaryCtaText="Schedule Discovery Call"
         secondaryCtaLink="/book-audit"
         metrics={[
-          { val: '94.2%', label: 'Model Accuracy', sub: 'Calibrated against 35+ brands' },
-          { val: '8.40x', label: 'Avg Blended ROAS', sub: 'Portfolio weighted benchmark' },
-          { val: '7 Major', label: 'Supported Channels', sub: 'Amazon, Noon, Trendyol, D2C' }
+          { val: '94.2%', label: 'Model Accuracy', sub: 'Calibrated benchmark' },
+          { val: '8.40x', label: 'Avg Blended ROAS', sub: 'Portfolio baseline' },
+          { val: '7 Channels', label: 'Supported Hubs', sub: 'Amazon, Noon, D2C' }
         ]}
       />
 
       {/* Full Interactive Simulator Engine */}
-      <div id="simulator-engine" style={{ padding: '20px 0 60px' }}>
+      <div id="simulator-engine" style={{ padding: '20px 0 50px' }}>
         <GrowthCalculator />
       </div>
 
       {/* Methodology & Calculation Framework */}
       <section className="section" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
         <div className="container">
-          <div className="section-header">
-            <h2>How The Calculator Works</h2>
-            <p>
-              Our econometric growth models synthesize historical category baselines, ad elasticity curves, and cross-channel margin synergy.
-            </p>
+          <div className="section-header" style={{ textAlign: 'left', marginBottom: '18px' }}>
+            <h2 style={{ fontSize: 'clamp(1.2rem, 4.4vw, 1.45rem)', margin: 0 }}>How The Calculator Works</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            <div className="insight-card">
-              <div className="insight-badge" style={{ width: 'fit-content', marginBottom: '14px' }}>
-                Channel Synergy
+          <div className="unboxed-guarantees-grid">
+            {methods.map((m, idx) => (
+              <div key={idx} className="unboxed-guarantee-item">
+                <div className="unboxed-guarantee-icon">
+                  <span style={{ fontSize: '0.8rem', fontWeight: 800 }}>{idx + 1}</span>
+                </div>
+                <div className="unboxed-guarantee-content">
+                  <h3 className="unboxed-guarantee-title">{m.title}</h3>
+                  <p className="unboxed-guarantee-desc">{m.desc}</p>
+                </div>
               </div>
-              <h3 className="insight-title" style={{ fontSize: '1.2rem' }}>Omnichannel Brand Halo Effect</h3>
-              <p className="insight-summary">
-                Brands scaling simultaneously on Amazon, Noon, and Shopify experience an average +38% increase in organic search volume and lower blended customer acquisition cost (CAC).
-              </p>
-            </div>
-
-            <div className="insight-card">
-              <div className="insight-badge" style={{ width: 'fit-content', marginBottom: '14px', color: 'var(--neon-mint)', borderColor: 'rgba(0, 245, 155, 0.3)', background: 'rgba(0, 245, 155, 0.1)' }}>
-                GCC Inbound
-              </div>
-              <h3 className="insight-title" style={{ fontSize: '1.2rem' }}>Saudi & Gulf Conversion Power</h3>
-              <p className="insight-summary">
-                Integrating Tabby, Tamara BNPL, and local fulfillment (FBA Riyadh & Noon FBN) elevates storefront conversion rates from 1.2% to 3.8%+, generating accelerated GMV velocity.
-              </p>
-            </div>
-
-            <div className="insight-card">
-              <div className="insight-badge" style={{ width: 'fit-content', marginBottom: '14px', color: '#F59E0B', borderColor: 'rgba(245, 158, 11, 0.3)', background: 'rgba(245, 158, 11, 0.1)' }}>
-                Target ACOS
-              </div>
-              <h3 className="insight-title" style={{ fontSize: '1.2rem' }}>TACoS-First Margin Governance</h3>
-              <p className="insight-summary">
-                We govern ad spend against Total Advertising Cost of Sales (TACoS), ensuring paid volume scales net contribution profit without eroding bottom-line unit economics.
-              </p>
-            </div>
+            ))}
           </div>
 
-          <div style={{ textAlign: 'center', marginTop: '48px' }}>
-            <Link to="/book-audit" className="btn btn-primary" style={{ padding: '14px 32px', fontSize: '1rem' }}>
-              Turn This Model into an Executed Roadmap ➔
+          <div style={{ textAlign: 'center', marginTop: '24px' }}>
+            <Link to="/book-audit" className="btn btn-primary" style={{ padding: '11px 22px', fontSize: '0.86rem' }}>
+              Book Growth Audit ➔
             </Link>
           </div>
         </div>

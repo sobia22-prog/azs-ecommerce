@@ -7,6 +7,7 @@ const SERVICES_DATA = {
   'store-setup': {
     id: 'store-setup',
     num: '01',
+    shortLabel: 'Setup',
     title: 'Store Setup & Brand Onboarding',
     metaTitle: 'Marketplace Store Setup & Amazon Brand Registry Agency | AZS Solutions',
     metaDesc: 'Turnkey marketplace onboarding across Amazon Brand Registry (KSA, USA, UK), Noon Seller Lab, Trendyol GCC, and bilingual Shopify storefronts.',
@@ -32,6 +33,7 @@ const SERVICES_DATA = {
   'catalog-optimization': {
     id: 'catalog-optimization',
     num: '02',
+    shortLabel: 'Catalog',
     title: 'Catalog Optimization & Arabic/EN SEO',
     metaTitle: 'Amazon & Marketplace Catalog SEO Optimization Agency | AZS Solutions',
     metaDesc: 'Algorithmic Arabic and English listing optimization, parent-child variation architecture, and premium A+ Brand Story design for Amazon and Noon.',
@@ -57,6 +59,7 @@ const SERVICES_DATA = {
   'pricing-inventory': {
     id: 'pricing-inventory',
     num: '03',
+    shortLabel: 'Pricing',
     title: 'Dynamic Pricing & Inventory Governance',
     metaTitle: 'Marketplace Dynamic Repricing & Inventory Forecasting | AZS Solutions',
     metaDesc: 'Automated Buy Box repricing algorithms, stockout defense, and 30/60/90-day run-rate inventory forecasting for Amazon FBA and Noon FBN.',
@@ -83,6 +86,7 @@ const SERVICES_DATA = {
   'orders-fulfillment': {
     id: 'orders-fulfillment',
     num: '04',
+    shortLabel: 'Logistics',
     title: 'Orders, FBA & FBN Logistics Management',
     metaTitle: 'Amazon FBA & Fulfilled by Noon (FBN) Logistics Agency | AZS Solutions',
     metaDesc: 'End-to-end inbound logistics, FBA prep, FBN direct appointments, and cross-border customs clearance across KSA, UAE, USA, and the UK.',
@@ -109,6 +113,7 @@ const SERVICES_DATA = {
   'advertising-growth': {
     id: 'advertising-growth',
     num: '05',
+    shortLabel: 'Ads',
     title: 'Performance Advertising & Media Buying',
     metaTitle: 'Amazon PPC, Noon Ads & Meta/TikTok Growth Agency | AZS Solutions',
     metaDesc: 'Full-funnel media buying across Amazon SP/SB/SD, Noon on-site ads, Meta Advantage+, and TikTok UGC funnels delivering verified 8.4x blended ROAS.',
@@ -135,6 +140,7 @@ const SERVICES_DATA = {
   'reporting-analytics': {
     id: 'reporting-analytics',
     num: '06',
+    shortLabel: 'Analytics',
     title: 'Executive Reporting & Data Intelligence',
     metaTitle: 'Ecommerce Executive Reporting & Profit Analytics | AZS Solutions',
     metaDesc: 'Consolidated multi-marketplace executive reporting uniting Amazon, Noon, Trendyol, and Shopify into a transparent, single-source-of-truth portal.',
@@ -173,27 +179,36 @@ export default function ServicesPage({ defaultSlug }) {
   const isDetailView = (pathParts.length > 1 && SERVICES_DATA[pathParts[1]]) || path.includes('listing-optimization') || path.includes('ppc-advertising') || Boolean(defaultSlug);
   const service = SERVICES_DATA[selectedSlug];
 
+  let canonicalPath = '/services';
+  if (path.includes('listing-optimization')) {
+    canonicalPath = '/marketplace-management/listing-optimization';
+  } else if (path.includes('ppc-advertising')) {
+    canonicalPath = '/marketplace-management/ppc-advertising';
+  } else if (isDetailView) {
+    canonicalPath = `/services/${service.id}`;
+  }
+
   useSEO({
     title: isDetailView ? service.metaTitle : 'End-to-End Marketplace & E-commerce Services | AZS Solutions',
     description: isDetailView ? service.metaDesc : 'Discover our 6 core operational services: Store Setup, Catalog Optimization, Dynamic Pricing, Fulfillment Logistics, Performance Advertising, and Executive Analytics.',
     keywords: 'marketplace management services, Amazon agency Saudi Arabia, Noon operations partner, Trendyol catalog management, ecommerce advertising GCC',
     ogTitle: isDetailView ? service.title : 'What We Manage: 6 Core Services | AZS Solutions',
     ogDescription: service.overview,
-    canonicalPath: isDetailView ? `/services/${service.id}` : '/services'
+    canonicalPath
   });
 
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge={isDetailView ? `Engine ${service.num} • What We Manage` : "04 • Operational Service Architecture"}
-        title={isDetailView ? service.title : "The Complete"}
-        highlight={isDetailView ? "" : "Operational Service Stack"}
-        subtitle={isDetailView ? service.tagline : "Six dedicated operational engines delivering execution excellence across Amazon (KSA, USA, UK), Noon, Trendyol GCC, and Shopify D2C."}
+        badge={isDetailView ? `Engine ${service.num} • Operational Scope` : "Core Services"}
+        title={isDetailView ? service.title : "Our Services"}
+        highlight={isDetailView ? "" : "& Execution"}
+        subtitle={isDetailView ? service.tagline : "Six dedicated operational services across Amazon (KSA, USA, UK), Noon, Trendyol GCC, and Shopify."}
         breadcrumbs={
           isDetailView
             ? [
                 { label: 'Services', link: '/services' },
-                { label: service.title }
+                { label: service.title.split('&')[0].trim() }
               ]
             : [
                 { label: 'Services' }
@@ -210,80 +225,82 @@ export default function ServicesPage({ defaultSlug }) {
                 { val: service.kpi, label: 'Benchmark KPI', sub: 'Historical brand impact' }
               ]
             : [
-                { val: '6 Engines', label: 'Operational Services', sub: 'Setup, Catalog, Repricing, Logistics, Ads, BI' },
-                { val: '100% SLA', label: 'Guaranteed Delivery', sub: 'Account health & margin defense' },
-                { val: '4 Markets', label: 'Geographic Coverage', sub: 'Saudi Arabia, UAE, USA & UK' }
+                { val: '6 Engines', label: 'Core Services', sub: 'Setup to scale' },
+                { val: '100% SLA', label: 'Delivery Guarantee', sub: 'Active defense' },
+                { val: '4 Markets', label: 'Global Coverage', sub: 'KSA, UAE, USA, UK' }
               ]
         }
       />
 
-      {/* Interactive Service Selector Bar */}
+      {/* Interactive Service Selector Bar (Mobile 1-row scroll, Desktop grid) */}
       <section className="section" style={{ paddingTop: '20px' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px', marginBottom: '40px' }}>
-            {Object.values(SERVICES_DATA).map((item) => (
-              <button
-                key={item.id}
-                onClick={() => navigate(`/services/${item.id}`)}
-                className={`deck-pill-btn ${selectedSlug === item.id ? 'active' : ''}`}
-                style={{ justifyContent: 'center', padding: '12px 14px', width: '100%', borderRadius: '12px', display: 'flex', alignItems: 'center' }}
-              >
-                <span style={{ marginRight: '8px', display: 'flex', alignItems: 'center' }}>{item.icon}</span>
-                <span>{item.title.split('&')[0].trim()}</span>
-              </button>
-            ))}
+        <div className="container subpage-tabs-container">
+          <div className="subpage-tabs-bar" style={{ marginBottom: '24px', border: 'none', background: 'transparent' }}>
+            <div className="subpage-tabs-scroll">
+              {Object.values(SERVICES_DATA).map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => navigate(`/services/${item.id}`)}
+                  className={`case-study-tab-btn subpage-tab-link ${selectedSlug === item.id ? 'active' : ''}`}
+                >
+                  <span className="tab-short-label">{item.shortLabel || item.title.split('&')[0].trim()}</span>
+                  <span className="tab-full-label">{item.title.split('&')[0].trim()}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Active Service Detailed View Card */}
-          <div className="mkt-card" style={{ padding: '40px', background: 'rgba(11, 17, 29, 0.95)', border: '1px solid var(--neon-mint)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '24px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(0, 245, 155, 0.1)', border: '1px solid rgba(0, 245, 155, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="showcase-proof-card" style={{ background: 'rgba(11, 17, 29, 0.95)', border: '1px solid var(--neon-mint)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(0, 245, 155, 0.1)', border: '1px solid rgba(0, 245, 155, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   {service.icon}
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.78rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                    Service Module {service.num}
+                  <div style={{ fontSize: '0.74rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                    Module {service.num}
                   </div>
-                  <h2 style={{ fontSize: '2rem', color: 'var(--text-pure)', margin: '4px 0' }}>{service.title}</h2>
-                  <div style={{ color: 'var(--neon-cyan)', fontWeight: 600 }}>{service.tagline}</div>
+                  <h2 style={{ fontSize: 'clamp(1.3rem, 3.5vw, 1.8rem)', color: 'var(--text-pure)', margin: '2px 0' }}>{service.title}</h2>
+                  <div style={{ color: 'var(--neon-cyan)', fontWeight: 600, fontSize: '0.86rem' }}>{service.tagline}</div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '12px' }}>
-                <div style={{ background: 'rgba(0, 245, 155, 0.1)', border: '1px solid rgba(0, 245, 155, 0.3)', padding: '10px 18px', borderRadius: '12px', textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Benchmark KPI</div>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--neon-mint)' }}>{service.kpi}</div>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <div style={{ background: 'rgba(0, 245, 155, 0.1)', border: '1px solid rgba(0, 245, 155, 0.3)', padding: '8px 14px', borderRadius: '10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Benchmark KPI</div>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--neon-mint)' }}>{service.kpi}</div>
                 </div>
-                <div style={{ background: 'rgba(0, 210, 255, 0.1)', border: '1px solid rgba(0, 210, 255, 0.3)', padding: '10px 18px', borderRadius: '12px', textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Service SLA</div>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--neon-cyan)' }}>{service.sla}</div>
+                <div style={{ background: 'rgba(0, 210, 255, 0.1)', border: '1px solid rgba(0, 210, 255, 0.3)', padding: '8px 14px', borderRadius: '10px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Service SLA</div>
+                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--neon-cyan)' }}>{service.sla}</div>
                 </div>
               </div>
             </div>
 
-            <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: 'var(--text-body)', marginBottom: '32px' }}>
+            <p style={{ fontSize: '0.94rem', lineHeight: '1.65', color: 'var(--text-body)', marginBottom: '24px' }}>
               {service.overview}
             </p>
 
-            <h3 style={{ fontSize: '1.25rem', color: 'var(--text-pure)', marginBottom: '16px' }}>Core Deliverables & Execution Scope</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '12px', marginBottom: '36px' }}>
+            <h3 style={{ fontSize: '1.15rem', color: 'var(--text-pure)', marginBottom: '14px' }}>Core Deliverables & Scope</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '10px', marginBottom: '28px' }}>
               {service.deliverables.map((deliv, i) => (
-                <div key={i} className="platform-checklist-item" style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '14px 16px', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <div key={i} className="platform-checklist-item" style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '12px 14px', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: '2px' }}>
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                  <span style={{ fontSize: '0.92rem' }}>{deliv}</span>
+                  <span style={{ fontSize: '0.86rem' }}>{deliv}</span>
                 </div>
               ))}
             </div>
 
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <Link to="/book-audit" className="btn btn-primary" style={{ padding: '14px 28px' }}>
-                Book Discovery Call for {service.title.split('&')[0].trim()} ➔
+            <div className="subpage-bottom-actions">
+              <Link to="/book-audit" className="btn btn-primary">
+                Book Discovery Call ➔
               </Link>
-              <Link to="/case-studies" className="btn btn-secondary" style={{ padding: '14px 28px' }}>
-                View Verified Case Studies
+              <Link to="/case-studies" className="btn btn-secondary">
+                View Case Studies
               </Link>
             </div>
           </div>

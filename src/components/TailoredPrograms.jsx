@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useCurrency } from '../context/CurrencyContext';
 
-export default function TailoredPrograms() {
+export default function TailoredPrograms({ hideHeader = false }) {
   const { isSAR } = useCurrency();
   const isGCC = isSAR;
   const [mobileIdx, setMobileIdx] = useState(0);
@@ -114,9 +114,9 @@ export default function TailoredPrograms() {
         ))}
       </div>
 
-      <div style={{ marginTop: 'auto', paddingTop: '16px' }}>
-        <a href="#book-audit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.85rem' }}>
-          Explore Program Scope
+      <div style={{ marginTop: 'auto', paddingTop: '14px' }}>
+        <a href="#book-audit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontSize: '0.82rem', padding: '10px 14px' }}>
+          Select Scope ➔
         </a>
       </div>
     </div>
@@ -153,14 +153,16 @@ export default function TailoredPrograms() {
   };
 
   return (
-    <section className="section" id="programs">
+    <section className="section" id="programs" style={hideHeader ? { paddingTop: '16px', paddingBottom: '24px' } : undefined}>
       <div className="container">
-        <div className="section-header">
-          <h2>Programs &amp; Pricing</h2>
-          <p className="desktop-only">
-            Choose the operational partnership that aligns with your scale, channel mix, and GCC expansion timeline. Transparent indicative pricing to fast-track your qualification.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="section-header">
+            <h2>Programs &amp; Pricing</h2>
+            <p className="desktop-only">
+              Choose the operational partnership that aligns with your scale, channel mix, and GCC expansion timeline. Transparent indicative pricing to fast-track your qualification.
+            </p>
+          </div>
+        )}
 
         {/* Desktop 4-Column Grid */}
         <div className="programs-grid-4 desktop-programs-grid">

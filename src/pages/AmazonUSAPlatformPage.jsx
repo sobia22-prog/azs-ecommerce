@@ -23,7 +23,7 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
           <circle cx="12" cy="12" r="2" />
         </svg>
       ),
-      desc: 'Exclusive access to Amazon Demand-Side Platform (DSP) for programmatic display, audio, and OTT/video ads targeting in-market shoppers on and off Amazon.com.'
+      desc: 'Amazon DSP for programmatic display and video ads targeting in-market shoppers on and off Amazon.com.'
     },
     {
       title: 'Nationwide FBA Restock & Storage Hygiene',
@@ -34,17 +34,17 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
           <line x1="12" y1="22.08" x2="12" y2="12" />
         </svg>
       ),
-      desc: 'Algorithmic inventory velocity forecasting across East Coast and West Coast fulfillment centers to prevent aged storage surcharges and capacity limit throttling.'
+      desc: 'Algorithmic inventory velocity forecasting across fulfillment centers to prevent aged storage surcharges.'
     },
     {
-      title: 'Amazon Marketing Cloud (AMC) Custom Attribution',
+      title: 'Amazon Marketing Cloud (AMC) Attribution',
       icon: (
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--neon-mint)' }}>
           <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
           <polyline points="17 6 23 6 23 12" />
         </svg>
       ),
-      desc: 'SQL-driven query models combining Sponsored Ads and DSP touchpoints to map multi-touch customer journeys and eliminate ad waste.'
+      desc: 'Attribution query models combining Sponsored Ads and DSP touchpoints to eliminate wasted ad spend.'
     },
     {
       title: 'Cross-Border USA Tax & Customs Gateway',
@@ -55,17 +55,17 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
           <line x1="8" y1="12" x2="16" y2="12" />
         </svg>
       ),
-      desc: 'US customs clearance, Section 321 de minimis compliance, and state sales tax marketplace facilitator reconciliation for international brands.'
+      desc: 'US customs clearance, Section 321 de minimis compliance, and state sales tax facilitator reconciliation.'
     }
   ];
 
   return (
     <div className="subpage-wrapper">
       <PageHeader
-        badge="Enterprise Marketplace: Amazon.com USA"
-        title="Amazon USA Seller Growth &"
-        highlight="DSP Performance Engine"
-        subtitle="The United States is the world’s most competitive ecommerce marketplace. We equip international and scaling brands with algorithmic PPC bidding, programmatic DSP display, and precision nationwide FBA supply chain management."
+        badge="Amazon.com USA"
+        title="Amazon USA"
+        highlight="Growth"
+        subtitle="Full-service management for Amazon.com USA. PPC advertising, DSP remarketing, and nationwide FBA inventory management."
         breadcrumbs={[
           { label: 'Marketplace Management', link: '/marketplace-management' },
           { label: 'Amazon USA' }
@@ -75,61 +75,49 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
         secondaryCtaText="View Client Case Studies"
         secondaryCtaLink="/case-studies"
         metrics={[
-          { val: '11.20x', label: 'Amazon.com ROAS', sub: 'Verified Sponsored Products return' },
-          { val: '8.9%', label: 'Average TACoS', sub: 'Total advertising cost of sale' },
-          { val: '94.6%', label: 'Buy Box Win Rate', sub: 'Automated margin-floor repricing' },
-          { val: '$142.8M+', label: 'Active Managed GMV', sub: 'Audited US & global portfolio' }
+          { val: '11.20x', label: 'Ad ROAS', sub: 'Sponsored Products' },
+          { val: '8.9%', label: 'Average TACoS', sub: 'Controlled spend' },
+          { val: '94.6%', label: 'Buy Box Win Rate', sub: 'Automated repricing' },
+          { val: '$140M+', label: 'Managed GMV', sub: 'Audited portfolio' }
         ]}
       />
 
       {/* Strategic Operational Pillars */}
-      <section className="subpage-section">
+      <section className="section">
         <div className="container">
-          <div className="section-header">
-            <h2>How We Win on Amazon.com USA</h2>
-            <p>
-              Moving from regional selling to US dominance requires institutional Amazon DSP media buying, continuous catalog indexing, and flawless logistics governance.
-            </p>
+          <Link to="/marketplaces" className="back-overview-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>Back to Marketplaces Division</span>
+          </Link>
+
+          <div className="section-header" style={{ textAlign: 'left', marginTop: '10px', marginBottom: '18px' }}>
+            <h2 style={{ fontSize: 'clamp(1.2rem, 4.4vw, 1.45rem)', margin: 0 }}>How We Win on Amazon.com USA</h2>
           </div>
 
-          <div className="platform-detail-grid">
+          <div className="marketplaces-systems-grid">
             {usaPillars.map((p, idx) => (
-              <div key={idx} className="platform-detail-card">
-                <div className="platform-detail-icon">{p.icon}</div>
-                <h3 className="platform-detail-title">{p.title}</h3>
-                <p className="platform-detail-desc">{p.desc}</p>
-                <ul className="platform-checklist">
-                  <li className="platform-checklist-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>Audited SLA Execution</span>
-                  </li>
-                  <li className="platform-checklist-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>Direct Weekly Partner Standups</span>
-                  </li>
-                </ul>
+              <div key={idx} className="marketplaces-system-card">
+                <div className="system-card-icon">
+                  {p.icon}
+                </div>
+                <div className="system-card-body">
+                  <h4 style={{ fontSize: '0.98rem', fontWeight: 700, color: 'var(--text-heading)', margin: '0 0 4px' }}>{p.title}</h4>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--text-body)', lineHeight: 1.4, margin: 0 }}>{p.desc}</p>
+                </div>
               </div>
             ))}
           </div>
 
           {/* Verified USA Amazon Performance Showcase */}
-          <div id="usa-proof" style={{
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border-card)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '40px',
-            marginTop: '60px',
-            marginBottom: '40px'
-          }}>
-            <h2 style={{ fontSize: '2rem', color: 'var(--text-heading)', marginBottom: '10px' }}>
-              NuvoAura Beauty & Wellness: <span className="gradient-text">11.20x ROAS on Amazon.com</span>
+          <div id="usa-proof" className="showcase-proof-card" style={{ marginTop: '40px', marginBottom: '40px' }}>
+            <h2 className="showcase-proof-title">
+              NuvoAura Beauty: <span className="gradient-text">11.20x ROAS on Amazon.com</span>
             </h2>
-            <p style={{ color: 'var(--text-body)', maxWidth: '780px', marginBottom: '30px' }}>
-              How AZS harvested high-intent search terms into exact-match PPC campaigns, deployed Amazon DSP programmatic remarketing, and locked in an 8.90% target ACOS across nationwide FBA fulfillment hubs.
+            <p className="showcase-proof-subtitle">
+              Harvested exact-match PPC keywords, deployed DSP remarketing, and locked in an 8.90% target ACOS across nationwide FBA hubs.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'center' }}>
@@ -141,64 +129,59 @@ export default function AmazonUSAPlatformPage({ onOpenModal }) {
               </div>
 
               <div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px', marginBottom: '24px' }}>
-                  <div style={{ background: 'rgba(0, 245, 155, 0.05)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 245, 155, 0.2)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Attributed Ad Sales</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>$48,900</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>Direct Campaign Return</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px', marginBottom: '20px' }}>
+                  <div style={{ background: 'rgba(0, 245, 155, 0.05)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 245, 155, 0.2)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Attributed Ad Sales</div>
+                    <div style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--neon-mint)', fontFamily: 'var(--font-mono)' }}>$48,900</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>Direct Campaign Return</div>
                   </div>
 
-                  <div style={{ background: 'rgba(0, 210, 255, 0.05)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 210, 255, 0.2)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Sponsored ROAS</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--neon-cyan)', fontFamily: 'var(--font-mono)' }}>11.20x</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>8.90% Target ACOS</div>
+                  <div style={{ background: 'rgba(0, 210, 255, 0.05)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(0, 210, 255, 0.2)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Sponsored ROAS</div>
+                    <div style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--neon-cyan)', fontFamily: 'var(--font-mono)' }}>11.20x</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>8.90% Target ACOS</div>
                   </div>
 
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Ad Spend</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-heading)' }}>$4,360</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>Strict Budget Control</div>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Ad Spend</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-heading)' }}>$4,360</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>Strict Budget Control</div>
                   </div>
 
-                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Buy Box Win Rate</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-heading)' }}>94.6%</div>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-body)' }}>Automated Repricing</div>
+                  <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Buy Box Win Rate</div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-heading)' }}>94.6%</div>
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-body)' }}>Automated Repricing</div>
                   </div>
                 </div>
 
                 <blockquote style={{
                   borderLeft: '3px solid var(--neon-mint)',
-                  paddingLeft: '16px',
+                  paddingLeft: '14px',
                   color: 'var(--text-heading)',
                   fontStyle: 'italic',
-                  fontSize: '0.92rem',
-                  lineHeight: 1.6,
-                  marginBottom: '20px'
+                  fontSize: '0.88rem',
+                  lineHeight: 1.55,
+                  marginBottom: '18px'
                 }}>
-                  "Scaled NuvoAura into the top 3 organic ranking across 42 primary beauty keywords on Amazon.com while maintaining a sub-9% ACOS."
+                  "Scaled NuvoAura into top 3 organic ranking across 42 primary beauty keywords on Amazon.com while maintaining a sub-9% ACOS."
                 </blockquote>
 
-                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
-                  <Link to="/book-audit" className="btn btn-primary">
-                    <span>Audit Your Amazon USA Potential</span>
+                <div className="subpage-cta-group">
+                  <Link to="/book-audit" className="btn btn-primary" style={{ padding: '11px 20px', fontSize: '0.86rem' }}>
+                    <span>Audit Your Amazon USA Potential ➔</span>
                   </Link>
-                  <Link to="/case-studies/nuvoaura" className="btn btn-secondary">
-                    <span>Read Full NuvoAura Case Study ➔</span>
+                  <Link to="/case-studies/nuvoaura" className="btn btn-secondary" style={{ padding: '11px 20px', fontSize: '0.86rem' }}>
+                    <span>Read NuvoAura Case Study ➔</span>
+                  </Link>
+                </div>
+                <div style={{ marginTop: '12px' }}>
+                  <Link to="/programs-pricing" style={{ fontSize: '0.82rem', color: 'var(--neon-mint)', fontWeight: 700, textDecoration: 'none' }}>
+                    View USA Marketplace Programs & Pricing ➔
                   </Link>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Cross Link to Pricing & Case Studies */}
-          <div style={{ textAlign: 'center', marginTop: '40px' }}>
-            <Link to="/programs-pricing" className="btn btn-primary" style={{ marginRight: '14px' }}>
-              Explore USA Program Pricing ➔
-            </Link>
-            <Link to="/case-studies/nuvoaura" className="btn btn-secondary">
-              Review NuvoAura USA Case Study ➔
-            </Link>
           </div>
         </div>
       </section>

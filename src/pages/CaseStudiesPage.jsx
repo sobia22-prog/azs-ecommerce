@@ -357,59 +357,78 @@ export default function CaseStudiesPage({ onOpenModal }) {
               <img src={activeCaseStudy.image} alt={activeCaseStudy.title} style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
 
-            {/* Deep Breakdown Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '40px' }}>
-              <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-card)', borderRadius: 'var(--radius-md)', padding: '24px' }}>
-                <div style={{ fontSize: '0.74rem', color: '#ff4d4f', fontWeight: 800, textTransform: 'uppercase', marginBottom: '8px' }}>
-                  The Initial Bottlenecks
+            {/* Clean Unboxed Breakdown Flow (No Card Boxes, No Heavy Padding) */}
+            <div className="case-study-breakdown-grid">
+              <div className="case-study-breakdown-item">
+                <div style={{ fontSize: '0.72rem', color: '#ff5252', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Initial Bottlenecks
                 </div>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', color: 'var(--text-heading)' }}>What Was Holding Growth Back</h3>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-body)', lineHeight: 1.65 }}>{activeCaseStudy.challenge}</p>
+                <h3 style={{ fontSize: 'clamp(1.15rem, 3.8vw, 1.3rem)', margin: '6px 0 8px', color: 'var(--text-heading)', fontWeight: 700 }}>
+                  What Was Holding Growth Back
+                </h3>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-body)', lineHeight: 1.6, margin: 0 }}>
+                  {activeCaseStudy.challenge}
+                </p>
               </div>
 
-              <div style={{ background: 'var(--bg-card)', border: '1px solid rgba(0, 245, 155, 0.3)', borderRadius: 'var(--radius-md)', padding: '24px' }}>
-                <div style={{ fontSize: '0.74rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', marginBottom: '8px' }}>
+              <div className="case-study-breakdown-item">
+                <div style={{ fontSize: '0.72rem', color: 'var(--neon-mint)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                   AZS Institutional System
                 </div>
-                <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', color: 'var(--text-heading)' }}>How We Architected The Turnaround</h3>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-body)', lineHeight: 1.65 }}>{activeCaseStudy.solution}</p>
+                <h3 style={{ fontSize: 'clamp(1.15rem, 3.8vw, 1.3rem)', margin: '6px 0 8px', color: 'var(--text-heading)', fontWeight: 700 }}>
+                  How We Architected The Turnaround
+                </h3>
+                <p style={{ fontSize: '0.86rem', color: 'var(--text-body)', lineHeight: 1.6, margin: 0 }}>
+                  {activeCaseStudy.solution}
+                </p>
               </div>
             </div>
 
-            {/* Verified Deliverables & Results */}
-            <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border-card)', borderRadius: 'var(--radius-md)', padding: '28px', marginBottom: '40px' }}>
-              <h3 style={{ fontSize: '1.3rem', color: 'var(--text-heading)', marginBottom: '16px' }}>Key Documented Outcomes</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
+            {/* Verified Outcomes - Clean Unboxed Flow */}
+            <div style={{ marginTop: '30px' }}>
+              <h3 style={{ fontSize: 'clamp(1.15rem, 3.8vw, 1.3rem)', color: 'var(--text-heading)', marginBottom: '14px', fontWeight: 700 }}>
+                Key Documented Outcomes
+              </h3>
+              <div className="unboxed-guarantees-grid" style={{ marginTop: '12px' }}>
                 {activeCaseStudy.results.map((res, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.88rem', color: 'var(--text-heading)' }}>
-                    <span style={{ color: 'var(--neon-mint)', fontWeight: 800 }}>✓</span>
-                    <span>{res}</span>
+                  <div key={i} className="unboxed-guarantee-item">
+                    <div className="unboxed-guarantee-icon" style={{ borderRadius: '50%', width: '30px', height: '30px', minWidth: '30px' }}>
+                      <span style={{ fontSize: '0.82rem', fontWeight: 800 }}>✓</span>
+                    </div>
+                    <div className="unboxed-guarantee-content">
+                      <span style={{ fontSize: '0.90rem', fontWeight: 600, color: 'var(--text-heading)', lineHeight: 1.45 }}>
+                        {res}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Founder Quote Card */}
-            <div style={{ background: 'rgba(0, 210, 255, 0.05)', border: '1px solid rgba(0, 210, 255, 0.25)', borderRadius: 'var(--radius-md)', padding: '24px', marginBottom: '40px' }}>
-              <blockquote style={{ fontSize: '1rem', fontStyle: 'italic', color: 'var(--text-heading)', lineHeight: 1.6, margin: 0 }}>
+            {/* Founder Quote - Clean Unboxed Testimonial Block */}
+            <div className="case-study-quote-block">
+              <blockquote className="case-study-quote-text">
                 "{activeCaseStudy.highlightQuote}"
               </blockquote>
+              <div className="case-study-quote-author">
+                — {activeCaseStudy.title} Performance Milestone
+              </div>
             </div>
 
-            {/* Action Bar with Matching Service Link & Pricing Link */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center', justifyContent: 'space-between', padding: '24px', background: 'var(--bg-card)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
-              <div>
-                <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Matching Capability</div>
-                <Link to={activeCaseStudy.serviceLink} style={{ color: 'var(--neon-cyan)', fontWeight: 700, fontSize: '0.95rem', textDecoration: 'none' }}>
+            {/* Sleek Action Bar with Matching Service & Mobile Stacked Buttons */}
+            <div className="case-study-action-bar">
+              <div className="case-study-matching-service">
+                <span className="case-study-action-label">Matching Growth Service</span>
+                <Link to={activeCaseStudy.serviceLink} className="case-study-service-link">
                   Explore {activeCaseStudy.serviceName} ➔
                 </Link>
               </div>
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <Link to="/programs-pricing" className="btn btn-secondary" style={{ padding: '10px 20px', fontSize: '0.85rem' }}>
+              <div className="case-study-action-buttons">
+                <Link to="/programs-pricing" className="btn btn-secondary case-study-action-btn">
                   View Pricing Tiers
                 </Link>
-                <Link to="/book-audit" className="btn btn-primary" style={{ padding: '10px 22px', fontSize: '0.85rem' }}>
-                  Book Discovery Call
+                <Link to="/book-audit" className="btn btn-primary case-study-action-btn">
+                  Book Discovery Call ➔
                 </Link>
               </div>
             </div>
