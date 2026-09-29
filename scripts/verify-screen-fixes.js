@@ -98,8 +98,70 @@ async function runVerification() {
     allPassed = false;
   }
 
-  // 4. VERIFY PRODUCTION BUNDLE ARTIFACTS & LIVE PREVIEW SERVER
-  console.log('\n[TEST 4] Verifying Production Dist Bundle & Preview Server...');
+  // 4. VERIFY ISSUE 3.2: Cut Homepage to Single Dashboard Widget
+  console.log('\n[TEST 4] Verifying Single Dashboard Proof Widget on Homepage (Issue 3.2)...');
+  const heroContent = fs.readFileSync(path.resolve('src/components/Hero.jsx'), 'utf8');
+  const shopifyGrowthContent = fs.readFileSync(path.resolve('src/components/ShopifyGrowth.jsx'), 'utf8');
+  const marketplacesContent = fs.readFileSync(path.resolve('src/components/Marketplaces.jsx'), 'utf8');
+
+  const heroHasRestrainedStatLine = heroContent.includes('hero-stat-line-bar') && !heroContent.includes('hero-kpis hero-kpis-3col');
+  const shopifyHasOutcomeBanner = shopifyGrowthContent.includes('store-outcome-banner') && !shopifyGrowthContent.includes('store-metrics-panel desktop-only');
+  const hasLiveConsole = marketplacesContent.includes('id="dashboards-proof"');
+
+  console.log(`  - Hero uses restrained stat line instead of KPI tile grid:      ${heroHasRestrainedStatLine ? 'PASS' : 'FAIL'}`);
+  console.log(`  - Shopify section uses outcome banner instead of 4-tile widget: ${shopifyHasOutcomeBanner ? 'PASS' : 'FAIL'}`);
+  console.log(`  - Live Marketplace Console preserved as single dashboard widget: ${hasLiveConsole ? 'PASS' : 'FAIL'}`);
+
+  if (heroHasRestrainedStatLine && shopifyHasOutcomeBanner && hasLiveConsole) {
+    console.log('  >>> PASSED: Cut down to ONE dashboard widget (Live Console) with restrained stat lines elsewhere.');
+  } else {
+    console.error('  >>> FAILED: Homepage still has duplicate dashboard widgets.');
+    allPassed = false;
+  }
+
+  // 5. VERIFY ISSUE 3.3: Authentic Proof Images on Marketplace Cards (No Stock City Photos)
+  console.log('\n[TEST 5] Verifying Marketplace Cards Use Real Proof (Issue 3.3)...');
+  const hasNoStockRiyadh = !marketplacesContent.includes('mkt_ksa_riyadh.jpg');
+  const hasNoStockTrendyol = !marketplacesContent.includes('mkt_trendyol_gcc.jpg');
+  const hasNoStockNyc = !marketplacesContent.includes('mkt_usa_nyc.jpg');
+  const hasNoStockLondon = !marketplacesContent.includes('mkt_uk_london.jpg');
+
+  const hasRealKsa = marketplacesContent.includes('homemaster_case_study.jpg');
+  const hasRealTrendyol = marketplacesContent.includes('noon_trendyol_dashboard.png');
+  const hasRealUsa = marketplacesContent.includes('amazon_ad_dashboard.png');
+  const hasRealUk = marketplacesContent.includes('creativethings_case_study.jpg');
+
+  console.log(`  - Generic stock city photos removed: ${hasNoStockRiyadh && hasNoStockTrendyol && hasNoStockNyc && hasNoStockLondon ? 'PASS' : 'FAIL'}`);
+  console.log(`  - Real client product/listing proof used: ${hasRealKsa && hasRealTrendyol && hasRealUsa && hasRealUk ? 'PASS' : 'FAIL'}`);
+
+  if (hasNoStockRiyadh && hasNoStockTrendyol && hasNoStockNyc && hasNoStockLondon && hasRealKsa && hasRealTrendyol && hasRealUsa && hasRealUk) {
+    console.log('  >>> PASSED: Marketplace cards use authentic client listing & dashboard proof, matching Shopify tabs.');
+  } else {
+    console.error('  >>> FAILED: Marketplace cards still contain stock city photos.');
+    allPassed = false;
+  }
+
+  // 6. VERIFY ISSUE 3.4: /shopify-dtc Leads with Client Work Before Stat Row
+  console.log('\n[TEST 6] Verifying /shopify-dtc Hub Ordering (Issue 3.4)...');
+  const shopifyPageContent = fs.readFileSync(path.resolve('src/pages/ShopifyDivisionPage.jsx'), 'utf8');
+
+  const headerMetricsEmpty = shopifyPageContent.includes('metrics={[]}');
+  const clientWorkPos = shopifyPageContent.indexOf('id="livora-proof"');
+  const statRowPos = shopifyPageContent.indexOf('shopify-portfolio-stats');
+  const clientWorkBeforeStats = clientWorkPos !== -1 && statRowPos !== -1 && clientWorkPos < statRowPos;
+
+  console.log(`  - Header metrics bar suppressed on Shopify hub: ${headerMetricsEmpty ? 'PASS' : 'FAIL'}`);
+  console.log(`  - Client storefront work leads before stat row:   ${clientWorkBeforeStats ? 'PASS' : 'FAIL'}`);
+
+  if (headerMetricsEmpty && clientWorkBeforeStats) {
+    console.log('  >>> PASSED: /shopify-dtc hub leads with client storefront work before following with stat row.');
+  } else {
+    console.error('  >>> FAILED: /shopify-dtc does not lead with client work.');
+    allPassed = false;
+  }
+
+  // 7. VERIFY PRODUCTION BUNDLE ARTIFACTS & LIVE PREVIEW SERVER
+  console.log('\n[TEST 7] Verifying Production Dist Bundle & Preview Server...');
   const distDir = path.resolve('dist/assets');
   const distFiles = fs.readdirSync(distDir);
   const jsBundle = distFiles.find(f => f.endsWith('.js'));
@@ -139,7 +201,7 @@ async function runVerification() {
 
   console.log('\n' + '='.repeat(75));
   if (allPassed) {
-    console.log('ALL AUDIT CRITERIA SATISFIED SUCCESSFULLY! READY TO COMMIT & PUSH.');
+    console.log('ALL AUDIT CRITERIA (2.5, 2.6, 3.1, 3.2, 3.3, 3.4) SATISFIED SUCCESSFULLY!');
   } else {
     console.error('SOME CHECKS FAILED. PLEASE REVIEW LOG ABOVE.');
   }

@@ -12,7 +12,7 @@ const MARKETPLACE_LIST = [
     tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '+311% Orders',
     desc: 'Dominating Amazon.sa and Noon Seller Lab with Riyadh/Jeddah warehousing & Arabic optimization.',
-    img: '/assets/mkt_ksa_riyadh.jpg',
+    img: '/assets/homemaster_case_study.jpg',
     metricLabel: 'KSA Blended ROAS',
     metricVal: '6.85x ROAS',
     features: [
@@ -34,7 +34,7 @@ const MARKETPLACE_LIST = [
     tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '7.80x ROAS',
     desc: 'Surging Turkey-to-Gulf mobile corridor. Turnkey Arabic catalog sync & rapid flash promotions.',
-    img: '/assets/mkt_trendyol_gcc.jpg',
+    img: '/assets/noon_trendyol_dashboard.png',
     metricLabel: 'Monthly Scaled Pace',
     metricVal: 'SAR 145,000',
     features: [
@@ -55,7 +55,7 @@ const MARKETPLACE_LIST = [
     tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '11.20x ROAS',
     desc: 'High-velocity US Amazon PPC bid automation, A+ storytelling & nationwide FBA restock.',
-    img: '/assets/mkt_usa_nyc.jpg',
+    img: '/assets/amazon_ad_dashboard.png',
     metricLabel: 'ACOS Efficiency',
     metricVal: '8.90% Verified',
     features: [
@@ -76,7 +76,7 @@ const MARKETPLACE_LIST = [
     tagBorder: 'rgba(0, 245, 155, 0.4)',
     growthBadge: '+507% Lift',
     desc: 'Cross-border British expansion with UK VAT compliance, localized copy & Pan-EU Prime.',
-    img: '/assets/mkt_uk_london.jpg',
+    img: '/assets/creativethings_case_study.jpg',
     metricLabel: 'British Prime ROAS',
     metricVal: '9.45x ROAS',
     features: [

@@ -152,12 +152,7 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
         primaryCtaLink="/book-audit"
         secondaryCtaText="View Case Studies"
         secondaryCtaLink="/case-studies"
-        metrics={[
-          { val: '$50.4K/mo', label: 'Flagship Sales', sub: 'LIVORA Essentials' },
-          { val: '4.62x', label: 'Blended ROAS', sub: 'Meta, TikTok & Google' },
-          { val: '+104%', label: 'Sales Lift', sub: '60-Day sprint' },
-          { val: '1.2s', label: 'Page Speed', sub: 'Sub-second GCC CDN' }
-        ]}
+        metrics={[]}
       />
 
       <section className="section">
@@ -178,8 +173,11 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
             </div>
           </div>
 
-          {/* Flagship Case Study Showcase: LIVORA Modern Essentials */}
-          <div id="livora-proof" className="shopify-showcase-container">
+          {/* Portfolio-First Client Work Showcase: LIVORA Modern Essentials (WeMakeWebsites Benchmark - Issue 3.4) */}
+          <div id="livora-proof" className="shopify-showcase-container" style={{ marginTop: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <span className="badge-pill" style={{ margin: 0 }}>Client Work & Storefront Architecture</span>
+            </div>
             <h2 style={{ fontSize: '1.75rem', color: 'var(--text-heading)', marginBottom: '8px' }}>
               LIVORA Modern Essentials: <span className="gradient-text">$50.4K/mo D2C Scale</span>
             </h2>
@@ -189,11 +187,16 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
 
             <div className="shopify-showcase-grid-layout">
               <div 
-                style={{ cursor: 'pointer', position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(0, 210, 255, 0.25)' }}
-                onClick={() => onOpenModal && onOpenModal('/assets/livora_shopify_dashboard.svg', 'LIVORA Modern Essentials Verified Shopify Dashboard ($50,461.90/mo)')}
-                title="Click to zoom verified Shopify dashboard"
+                style={{ cursor: 'pointer', position: 'relative', borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid rgba(0, 210, 255, 0.25)', background: '#070d18' }}
+                onClick={() => onOpenModal && onOpenModal('/assets/shopify_storefronts_mockup.png', 'LIVORA Modern Essentials Storefront Architecture & Mobile UX')}
+                title="Click to zoom verified storefront architecture"
               >
-                <img src="/assets/livora_shopify_dashboard.svg" alt="LIVORA Shopify Dashboard" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                <img 
+                  src="/assets/shopify_storefronts_mockup.png" 
+                  alt="LIVORA Shopify Storefront Design & Architecture" 
+                  style={{ width: '100%', height: 'auto', display: 'block' }} 
+                  loading="eager"
+                />
               </div>
 
               <div>
@@ -223,6 +226,30 @@ export default function ShopifyDivisionPage({ onOpenModal }) {
                   </Link>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Follows Client Work: Verified Stat Row (WeMakeWebsites Benchmark - Issue 3.4) */}
+          <div className="subpage-metrics-grid shopify-portfolio-stats" style={{ margin: '36px 0 44px' }}>
+            <div className="subpage-metric-card">
+              <div className="subpage-metric-val">$50.4K/mo</div>
+              <div className="subpage-metric-lbl">Flagship Sales</div>
+              <div className="subpage-metric-sub">LIVORA Essentials</div>
+            </div>
+            <div className="subpage-metric-card">
+              <div className="subpage-metric-val">4.62x</div>
+              <div className="subpage-metric-lbl">Blended ROAS</div>
+              <div className="subpage-metric-sub">Meta, TikTok & Google</div>
+            </div>
+            <div className="subpage-metric-card">
+              <div className="subpage-metric-val">+104%</div>
+              <div className="subpage-metric-lbl">Sales Lift</div>
+              <div className="subpage-metric-sub">60-Day sprint</div>
+            </div>
+            <div className="subpage-metric-card">
+              <div className="subpage-metric-val">1.2s</div>
+              <div className="subpage-metric-lbl">Page Speed</div>
+              <div className="subpage-metric-sub">Sub-second GCC CDN</div>
             </div>
           </div>
 

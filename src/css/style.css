@@ -2821,6 +2821,87 @@ div.desktop-only,
   box-shadow: 0 0 8px var(--neon-mint);
 }
 
+/* Hero Restrained Proof Stat Line (Issue 3.2 - Replaces bulky KPI tiles) */
+.hero-stat-line-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12px 18px;
+  background: rgba(16, 25, 42, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.hero-stat-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.hero-stat-val {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--text-pure);
+}
+
+.hero-stat-lbl {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.hero-stat-divider {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.1rem;
+}
+
+/* Shopify Streamlined Outcome Banner (Issue 3.2 - Cuts duplicate dashboard widgets) */
+.store-outcome-banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  background: rgba(16, 25, 42, 0.6);
+  border: 1px solid rgba(0, 245, 155, 0.2);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.store-outcome-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--neon-mint);
+  padding: 3px 8px;
+  background: rgba(0, 245, 155, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(0, 245, 155, 0.25);
+}
+
+.store-outcome-metrics-row {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.store-outcome-metrics-row strong {
+  color: var(--text-pure);
+  font-weight: 700;
+}
+
+.store-outcome-dot {
+  color: rgba(255, 255, 255, 0.25);
+}
+
 .footer-legal-links {
   display: flex;
   gap: 16px;
@@ -9285,6 +9366,35 @@ div.desktop-only,
   .cap-compact-icon svg {
     width: 13px !important;
     height: 13px !important;
+  }
+
+  .store-outcome-banner {
+    padding: 8px 10px !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+  }
+
+  .store-outcome-tag {
+    font-size: 0.66rem !important;
+    padding: 2px 6px !important;
+  }
+
+  .store-outcome-metrics-row {
+    font-size: 0.72rem !important;
+    gap: 5px !important;
+  }
+
+  .hero-stat-line-bar {
+    padding: 8px 10px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .hero-stat-val {
+    font-size: 0.82rem !important;
+  }
+
+  .hero-stat-lbl {
+    font-size: 0.68rem !important;
   }
 
   .cap-compact-text strong {

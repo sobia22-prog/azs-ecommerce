@@ -202,20 +202,22 @@ export default function Hero({ onOpenModal }) {
                 </div>
               </div>
 
-              {/* Verified KPI Grid: 3 Clean, Well-Spaced Metrics */}
-              <div className="hero-kpis hero-kpis-3col">
-                <div className="kpi-chip">
-                  <div className="kpi-label"><span className="desktop-only-txt">Blended </span>ROAS</div>
-                  <div className="kpi-val">8.40x</div>
-                </div>
-                <div className="kpi-chip">
-                  <div className="kpi-label"><span className="desktop-only-txt">Avg </span>ACOS</div>
-                  <div className="kpi-val">11.8%</div>
-                </div>
-                <div className="kpi-chip">
-                  <div className="kpi-label">Buy Box<span className="desktop-only-txt"> Win Rate</span></div>
-                  <div className="kpi-val">93.4%</div>
-                </div>
+              {/* Restrained Proof Stat Line (Common Thread Collective Benchmark - Issue 3.2) */}
+              <div className="hero-stat-line-bar">
+                <span className="hero-stat-item">
+                  <strong className="hero-stat-val">8.40x</strong>
+                  <span className="hero-stat-lbl">Blended ROAS</span>
+                </span>
+                <span className="hero-stat-divider" aria-hidden="true">·</span>
+                <span className="hero-stat-item">
+                  <strong className="hero-stat-val">11.8%</strong>
+                  <span className="hero-stat-lbl">Avg ACOS</span>
+                </span>
+                <span className="hero-stat-divider" aria-hidden="true">·</span>
+                <span className="hero-stat-item">
+                  <strong className="hero-stat-val">93.4%</strong>
+                  <span className="hero-stat-lbl">Buy Box Win</span>
+                </span>
               </div>
             </div>
           </div>

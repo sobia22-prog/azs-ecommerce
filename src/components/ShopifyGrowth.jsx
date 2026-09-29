@@ -229,25 +229,20 @@ export default function ShopifyGrowth({ onOpenModal }) {
               </div>
             </div>
 
-            {/* Store-Specific Verified Impact Card (Desktop Only) */}
-            <div className="store-metrics-panel desktop-only">
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
-                <span style={{ fontSize: '0.75rem', color: 'var(--neon-mint)', textTransform: 'uppercase', fontWeight: 800, letterSpacing: '0.05em', display: 'flex', alignItems: 'center' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '6px', flexShrink: 0 }}>
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                  </svg>
-                  Audited Client Impact
-                </span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Verified Sprint Data</span>
+            {/* Streamlined Verified Outcome Line (Issue 3.2 - Cuts duplicate dashboard widgets) */}
+            <div className="store-outcome-banner">
+              <div className="store-outcome-tag">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '6px', flexShrink: 0 }}>
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Audited Outcome</span>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '8px' }}>
-                {store.uniqueMetrics.map((m, idx) => (
-                  <div key={idx} className="store-metric-item">
-                    <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>{m.label}</div>
-                    <div style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-pure)', margin: '2px 0' }}>{m.val}</div>
-                    <div style={{ fontSize: '0.70rem', color: 'var(--neon-cyan)' }}>{m.desc}</div>
-                  </div>
-                ))}
+              <div className="store-outcome-metrics-row">
+                <span className="store-outcome-stat"><strong>{store.uniqueMetrics[0].val}</strong> {store.uniqueMetrics[0].label}</span>
+                <span className="store-outcome-dot">·</span>
+                <span className="store-outcome-stat"><strong>{store.uniqueMetrics[1].val}</strong> {store.uniqueMetrics[1].label}</span>
+                <span className="store-outcome-dot">·</span>
+                <span className="store-outcome-stat"><strong>{store.uniqueMetrics[2].val}</strong> {store.uniqueMetrics[2].label}</span>
               </div>
             </div>
 
