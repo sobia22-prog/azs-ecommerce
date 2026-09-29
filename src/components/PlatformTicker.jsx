@@ -119,6 +119,15 @@ export default function PlatformTicker({ activePlatform, onSelectPlatform, showP
         {/* Matching Section Header for Verified Agency Credentials */}
         <div className="section-header cert-section-header">
           <h2>Official Partners</h2>
+          <div className="partner-strip-verified-badge" aria-label="Accredited Partner Credentials">
+            <span className="partner-verified-check" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span className="partner-badge-label">Accredited Partner:</span>
+            <span className="partner-badge-names">Amazon Ads · Noon Verified · Shopify Plus</span>
+          </div>
         </div>
 
         {/* Official Partners Showcase Strip - Non-Clipping, Fully Visible, Responsive */}

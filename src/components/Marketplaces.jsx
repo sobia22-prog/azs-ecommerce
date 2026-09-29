@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from '../Router';
 
 const MARKETPLACE_LIST = [
@@ -165,6 +165,21 @@ export default function Marketplaces({ onOpenModal }) {
 
   const current = DASHBOARDS[activeDash] || DASHBOARDS.ksa;
   const activeMktData = MARKETPLACE_LIST.find(m => m.id === activeMobileMkt) || MARKETPLACE_LIST[0];
+
+  // Preload all dashboard images to eliminate blank flashes during tab switches
+  useEffect(() => {
+    const imagesToPreload = [
+      '/assets/noon_ads_full_card.png',
+      '/assets/trendyol_light_dashboard.svg',
+      '/assets/usa_amazon_light_dashboard.svg',
+      '/assets/uk_amazon_light_dashboard.svg',
+      '/assets/consolidated_multi_marketplace_command.svg'
+    ];
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const handlePrev = () => {
     const currentIdx = MARKETPLACE_LIST.findIndex(m => m.id === activeMobileMkt);
@@ -386,7 +401,14 @@ export default function Marketplaces({ onOpenModal }) {
               className="dashboard-img-container"
               onClick={() => onOpenModal(current.img, current.title)}
             >
-              <img src={current.img} alt={current.title} loading="lazy" />
+              <img 
+                src={current.img} 
+                alt={current.title} 
+                loading="eager" 
+                decoding="async"
+                width="1376"
+                height="768"
+              />
             </div>
 
             <div className="dashboard-details-col">

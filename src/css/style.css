@@ -2715,6 +2715,96 @@ div.desktop-only,
   flex-wrap: wrap;
 }
 
+/* Verified Partner Badges (Hero, Official Partners Strip, & Footer - iNNOVEX Benchmark) */
+.hero-verified-partner-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(0, 245, 155, 0.08);
+  border: 1px solid rgba(0, 245, 155, 0.35);
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  color: var(--text-pure);
+  margin-bottom: 20px;
+  box-shadow: 0 0 18px rgba(0, 245, 155, 0.12), inset 0 0 10px rgba(0, 245, 155, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.partner-strip-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(0, 245, 155, 0.07);
+  border: 1px solid rgba(0, 245, 155, 0.3);
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  color: var(--text-pure);
+  margin-top: 10px;
+  box-shadow: 0 0 14px rgba(0, 245, 155, 0.1);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.footer-partner-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 5px 14px;
+  background: rgba(0, 245, 155, 0.07);
+  border: 1px solid rgba(0, 245, 155, 0.3);
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  box-shadow: 0 0 12px rgba(0, 245, 155, 0.08);
+  transition: all 0.2s ease;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.footer-partner-badge-pill:hover {
+  border-color: rgba(0, 245, 155, 0.5);
+  background: rgba(0, 245, 155, 0.12);
+  color: var(--text-pure);
+  box-shadow: 0 0 18px rgba(0, 245, 155, 0.2);
+}
+
+.partner-verified-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--neon-mint);
+  color: #060a12;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(0, 245, 155, 0.6);
+}
+
+.partner-verified-check svg {
+  display: block;
+}
+
+.partner-badge-label {
+  font-weight: 700;
+  color: var(--neon-mint);
+  letter-spacing: 0.02em;
+}
+
+.partner-badge-names {
+  font-weight: 500;
+  color: var(--text-pure);
+}
+
 .footer-partner-badges {
   display: flex;
   align-items: center;
@@ -8002,15 +8092,16 @@ div.desktop-only,
     left: 0 !important;
     right: 0 !important;
     height: 52px !important;
-    background: rgba(6, 10, 18, 0.94) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: #060a12 !important; /* 100% solid opaque background prevents any page content bleed-through */
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
     z-index: 9990 !important;
     padding: 0 16px !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
     align-items: center !important;
     justify-content: space-around !important;
-    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.85) !important;
   }
 
   .mobile-jump-backdrop {
@@ -9700,10 +9791,23 @@ div.desktop-only,
     font-size: 0.68rem !important;
   }
 
-  .footer-partner-badges {
-    font-size: 0.66rem !important;
+  .footer-partner-badges,
+  .footer-partner-badge-pill {
+    font-size: 0.68rem !important;
     text-align: center !important;
     justify-content: center !important;
+    padding: 6px 12px !important;
+  }
+
+  .hero-verified-partner-badge {
+    font-size: 0.74rem !important;
+    padding: 5px 12px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .partner-strip-verified-badge {
+    font-size: 0.74rem !important;
+    padding: 5px 12px !important;
   }
 
   .footer-legal-links {

@@ -36,6 +36,17 @@ export default function Hero({ onOpenModal }) {
         <div className="hero-grid">
           {/* Left Column: Value Proposition (50%) */}
           <div className="hero-content">
+            {/* Verified Partner Badge Pill (iNNOVEX Benchmark) */}
+            <div className="hero-verified-partner-badge" aria-label="Accredited Partner Credentials">
+              <span className="partner-verified-check" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span className="partner-badge-label">Accredited Partner:</span>
+              <span className="partner-badge-names">Amazon Ads · Noon Verified · Shopify Plus</span>
+            </div>
+
             <h1>
               Scaling Commerce <br />
               <span className="gradient-text">Beyond Borders.</span>

@@ -77,9 +77,14 @@ export default function Footer() {
           <div className="footer-copyright">
             © {new Date().getFullYear()} AZS Solutions Ltd. All rights reserved.
           </div>
-          <div className="footer-partner-badges">
-            <span className="partner-status-dot"></span>
-            <span>Accredited Partner: Amazon Ads · Noon Verified · Shopify Plus</span>
+          <div className="footer-partner-badge-pill" aria-label="Accredited Partner Status">
+            <span className="partner-verified-check" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span className="partner-badge-label">Accredited Partner:</span>
+            <span className="partner-badge-names">Amazon Ads · Noon Verified · Shopify Plus</span>
           </div>
           <div className="footer-legal-links">
             <Link to="/about">About</Link>

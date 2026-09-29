@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from '../Router';
 
 const STORES = {
@@ -45,6 +45,18 @@ export default function ShopifyGrowth({ onOpenModal }) {
   const [touchEnd, setTouchEnd] = useState(null);
 
   const store = STORES[activeStore];
+
+  // Preload all storefront images to eliminate blank flashes during tab switches
+  useEffect(() => {
+    const imagesToPreload = [
+      '/assets/shopify_devices_hero.png',
+      '/assets/shopify_storefronts_mockup.png'
+    ];
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   const handlePrev = () => {
     const currentIdx = STORE_KEYS.indexOf(activeStore);
@@ -145,7 +157,10 @@ export default function ShopifyGrowth({ onOpenModal }) {
               <img
                 src={currentVisual.img}
                 alt={`${store.name} Storefront Architecture by AZS Solutions`}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
+                width="1000"
+                height="1000"
               />
             </div>
           </div>
